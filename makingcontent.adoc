@@ -355,7 +355,7 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 |===
 | Add-on	| Where to get it	| What it does
 
-| Blender28toMSTS |Available From: http://www.elvastower.com/forums/index.php?/topic/33247-Blender-28-to-msts-exporter/| S file Export (MSTS ORTS - V4.3)  See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file.
+| Blender28toMSTS |Available From: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. DOCS: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf
 |Edge to Curve | Available From: https://github.com/Stromberg90/Scripts/blob/master/Blender/Edge_To_Curve.py | A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
 | Optional: Briage28 | Available From: http://jujumatic.free.fr/Files/BRIAGE_G//BRIAGE_G_2.83Pckg_3-1-412.7z  | Train/Rail Simulator Export if you also have this simulator (Dovetail Games) 
 |===

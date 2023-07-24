@@ -381,6 +381,22 @@ A Bevel on a FLAT PLANE will create an INSET.
 
 kbd:[CTRL + R] Key Combination:: This tool splits a set of faces by inserting new edge loops intersecting the chosen edge(s). It will preview the loop cut as you move the mouse cursor around the object, snapping from horizontal to vertical based on position.  The Loop-Cut will stop at `NGON` Intersections so it is better to use this tool early before you add a lot of geometry changes or booleans. If your mesh has non-NGON shapes, IE; it has been triangulated already... then this and other some other tools won't work as expected.
 
+Press kbd:[E] if you want it to evenly match one of the adjacent edges.
+
+Press kbd:[F] will flip the sdge it matches
+
+Use the Scroll Wheel on your mouse (before pressing kbd:[E]) to add or remove additional cuts.
+
+After btn:[Left-Clicking] the mouse, you can slide  the loop cuts up or down and btn:[Left-Click] again to confirm.  kbd:[Right-Click] center the Loop Cut.
+
+The operation has an "Adjust Last Operation" panel where you can still adjust some values. Use btn:[F9] to open this option if you don't see it on the screen.
+
+[TIP]
+For more precise adjustments, you can turn on the "Edge Length" feature in "Viewport Overlays" to visually see the edge lenths.
+
+[TIP]
+The "smoothness" value will scale  the selected loop cuts using a fallof profile.
+
 [TIP]
 You can use the function kbd:[CTRL-F] or Search for "Tris to Quads" to un-triangulate a shape to possibly regain the ability to use the Loop Cut options again.
 
@@ -455,8 +471,12 @@ image:images/MyCollection.JPG[]
 
 
 [IMPORTANT]
-You will want to download and unzip the "Blender 2.8 to MSTS Exporter" from Elvas Tower and then read the instructions on how to install and use it. It includes very fine PDF file with instructions on how to use it.
+----
+You will want to download and install the "Blender 2.8 to MSTS Exporter".  https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip
 
+The Documentation is included in the ZIP file.  The documentation is also available separately at this location: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf  Use the DOWNLOAD button to get a readable local copy.
+
+----
 
 
 == Actually Modeling Something
@@ -1239,7 +1259,7 @@ Scene Collection
 ----
 
 [TIP]
-Don't forget to check out the sample locomotive file that Wayne provided with the MSTS exporter download.
+Don't forget to check out the sample locomotive file that is provided with the MSTS exporter download.
 
 Once you copy the completed model to the Alternate LOD Collection, you can begin deleting details that won't normally be visible at longer distances.
 

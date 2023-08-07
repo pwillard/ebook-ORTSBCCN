@@ -738,26 +738,28 @@ The MSTS Materials shader properties provided by the exporter follow the standar
 * HalfBright – The same as full bright but at half the intensity.
 
 * Dark Shade – The opposite to full bright, it reduces the overall intensity of light.
+====
 
+In `OBJECT MODE`, under the Materials property panel, scroll down to the bottom to where the MSTS exporter section is, titled: `MSTS Materials`.  
 
-* In `OBJECT MODE`, under the Materials property panel, scroll down to the bottom to where the MSTS exporter section is, titled: `MSTS Materials`.  
+1. Update the `BaseColorFilePath` (using the Folder Button) to select the texture of the highlighted object we have been working on. 
 
-* Update the `BaseColorFilePath` (using the Folder Button) to select the texture of the highlighted object we have been working on. 
+2. Now switch to the `SHADING` window using the top menu bar.  Note: that the `NODES` window now has a `UVMap` node and the text field says "UVMap".  This is needed for the MSTS `S` file export.
 
-* Now switch to the `SHADING` window using the top menu bar.  Note that the `NODES` window now has a `UVMap` node and the text field says "UVMap".  This is needed for the MSTS `S` file export.
-
-* With this verified, you can now use the MSTS exporter.
+3.  With this verified, you can now use the MSTS exporter.
 
 * Chose menu:FILE[EXPORT > OPENRAILS/MSTS(s)] file, and choose where to save. Use the browser to select your project's `\final\` folder and modify the filename as needed...  I chose `barrier.s` for example.  The bottom of the screen will say "Finished OK" when done.
 
-* The exporter will ONLY create the `.S` file and assume your texture is `.ace`.  Converting your `.JPG` or `.PNG` textures to `.ACE` (or .`DDS` ) remains for you do as you will need to do this manually ourside of Blender.
+[NOTE] 
+The exporter will ONLY create the `.S` file and by default assume your texture is `.ace`.  Converting your `TGA`, `.JPG` or `.PNG` textures to `.ACE` (or .`DDS` ) remains for you do as you will need to do this manually ourside of Blender.
 
-* For a sanity check... edit your exported `.S` file with a unicode editor to make sure your texture reference is correct.
-====
+
+For a sanity check... edit your exported `.S` file with a unicode editor to make sure your texture reference is correct.
+
 
 
 [TIP]
-Since I edited my copy of the MSTS/ORTS export ADD-ON to have an export as `.DDS` option as weall as `.ACE`, my `.S` file has the following difference in it
+Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used in the `.S` file as `.DDS` instead of `.ACE`
 
 
 ----
@@ -768,28 +770,62 @@ Since I edited my copy of the MSTS/ORTS export ADD-ON to have an export as `.DDS
 
 [NOTE]
 ====
-I have made my own custom version of `EXPORT-OPENRAILS/MSTS` script that allows you to select ACE or DDS at time of export.  
-
-You can find it here: https://gist.github.com/pwillard/cd840fff2407b4d318c5506ce6aa0296
-
-Due to this one change, I can use my current master texture file, which I edit in `PSD` format using PAINT.NET to keep the layers intact, and just save it from PAINT.NET as a `.DDS` file natively.   As a result, I do a minimal amount of after-the-fact editing.  To work in Blender, I save a copy the master `PSD` file as a `PNG` file and to work with {or} I save a copy of the master `PSD` file as a `DDS` file.
-
-The next step would be to copy the contents of the project's `FINAL` folder into my {or} `trains` content folder for testing.  I have eliminated the need to edit the `S` file or do a texture file conversion (skipping a step where I would have had to use a tool like MakeAce) by using the supported DDS format files.
-
+ABOUT DDS SUPORT 
+With a master texture file, in a `PSD` format for example,  and using PAINT.NET to keep the layers intact, you cave save it from PAINT.NET as a `.DDS` file natively.   As a result, a minimal amount of after-the-fact editing is needed.  To work in Blender, save a copy the master `PSD` file as a `PNG` file and to work with in Blender. Then save a copy of the master `PSD` file as a `DDS` file.
 ====
 
-
 [IMPORTANT]
-The Exporter script  will *only* create the model `.S` file and by default it assumes you are creating .`ACE` files. You still need to create the ENG or WAG or similar related files that define your model to the simulator.
+Again, the Exporter script  will *only* create the model `.S` file.  You still need to create all the final textures and the ENG or WAG or similar related files that define your model to the simulator.
+
+The final step would be to copy the contents of the project's `FINAL` folder into the {or} `trains` content folder for testing.  
+
 
 
 === Creating Level Of Detail Distance levels
 
-Once you have your main model created, you should consider creating LOD entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object’s 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
+Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object’s 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
 
 Blender WILL rename your parts when you add them to a new LOD, but the MSTS exporter is looking at the COLLECTION and BASENAMES of the objects, like WHEELS, which means you won't need to rename entries that suddenly have 001 appended to their name.
 
 You can select a group of objects in the Outliner by using the kbd:[SHIFT-LMB] to copy multiple items at once to a new COLLECTION.  It would be good to experiment with the Outliner filter options so you are aware of what is available.
+
+==== Guidelines for creating LOD versions
+
+Level of Detail of versions of a base model are determined by how much detail is visible based on the distance the camera is from the camera (or player view).  When your camera is very close to an object in {or}, then you want to see the maximum detail available.  As your view of an object becomes far away, there is no reason to display the full detail of the object as much of it will be hidden or to small to see. The reduced polygon models (LODS) will increase graphic performace by reducing the amount of drawing that needs to be performed by the graphics card.   For example, your main model might have 2000 polygons, but at 750 meters, you might only need to display 200 polygons and at 3000 meters, you might only need to display 50 or so polygons to get the same overall effect.
+
+You define your intentions for each level of detail in your outliner.  As explained earlier, you define your LODS using a naming convention under the MAIN collection where each lod distance setting is part of the sub-collection name, for example:
+
+|===
+| NAME      | DEFINITION
+
+| MAIN      | MAIN COLLECTION
+| MAIN_0500 | 0 - 500 meters
+| MAIN_1000 | 500 - 1000 meters
+| MAIN_2000 | 1000 - 2000 meters 
+|===
+
+----
+MAIN
+    MAIN_0500
+         BODY (20,000 polys)
+         BOGIE1 
+            WHEELS11
+            WHEELS12
+         BOGIE2 
+            WHEELS21 
+            WHEELS22
+         etc
+
+    MAIN_1000
+      BODY (3000 polys)
+
+    MAIN_2000
+      BODY(200 polys)
+
+----
+
+[TIP]
+You can use the DECIMATE operation in Blender to quickly reduce the polycount of a shape while maintaining most of the topology of the original shape.  This can give you a head start on reducing what gets drawn on each LOD level in additional to just removing the finer details that won't be seen. 
 
 
 <<<

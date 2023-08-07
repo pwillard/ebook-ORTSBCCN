@@ -66,7 +66,7 @@ Made for ORTS but requires MSTS and other add-ons:: Meaning it *can* only run in
 === Programs you should have:
 
 * A 3D program, {version} is recommended, but even the LATEST release - currently {BV} - should also be fine unless the *Blender's PYTHON API* has dramatically changed.
-* An Exporter add-on for the MSTS/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://drive.google.com/file/d/1Oykl70glvaFU1t4dqwSrl8vgMFdI-kMb/view?usp=sharing]
+* An Exporter add-on for the MSTS/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://github.com/pwillard/Blender_MSTS_ORTS_Exporter]
 * A paint program that has channels and layers (There are multiple options here)
 * A text editor that handles UNICODE files
 
@@ -89,9 +89,32 @@ I recommend just using METRIC for measurements.  I realize that some people have
 
 In 2002, I started using 3D Software to create content for games, primarily for {MSTS}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {version} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
 
-==== Why You Should Use Blender
+== Why Use Blender to Make Game Assets?
 
-Blender is free. With the open community supporting Blender as well as there being a large collection of handy addons, it gives you a wide range of possibilities to customize your Blender workspace and workflow.  While some add-ons are not free, most are reasonably affordable, with some paid add-ons on sale as low as $1.  
+Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
+
+=== Open-Source and Free
+Blender is open-source software, which means it's free to use and has an active community of developers and users. This makes it accessible to a wide range of users, including hobbyists, indie game developers, and professionals.
+
+=== Versatility
+Blender offers a comprehensive set of tools for 3D modeling, sculpting, texturing, rigging, animation, rendering, and more. It can handle a variety of asset types, from characters and environments to props and special effects, making it a versatile choice for game development.
+
+=== Integrated Workflow
+Blender provides an integrated workflow, allowing you to create, edit, and animate assets seamlessly within a single application. This can save time and reduce the need to switch between different software tools.
+
+=== Asset Optimization
+Blender provides tools to help optimize your assets for real-time rendering in games. You can create LODs (Level of Detail), bake textures, and manage UV maps to ensure your assets are efficiently displayed in the game engine.
+
+=== Community and Resources
+Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
+
+=== Non-Destructive Workflow
+Blender supports non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
+
+=== Constant Development
+Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.
+
+Ultimately, the choice of using Blender for making game assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective tool with a wide range of capabilities, Blender is definitely worth considering for your game asset creation workflow.
 (((Blender, "Free 3D Graphics Program")))
 
 To export your model for using in MSTS or ORTS, Wayne Campbell created a very capable exporter for MSTS format `.s` files.

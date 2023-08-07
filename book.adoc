@@ -198,6 +198,7 @@ include::makingthemesh.adoc[]
 include::makingtextures.adoc[]
 include::usingScripts.adoc[]
 include::makingtheconfig.adoc[]
+include::making3dcabs.adoc[]
 include::appendix.adoc[]
 include::appendix2.adoc[]
 

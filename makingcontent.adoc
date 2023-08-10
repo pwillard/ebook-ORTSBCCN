@@ -478,6 +478,7 @@ menu:Properties Panels[Scene>Render Engine > Cycles] and modify SAMPLING > RENDE
 
 menu:Properties Panels[Scene > Film] In the Film section,  Enable the check-box for "Transparent"	(This removes any background from renders, you *will* want this)
 
+(((Blender, "Blender, SHADING")))
 
 ==== Shading
 
@@ -525,7 +526,7 @@ menu:FILE[DEFAULTS > SAVE STARTUP FILE > Confirm]
 We will now have all of our basic user preferences and startup file options the way we want them for 3D modeling simulator assets.
 
 <<<
-
+(((Project, "Folders")))
 == Folder structure
 
 The layout of your project development folder is completely personal depending on how you organize your work.  I'll share what I currently use as an example.
@@ -544,6 +545,7 @@ I snipped a lot of details out for brevity and left some in as examples.  EXPORT
 
 
 <<<
+
 
 == Content Creation Overview
 
@@ -789,6 +791,7 @@ Always think about visual anchors when I add details. Visual anchors are like st
 [NOTE]
 By the way, the Blender Brothers love making their own decals. They have even recorded a video showing their full decal workflow with the Decal Machine, a Blender Add-on. It's worth looking at as well as their other videos.
 
+(((Assets, "General Texture Mapping")))
 
 === General Texture Mapping Guidelines
 

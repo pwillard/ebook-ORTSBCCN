@@ -274,6 +274,8 @@ image:images/screenGismoJPG.JPG[]
 <<<
 === Modeling Modes
 
+(((Blender, "Modeling")))
+
 In Blender, there are 2 primary 3D model manipulation modes.  These are `OBJECT MODE` and `EDIT MODE`.   
 
 Use the kbd:[TAB] key to switch modes.
@@ -415,6 +417,8 @@ image:images/loopcut.png[]
 
 === Additional Tips
 
+Here are some tips from some lessons I've learned while using Blender.
+
 ==== MIRROR and FLIP
 
 Sometimes, when working on a vehicle model particularly, you might find that using the MIRROR option is not enough. You might also need to FLIP the item along an axis.  For example, lets say you are adding coupler lift bar to your model and you have finished adding it to the rear end of your model. You now want to do the logical thing and mirror it to the opposite end of your model.  But, mirror alone will have the part end up on the opposite end of the model, but on the same side of the model.  It needs to also be flipped.
@@ -447,6 +451,7 @@ You have a way to set some custom options that you always need to change and the
 
 The default workspace in Blender 2.8+ is something you will see in a lot of in YouTube tutorial videos. The first thing they will often do is select and then delete the "default cube".  Rather than go through this every time, it is possible for you to delete it, and then save your current cube-less `.blend` file as your new startup file. (I don't actually recommend it though) 
 
+(((Blender, "Workspace")))
 
 `FILE->DEFAULT->Save Startup File`
 ====
@@ -716,6 +721,8 @@ image:images/UVWRAP3.JPG[]
 
 This model is now ready for the MSTS exporter.
 
+(((Texture, "Shader Properties")))
+
 [NOTE]
 ====
 The MSTS Materials shader properties provided by the exporter follow the standard material options available in MSTS:
@@ -768,6 +775,8 @@ Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used 
     )
 ----
 
+(((Texture, "About DDS")))
+
 [NOTE]
 ====
 ABOUT DDS SUPORT 
@@ -782,6 +791,8 @@ The final step would be to copy the contents of the project's `FINAL` folder int
 
 
 === Creating Level Of Detail Distance levels
+
+(((Blender, "Considering Level Of Detail")))
 
 Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object’s 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
 
@@ -837,10 +848,12 @@ This section mainly applies to users who still use a version of Blender prior to
 [TIP]
 Blender 3.0+ has a new Asset Library feature where you can store pre-made objects and textures that are shared among your projects.  A perfect place to store various pre-made Bogies, Couplers and other common objects. In fact, this is one of the best reasons to consider upgrading to 3.0. 
 
-
 It is common to see regular parts used multiple times in a single design.  Handgrips, railings, wheels, trucks etc are often regularly available parts purchased by Rail Vehicle companies as commodity items. In the same way, we should not have to keep making the same parts over and over again.
 
-One way to accomplish the re-use of the common parts is to `duplicate` it with kbd:[SHIFT,D]. A selected part will be duplicated and ready for a location transform to move it to a new location.
+One way to accomplish the re-use of the common parts is to `duplicate` one with kbd:[SHIFT,D]. A selected part will be duplicated and ready for a location transform to move it to a new location. This is easier to manage after you have completed the UV-Unwrapping of the object.  All duplicated parts will share the same UV MAP locations so if you need them to have different mapping, its a matter of shifting them around in the UV Editor.
+
+[WARNING]
+You should not use kbd:[CTRL,C] and kbd:[CTRL,V] to duplicate objects as an alternative to kbd:[SHIFT,D] because the standard copy/paste operation will make new copies of everything, including Materials.  So your MAIN texture would become MAIN001, MAIN002 etc on each copy/paste operation.
 
 [TIP]
 ====
@@ -851,12 +864,13 @@ https://Blendermarket-production.herokuapp.com/products/asset-management
 This add-on has been made somewhat redundant now that Blender 3.0+ comes with an Asset Browser but it does still work in version 3.0.
 ====
 
+=== A Brute-Force Library solution
 
-A free and rather easy way of creating a collection of re-usable parts is to *COPY* and *PASTE* specific parts, adding them from your current file to a library specific `.blend` file. 
+A simple and rather easy way of creating a collection of re-usable parts is to *COPY* and *PASTE* specific parts, adding them from your current file to a library specific `.blend` file. It does require that you have 2 copies of Blender running.
 
 * Save your current project, just in case.  
 
-* Highlight the object you want to export to a library file, but first make sure you set the origin to object geometry. `OBJECT MODE -> OBJECT -> SET ORIGIN -> ORIGIN to GEOMETRY`
+* Highlight the object you want to export to a library file, but first make sure you set the origin to object geometry. menu:View[ OBJECT MODE > OBJECT > SET ORIGIN > ORIGIN to GEOMETRY]
 
 * To copy,  press kbd:[CTRL,C]. The object will be copied to a system buffer. 
 
@@ -871,12 +885,12 @@ image:images/lib1.jpg[]
 
 * Now the tricky bit, open a *NEW GENERAL Blender FILE*
 
-* Choose `FILE -> DATA PREVIEWS -> BATCH GENERATE PREVIEWS` and chose the file name you used in the prior steps. Example: `Library_Freight.blend`
+* Choose menu:FILE[DATA PREVIEWS > BATCH GENERATE PREVIEWS] and chose the file name you used in the prior steps. Example: `Library_Freight.blend`
 
 [NOTE]
 This will take a few moments and will eventually present you with a console screen when complete. By doing this, we are telling Blender to create Object Icons in the saved file.
 
-* In the future, you just need to use `FILE->APPEND` option to insert the object into your current projects, but, the bonus is that you can select them using the `THUMBNAIL` view option in the `FILE APPEND` menu,  so now you will know which part you are appending to your current `blend` file in a visual way.
+* In the future, you just need to use menu:FILE[APPEND] option to insert the object into your current projects, but, the bonus is that you can select them using the `THUMBNAIL` view option in the `FILE APPEND` menu,  so now you will know which part you are appending to your current `blend` file in a visual way.
 
 * Choose append ans select `THUMBNAIL` view you will see file menu. 
 
@@ -892,7 +906,7 @@ When using this technique for an object library or multiple object libraries, yo
 
 It might mean that there are some redundancies in your files in the long run, but consider populating the OBJECTS and TEXTURE folders of each project local to that project versus using a master folder for all projects.  This way you can make folder-relative reference to files and you have the ability to move folder as well as share with others without breaking Texture file references, for example. 
 
-Another somewhat flexible option is to export your selected parts as an FBX or Collada (DAE) files.  These can be imported later with a `File-Import` process but it also means that you have something that can be imported to other applications as well.  The main difference with this option is that these are no longer native `.blend` files and there could be some mangling of contents when imported back into Blender.
+Another somewhat flexible option is to export your selected parts as an FBX or Collada (DAE) files.  These can be imported later with a `File-Import` process but it also means that you have something that can be imported to other applications as well.  The main difference with this option is that these are no longer native `.blend` files and there could be some mangling of contents when being imported back into Blender.
 
 [TIP]
 For the curious, 
@@ -914,19 +928,16 @@ A file structure that I often use for individual project folders is shown below:
 I would store any `local` object library collections created with the COPY/PASTE method under `\objects` folder.  There is a handy tool available https://www.dcmembers.com/skwire/download/text-2-folders/  "Text2folders", that makes creating this consistent folder structure easy.  Just replace the text "<projects>" with the name of your current project and pass this text file to the "Text2folders" application and it will create all the folders for you.  It can even do sub-folders. 
 
 [TIP]
-Keeping the Part Library and Texture files available under the current project structure is helpful if you share content, provided you have the available disk space to allow duplicates in multiple project folders.  It also allows for small tweaks specific to a project.
+Keeping the Part Library and Texture files available under the current project structure is helpful if you share your modeling content with others, provided you have the available disk space to allow duplicates in multiple project folders.  It also allows for small tweaks that are specific to a project.
 
 [TIP]
-I also use GITHUB to manage shared project contents.
-
-
-[TIP]
-If using the `Asset Browser` feature of Blender 3.0, you would use the `3D View: Object -> Asset -> Mark as Asset`.
-Then, `Save the file` in your ASSET folder,  otherwise your asset edits won't be available to other files.
+If using the `Asset Browser` feature of Blender 3.0, you would use the menu:3D View[ Object > Asset > Mark as Asset].  Then, `Save the file` in your ASSET folder,  otherwise your asset edits won't be available to other files.  This is why it might be better to create specific library collection `.blend` files to be stored in the asset folders.
 
  
 
 ==== Importing Existing Objects
+
+(((Blender, "Importing")))
 
 Importing shapes from other 3D Software can be a bit tricky and there are numerous reasons why.  I will try to outline a few basic steps and possible pitfalls that can be avoided.
 
@@ -937,13 +948,18 @@ Importing shapes from other 3D Software can be a bit tricky and there are numero
 [TIP]
 You can also run multiple versions of Blender side by side. Blender version 2.79 still supports importing and exporting `3DS` files and it is a simple as importing a `.3DS` file into Blender 2.79, perform a `Select-All` and `COPY` and then `PASTE` into your current Blender 2.8 session.
 
+[NOTE]
+As of version 3.6 LTS, Blender once again supports importing of 3DS files.
+
 *  UVMapping can survive an import operation... but material and texture selection probably didn't. 
 
-* The import step has also probably has assigned a new material for each object and to be honest, its easier to manage have all objects that use the same texture also use the same material (unless you need special alpha or reflective properties for something like metal or glass). 
+* The import step has also probably has assigned a new material for each object and to be honest, it's easier to manage if you have all objects that use the same texture also use the same material (unless you need special alpha or reflective properties for something like metal or glass). 
 
-* You also will probably need to manually tell the `S` file exporter [under MSTS Materials] where to find the texture file under `BaseColorFilePath` input field.
+* You also will probably need to manually tell the `S` file exporter (under MSTS Materials) where to find the texture file under the `BaseColorFilePath` input field.
 
-* Lastly, from personal experience, if you are importing a `DAE` (Collada format) file deom say 3DC, you might encounter an issue with `UVMAP` assignment in `SHADER EDITOR` where you are not getting the right `UV map` assigned and you see no texture in the `Material Preview` mode  (Commonly called `LOOKDEV` mode).  This the second tab from the right in the viewport selections. Everything will LOOK right in the `Material Preview`, but exports will fail with a "Missing UVMAP in:" error when you try to use the `S` file exporter.  _See the next section for how to deal with this problem._
+* Lastly, from personal experience, if you are importing a `DAE` (Collada format) file from say `3DC`, you might encounter an issue with `UVMAP` assignment in `SHADER EDITOR` where you are not getting the right `UV map` assigned and you see no texture in the `Material Preview` mode  (Commonly called `LOOKDEV` mode).  
+
+This the second tab from the right in the viewport selections. Everything will LOOK right in the `Material Preview`, but exports will fail with a "Missing UVMAP in:" error when you try to use the `S` file exporter.  _See the next section for how to deal with this problem._
 
 Material Preview 
 image:images/lookdev.jpg[]
@@ -976,6 +992,8 @@ image:images/layernames.jpg[]
 
 There is a tested script that will do this for you.
 
+(((PYTHON, "FIX UV MAP")))
+
 [source, python]
 ----
 import bpy
@@ -989,9 +1007,11 @@ for mesh in bpy.data.meshes :           # for every mesh in the .blend file
         firstmap.name = 'UVMap'         #     to the default name
 ----
 
-To use this code, you would select the `Scripting` Tab and kbd:[LMB,CLICK] the NEW option to get a new edit window
-You would copy and paste this code snippet into the text editor window.
-Last, you would press the "RUN" arrow on the left after the file window to run it.
+To use this code: 
+
+* You would select the `Scripting` Tab and kbd:[LMB,CLICK] the NEW option to get a new edit window. 
+* You would copy and paste this code snippet into the text editor window. 
+* Last, you would press the "RUN" arrow icon in the file window menu to run it.
 
 It will fix the UVMAP naming on all objects for you.
 
@@ -1016,7 +1036,7 @@ Let's say we are modeling a building.   I'm thinking... 2 stall engine house  40
 
 I will use this for a background image.
 image:images/40x80x20.jpg[]
-Apologies for the terrible image.
+Apologies for the terrible image. These are somewhat hard to find.
 
 
 === Importing the Background Images
@@ -1027,6 +1047,8 @@ Much of my previous content was created using Amabilis 3D Canvas modeling softwa
 
 [TIP]
 You should pre-determine the center-point of each view and align them with the axis lines in Blender.
+
+(((Blender, "Importing Background Images")))
 
 
 If you can find blueprints of at least the front/back and side view, you are all almost all set to use them as backgrounds.
@@ -1184,32 +1206,25 @@ As with the previous project, we load in our reference background images.  I pic
 
 ==== Starting from the ground up
 
-I like to start constructing vehicles starting with the trucks, and for this I’m going to recommend downloading a *.blend file to simplify this.   Erick Cantu has graciously provided tricks that we can include in our own models.  They can be downloaded from Elvas Tower.
+I like to start constructing vehicles starting with the trucks, and for this I’m going to recommend downloading a *.blend file to simplify this.   Erick Cantu has graciously provided various trucks that we can include in our own models.  They can be downloaded from Elvas Tower.
 
-You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  
+You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  In the long runm this will lead to consistency between modelers.
 
 [TIP]
-I have also uploaded a usable Blender example of 100T truck, based on Erick's there as well.  Available items include: "Source files for NAVS N-Series freight car trucks", "Source files for NAVS Z-Series freight car trucks", "100T Roller Bearing Truck Blender Object" some of which are also available at Trainsim.com as well.    Erick's trucks include attached couplers. 
+I have also uploaded a usable Blender example of 100T truck, based on Erick's there as well.  Available items include: "Source files for NAVS N-Series freight car trucks", "Source files for NAVS Z-Series freight car trucks", "100T Roller Bearing Truck Blender Object" some of which are also available at Trainsim.com as well.    Erick's trucks include attached couplers. I often choose to separate the couplers but that is left up to you to decide.  Erick has good reasons for keeping couplers attached to truck rotations.
 
-Using these existing objects, we can Append the ready made model into our initial blend file.
+Using these existing objects, we can Append the ready-to-use model into our initial blend file.
 
 I have been able to adjust the wheel radius as needed, though it's probably not entirely prototypical to do so on the trucks provided so far.
 
 If you feel so inclined, you could create your own wheel sets from scratch, but I leave that up to you.  Also note, since it is very likely we will be using LOD ranges with this model, understand that we will make the highest detail model first.  It is much easier to take away than add objects later.
 
 
-
-
-
-
-
-
-
-
-
 ==== Vehicle LOD - Level of Detail Settings
 
-In realtime computer graphics, a technique called "level of detail" is commonly used in various applications ranging from commercial simulators to PC and console games.
+(((BLENDER, "Level Of Detail")))
+
+In realtime computer graphics, a technique called "level of detail" (LOD) is commonly used in various applications ranging from commercial simulators to PC and console games.
 
 When 3D games are running on a graphics card, there is a limit to the number of surfaces (polygons and triangles) and textures that can be drawn. If this limit is exceeded, the game or simulation starts to slow down and the movements become jerky.
 
@@ -1225,7 +1240,7 @@ Many visual objects are modelled at more than one level of detail (LOD) so, when
 [TIP]
 Always apply textures before defining any LOD settings.
 
-Referring to some example snippets from the Outliner window in a Blender Working session...
+Referring to some example snippets from the Outliner window in a Blender Working session...  Watch out for the "GOTCHA's"...
 
 ----
 Scene Collection
@@ -1246,7 +1261,7 @@ Scene Collection
 
 
 
-       MAIN_2000
+        MAIN_2000
              BodyLOD2
                    Bogie1.001
 ----
@@ -1269,8 +1284,11 @@ Scene Collection
 Answer:  YES, What happened is that MAIN_2000 was created at the same level MAIN not MAIN_1000.  Only what resides below the MAIN collection will be considered for EXPORT.
 
 
-Lets Look at some other issues here whith what is shown above... Don't forget capitalization. For Example: Bogie1 should be BOGIE1.
-With the above example setup, the high resolution Bogie1 part will disappear at 1000 meters. Then the low res Bogie1.001 will take over. That low res bogie won't be animated, which is fine, since its too far away to see anyway.
+Let's Look at some other issues here whith what is shown above... Don't forget capitalization. 
+
+For Example: All cases of *Bogie1* should be *BOGIE1*.
+
+With the above example setup, the high resolution BOGIE1 part will disappear at 1000 meters. Then the low res BOGIE1.001 will take over. That low res bogie won't be animated, which is fine, since its too far away to see anyway.
 
 Here's how to do it if you need the lower resolution bogie to be animated:
 
@@ -1299,7 +1317,12 @@ Don't forget to check out the sample locomotive file that is provided with the M
 
 Once you copy the completed model to the Alternate LOD Collection, you can begin deleting details that won't normally be visible at longer distances.
 
-== Baking Abient Occlusion
+== Baking Ambient Occlusion
+
+(((Texture, "Ambient Occlusion Baking")))
+
+[Warning]
+{AO} Baking is mildy infuriating in Blender
 
 When Baking Ambient Occlusion, Here are some tips:
 

@@ -7,10 +7,12 @@ In an attempt to be remain bitmap tool agnostic, no particular tools will recomm
 
 === Layered Format Files
 
-A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  To recommend a few tools and formats, the following list should be a guide on what you can use:
+A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
+
+To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
 
 |===
-| Tool                  | File Type |   Comment
+| Tool                  | File Type |   Comment 
 
 | Affinity Designer     | .afdesign |   Proprietary, Native
 | Affinity Designer     | .psd      |   An Import/Export Option
@@ -28,12 +30,15 @@ A feature of any proper bit map tool that is to be used with creating textures f
 |===
 
 
-
 * All of the above programs support the `PNG` image export format
 * Some of the above support `DDS` image format, eg. Paint.Net and GIMP through the use of external plug-ins
 * The `PSD` format was originally a proprietary format used by PhotoShop and some software has trouble opening all `PSD` format variations seen in the wild
 * `TIFF` is also a layered format, though not as common and in some cases prone to some tools not fully understanding file contents. Testing needed.
 * Open Raster, `ORA`, is a newer file format that is supposed to replace `PSD` as a standard solution for exchanging layered images between graphics editors. It's still not widely used.
+
+[TIP]
+One additional tool to mention is InkScape, which like Affinity Designer, is a Vector Graphics program that contains a "make a bitmap copy" option.  Vector graphics are scalable without creating "jaggies" like you see with bitmaps. Unlike Affinity Designer, Inkscape is free.
+
 
 [WARNING]
 'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.
@@ -49,14 +54,12 @@ In summary, choose a tool that has a native layered file format that can also su
 
 DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
 
-Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality. This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
+Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality (Though honestly, not as bad as the ACE file format). This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
 
 [CAUTION]
 It is advised that you always have a MASTER document saved in a native bitmap format since the `DDS` format is a LOSSY document format so you will potentially loose image quality with every edit session of a DDS file.  The advice is to NEVER edit a DDS file and always work from a lossless master.  If the creator of content only supplies a DDS file with their release, you should ask them for a master file, or only use the supplied file to generate a working master you can use to work from so you have minimal degradation.
 
-
-
-For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. However, working with ACE files has become challenging since it is no longer possible to obtain a commercial license for AceIt. Furthermore, exporting large 32-bit ACE textures using the original MSTS tools is not feasible. The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
+For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. Exporting large 32-bit ACE textures using the original MSTS tools is often not feasible and some people won't even have access to MSTS TOOLS is they only use {OR}.  The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
 
 DDS is a useful format but many of the export options are not suitable for best performance.  
 
@@ -83,10 +86,10 @@ You know how sometimes people report that their icons or textures become a rainb
 
 
 
-[WARNING]
-When export compressed DDS files to the game, don't use them for editing. Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
+[TIP]
+Again, when exporting compressed DDS files to the simulator, don't use them for editing. Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
 
-With GIMP, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no plugin is needed.
+With GIMP, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
 
 With Paint.net versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type > DDS`. In the Save Settings window, you would select DXT1 and under Error Metric, check Generate Mip Maps and use Best Quality.
 
@@ -109,15 +112,86 @@ If your model is wide but not tall, as many vehicle models are, then you might c
 
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
-Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to  split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Keep the side and top views as continuous shapes in your model and your textures.
+Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to  split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.
 
-=== Coding alternative
+
+==== Decals
+
+A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
+
+A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
+
+I'll share a Decal creation technique here using Python code for the so inclined.
+
+=== Coding alternatives
 
 For the more software minded, Python 3 can be used to layout your textures using a Python package named PILLOW, (PIL for short).  Now this won't be a guide for using Python or Pillow, but I will share how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
 
 [source,python]
 ----
+#!/usr/bin/python
 
+from PIL import Image, ImageDraw, ImageFont
+
+#from PIL import *
+
+meter = 146
+
+# This layout was used for a flatcar sides and end reporting marks that were assigned
+# to `plane` objects that were "shrink-wrapped" to the main body in Blender.
+
+if __name__ == '__main__':
+    height = 2048
+    width = 2048
+    image = Image.new(mode='L', size=(height, width), color=255)
+
+    draw = ImageDraw.Draw(image)
+
+    # get a font from the LOCAL FOLDER
+    # You need a local font for this to work.
+    # get a font (disabled for now)
+    #fnt = ImageFont.truetype("Hack-Regular.ttf", 40)
+
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5), (10+952,5+194)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5),(1000+554,5+505)),fill = "black")
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5+510), (10+952,5+194+510)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510),(1000+554,5+505+510)),fill = "black")
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5+510*2), (10+952,5+194+510*2)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510*2),(1000+554,5+505+510*2)),fill = "black")
+
+        # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,10+510*3), (10+952,10+194+510*3)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510*3),(1000+554,5+505+510*3)),fill = "black")
+
+    del draw
+
+    image.save("out.png","PNG")
 ----
 
 I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.
@@ -126,6 +200,142 @@ Using this method is still in the experimental stage for me... but it is somethi
 
 [source,python]
 ----
+#!/usr/bin/python
+"""Script to generate small bitmaps with white numbers on
+an alpha background for reporting marks.
+ The output is a set of TGA files and a master file with 
+ items merged
+
+
+Basic usage:
+$ python3 reportingmark.py  (No file options are needed)
+
+You need to edit values in the top of this file to change defaults
+This code has been tested with Python 3.10.4 and requires the use of
+the Python package "PILLOW".
+
+To install PILLOW, use:
+
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade Pillow
+
+=============================
+
+Author: Pete Willard
+Email: petewillard@gmail.com
+Website: RailSimStuff.com
+Date: June 8, 2023
+
+
+Well, numbers make sense but you never know, there
+is this guy at RailSimStuff.com that puts numbers
+on !@#$%^&*() characters.
+
+The TTF font you plan to use does not need to be installed in the system.
+The TTF file just needs to be inthe same folder as the python script.
+
+"""
+
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+from pathlib import Path
+import os
+
+
+# all reporting mark numbers must be the same length
+numberList = "120079","120100","120186","120156"
+elements = len(numberList)
+element0 = numberList[0]
+len_element0 = len(element0)
+len_number = len(numberList)
+
+# Reporting Mark - Road Name - refer to font PDF to know which chars make the
+# correct lettering
+rm = "NS"
+len_rm = len(rm)
+
+
+# Gap Size (NOTE: Not all railsimstuff fonts have a *space* character)
+# Mileage may vary
+space = "  "
+len_space = len(space)
+
+# Lettering height and width
+height = 64
+multiply = len_rm + len_space + len_element0
+width = 54 * multiply  # 64 * 10
+
+print ("height = ",height)
+print ("width =  ", width)
+# You will need to tweak these values below based on the
+# specific font being used so it fits the 'box' correctly
+fontSize = 68       # Pitch
+fontHorz = 20       # Start Position
+fontVert = -4       # Start Position
+pathToFont = "nslogo.ttf"   # Should be in the local folder where the Script is
+fontColor = "255"           # 255 = white
+
+
+print(pathToFont)
+
+if __name__ == '__main__':
+
+    image = Image.new('RGB', (1024, 1024), color=0)
+    image.save('decal.tga', 'tga')
+
+    # get the font
+    #
+
+    fnt = ImageFont.truetype(pathToFont, fontSize)
+
+
+    #"""
+    # Draw Character Black on White Background
+    # then invert to White on Black Background (it's just easier)
+    # since we can rely on defaults
+
+    #We are looping through each member of the numberList
+    #and writing out each character result individually
+    #"""
+
+    count = 0
+
+    for elements in numberList:
+        output = rm + ' ' + elements
+        #output = 'NS !@)!&^'
+        print (output)
+        #Setup
+        image = Image.new(mode='L', size=(width, height), color=0)
+        draw = ImageDraw.Draw(image)
+        #
+        draw.text((fontHorz,fontVert),output,font=fnt,fill=255)
+        #draw.text((10,),output,font=fnt,fill=255)
+
+
+
+        # Save out the results
+
+        out = str(count) +".tga"
+        count = count +1
+
+        # Not the most efficient routines
+        # but I'm still designing this next section
+
+        image.save(out,"TGA")
+
+    img1 = Image.open(r"decal.tga") # Create a blank to paste into
+    row = 0
+    for items in range(count):
+        img2 = str(items) + ".tga"
+        img = Image.open(img2)
+        img1.paste(img, (0,row), mask = img)
+
+        row = row + 64
+
+    img1.save("decal1.tga") # remove working copy
+    os.remove("decal.tga")
+
+# Well, it was SUPPOSED to make an alpha channel... :(
+# Still working on it.    
 
 ----
 
@@ -136,9 +346,9 @@ Using this method is still in the experimental stage for me... but it is somethi
 When working on a texture for a model, you are going to want to add bitmap layers that help to achieve the desired final result.  This means being able to adjust the parameters and effects that each layer brings to the final result.  These include making layers with more opacity so the details of lower layers are not obscured, or adding upper layers that contain effects for Grime, Rust, Dirt, Dust, as explained in the now lost "Painting Guide" that once existed on the 3DTrains.com website.  
 
 [NOTE]
-Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully Mark doesn't mind that I've tried to share that information here as a sort of archive of what was at the website.
+Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully,3dTrains folks don't mind that I've tried to share that information here as a sort of archive of what was at the website.
 
-Mark had explained that you would add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
+There was an explanaion there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
 
 
 
@@ -221,21 +431,7 @@ Because the textures for the car are not perfectly symmetrical, it's hard to tel
 I am always on the lookout for walls with streaks of dirt from the rain, rusty metal, or anything that looks patchy. You can get so many great layer masks from those things, and most of us are carrying a perfectly-adequate camera in our pockets these days anyway. I used to hate weathering. Now it's quite easy and enjoyable, taking very little of my time.
 
 
-=== Highlights and Shadows
 
-A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the Ambient Occlusion layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an ambient occlusion layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
-
-[TIP]
-The blend mode for the [ao] layer could also be "multiply" instead of "normal"
-
-
-==== Decals
-
-A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
-
-A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
-
-I'll share a Decal technique here using individual 64x64 PNG files with alpha-numbers.
 
 
 
@@ -252,7 +448,7 @@ darkening it and perhaps adding a couple of touches for effect.
 
 The night textures take effect at a predetermined time within the game
 environment, so as to replicate a real world environment. The
-extshape.dat file must be updated with the correct parameters so that
+`extshape.dat` file must be updated with the correct parameters so that
 the shape is declared as having night textures (see the “How to write a
 .ref file” document for further clarification). ((( Reference File)))
 
@@ -297,8 +493,14 @@ image::images/image3.jpeg[]
 
 image::images/image6.jpeg[]
 
+=== Highlights and Shadows
 
-== Creating Shadows
+A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the Ambient Occlusion layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an ambient occlusion layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
+
+[TIP]
+The blend mode for the [ao] layer could also be "multiply" instead of "normal"
+
+== Generated Shadows
 
 (((Texture, Ambient Occlusion)))
 

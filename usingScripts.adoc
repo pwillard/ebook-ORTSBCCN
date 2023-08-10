@@ -131,6 +131,7 @@ The author is currently not well versed on using the API, so can only provide li
 
 To run a Blender script, follow these steps:
 
+(((Python, "Runing A Script")))
 
 * Open Blender: Launch the Blender application on your computer. It's probably best to  you have the latest version of Blender installed to have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support, (LTS VERSION) of Blender is probably the best choice.
 

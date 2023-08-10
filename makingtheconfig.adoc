@@ -13,6 +13,8 @@ The process of creating content and config files is often described as a complic
 
 == Open Rails Units of Measure
 
+(((ORTS, "Units")))
+
 [NOTE]
 Source: http://www.coalstonewcastle.com.au/physics/or-parameter-uom/
 
@@ -62,6 +64,8 @@ With {or} it is very common that things like coupler and brake settings are cons
 
 
 === Using _INCLUDE_
+
+(((ORTS, "Using INCLUDE")))
 
 The INCLUDE token is new to {OR} and did not exist in {MSTS}. Using INCLUDE looks like the following example, where this NAVS content `WAG` FILE makes a call-out to FreightAnims for car body and numbers and then coupler and then the remainder of the specific car details: 
 
@@ -150,6 +154,8 @@ For example:
 
 ==== Universal Settings
 
+(((ORTS, "Universal Settings")))
+
 These settings are found in nearly every type of rolling stock or locomotive content and while some are optional, most are really not.  Many of the new ORTS tokens are related to Derailment Coefficient determination.
 
 |===
@@ -178,6 +184,8 @@ See the <<Appendix A>> for a more complete list of tokens/parameters. Note: this
 
 
 ==== Example WAG file with INCLUDE
+
+(((ORTS, "Example WAG File")))
 
 Probably some of the BEST examples of how to make use of the {or} ENG/WAG design goals is Erick Cantu with what he has done with the NAVS rolling stock and engines.  Erick heavily makes use of the `INCLUDE` token and new `Freight Anim` options.  I would recommend downloading and looking at one of Erick's SDK files for a good background on his techniques.
 

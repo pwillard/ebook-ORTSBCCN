@@ -546,7 +546,7 @@ If you did not have the NAVS 40 Ft Box car installed, you would need to install 
 
 When creating new content, the amount of work involved can seem daunting at first.  Not only do you need to consider the 3D Model and Texturing details, you need to research the Physics and Sounds for the model.  
 
-For Sounds:: It would be a good recommendation to consider employing the file:  `navsfr10.zip` aka "Open Rails NAVS Car Sounds v2.5" available at trainsim.com.   Current Link: https://www.trainsim.com/vbts/tslib.php?searchid=23294175  If you are working on an ENG file, consider `navscf10.zip`, Current Link: https://www.trainsim.com/vbts/tslib.php?searchid=23299681
+For Sounds:: It would be a good recommendation to consider employing the file:  `navsfr10.zip` aka "Open Rails NAVS Car Sounds v2.5" available at trainsim.com.   Current Link: https://www.trainsim.com/forums/downloadnew.php?fid=37487  If you are working on an ENG file, consider `navscf10.zip`, Current Link: https://www.trainsim.com/forums/downloadnew.php?fid=34168
 
 For WAG file:: It would be a good recommendation to use Erick's examples as guidance for how a model {or} WAG or ENG file could be formatted.
 

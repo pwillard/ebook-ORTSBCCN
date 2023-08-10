@@ -35,8 +35,8 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: .0.4
-:revdate: 2023-07-06
+:revnumber: .0.5
+:revdate: 2023-08-10
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator

@@ -1317,38 +1317,7 @@ Don't forget to check out the sample locomotive file that is provided with the M
 
 Once you copy the completed model to the Alternate LOD Collection, you can begin deleting details that won't normally be visible at longer distances.
 
-== Baking Ambient Occlusion
 
-(((Texture, "Ambient Occlusion Baking")))
-
-[Warning]
-{AO} Baking is mildy infuriating in Blender
-
-When Baking Ambient Occlusion, Here are some tips:
-
-1. Gather parts that will receive{AO} into a collection to make them easy to select.
-2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.
-3. Coplanar surfaces are a problem, including two sided, they bake black.
-4. Set 'Render Engine' to Cycles.
-5. Set Render Max Samples low eg 8, for testing, high for better quality , eg 128, 256 etc
-6. If your model has secondary LOD's ensure they don't cast a shadow on your primary model, use 'Disable In Render' in the outliner
-
-=== Ambient Occlusion Steps
-
-To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Properties panel. Here's a step-by-step guide:
-
-* Select the object or objects that you want to bake the{AO} for.
-* In the Properties panel, go to the Render tab and then click on the Bake tab.
-* In the Bake tab, set the Bake Mode to Ambient Occlusion.
-* Set the Samples value to the number of samples you want to use for the{AO} bake. The higher the value, the more accurate the{AO} will be, but the longer the bake will take.
-* Set the Margin value to add a margin around the baked texture to prevent texture bleeding.
-* Set the Space to either "Object" or "World" depending on whether you want the{AO} to be baked in object space or world space.
-* Check the "Clear" box to clear the image before baking.
-* Check the "Normalized" box to normalize the{AO} values, which can help with artifacts and banding.
-* Click the "Bake" button to start the{AO} bake.
-
-[Note] 
-The{AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the{AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the{AO} effect to your object.
 
 
 

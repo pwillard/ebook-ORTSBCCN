@@ -54,6 +54,8 @@ In summary, choose a tool that has a native layered file format that can also su
 
 DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
 
+(((Texture, "DDS FILES")))
+
 Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality (Though honestly, not as bad as the ACE file format). This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
 
 [CAUTION]
@@ -72,6 +74,9 @@ The short explanation is:
 One of the most significant performance issues with current GPUs is related to the texture size. All textures used on loaded tiles in a scene must fit into the GPU at once. Although modern GPUs have 2G, 4G or more, adding up the texture file sizes for all buildings, terrain, and rolling stock will quickly reveal that the GPU's capacity can be reached. This is especially true when using 2K and 4K textures. When the GPU reaches its limit, performance suffers because additional textures must be swapped out to the CPU every frame.
 
 So maximum compression is the key to good performance. Just compare the size of uncompressed textures and you will see how bloated they are.
+
+(((Texture, "DXT COMPRESSION")))
+
 
 |===
 |    TYPE           | USAGE                            | Comment
@@ -117,6 +122,8 @@ Keep in mind that some people who might consider repainting your model will want
 
 ==== Decals
 
+(((Texture, "Decals")))
+
 A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
 
 A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
@@ -126,6 +133,8 @@ I'll share a Decal creation technique here using Python code for the so inclined
 === Coding alternatives
 
 For the more software minded, Python 3 can be used to layout your textures using a Python package named PILLOW, (PIL for short).  Now this won't be a guide for using Python or Pillow, but I will share how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
+
+(((PYTHON, "Example DECAL Layout")))
 
 [source,python]
 ----
@@ -197,6 +206,8 @@ if __name__ == '__main__':
 I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.
 
 Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique I employ
+
+(((PYTHON, "Example Reporting Marks")))
 
 [source,python]
 ----
@@ -351,7 +362,7 @@ Since the 3DTrains website is now off the Internet, some of the things that I le
 There was an explanaion there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
 
 
-
+(((Texture, "LAYERING TECHNIQUE")))
 
 ==== Grime Layer
 
@@ -400,6 +411,8 @@ As mentioned above, the opacity of the  DECAL layer should also be adjusted so i
 .Eric Cantu on Weathering
 [Quote, Erick Cantu]
 When I'm walking around, I often find myself taking photographs of dirt, gravel, grass, concrete, and the like. You might think that I take these photos to use as textures. You're sort or right, but mostly wrong. I take these photos primarily to create layer masks used in weathering cars.
+
+(((Texture, "Layering Tips")))
 
 The master textures for all of my cars are always set up like this, from top to bottom:
 
@@ -495,18 +508,18 @@ image::images/image6.jpeg[]
 
 === Highlights and Shadows
 
-A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the Ambient Occlusion layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an ambient occlusion layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
+A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the clusion layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an clusion layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
 
 [TIP]
 The blend mode for the [ao] layer could also be "multiply" instead of "normal"
 
 == Generated Shadows
 
-(((Texture, Ambient Occlusion)))
+(((Texture, clusion)))
 
-Ambient Occlusion is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
+clusion is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
 
-Marek on Elvas Tower shared how he achieves ambient occlusion on his models and it is shared here.  
+Marek on Elvas Tower shared how he achieves clusion on his models and it is shared here.  
 
 [NOTE]
 Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as described here.
@@ -514,7 +527,7 @@ Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as describ
 image::images/ao0.jpg[]
 
 
-An orthographic camera can be used to render the ambient Occlusion with all projection planes. Clipping planes can then be used on the camera to make certain parts invisible to the render camera, which helps exclude details that are not desired. The renders can then be imported into GIMP (or any other editor that supports layers) and used as the base for the final texture layout. The model can then be unwrapped to that. Livery colors can then be added in layers above the {AO} layers and layer blend modes can be used to create the desired image. This method is more time-consuming than other methods, but it produces results that are far better than what can be achieved by hand in 2D alone.
+An orthographic camera can be used to render the clusion with all projection planes. Clipping planes can then be used on the camera to make certain parts invisible to the render camera, which helps exclude details that are not desired. The renders can then be imported into GIMP (or any other editor that supports layers) and used as the base for the final texture layout. The model can then be unwrapped to that. Livery colors can then be added in layers above the {AO} layers and layer blend modes can be used to create the desired image. This method is more time-consuming than other methods, but it produces results that are far better than what can be achieved by hand in 2D alone.
 
 image::images/ao1.jpg[]
 
@@ -555,4 +568,37 @@ It is important to be aware that any lights in the scene, including environment 
 
 
 image::images/ao7.jpg[]
+
+== More About Baking clusion
+
+(((Texture, "clusion Baking")))
+
+[Warning]
+{AO} Baking is mildy infuriating in Blender
+
+When Baking clusion, Here are some tips:
+
+1. Gather parts that will receive{AO} into a collection to make them easy to select.
+2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.
+3. Coplanar surfaces are a problem, including two sided, they bake black.
+4. Set 'Render Engine' to Cycles.
+5. Set Render Max Samples low eg 8, for testing, high for better quality , eg 128, 256 etc
+6. If your model has secondary LOD's ensure they don't cast a shadow on your primary model, use 'Disable In Render' in the outliner
+
+=== clusion Steps
+
+To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Properties panel. Here's a step-by-step guide:
+
+* Select the object or objects that you want to bake the{AO} for.
+* In the Properties panel, go to the Render tab and then click on the Bake tab.
+* In the Bake tab, set the Bake Mode to clusion.
+* Set the Samples value to the number of samples you want to use for the{AO} bake. The higher the value, the more accurate the{AO} will be, but the longer the bake will take.
+* Set the Margin value to add a margin around the baked texture to prevent texture bleeding.
+* Set the Space to either "Object" or "World" depending on whether you want the{AO} to be baked in object space or world space.
+* Check the "Clear" box to clear the image before baking.
+* Check the "Normalized" box to normalize the{AO} values, which can help with artifacts and banding.
+* Click the "Bake" button to start the{AO} bake.
+
+[Note] 
+The{AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the{AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the{AO} effect to your object.
 

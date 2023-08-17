@@ -83,7 +83,7 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-I recommend just using METRIC for measurements.  I realize that some people have become very attached to their imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier. 
+I recommend just using METRIC for measurements.  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
 ====  Why I Use Blender 
 
@@ -411,6 +411,15 @@ Exiting (closing) the menu:EDIT[PREFERENCES] section will save your changes. By 
 
 We will continue making changes to the header and properties panels near the top and right side of the screen respectively. Some. if not all, of these changes are purely optional but they are worth checking out.
 
+==== TABS
+
+Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Use *Layout* instead.  To same a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly need it for _Hard Surface Modeling_.
+
+image::images/TABBAR.PNG[align=center]
+
+[NOTE]
+You can always tweak the TAB menus to your liking as these changes can be undone by clicking on the `+` symbol in the menu to *add* additional TAB menu options.  Be sure to save your changes using the file menu option menu:File[Defaults>Save Startup File]. 
+
 ==== Scene Settings
 
 image::images/PREFS10.PNG[align=center]
@@ -449,7 +458,7 @@ image::images/PREFS8.PNG[align=center]
 
 These steps help to make things more visible while editing.
 
-I also choose MATCAP and pick the leftmost MAPCAP option for better visual representation of what I'm working on in the early stages of modeling.
+I also sometimes choose MATCAP and pick the leftmost MAPCAP option for better visual representation of what I'm working on in the early stages of modeling.
 
 <<<
 

@@ -183,7 +183,7 @@ When scaling with the mouse, the closer your mouse is to the object, the more im
 These keys can manipulate basic objects. By using these keys and following them with additional commands like kbd:[X], kbd:[Y], or kbd:[Z] 
 you can constrain actions to the specified axis.  By pressing kbd:[SHIFT] prior to an axis key, you remove it from the list.
 
-Example::  By pressing the sequence:  kbd:[G] kbd:[SHIFT] kbd:[X] you will be able to move the selected item in the `Y` and `Z` axis, but not `X`.
+Example1::  By pressing the sequence:  kbd:[G] kbd:[SHIFT] kbd:[X] you will be able to move the selected item in the `Y` and `Z` axis, but not `X`.
 
 
 === The Modeling Interface
@@ -1185,6 +1185,29 @@ image:images/door4.PNG[]
 * With the EYEDROPPER, select the cubes we just created to make the door shapes. Since we won't be adjusting the door frame further, you *could* apply the modifier and we will see the new cutouts for the doors.
 
 image:images/door3.PNG[]
+
+
+[TIP]
+Moving multiple objects at once using the transform panel makes use of the kbd:[ALT] otherwise you are only able to move objects individually.
+
+Example:: Moving (transform location)  ALL SELECTED objects at once.
+
+(((Blender, "Move selected objects")))
+
+Setup: 
+
+* Select a primary object in the group of objects that you want to move as a group.
+* Press kbd:[SHIFT] kbd:[S] for the PIE menu and "Set Cursor to Active"
+* Select ALL of your objects you want to move together and use menu:Object[Origin>Set Origin to 3D Cursor]
+
+image:images/MoveSelected1.JPG[]
+
+* Press kbd:[SHIFT] kbd:[S] for the PIE menu and "Set Cursor to World Origin"
+* Now, lets say you wanted to move all of the objects to 0 on the X axis.  Using the Transform > Location panel for X value input, HOLD  kbd:[ALT] and key on "0" in the field.
+* All of the objects should have moved to X = 0 location in the 3D View together.
+
+image:images/MoveSelected2.JPG[]
+
 
 === Making Rolling Stock - Project #3
 

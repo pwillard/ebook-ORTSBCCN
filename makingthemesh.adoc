@@ -513,7 +513,7 @@ For added clarity on printed copies of this document, I’ve switched to a high 
 image:images/JB0.JPG[]
 
 * Adjust your view so you can see the `Y` axis kbd:[MMB,DRAG] left to right (You can press "Y" in the axis gizmo on the upper right or use kbd:[KEYPAD 3]) 
-* Adjust cube length to 12', (3.6576m) by using kbd:[G] kbd:[Y] and dragging, or by manually entering 3.6576 in the `Y` Dimension field 
+* Adjust cube length to 12', (3.6576m) by using kbd:[S] kbd:[Y] and dragging, or by manually entering 3.6576 in the `Y` Dimension field 
 * Switch to front view and adjust `X` width to 32" (0.8128m) kbd:[Keypad 1] then kbd:[S] kbd:[X] and kbd:[DRAG] or enter .8128 in the `X` Dimension field. 
 
 image:images/JB1.JPG[]

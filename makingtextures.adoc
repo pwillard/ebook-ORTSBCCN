@@ -449,7 +449,7 @@ I am always on the lookout for walls with streaks of dirt from the rain, rusty m
 
 
 
-== How to Make Night / Snow Textures
+== How to Make Night Textures
 
 (((Texture, Seasonal)))
 
@@ -473,18 +473,28 @@ directory and the night version into the route night textures directory.
 Below are two textures taken from the Orient Express level. These were
 manipulated in a two dimensional drawing package:
 
-image::images/image1.jpeg[]
+|===
+|image::images/image1.jpeg[] | image::images/image2.jpeg[]
+|image::images/image3.jpeg[] | image::images/image4.jpeg[]
+|===
 
-image::images/image2.jpeg[]
-
-image::images/image3.jpeg[]
-
-image::images/image4.jpeg[]
 
 
 
 This means that the texture on the left will be replaced with the
 texture on the right once the correct night timing has been switched on.
+
+== How to Make Night Textures with Backlighting
+
+Example: 
+
+Create the image for the building you want to texture, making sure that anythng that requires backlighting is a separate objects and textures.  Items such as windows should be separate objects, often created by just using a PLANE object.
+The basic buulding shape should not have modeled windows
+
+
+
+== How to Make Snow Textures
+
 
 (((Texture, Snow)))
 Snow textures must also be created, so that your buildings and other
@@ -566,10 +576,13 @@ This technique for Baking {AO} is a good way to get the added shadow details on 
 [NOTE]
 It is important to be aware that any lights in the scene, including environment lighting, will impact the rendered {AO}. Lights are not used when baking an {AO}, so if the rendered {AO} image is too dark, the environment brightness can be increased or area lights can be added, typically the length of the locomotive, placed on either side to minimize shadow casting. If the lighting is changed later on, this will impact subsequent renders and will not match earlier renders. It is essential to be aware of this.
 
+ 
+
+
 
 image::images/ao7.jpg[]
 
-== More About Baking clusion
+== More About Baking Ambient Oclusion
 
 (((Texture, "clusion Baking")))
 

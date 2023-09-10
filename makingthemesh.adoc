@@ -1209,7 +1209,66 @@ image:images/MoveSelected1.JPG[]
 image:images/MoveSelected2.JPG[]
 
 
-=== Making Rolling Stock - Project #3
+=== Making a Vehicle
+
+Creating a road vehicle is a challenge as many road vehicles involve complex shapes and curves. In this section, we are going to focus on making a vehicle used as a load on an open rack auto carrier.
+
+As we delve deeper into the world of 3D modeling, we often find ourselves needing inspiration and reference materials to guide our creative processes. One powerful tool in the arsenal of a 3D artist is the use of background images to model a specific object or scene. In this section, we will explore how to use background images to model a classic 1970s Ford van, capturing the essence of that era's automotive design
+
+==== Finding the Right Reference Images
+
+Before we begin modeling, we need to gather a collection of reference images that showcase the van from various angles and perspectives. Luckily, the internet is a treasure trove of information and images from the 1970s, including photographs and advertisements for the Ford van.  You might even be able to find an online model that you can rotate and position to take snapshots from various angles.
+
+Online Searches:: Start with a simple online image search using keywords like "1987s Ford van," "Ford Econoline 1970s," or "1970s van advertisements." This will yield a variety of images that can serve as your references.
+
+Classic Car Websites:: Explore classic car websites and forums. Enthusiasts often share high-quality images of vintage vehicles, which can be invaluable for your modeling project.
+
+Archives and Magazines: Check out digital archives of automotive magazines from the 1970s. These publications often contain advertisements and feature articles that can provide detailed reference material.
+
+==== Organizing Your Reference Material
+
+Once you have collected a sufficient number of reference images, it's essential to organize them for easy access during the modeling process. Create a folder on your computer dedicated to this project and categorize your images based on different aspects of the van:
+
+* Exterior: Include photos of the van from various angles, showing details like headlights, taillights, grille, and body lines.
+
+* Color and Materials: Pay attention to the color schemes and materials used in the van's design. This will help you accurately recreate textures and finishes.
+
+==== Using Background Images
+
+Now that you have a well-organized collection of reference images, it's time to use them as background references in Blender.  If possible, you modify the images to contain an Alpha channel so there will be less "white" making the drawing reference less distracting.
+
+image:images/20037-mid-wm.jpg[]
+
+[NOTE]
+I often find that images are not 100% accurate, this one is no exception.
+
+* Import images: In object mode, adjust your view to one of the primary viewpoints available in the reference images kbd:[Keypad 1], kbd:[Keypad 3],  kbd:[Keypad 7], for example. Using menu:Mesh[ Add Image > Reference or Background)] to add an "empty" reference image to the scene as background images.  Create separate views for the front, side, top, and rear of the van, and import the corresponding reference images for each view.
+
+* Adjust Opacity: Reduce the opacity of the background images so that they don't obstruct your 3D model. You want them to serve as a visual guide rather than a distraction.
+
+image:images/referenceOpacity.jpg[]
+
+* Align and Scale: Ensure that the images are aligned correctly with your modeling workspace. You may need to adjust their scale and position to match the proportions of your model.
+
+
+==== The Modeling Process
+With your background images in place, you can now start the 3D modeling process. Use the images as a guide to create the van's exterior and interior components. Pay attention to the finer details, such as the curvature of the body panels, the shape of the windows, and the design of the wheels.  You might want to break up the complex shapes as smaller faces that you can merge later.
+
+The easiest way to start is to use a MESH PLANE, go to edit mode and use kbd:[CTRL-R]  add then enough subdivisions kbd:[mousewheel] to match the edges in the drawings.
+
+`To do: Add example`
+
+==== Iteration and Refinement
+
+Modeling a complex object like a Ford van from the 1980s may require several iterations and refinements. Continuously refer to your background images to ensure accuracy, and don't be afraid to make adjustments as needed. The goal is to capture the spirit of the era in your 3D model.
+
+==== Let's do it.
+
+Example Session
+
+
+
+=== Making Rolling Stock - Project #4
 
 Starting of this section with some tips related to creating rolling stock.
 

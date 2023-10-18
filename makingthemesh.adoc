@@ -1269,19 +1269,20 @@ Example Session
 
 ==== Importing Model Objects
 
-There are going to be times when you have the ability to save time by importing previous work or importing model objects that people have shared.  For example, on Elvas Tower, you will find that Erick Cantu has shared some of his modeled bogeys and couplers.  Making use of these a little tricky if you are a Blender user because Erick doesn't model in Blender.  Here is how we would go about importing these models and making use of them.
+There are going to be times when you have the ability to save time by importing previous work or importing model objects that people have shared.  
+
+For example, on Elvas Tower, you will find that Erick Cantu has shared some of his modeled bogeys and couplers.  Making use of these a little tricky if you are a Blender user because Erick doesn't model in Blender.  Here is how we would go about importing these models and making use of them.
 
 
-1) Download NAVS-N Series trucks from the Elvas Tower - Elvas Tower> Downloads> Source Files & Utilities> 3D Modeling Utilites and Source Files
-2) Unzip them to your hard drive in a convenient spot for importing.
-3) Open Blender to a NEW drawing file
-4) File-->Import-->Wavefront(.OBJ) and select the 100Ton Trucks, for example.
-5) The import will place 2 sets of bogies and couplers. however, the S2 and the A3 variants will be stacked on each other.
-6) Use the Scene Collection interface to *HIDE* the A3 Series, leaving behind the S2 Series as "visible"
-7) Now, to address how the imported model "looks". It arrived SMOOTHED, but that does not mean it looks good. Normally, you would perform the 2-step process OBJECT--> SHADE SMOOTH followed by the Properties Panel DATA-->NORMALS-->Auto Smooth and tweak the Auto Smooth slider for best effect BUT!... the slider doesn't work! OUCH.
-
-8) To fix the issue with Auto Smooth... in the same DATA PANEL, move down to GEOMETRY DATA and expand it... then choose "Clear Custom Split Normals Data"
-9) You should now be able to use the Auto Smooth Slider to fix the smoothing.
+* Download NAVS-N Series trucks from the Elvas Tower - Elvas Tower> Downloads> Source Files & Utilities> 3D Modeling Utilites and Source Files
+* Unzip them to your hard drive in a convenient spot for importing.
+* Open Blender to a NEW drawing file
+* File-->Import-->Wavefront(.OBJ) and select the 100Ton Trucks, for example.
+* The import will place 2 sets of bogies and couplers. however, the S2 and the A3 variants will be stacked on each other.
+* Use the Scene Collection interface to *HIDE* the A3 Series, leaving behind the S2 Series as "visible"
+* Now, to address how the imported model "looks". It arrived SMOOTHED, but that does not mean it looks good. Normally, you would perform the 2-step process OBJECT--> SHADE SMOOTH followed by the Properties Panel DATA-->NORMALS-->Auto Smooth and tweak the Auto Smooth slider for best effect BUT!... the slider doesn't work! OUCH.
+* To fix the issue with Auto Smooth... in the same DATA PANEL, move down to GEOMETRY DATA and expand it... then choose "Clear Custom Split Normals Data"
+* You should now be able to use the Auto Smooth Slider to fix the smoothing.
 
 After this, you can proceed with verifying the UV mapping and tweak the model as needed. (I prefer to use my own coupler, for example)
 

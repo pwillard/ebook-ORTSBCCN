@@ -119,6 +119,14 @@ Once you have created your base texture for your model, you should a) Save it in
 
 Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to  split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.
 
+=== Tools
+
+Measurements from photos.
+
+https://eleif.net/photomeasure
+
+image::images/_measure00.png[]
+
 
 ==== Decals
 
@@ -518,7 +526,7 @@ image::images/image6.jpeg[]
 
 === Highlights and Shadows
 
-A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the clusion layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an clusion layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
+A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the {AO} layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an {AO} layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
 
 [TIP]
 The blend mode for the [ao] layer could also be "multiply" instead of "normal"
@@ -527,9 +535,9 @@ The blend mode for the [ao] layer could also be "multiply" instead of "normal"
 
 (((Texture, clusion)))
 
-clusion is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
+{AO} is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
 
-Marek on Elvas Tower shared how he achieves clusion on his models and it is shared here.  
+Marek on Elvas Tower shared how he achieves {AO} on his models and it is shared here.  
 
 [NOTE]
 Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as described here.
@@ -537,7 +545,7 @@ Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as describ
 image::images/ao0.jpg[]
 
 
-An orthographic camera can be used to render the clusion with all projection planes. Clipping planes can then be used on the camera to make certain parts invisible to the render camera, which helps exclude details that are not desired. The renders can then be imported into GIMP (or any other editor that supports layers) and used as the base for the final texture layout. The model can then be unwrapped to that. Livery colors can then be added in layers above the {AO} layers and layer blend modes can be used to create the desired image. This method is more time-consuming than other methods, but it produces results that are far better than what can be achieved by hand in 2D alone.
+An orthographic camera can be used to render the {AO} with all projection planes. Clipping planes can then be used on the camera to make certain parts invisible to the render camera, which helps exclude details that are not desired. The renders can then be imported into GIMP (or any other editor that supports layers) and used as the base for the final texture layout. The model can then be unwrapped to that. Livery colors can then be added in layers above the {AO} layers and layer blend modes can be used to create the desired image. This method is more time-consuming than other methods, but it produces results that are far better than what can be achieved by hand in 2D alone.
 
 image::images/ao1.jpg[]
 
@@ -582,7 +590,32 @@ It is important to be aware that any lights in the scene, including environment 
 
 image::images/ao7.jpg[]
 
-== More About Baking Ambient Oclusion
+=== Ambient Occlusion
+
+To Recap... Blender {AO} (AO) is a rendering technique that simulates the subtle shadows that occur where surfaces meet other surfaces or when they are blocked from direct light. AO can be used to add realism and depth to your renders, and it can be especially effective for close-up shots or scenes with complex geometry.
+
+There are two ways to add AO to your renders in Blender:
+
+1. Render settings: Go to Render Properties > Render Settings > World and enable the {AO} checkbox. You can then adjust the Distance and Strength settings to control the intensity of the AO effect.
+2. Shader node: Add an {AO} node to your material shader and connect it to the Surface output. You can then adjust the Distance and Strength settings directly on the node.
+
+Tips for using AO in Blender:
+
+* AO can be computationally expensive, so it is important to use it sparingly. If you are rendering a scene with a lot of geometry, consider using a lower sample count or baking the AO to a texture.
+* AO can be used to add subtle details to your renders, but it is important not to overdo it. Too much AO can make your renders look dark and muddy.
+* AO can be used to create a variety of effects, such as weathering, dirt, and grime. Experiment with different settings to achieve the desired look.
+
+Here are some examples of how AO can be used to improve the realism and depth of your renders:
+
+* Close-up shots: AO can be used to add subtle shadows and details to close-up shots of characters, objects, and environments. This can help to make your renders look more realistic and believable.
+* Scenes with complex geometry: AO can be used to add depth and definition to scenes with complex geometry, such as cityscapes, forests, and interiors. This can help to make your renders look less flat and more immersive.
+* Weathering and dirt effects: AO can be used to create a variety of weathering and dirt effects, such as dust on a car or moss on a tree trunk. This can help to make your renders look more realistic and worn-in.
+
+Overall, AO is a powerful rendering technique that can be used to add realism and depth to your renders. By understanding the basics of AO and experimenting with different settings, you can achieve a variety of effects to enhance your renders.
+
+
+
+=== More About Baking Ambient Oclusion
 
 (((Texture, "clusion Baking")))
 
@@ -598,7 +631,7 @@ When Baking clusion, Here are some tips:
 5. Set Render Max Samples low eg 8, for testing, high for better quality , eg 128, 256 etc
 6. If your model has secondary LOD's ensure they don't cast a shadow on your primary model, use 'Disable In Render' in the outliner
 
-=== clusion Steps
+=== {AO} Steps
 
 To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Properties panel. Here's a step-by-step guide:
 

@@ -33,7 +33,7 @@ To recommend a few tools and formats, the following list should be a guide on wh
 * All of the above programs support the `PNG` image export format
 * Some of the above support `DDS` image format, eg. Paint.Net and GIMP through the use of external plug-ins
 * The `PSD` format was originally a proprietary format used by PhotoShop and some software has trouble opening all `PSD` format variations seen in the wild
-* `TIFF` is also a layered format, though not as common and in some cases prone to some tools not fully understanding file contents. Testing needed.
+* `TIFF` is also a layered format, though not as common and in some cases prone to some tools not fully understanding file contents. Testing is needed.
 * Open Raster, `ORA`, is a newer file format that is supposed to replace `PSD` as a standard solution for exchanging layered images between graphics editors. It's still not widely used.
 
 [TIP]
@@ -41,9 +41,9 @@ One additional tool to mention is InkScape, which like Affinity Designer, is a V
 
 
 [WARNING]
-'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.
+'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing.
 
-Simple Tools like the native Paint options in Windows are not a good choice for creating textures for 3D Models.
+Simple tools, like the native Windows Paint option in Windows, are not a good choice for creating textures for 3D Models, though Microsoft does have plans to make PAINT work better in the future.
 
 [NOTE]
 While the list of tools is not a complete list of available software that supports layers, these are likely the most common.  I have not included the obvious package named "Adobe PhotoShop" in the list.  Adobe PhotoShop still uses the PSD format for its own files. If you own it (or rent it) then it will do the job.  I no longer use this product so I can't determine which import/export file format options are available.  I assume it can support PNG and DDS file formats as well.
@@ -55,21 +55,18 @@ In summary, choose a tool that has a native layered file format that can also su
 DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
 
 (((Texture, "DDS FILES")))
-
 Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality (Though honestly, not as bad as the ACE file format). This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
 
 [CAUTION]
 It is advised that you always have a MASTER document saved in a native bitmap format since the `DDS` format is a LOSSY document format so you will potentially loose image quality with every edit session of a DDS file.  The advice is to NEVER edit a DDS file and always work from a lossless master.  If the creator of content only supplies a DDS file with their release, you should ask them for a master file, or only use the supplied file to generate a working master you can use to work from so you have minimal degradation.
 
-For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. Exporting large 32-bit ACE textures using the original MSTS tools is often not feasible and some people won't even have access to MSTS TOOLS is they only use {OR}.  The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
+For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. Exporting large 32-bit ACE textures using the original MSTS tools is often not feasible and some people won't even have access to MSTS TOOLS if they only use {OR}.  The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
 
 DDS is a useful format but many of the export options are not suitable for best performance.  
 
 The short explanation is:
 
-1. Always use DXT1 compression with full MIPs, except...
-
-2. DXT5 compression is OK only when you need alpha translucency ( ie alpha values other than on/off )
+Always use DXT1 compression with full MIPs, except...  you can use DXT5 compression when you need alpha translucency ( ie; alpha values other than on/off )
 
 One of the most significant performance issues with current GPUs is related to the texture size. All textures used on loaded tiles in a scene must fit into the GPU at once. Although modern GPUs have 2G, 4G or more, adding up the texture file sizes for all buildings, terrain, and rolling stock will quickly reveal that the GPU's capacity can be reached. This is especially true when using 2K and 4K textures. When the GPU reaches its limit, performance suffers because additional textures must be swapped out to the CPU every frame.
 
@@ -99,6 +96,37 @@ With GIMP, you would use `export as` and then chose `select file type` and set t
 With Paint.net versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type > DDS`. In the Save Settings window, you would select DXT1 and under Error Metric, check Generate Mip Maps and use Best Quality.
 
 
+== Using ACE Textures
+
+{msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
+
+[NOTE]
+A conversion utility called `makeace.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `makeace` program.
+
+=== ACE File Types:
+
+Solid::  these are created by converting 24-bit BMP or TGA files and the resulting ACE file contains only solid pixels.  You might use such ACE files for the general texture detail on buildings and trains you are creating.
+
+Trans:: these are created by converting 32-bit TGA files and specifying the transparency mask option.  The resulting ACE file will contain both solid pixels and transparent pixels.  You can still use solid areas of this ACE type for the general texture detail on your object but in addition you can use areas containing transparent pixels for details such as railings, ladders and other areas that require the appearance of a "hole" in your object.  This is also a good choice for simple cab backgrounds and controls.
+
+Alpha:: these are creating by converting 32-bit TGA files and not specifying the transparency mask option.  The resulting ACE files will contain solid and both partially and completely transparent pixels.  This texture type can be used in a similar way to the Trans type, except it also allows you to create effects such as tinted windows.
+
+=== ACE File Compression
+
+No compression:: the image is stored uncompressed.
+
+ZLib compression:: this is a lossless compression technique similar to that used by programs such as PKZIP and WinZip.
+
+DXT compression:: this is a lossy technique that can only be used for Solid and Trans type texture ACE files.  It may crate unwanted arifacts.
+
+[WARNING]
+DXT compression cannot be used for bitmap ACE files.
+
+[NOTE]
+For Alpha type ACE files you cannot use DXT, so the recommended option is ZLib.
+
+[TIP]
+I'm relatively sure that even the updated Makeace only supports textures up to 1024 x 1024 in size.
 
 
 === Preparing a texture
@@ -131,7 +159,6 @@ image::images/_measure00.png[]
 ==== Decals
 
 (((Texture, "Decals")))
-
 A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
 
 A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
@@ -365,7 +392,7 @@ if __name__ == '__main__':
 When working on a texture for a model, you are going to want to add bitmap layers that help to achieve the desired final result.  This means being able to adjust the parameters and effects that each layer brings to the final result.  These include making layers with more opacity so the details of lower layers are not obscured, or adding upper layers that contain effects for Grime, Rust, Dirt, Dust, as explained in the now lost "Painting Guide" that once existed on the 3DTrains.com website.  
 
 [NOTE]
-Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully,3dTrains folks don't mind that I've tried to share that information here as a sort of archive of what was at the website.
+Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully, 3dTrains folks don't mind that I've tried to share that information here as a sort of archive of what was at the website.
 
 There was an explanaion there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
 
@@ -452,15 +479,118 @@ Because the textures for the car are not perfectly symmetrical, it's hard to tel
 I am always on the lookout for walls with streaks of dirt from the rain, rusty metal, or anything that looks patchy. You can get so many great layer masks from those things, and most of us are carrying a perfectly-adequate camera in our pockets these days anyway. I used to hate weathering. Now it's quite easy and enjoyable, taking very little of my time.
 
 
+== Working with Alpha Channels
+
+Historically, {MSTS} has relied heavily on image transparency, the alpha channel in an image, to show intricate details on a model by applying a texture you can see through instead of having to model the actual shapes, thus replacing many object faces with a surface.  It doesn't always work well, but has been used heavily by creators wanting to keep poly counts to a minimum.
+
+In addition, you would use Alpha Channels in an image to create the translucency you see when looking at/through glass such as a window.
+
+Both of these techniques require that you start with an image format that understands the concept of a transparency mask.  In the case of "image cutting", you would rely on a 1 bit Alpha channel that is either see through or opaque, however, in the case of a a Window, whis is semi opaque, you would rely on a 8 bit Alpha channel with 255 shades of gray between Full Black (transparent) and Full white (opaque).
 
 
+
+The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintShop Pro, etc has their own idea about how to manipulate this Alpha Masking.
+
+*  You can't just use ANY bitmap editor to edit files... you need one that actually understands files (like TGA) with an alpha channel embedded.
+*  If you use TGA tools, it can separate the MAIN texture from the ALPHA channel and allow you to edit them separately (but they need to come back together at some point, as in - with a TGA FILE.)
+*  A .bmp FILE "technically" cannot contain and Alpha Channel... so if you are using a .BMP file... the alpha channel will just be *gone* and it would be something you need to fix/recover.
+
+[NOTE]
+There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alp[ha channel support... so just use `.TGA` or `.PNG`.
+
+=== ACEIT
+
+AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the the {MSTS} supplied tools `makeace` and `makeacewin` tools.
+
+Aceit contains the newest and best methods for working with .ace files. 
+
+* You start with a .bmp file which you can generate using MS Paint or other drawing program. (Unless your texture has an alpha channel (transparency) then you would generate a .tga file). 
+* Then run Aceit. 
+* Enter as the input the .bmp file you created then enter where the output will go (usually your routes texture folder)
+* Then finally, save it.
+
+
+=== TGATOOL2 and MAKEACE tools
+
+If you want to continue to work with `.ace` file format defined by {MSTS}, then these 2 tools, TGATool2 and Makeace were pretty much the starting point for texture manipulation. These tools are quite old.
+
+TGATool2:: a standalone program for working with the `.bmp`. Targa `.TGA` and `.Ace` files used by Trainsim.  It works in conjuction with the MAKEACE utility. There is an updated version in ACEIT.
+
+MakeAce:: The MakeACE utility converts industry-standard image file formats into the Kuju image file format known as ACE (extension .ACE) which can be used with
+Microsoft Train Simulator.  MakeACE supports Windows Bitmap files (extension .BMP) which contain 24-bit RGB encoded images and Truevision Targa files
+(extension .TGA) which contain 24-bit RGB encoded or 32-bit RGBA (Red, Green, Blue + alpha "translucency" channel) encoded images.
+
+[NOTE]
+The default Makeace utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update. 
+
+
+[NOTE] 
+I no longer recommend using TGAtools2 from MGGrapphics unless you are just trying to recover images from existing ACE files.
+
+When you need to modify a texture that has been saved in the .ace file format, TGATools2A is typically the software of choice for opening the .ACE file. You can obtain TGATools2A through an Ace-It utility installation. Once you have the .ace file open in TGATools2A, it's advisable to promptly save it as a .tga file.
+
+While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop and make direct edits.
+
+[TIP]
+It's important to understand that simply "applying alpha" to any texture and expecting it to function seamlessly on any model is not always feasible. While it's possible to "transparently remove" portions of a model by adding an alpha channel to the texture, it may also be necessary to modify the shape file to properly utilize the alpha component of the texture. However, if your goal is to merely correct the existing alpha, and the shape is already set up for it, these considerations may not be applicable in this context.
+
+
+=== DXTBMP
+
+This is a tool that is also available from MWGFX website, as is TGATOOLS2.  Images can be passed to any paint program for editing in 24 bit and then re-imported and saved in any of the 16/24/32 bit formats.  Transparency (Alpha) channel of textures can be viewed and edited separately from the main image.  It supports `.DDS` files.
+
+
+Example Session: 
+
+* Open the "Original " ace with the alpha included. 
+* Under the "Alpha " setting go to extract the alpha. 
+* Click kbd:[yes] , kbd:[ok] 
+* Name the "alpha" you extracted and place in the `ace` you created.
+* Open your image with DXTBMP and import the "Alpha" into your image. 
+* At the bottom of the "Alpha" setting,  Click kbd:[Apply Alpha to Image] and you should be done. 
+
+[NOTE]
+This applies too both `ace` and `dds` files
+
+[TIP]
+It's really just easier to use a tool like Paint.net for creating the `.DDS` file.
+
+<<<
+
+=== Alpha materials in Blender
+
+If you want to just keep your hair in your head, versus pulling it out... here is my recommendation.
+
+* Use Paint.Net or GIMP (if you have a few bucks, Affinity Designer)
+* Use the NATIVE format of your selected Bitmap Editor as your master file. (They will support "layers")
+* Export your bitmaps in TGA or PNG format for use as Blender Texture files.
+
+[NOTE]
+Affinity does not support exporting to DDS, but use Paint.NET or GIMP to export the file used by Blender to DDS format.
+
+When you finally export your model(s) to S file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP.
+
+==== The Shader Editor
+
+If you were look at a typical setup in the shader editor for a texture that contains an alpha channel, you would see this.
+
+image::images/alpha1.PNG[]
+
+It looks pretty straight-forward, but heed this warning, this is just related to what you `SEE`, and not what you export.  
+
+==== The MSTS Materials Settings
+
+For exporting to {OR} and {MSTS}, you need to also have the MSTS Materials settings adjusted.  See below:
+
+image::images/alpha2.PNG[]
+
+For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the gray scale Alpha Channel used for Glass, while `Transparancy ON/OFF` is the one bit mask where only BLACK RGB (0.0.0) is transparent in a mask.
 
 
 
 == How to Make Night Textures
 
 (((Texture, Seasonal)))
-
 [NOTE]
 Much of this is content is a summary of KUJU supplied documentation
 
@@ -481,13 +611,10 @@ directory and the night version into the route night textures directory.
 Below are two textures taken from the Orient Express level. These were
 manipulated in a two dimensional drawing package:
 
-|===
-|image::images/image1.jpeg[] | image::images/image2.jpeg[]
-|image::images/image3.jpeg[] | image::images/image4.jpeg[]
-|===
-
-
-
+image::images/image1.jpeg[]
+image::images/image2.jpeg[]
+image::images/image3.jpeg[]
+image::images/image4.jpeg[]
 
 This means that the texture on the left will be replaced with the
 texture on the right once the correct night timing has been switched on.

@@ -41,7 +41,7 @@ One additional tool to mention is InkScape, which like Affinity Designer, is a V
 
 
 [WARNING]
-'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing.
+'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing as each editing session has the ability to degrade image quality.
 
 Simple tools, like the native Windows Paint option in Windows, are not a good choice for creating textures for 3D Models, though Microsoft does have plans to make PAINT work better in the future.
 
@@ -74,7 +74,6 @@ So maximum compression is the key to good performance. Just compare the size of 
 
 (((Texture, "DXT COMPRESSION")))
 
-
 |===
 |    TYPE           | USAGE                            | Comment
 |    DXT1 no alpha  | Textures without transparency    | Normal maps without shine, All glow maps
@@ -86,14 +85,12 @@ An alpha channel increases the file size so it should be left out unless it is n
 
 You know how sometimes people report that their icons or textures become a rainbow pixel mess? That is related to gimp saving no mipmap textures wrong - it writes in the header that the image has 1 mipmap, but it has none and the game gets confused. I never used gimp and I can't find where I read about this right now, if I'll do, I'll update this post.
 
-
-
 [TIP]
-Again, when exporting compressed DDS files to the simulator, don't use them for editing. Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
+Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
 
-With GIMP, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
+With *GIMP*, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
 
-With Paint.net versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type > DDS`. In the Save Settings window, you would select DXT1 and under Error Metric, check Generate Mip Maps and use Best Quality.
+With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type:  DDS`. In the Save Settings window, you would select *DXT1* and under *Error Metric*, and check *Generate Mip Maps* and *Use Best Quality*.
 
 
 == Using ACE Textures
@@ -145,11 +142,11 @@ If your model is wide but not tall, as many vehicle models are, then you might c
 
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
-Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to  split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.
+Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
 === Tools
 
-Measurements from photos.
+Measurements from photos.  Not perfect... but it helps.
 
 https://eleif.net/photomeasure
 
@@ -163,7 +160,11 @@ A newer concept, and one championed by the NAVS technique, is to use a separate 
 
 A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
 
-I'll share a Decal creation technique here using Python code for the so inclined.
+I'll share a Decal creation technique here using Python code for the so inclined.  The benefits of a code approach is you have a nearly exact idea of how the texture is laid out and can easily adjust the layout to your needs.  The disadvantage is that you have to have Python installed on your computer alonng with required packages.  If you are not comfortable with Python, then you can use the following method to lay out your decals.
+
+[NOTE]
+The Python PIP library currently has a limitation where it requires a version of python 3 no newer than 3.12.
+
 
 === Coding alternatives
 
@@ -487,11 +488,9 @@ In addition, you would use Alpha Channels in an image to create the translucency
 
 Both of these techniques require that you start with an image format that understands the concept of a transparency mask.  In the case of "image cutting", you would rely on a 1 bit Alpha channel that is either see through or opaque, however, in the case of a a Window, whis is semi opaque, you would rely on a 8 bit Alpha channel with 255 shades of gray between Full Black (transparent) and Full white (opaque).
 
-
-
 The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintShop Pro, etc has their own idea about how to manipulate this Alpha Masking.
 
-*  You can't just use ANY bitmap editor to edit files... you need one that actually understands files (like TGA) with an alpha channel embedded.
+*  You can't just use ANY bitmap editor to edit files for transparency manipulation... you need one that actually understands files (like TGA) with an alpha channel embedded.
 *  If you use TGA tools, it can separate the MAIN texture from the ALPHA channel and allow you to edit them separately (but they need to come back together at some point, as in - with a TGA FILE.)
 *  A .bmp FILE "technically" cannot contain and Alpha Channel... so if you are using a .BMP file... the alpha channel will just be *gone* and it would be something you need to fix/recover.
 
@@ -568,7 +567,7 @@ If you want to just keep your hair in your head, versus pulling it out... here i
 [NOTE]
 Affinity does not support exporting to DDS, but use Paint.NET or GIMP to export the file used by Blender to DDS format.
 
-When you finally export your model(s) to S file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP.
+When you finally export your model(s) to the `S` file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP as a following step.
 
 ==== The Shader Editor
 

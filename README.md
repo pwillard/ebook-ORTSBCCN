@@ -7,6 +7,8 @@ AsciiDoctor Source code, license CC-BY-SA-4.0
 At this stage this is a lot of random notes strung together to look like something... but with a whole lot of "not finished" going on.  
 I just wanted to see what what a Content Creation Notebok for OPEN RAILS could look like.
 
+NOTE: I may never finish this document... but I will try keep it up to date.
+
 
 # To BUILD this document from AsciiDoctor source you need:
 

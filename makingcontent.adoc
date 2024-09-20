@@ -45,13 +45,23 @@ WAG FILE	::	 A file that describes to the Simulator the details of an Asset to b
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
 
-Made for MSTS::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from lagacy {msts} might cause the vehicle to not perform optimally
+Made for MSTS::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {msts} might cause the vehicle to not perform optimally
 Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters 
-Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters and it will need additional files downloaded to work
+Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work
 Made for ORTS but Compatible with MSTS:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS}
 Made for ORTS but requires MSTS::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {msts} on the system
 Made for ORTS but requires MSTS and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {msts} to be installed and relies on additional products. 
 
+Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
+
+* How comfortable are you with the Open Rails and all of its content options.
+* How much effort do you want to put into this project?
+* What is your experience with 3D modeling?
+* What is your experience with 3D modeling in Blender?
+* What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
+* How much flexibility do you want to have with your content?
+
+My advice is to start with the option that is easiest for you to get started with and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
 
 == Content Generation Involves:
  
@@ -278,6 +288,8 @@ I would also adjust the "SAVE VERSIONS" option to allow for automatic backup cop
 
 
 ==== File Paths
+
+Since {OR} is a Windows Program, file paths mentioned here are "modern" Windows file paths.  You can use the Windows Explorer to navigate to these locations.
 
 image::images/PREFS6.PNG[align=center]
 
@@ -549,10 +561,6 @@ image::images/folder2.JPG[]
 [NOTE]
 I snipped a lot of details out for brevity and left some in as examples.  EXPORT is for renders and such, IMPORT is for things I'm converting from 3DCANVAS and TSM. PROJECTS, should be obvious, but I use prefixes and a naming standard to make things easy to find. I use  a SHARED folder for things that all projects will share, like Asset Libraries and common textures.  I prefix my Freight cars with FRT, Scenery with SCN and Engines with ENG... you get the idea.
 
-
-
-
-
 <<<
 
 
@@ -563,7 +571,7 @@ The information presented below is not specifically about modeling with Blender,
 (((Content Creation, "Basic Overview")))
 
 [TIP]
-Reminder, this is basically a "notebook" and started life as my collection of content creation files.  It may seem to jump around a lot as a reult.
+Reminder, this is basically a "notebook" and started life as my collection of notes about content creation.  It may seem to jump around a lot as a result.
 
 
 === Orientation
@@ -578,6 +586,10 @@ Blender's default point of view differs slightly in that it considers the FRONT 
 
 
 === Engine/Wagon Model Hierarchy
+
+For the Blender Esporter to properly process your model, you must have a "collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other collections may be children of this collection but the `MAIN` collection is where you will place your model heirarchy but `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
+
+image:images/layout-h.png[]
 
 For a model to work correctly in {OR}, there are some requirements that need to be met if you want to have the simulator properly automate animations for wheels and bogies.  For simplicity, I am implying that the A-END of the boxcar is on the right and the B-END (with Brakes) is on the left.  The Boxcar's default direction of travel in this case then would be this way, ->, or from Left to Right.  (Refer to `ORIENTATION` section above)
 
@@ -606,7 +618,7 @@ The MSTS naming standard for isolated axles with non-bogie wheels, is  WHEEL1, W
 
 NOTE: These are primarily used for STEAM locomotives. Animating these wheels is not automatic and must be done using the animation tools within Blender.  The Steam wheel and linkage animation uses a series of 16 frames.  In general, it's non-trivial to to create this animation and I won't be covering it in this document.  (unless someone provides us with good notes about how it is done)
 
-In ORTS, it appears that only the WHEEL and BOGIE prefix is required.
+In ORTS, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
 
 [WARNING]
 Some MSTS documentation leads you to believe that a third bogie is possible in MSTS - it isn't.  However, if you are modeling specifically for {or}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.

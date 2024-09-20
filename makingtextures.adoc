@@ -40,9 +40,10 @@ To recommend a few tools and formats, the following list should be a guide on wh
 One additional tool to mention is InkScape, which like Affinity Designer, is a Vector Graphics program that contains a "make a bitmap copy" option.  Vector graphics are scalable without creating "jaggies" like you see with bitmaps. Unlike Affinity Designer, Inkscape is free.
 
 
-[WARNING]
+[TIP]
 'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing as each editing session has the ability to degrade image quality.
 
+[WARNING]
 Simple tools, like the native Windows Paint option in Windows, are not a good choice for creating textures for 3D Models, though Microsoft does have plans to make PAINT work better in the future.
 
 [NOTE]
@@ -151,6 +152,24 @@ Measurements from photos.  Not perfect... but it helps.
 https://eleif.net/photomeasure
 
 image::images/_measure00.png[]
+
+
+For Texture pre-processing, particularly for photo based texturing, I use the following tool: https://renderhjs.net/shoebox/ to perform a fix for perspective warping when the photo is not taken directly square on the object.  It requires ADOBE AIR to run, which is available from Harman International since Adobe stopped supporting it. https://airsdk.harman.com/download
+
+image::images/shoebox1.jpg[]
+
+The "texture ripping" option in the program allows you to clip pieces from a master image and you are able to adjust the alignment while you are doing it.  This is a great way to get a good start on your photo based textures.  
+
+image::images/radio1.png[]
+
+The image to be manipulated should be in your copy/paste buffer before starting the texture tipping process.  You then click 4 adjustment points on the image and the program will automatically adjust the image to fit the 4 points. 
+
+image::images/ripper.jpg[]
+
+ You can then save the image to your drive as a texture file you can import into your bitmap editor.
+
+ image::images/radio.png[]
+
 
 
 ==== Decals
@@ -395,7 +414,7 @@ When working on a texture for a model, you are going to want to add bitmap layer
 [NOTE]
 Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully, 3dTrains folks don't mind that I've tried to share that information here as a sort of archive of what was at the website.
 
-There was an explanaion there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
+There was an explanation there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
 
 
 (((Texture, "LAYERING TECHNIQUE")))
@@ -591,21 +610,13 @@ For most scenarios where an alpha channel is used, this `Alpha Blended` setting 
 
 (((Texture, Seasonal)))
 [NOTE]
-Much of this is content is a summary of KUJU supplied documentation
+Much of this is content is a summary of KUJU supplied documentation along with some other notes from other sources.
 
-Night textures on shapes are created by editing the original texture,
-darkening it and perhaps adding a couple of touches for effect.
+Night textures on shapes are created by editing the original texture, darkening it and perhaps adding a couple of touches for effect.
 
-The night textures take effect at a predetermined time within the game
-environment, so as to replicate a real world environment. The
-`extshape.dat` file must be updated with the correct parameters so that
-the shape is declared as having night textures (see the “How to write a
-.ref file” document for further clarification). ((( Reference File)))
+The night textures take effect at a predetermined time within the game environment, so as to replicate a real world environment. The `extshape.dat` file must be updated with the correct parameters so that the shape is declared as having night textures (see the “How to write a .ref file” document for further clarification). ((( Reference File)))
 
-Once created, the night and day textures must have the same filename so
-that the code can pick up the correct texture. This means that the
-daytime / normal texture must be entered into the normal route textures
-directory and the night version into the route night textures directory.
+Once created, the night and day textures must have the same filename so that the code can pick up the correct texture. This means that the daytime / normal texture must be entered into the normal route textures directory and the night version into the route night textures directory.
 
 Below are two textures taken from the Orient Express level. These were
 manipulated in a two dimensional drawing package:
@@ -622,8 +633,12 @@ texture on the right once the correct night timing has been switched on.
 
 Example: 
 
-Create the image for the building you want to texture, making sure that anythng that requires backlighting is a separate objects and textures.  Items such as windows should be separate objects, often created by just using a PLANE object.
-The basic buulding shape should not have modeled windows
+Create the image for the building you want to texture, making sure that anything that requires a backlight is a separate objects and textures.  Items such as windows should be separate objects, often created by just using a PLANE object.
+
+The basic building shape should not have modeled windows.   The window parts of the texture will be modified to use an alpha channel. The image can then be saved as a working PNG file if your editor allows it, or you could use a PSD format as you just need a format that retains layers.
+
+
+If you are also working on the 3D MODEL while texturing, you would not model the windows doors or outdoor lights. You would work on these items as the last steps in the process. In essence, you would completely texture the model before proceeding to work on the lighting effects.
 
 
 

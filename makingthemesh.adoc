@@ -191,7 +191,7 @@ Example1::  By pressing the sequence:  kbd:[G] kbd:[SHIFT] kbd:[X] you will be a
 This is the initial default screen layout you will see when you start up Blender. 
 
 [NOTE]
-For added clarity on printed copies of this document, I’ve switched to a high contrast theme in Blender Preferences.  (Prefereces-->Themes-->Presets[Pulldown for options])
+For added clarity on printed copies of this document, I’ve switched to a high contrast theme in Blender Preferences.  (Preferences-->Themes-->Presets[Pulldown for options])
 
 image:images/mainscreen.png[]
 

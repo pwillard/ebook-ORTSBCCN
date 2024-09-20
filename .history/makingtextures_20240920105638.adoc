@@ -1,0 +1,791 @@
+== Bitmap Editing
+
+This section is about creating textures that will be applied to your 3d models. Its not about how good you are at it.  Being good at textures takes time and practice, just like 3D modeling.
+
+[NOTE]
+In an attempt to be remain bitmap tool agnostic, no particular tools will recommended or favored.  Most options available have very similar capabilities,  though some are just easier to use than others.
+
+=== Layered Format Files
+
+A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
+
+To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
+
+|===
+| Tool                  | File Type |   Comment 
+
+| Affinity Designer     | .afdesign |   Proprietary, Native
+| Affinity Designer     | .psd      |   An Import/Export Option
+| Affinity Designer     | .tiff     |   An Import/Export Option
+| Gimp                  | .xcf      |   Native
+| Gimp                  | .psd      |   An Import/Export Option
+| Gimp                  | .ora      |   An Import/Export Option (plugin)
+| Krita                 | .krt      |   Native
+| Krita                 | .ora      |   An Import/Export option
+| Paint.Net             | .pdn      |   Native
+| Paint.Net             | .psd      |   An Import/Export Option
+| Paint.Net             | .ora      |   An Import/Export Option (plugin)
+| PaintShopPro          | .psp      |   Proprietary, Native
+| PaintShopPro          | .psd      |   An Import/Export Option
+|===
+
+
+* All of the above programs support the `PNG` image export format
+* Some of the above support `DDS` image format, eg. Paint.Net and GIMP through the use of external plug-ins
+* The `PSD` format was originally a proprietary format used by PhotoShop and some software has trouble opening all `PSD` format variations seen in the wild
+* `TIFF` is also a layered format, though not as common and in some cases prone to some tools not fully understanding file contents. Testing is needed.
+* Open Raster, `ORA`, is a newer file format that is supposed to replace `PSD` as a standard solution for exchanging layered images between graphics editors. It's still not widely used.
+
+[TIP]
+One additional tool to mention is InkScape, which like Affinity Designer, is a Vector Graphics program that contains a "make a bitmap copy" option.  Vector graphics are scalable without creating "jaggies" like you see with bitmaps. Unlike Affinity Designer, Inkscape is free.
+
+
+[TIP]
+'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing as each editing session has the ability to degrade image quality.
+
+[WARNING]
+Simple tools, like the native Windows Paint option in Windows, are not a good choice for creating textures for 3D Models, though Microsoft does have plans to make PAINT work better in the future.
+
+[NOTE]
+While the list of tools is not a complete list of available software that supports layers, these are likely the most common.  I have not included the obvious package named "Adobe PhotoShop" in the list.  Adobe PhotoShop still uses the PSD format for its own files. If you own it (or rent it) then it will do the job.  I no longer use this product so I can't determine which import/export file format options are available.  I assume it can support PNG and DDS file formats as well.
+
+In summary, choose a tool that has a native layered file format that can also support PNG and possibly DDS.  For maximum compatibility, choose a free tool, like GIMP or Paint.net, otherwise, save your master documents in `PSD` or `ORA` format
+
+=== Using DDS Textures
+
+DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
+
+(((Texture, "DDS FILES")))
+Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality (Though honestly, not as bad as the ACE file format). This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
+
+[CAUTION]
+It is advised that you always have a MASTER document saved in a native bitmap format since the `DDS` format is a LOSSY document format so you will potentially loose image quality with every edit session of a DDS file.  The advice is to NEVER edit a DDS file and always work from a lossless master.  If the creator of content only supplies a DDS file with their release, you should ask them for a master file, or only use the supplied file to generate a working master you can use to work from so you have minimal degradation.
+
+For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. Exporting large 32-bit ACE textures using the original MSTS tools is often not feasible and some people won't even have access to MSTS TOOLS if they only use {OR}.  The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
+
+DDS is a useful format but many of the export options are not suitable for best performance.  
+
+The short explanation is:
+
+Always use DXT1 compression with full MIPs, except...  you can use DXT5 compression when you need alpha translucency ( ie; alpha values other than on/off )
+
+One of the most significant performance issues with current GPUs is related to the texture size. All textures used on loaded tiles in a scene must fit into the GPU at once. Although modern GPUs have 2G, 4G or more, adding up the texture file sizes for all buildings, terrain, and rolling stock will quickly reveal that the GPU's capacity can be reached. This is especially true when using 2K and 4K textures. When the GPU reaches its limit, performance suffers because additional textures must be swapped out to the CPU every frame.
+
+So maximum compression is the key to good performance. Just compare the size of uncompressed textures and you will see how bloated they are.
+
+(((Texture, "DXT COMPRESSION")))
+
+|===
+|    TYPE           | USAGE                            | Comment
+|    DXT1 no alpha  | Textures without transparency    | Normal maps without shine, All glow maps
+|    DXT3           | Menu icons / UI elements         | No mipmaps but has transparency
+|    DXT5           | Textures with transparency       | Mip Maps and Normal maps with shine (if we ever get that ability)
+|===
+
+An alpha channel increases the file size so it should be left out unless it is needed. On color maps, the alpha channel is used for transparency, on normal maps for glossiness. If the texture has no transparency or the normal map has no glossiness saving them as DXT1 (no alpha) instead of DXT5 instantly saves on the file size for no loss. 
+
+You know how sometimes people report that their icons or textures become a rainbow pixel mess? That is related to gimp saving no mipmap textures wrong - it writes in the header that the image has 1 mipmap, but it has none and the game gets confused. I never used gimp and I can't find where I read about this right now, if I'll do, I'll update this post.
+
+[TIP]
+Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
+
+With *GIMP*, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
+
+With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type:  DDS`. In the Save Settings window, you would select *DXT1* and under *Error Metric*, and check *Generate Mip Maps* and *Use Best Quality*.
+
+
+== Using ACE Textures
+
+{msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
+
+[NOTE]
+A conversion utility called `makeace.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `makeace` program.
+
+=== ACE File Types:
+
+Solid::  these are created by converting 24-bit BMP or TGA files and the resulting ACE file contains only solid pixels.  You might use such ACE files for the general texture detail on buildings and trains you are creating.
+
+Trans:: these are created by converting 32-bit TGA files and specifying the transparency mask option.  The resulting ACE file will contain both solid pixels and transparent pixels.  You can still use solid areas of this ACE type for the general texture detail on your object but in addition you can use areas containing transparent pixels for details such as railings, ladders and other areas that require the appearance of a "hole" in your object.  This is also a good choice for simple cab backgrounds and controls.
+
+Alpha:: these are creating by converting 32-bit TGA files and not specifying the transparency mask option.  The resulting ACE files will contain solid and both partially and completely transparent pixels.  This texture type can be used in a similar way to the Trans type, except it also allows you to create effects such as tinted windows.
+
+=== ACE File Compression
+
+No compression:: the image is stored uncompressed.
+
+ZLib compression:: this is a lossless compression technique similar to that used by programs such as PKZIP and WinZip.
+
+DXT compression:: this is a lossy technique that can only be used for Solid and Trans type texture ACE files.  It may crate unwanted arifacts.
+
+[WARNING]
+DXT compression cannot be used for bitmap ACE files.
+
+[NOTE]
+For Alpha type ACE files you cannot use DXT, so the recommended option is ZLib.
+
+[TIP]
+I'm relatively sure that even the updated Makeace only supports textures up to 1024 x 1024 in size.
+
+
+=== Preparing a texture
+
+.When creating textures. remember
+[quote, Erick Cantu]
+Texture mapping needs to be intuitive and functional.
+
+Probably the best way to start a texture file is to create a background layer that contains the primary colors of your final model.  If your base model is primarily "Tuscan Red", then fill your background with "Tuscan Red".  Variants for Pennsylvania, for example, would be RED rgb(121,68,59), BROWN rgb(111,78,55), TAN rgb(166,123,91).  Many tools allow you to enter a RGB color value into your editor.
+
+You don't need to complete your texture before you apply it to your 3D Model.  Even using the single base color would be OK.
+
+For texture size, consider working with 2048x2048 textures.  Try to avoid creating multiple smaller texture files versus one large file.  You can always shrink your texture to 1024x1024 when all your work is done as the coordinate mapping will remain relative as long as the proportions remain the same.  You could not, however, adjust 2048x2048 to 2048x1024 though, keep that in mind.
+
+If your model is wide but not tall, as many vehicle models are, then you might consider starting with a 2048x1024 texture size, provided that you are only creating content for Open Rails.  Open Rails will not have issues with textures that are not square, unlike {msts}.  
+
+Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
+
+Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
+
+=== Tools
+
+Measurements from photos.  Not perfect... but it helps.
+
+https://eleif.net/photomeasure
+
+image::images/_measure00.png[]
+
+
+For Texture pre-processing, particularly for photo based texturing, I use the following tool: https://renderhjs.net/shoebox/ to perform a fix for perspective warping when the photo is not taken directly square on the object.  It requires ADOBE AIR to run, which is available from Harman International since Adobe stopped supporting it. https://airsdk.harman.com/download
+
+image::images/shoebox1.jpg[]
+
+The "texture ripping" option in the program allows you to clip pieces from a master image and you are able to adjust the alignment while you are doing it.  This is a great way to get a good start on your photo based textures.  
+
+image::images/radio1.png[]
+
+The image to be manipulated should be in your copy/paste buffer before starting the texture tipping process.  You then click 4 adjustment points on the image and the program will automatically adjust the image to fit the 4 points. 
+
+image::images/ripper.jpg[]
+
+ You can then save the image to your drive as a texture file you can import into your bitmap editor.
+
+ image::images/radio.png[]
+
+
+
+==== Decals
+
+(((Texture, "Decals")))
+A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
+
+A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
+
+I'll share a Decal creation technique here using Python code for the so inclined.  The benefits of a code approach is you have a nearly exact idea of how the texture is laid out and can easily adjust the layout to your needs.  The disadvantage is that you have to have Python installed on your computer alonng with required packages.  If you are not comfortable with Python, then you can use the following method to lay out your decals.
+
+[NOTE]
+The Python PIP library currently has a limitation where it requires a version of python 3 no newer than 3.12.
+
+
+=== Coding alternatives
+
+For the more software minded, Python 3 can be used to layout your textures using a Python package named PILLOW, (PIL for short).  Now this won't be a guide for using Python or Pillow, but I will share how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
+
+(((PYTHON, "Example DECAL Layout")))
+
+[source,python]
+----
+#!/usr/bin/python
+
+from PIL import Image, ImageDraw, ImageFont
+
+#from PIL import *
+
+meter = 146
+
+# This layout was used for a flatcar sides and end reporting marks that were assigned
+# to `plane` objects that were "shrink-wrapped" to the main body in Blender.
+
+if __name__ == '__main__':
+    height = 2048
+    width = 2048
+    image = Image.new(mode='L', size=(height, width), color=255)
+
+    draw = ImageDraw.Draw(image)
+
+    # get a font from the LOCAL FOLDER
+    # You need a local font for this to work.
+    # get a font (disabled for now)
+    #fnt = ImageFont.truetype("Hack-Regular.ttf", 40)
+
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5), (10+952,5+194)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5),(1000+554,5+505)),fill = "black")
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5+510), (10+952,5+194+510)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510),(1000+554,5+505+510)),fill = "black")
+
+    # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,5+510*2), (10+952,5+194+510*2)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510*2),(1000+554,5+505+510*2)),fill = "black")
+
+        # get a drawing context
+    #draw.text((1,300),"^^^ Side",font=fnt)
+    draw.rectangle(((10,10+510*3), (10+952,10+194+510*3)), fill = "black")
+
+    # Draw End A
+    #draw.text((1100,300),"End -->",font=fnt)
+
+    draw.rectangle(((1000,5+510*3),(1000+554,5+505+510*3)),fill = "black")
+
+    del draw
+
+    image.save("out.png","PNG")
+----
+
+I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.
+
+Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique I employ
+
+(((PYTHON, "Example Reporting Marks")))
+
+[source,python]
+----
+#!/usr/bin/python
+"""Script to generate small bitmaps with white numbers on
+an alpha background for reporting marks.
+ The output is a set of TGA files and a master file with 
+ items merged
+
+
+Basic usage:
+$ python3 reportingmark.py  (No file options are needed)
+
+You need to edit values in the top of this file to change defaults
+This code has been tested with Python 3.10.4 and requires the use of
+the Python package "PILLOW".
+
+To install PILLOW, use:
+
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade Pillow
+
+=============================
+
+Author: Pete Willard
+Email: petewillard@gmail.com
+Website: RailSimStuff.com
+Date: June 8, 2023
+
+
+Well, numbers make sense but you never know, there
+is this guy at RailSimStuff.com that puts numbers
+on !@#$%^&*() characters.
+
+The TTF font you plan to use does not need to be installed in the system.
+The TTF file just needs to be inthe same folder as the python script.
+
+"""
+
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+from pathlib import Path
+import os
+
+
+# all reporting mark numbers must be the same length
+numberList = "120079","120100","120186","120156"
+elements = len(numberList)
+element0 = numberList[0]
+len_element0 = len(element0)
+len_number = len(numberList)
+
+# Reporting Mark - Road Name - refer to font PDF to know which chars make the
+# correct lettering
+rm = "NS"
+len_rm = len(rm)
+
+
+# Gap Size (NOTE: Not all railsimstuff fonts have a *space* character)
+# Mileage may vary
+space = "  "
+len_space = len(space)
+
+# Lettering height and width
+height = 64
+multiply = len_rm + len_space + len_element0
+width = 54 * multiply  # 64 * 10
+
+print ("height = ",height)
+print ("width =  ", width)
+# You will need to tweak these values below based on the
+# specific font being used so it fits the 'box' correctly
+fontSize = 68       # Pitch
+fontHorz = 20       # Start Position
+fontVert = -4       # Start Position
+pathToFont = "nslogo.ttf"   # Should be in the local folder where the Script is
+fontColor = "255"           # 255 = white
+
+
+print(pathToFont)
+
+if __name__ == '__main__':
+
+    image = Image.new('RGB', (1024, 1024), color=0)
+    image.save('decal.tga', 'tga')
+
+    # get the font
+    #
+
+    fnt = ImageFont.truetype(pathToFont, fontSize)
+
+
+    #"""
+    # Draw Character Black on White Background
+    # then invert to White on Black Background (it's just easier)
+    # since we can rely on defaults
+
+    #We are looping through each member of the numberList
+    #and writing out each character result individually
+    #"""
+
+    count = 0
+
+    for elements in numberList:
+        output = rm + ' ' + elements
+        #output = 'NS !@)!&^'
+        print (output)
+        #Setup
+        image = Image.new(mode='L', size=(width, height), color=0)
+        draw = ImageDraw.Draw(image)
+        #
+        draw.text((fontHorz,fontVert),output,font=fnt,fill=255)
+        #draw.text((10,),output,font=fnt,fill=255)
+
+
+
+        # Save out the results
+
+        out = str(count) +".tga"
+        count = count +1
+
+        # Not the most efficient routines
+        # but I'm still designing this next section
+
+        image.save(out,"TGA")
+
+    img1 = Image.open(r"decal.tga") # Create a blank to paste into
+    row = 0
+    for items in range(count):
+        img2 = str(items) + ".tga"
+        img = Image.open(img2)
+        img1.paste(img, (0,row), mask = img)
+
+        row = row + 64
+
+    img1.save("decal1.tga") # remove working copy
+    os.remove("decal.tga")
+
+# Well, it was SUPPOSED to make an alpha channel... :(
+# Still working on it.    
+
+----
+
+
+
+=== Layering Basics
+
+When working on a texture for a model, you are going to want to add bitmap layers that help to achieve the desired final result.  This means being able to adjust the parameters and effects that each layer brings to the final result.  These include making layers with more opacity so the details of lower layers are not obscured, or adding upper layers that contain effects for Grime, Rust, Dirt, Dust, as explained in the now lost "Painting Guide" that once existed on the 3DTrains.com website.  
+
+[NOTE]
+Since the 3DTrains website is now off the Internet, some of the things that I learned from that website will be shared here.  Hopefully, 3dTrains folks don't mind that I've tried to share that information here as a sort of archive of what was at the website.
+
+There was an explanation there that you would have you add four NEW layers to your base image and name them Grime, Rust, Dirt and Dust. 
+
+
+(((Texture, "LAYERING TECHNIQUE")))
+
+==== Grime Layer
+
+* Set the airbrush tool to a width between 150 and 200
+* Select a black color, lets say RGB 10,10,10, for example
+* Spray all over the layer making sure it looks uneven and spotty
+* Now *hide* this layer from view
+
+==== Rust Layer
+
+* With the same airbrush settings, choose a rust color like RGB 136,57,4
+* Make sure its sprayed on so you can still see through it.
+* Now *hide* this layer from view
+
+==== Dirt Layer
+
+* With the same airbrush settings, choose a yellowish/brown color like RGB 126,113,38
+* Make sure its sprayed on so you can still see through it.
+* Now *hide* this layer from view
+
+==== Dust Layer
+
+* With the same airbrush settings, choose a light color like RGB 192,192,192
+* Make sure its sprayed on so you can still see through it.
+* Un-hide all the layers
+
+==== Finalization of effects
+
+* Set the transparency/opacity properties of each of the new layers to somewhere between 10 and 30 percent
+* Adjust the percentages of each weathering layer to get the best effects 
+* Save the file in the layered format
+* Save a copy in the PNG format for use with Blender
+
+=== Applying Fonts and Lettering
+
+With the layered format file open, create a new layer just above the BASE layer in the document.  This will make sure that the lettering being added is below the weathering effects. 
+
+[NOTE]
+While it might seem like a shameless plug for my website, you will find a number of railroad related fonts at http://www.railsimstuff.com to help with adding lettering and logo details to your textures.  In case you are wondering, the fonts are all free and I make no money from this web site, in fact it only costs me money to keep it running so it is a labor of love that I have provided for nearly 20 years.
+
+As mentioned above, the opacity of the  DECAL layer should also be adjusted so it does not hide underlying details.  The effect for decals though needs to resemble having been painted on, so the opacity will mbe much closer to 75% versus a lower value.
+
+
+==== Layering Tips from Erick
+
+.Eric Cantu on Weathering
+[Quote, Erick Cantu]
+When I'm walking around, I often find myself taking photographs of dirt, gravel, grass, concrete, and the like. You might think that I take these photos to use as textures. You're sort or right, but mostly wrong. I take these photos primarily to create layer masks used in weathering cars.
+
+(((Texture, "Layering Tips")))
+
+The master textures for all of my cars are always set up like this, from top to bottom:
+
+1. A top mask to keep the overall image tidy
+2. Any standalone parts that need to not be affected by the shadow layer
+3. A highlight layer which adds a little bit of highlight to selected areas
+4. A shadow map which contains the bulk of the detail, including panel lines, ribs, and so on
+5. Several weathering layers
+6. Car markings
+7. The base colour layer
+8. A wireframe layer for reference (I never look at my cars in shape viewer as I'm painting - first, it wouldn't work, second, the wireframe layer makes it unnecessary)
+
+Here's an example of a simple weathering technique. Freight cars get beaten up pretty severely on the road. They often end up with dents, gouges, and scratches. We can easily create textures for gouges and scratches with photographs of grass. I start with this photo:
+
+image::images/grass.jpg[]
+
+
+I then turn it to greyscale and darken it significantly while bumping up the contrast:
+
+image::images/grass-contrast.jpg[]
+
+
+When you use a greyscale image as a layer mask, pure white areas will be opaque, while pure black areas will be transparent, with values in between being semi-transparent to varying degrees. It's an opacity map. I can then take a photograph or dirt, or really any image of the right size with some dark colour, apply this image as a layer mask, set the properties to "multiply," and end up with dark, scratchy areas all over the carbody. But I can milk that image some more. If you're trying to maximize your output while minimizing your time, it pays to get the most out of all of your resources. I copy the layer, rotate it 180 degrees, invert the colours, and set the properties to "addition." I decrease the opacity to 30%. The end result is this:
+
+image::images/grass-final.jpg[]
+
+Because the textures for the car are not perfectly symmetrical, it's hard to tell that the light, additive layer is the same image as the dark layer, but rotated 180 degrees. Similarly, I can rotate both images 180 degrees, change the opacity values slightly, and add perhaps another layer of spotty dirt, and those same layers easily create a carbody that looks totally different. You could go back to the original image and flip the scratch layers horizontally for a third carbody, or vertically for a fourth.
+
+I am always on the lookout for walls with streaks of dirt from the rain, rusty metal, or anything that looks patchy. You can get so many great layer masks from those things, and most of us are carrying a perfectly-adequate camera in our pockets these days anyway. I used to hate weathering. Now it's quite easy and enjoyable, taking very little of my time.
+
+
+== Working with Alpha Channels
+
+Historically, {MSTS} has relied heavily on image transparency, the alpha channel in an image, to show intricate details on a model by applying a texture you can see through instead of having to model the actual shapes, thus replacing many object faces with a surface.  It doesn't always work well, but has been used heavily by creators wanting to keep poly counts to a minimum.
+
+In addition, you would use Alpha Channels in an image to create the translucency you see when looking at/through glass such as a window.
+
+Both of these techniques require that you start with an image format that understands the concept of a transparency mask.  In the case of "image cutting", you would rely on a 1 bit Alpha channel that is either see through or opaque, however, in the case of a a Window, whis is semi opaque, you would rely on a 8 bit Alpha channel with 255 shades of gray between Full Black (transparent) and Full white (opaque).
+
+The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintShop Pro, etc has their own idea about how to manipulate this Alpha Masking.
+
+*  You can't just use ANY bitmap editor to edit files for transparency manipulation... you need one that actually understands files (like TGA) with an alpha channel embedded.
+*  If you use TGA tools, it can separate the MAIN texture from the ALPHA channel and allow you to edit them separately (but they need to come back together at some point, as in - with a TGA FILE.)
+*  A .bmp FILE "technically" cannot contain and Alpha Channel... so if you are using a .BMP file... the alpha channel will just be *gone* and it would be something you need to fix/recover.
+
+[NOTE]
+There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alp[ha channel support... so just use `.TGA` or `.PNG`.
+
+=== ACEIT
+
+AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the the {MSTS} supplied tools `makeace` and `makeacewin` tools.
+
+Aceit contains the newest and best methods for working with .ace files. 
+
+* You start with a .bmp file which you can generate using MS Paint or other drawing program. (Unless your texture has an alpha channel (transparency) then you would generate a .tga file). 
+* Then run Aceit. 
+* Enter as the input the .bmp file you created then enter where the output will go (usually your routes texture folder)
+* Then finally, save it.
+
+
+=== TGATOOL2 and MAKEACE tools
+
+If you want to continue to work with `.ace` file format defined by {MSTS}, then these 2 tools, TGATool2 and Makeace were pretty much the starting point for texture manipulation. These tools are quite old.
+
+TGATool2:: a standalone program for working with the `.bmp`. Targa `.TGA` and `.Ace` files used by Trainsim.  It works in conjuction with the MAKEACE utility. There is an updated version in ACEIT.
+
+MakeAce:: The MakeACE utility converts industry-standard image file formats into the Kuju image file format known as ACE (extension .ACE) which can be used with
+Microsoft Train Simulator.  MakeACE supports Windows Bitmap files (extension .BMP) which contain 24-bit RGB encoded images and Truevision Targa files
+(extension .TGA) which contain 24-bit RGB encoded or 32-bit RGBA (Red, Green, Blue + alpha "translucency" channel) encoded images.
+
+[NOTE]
+The default Makeace utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update. 
+
+
+[NOTE] 
+I no longer recommend using TGAtools2 from MGGrapphics unless you are just trying to recover images from existing ACE files.
+
+When you need to modify a texture that has been saved in the .ace file format, TGATools2A is typically the software of choice for opening the .ACE file. You can obtain TGATools2A through an Ace-It utility installation. Once you have the .ace file open in TGATools2A, it's advisable to promptly save it as a .tga file.
+
+While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop and make direct edits.
+
+[TIP]
+It's important to understand that simply "applying alpha" to any texture and expecting it to function seamlessly on any model is not always feasible. While it's possible to "transparently remove" portions of a model by adding an alpha channel to the texture, it may also be necessary to modify the shape file to properly utilize the alpha component of the texture. However, if your goal is to merely correct the existing alpha, and the shape is already set up for it, these considerations may not be applicable in this context.
+
+
+=== DXTBMP
+
+This is a tool that is also available from MWGFX website, as is TGATOOLS2.  Images can be passed to any paint program for editing in 24 bit and then re-imported and saved in any of the 16/24/32 bit formats.  Transparency (Alpha) channel of textures can be viewed and edited separately from the main image.  It supports `.DDS` files.
+
+
+Example Session: 
+
+* Open the "Original " ace with the alpha included. 
+* Under the "Alpha " setting go to extract the alpha. 
+* Click kbd:[yes] , kbd:[ok] 
+* Name the "alpha" you extracted and place in the `ace` you created.
+* Open your image with DXTBMP and import the "Alpha" into your image. 
+* At the bottom of the "Alpha" setting,  Click kbd:[Apply Alpha to Image] and you should be done. 
+
+[NOTE]
+This applies too both `ace` and `dds` files
+
+[TIP]
+It's really just easier to use a tool like Paint.net for creating the `.DDS` file.
+
+<<<
+
+=== Alpha materials in Blender
+
+If you want to just keep your hair in your head, versus pulling it out... here is my recommendation.
+
+* Use Paint.Net or GIMP (if you have a few bucks, Affinity Designer)
+* Use the NATIVE format of your selected Bitmap Editor as your master file. (They will support "layers")
+* Export your bitmaps in TGA or PNG format for use as Blender Texture files.
+
+[NOTE]
+Affinity does not support exporting to DDS, but use Paint.NET or GIMP to export the file used by Blender to DDS format.
+
+When you finally export your model(s) to the `S` file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP as a following step.
+
+==== The Shader Editor
+
+If you were look at a typical setup in the shader editor for a texture that contains an alpha channel, you would see this.
+
+image::images/alpha1.PNG[]
+
+It looks pretty straight-forward, but heed this warning, this is just related to what you `SEE`, and not what you export.  
+
+==== The MSTS Materials Settings
+
+For exporting to {OR} and {MSTS}, you need to also have the MSTS Materials settings adjusted.  See below:
+
+image::images/alpha2.PNG[]
+
+For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the gray scale Alpha Channel used for Glass, while `Transparancy ON/OFF` is the one bit mask where only BLACK RGB (0.0.0) is transparent in a mask.
+
+
+
+== How to Make Night Textures
+
+(((Texture, Seasonal)))
+[NOTE]
+Much of this is content is a summary of KUJU supplied documentation along with some other notes from other sources.
+
+Night textures on shapes are created by editing the original texture, darkening it and perhaps adding a couple of touches for effect.
+
+The night textures take effect at a predetermined time within the game environment, so as to replicate a real world environment. The `extshape.dat` file must be updated with the correct parameters so that the shape is declared as having night textures (see the “How to write a .ref file” document for further clarification). ((( Reference File)))
+
+Once created, the night and day textures must have the same filename so that the code can pick up the correct texture. This means that the daytime / normal texture must be entered into the normal route textures directory and the night version into the route night textures directory.
+
+Below are two textures taken from the Orient Express level. These were
+manipulated in a two dimensional drawing package:
+
+image::images/image1.jpeg[]
+image::images/image2.jpeg[]
+image::images/image3.jpeg[]
+image::images/image4.jpeg[]
+
+This means that the texture on the left will be replaced with the
+texture on the right once the correct night timing has been switched on.
+
+== How to Make Night Textures with Backlighting
+
+Example: 
+
+Create the image for the building you want to texture, making sure that anything that requires a backlight is a separate objects and textures.  Items such as windows should be separate objects, often created by just using a PLANE object.
+
+The basic building shape should not have modeled windows.   The window parts of the texture will be modified to use an alpha channel. The image can then be saved as a working PNG file if your editor allows it, or you could use a PSD format as you just need a format that retains layers.
+
+
+If you are also working on the 3D MODEL while texturing, you would not model the windows doors or outdoor lights. You would work on these items as the last steps in the process. In essence, you would completely texture the model before proceeding to work on the lighting effects.
+
+
+
+== How to Make Snow Textures
+
+
+(((Texture, Snow)))
+Snow textures must also be created, so that your buildings and other
+objects will look correct when there is snow lying on the ground. These,
+too, are created using the original, daytime textures. The extshape.dat
+file must be updated in relation to this (see the “How to write a .ref
+file” document for further clarification) and must be placed in the
+route’s snow textures directory accordingly. The snow texture will only
+be used when the snow environment settings have been switched on through
+the Drive a Train User Interface.
+
+Below are the snow versions of the textures above.
+
+image::images/image1.jpeg[]
+
+image::images/image5.jpeg[]
+
+image::images/image3.jpeg[]
+
+image::images/image6.jpeg[]
+
+=== Highlights and Shadows
+
+A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the {AO} layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an {AO} layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
+
+[TIP]
+The blend mode for the [ao] layer could also be "multiply" instead of "normal"
+
+== Generated Shadows
+
+(((Texture, clusion)))
+
+{AO} is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
+
+Marek on Elvas Tower shared how he achieves {AO} on his models and it is shared here.  
+
+[NOTE]
+Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as described here.
+
+image::images/ao0.jpg[]
+
+
+An orthographic camera can be used to render the {AO} with all projection planes. Clipping planes can then be used on the camera to make certain parts invisible to the render camera, which helps exclude details that are not desired. The renders can then be imported into GIMP (or any other editor that supports layers) and used as the base for the final texture layout. The model can then be unwrapped to that. Livery colors can then be added in layers above the {AO} layers and layer blend modes can be used to create the desired image. This method is more time-consuming than other methods, but it produces results that are far better than what can be achieved by hand in 2D alone.
+
+image::images/ao1.jpg[]
+
+The image above shows a model with a single material applied to it called `au_bhpb_sd70ace_4096`. In the shader editor, two inputs can be chosen for the Base Color of the `Principled BSDF:` either an image file applied to the model at the top or an {AO} shader via a Color Ramp node below it. When exporting to `.S` or wanting to view the texture in Blender, the `texture node` needs to be plugged in, and when rendering the {AO}, the {AO} Shader needs to be plugged in. By setting the 3D viewer to `Rendered`, one can get an idea of what the output will look like and can adjust the shadow effect via the sliders in the ColorRamp.
+
+image::images/ao2.jpg[]
+
+In the Render properties tab, switch your Render Engine to Cycles and your Device to GPU Compute for faster rendering. With a Render sample setting of 128, rendering can take a while on a PC. To get a faster render time when testing, try using a lower number initially. Don't forget to turn on `Denoise` to give you a cleanly rendered image.
+
+image::images/ao3.jpg[]
+
+In the Output properties tab,  the  `Format Resolution X = 4096 px` is used because there is a 4K texture being used on the model. You can adjust the Resolution Y value later when you know how much vertical space the render will take (see below).
+
+image::images/ao4.jpg[]
+
+A camera should be added to the scene and moved to the side of the locomotive. The Rotation values in the Properties tab should be used to ensure that it is perpendicular to the locomotive. On the Object Data Properties tab, the Type of Camera should be changed to Orthographic. A separate 3D viewport should be opened and the Camera should be selected and kbd:[CTRL + Num 0] should be pressed to get a side view of the locomotive from the camera's point of view. If it is not already in Rendered view, pressing kbd:[Z] should allow for Rendered view to be selected; the {AO} shader should be visible in the camera view. 
+
+The Orthographic Scale should be adjusted for the camera so that the entire length of the locomotive body fills the camera view (for this locomotive, the scale is 22.300). The camera should be moved in the `Y` and `Z` axes to ensure that it is in frame. Then, the `Format Resolution Y = value` should be adjusted so that no empty space is rendered above and below the locomotive. When the entire locomotive is framed in the camera view, kbd:[F12] should be pressed and Blender will render the {AO} into a new window.
+
+If denoise is enabled, the rendering may appear to hang, but it will complete after a while. Making multiple copies of the camera and moving them to the sides, ends, top and bottom is recommended in order to render the {AO} from the different projections. Keeping the `Orthographic Scale` the same on all the cameras will result in the render being at the same textural density. Additionally, unlike a perspective camera, the distance of the camera from the object does not change the size of the resultant render.
+
+Once you have finished rendering the image, you can save it to your computer and import it into your 2D graphics program to use as a base for your texture. To make sure the texture has the same textural density, you should make multiple copies of the camera and move them to the sides, ends, top and bottom. Again, unlike with a perspective camera, the distance of the camera from the object will not affect the size of the render. However, the hand rails may obstruct the details on the body behind. To fix this, you have multiple options.
+
+image::images/ao5.jpg[]
+
+In the image above the `X` location of the camera is 10m to the side of the locomotive.  The `Clip Start` distance has been changed from its default value of 0.1m to 8.7m. When rendered, the view no longer includes the handrails but displays the side of the body as the camera is drawing what it can see from 8.7m to 1000m, beyond the hand rail closest to the camera. This clipping results in the cab side, fuel tank and air tanks being cut off. The same outcome can be achieved by keeping the `Clip Start` and `End` at their default settings and moving the camera in the `X` direction, allowing for 'slices' of the scene similar to an MRI machine.
+
+image::images/ao6.jpg[]
+
+It is possible to make parts invisible to the render camera. In the image, the `Camera` checkbox in the Object Properties tab for the hand rails and air tank objects has been unchecked. This results in the entire side of the locomotive body being visible in the render view, but the handrails and air tanks not being rendered. These methods can be used to exclude objects in the foreground that are not required for the desired image.
+
+The {AO} can be rendered for all the different views and then mashed together in a 2D graphics program to export as the `au_bhpb_sd70ace_4096` texture to use for unwrapping and in Open Rails.
+
+This technique for Baking {AO} is a good way to get the added shadow details on a texture but the method described here is not the only way to accomplish {AO} shadows.  It might not be the most effcient way either, but it seems to work.
+
+[NOTE]
+It is important to be aware that any lights in the scene, including environment lighting, will impact the rendered {AO}. Lights are not used when baking an {AO}, so if the rendered {AO} image is too dark, the environment brightness can be increased or area lights can be added, typically the length of the locomotive, placed on either side to minimize shadow casting. If the lighting is changed later on, this will impact subsequent renders and will not match earlier renders. It is essential to be aware of this.
+
+ 
+
+
+
+image::images/ao7.jpg[]
+
+=== Ambient Occlusion
+
+To Recap... Blender {AO} (AO) is a rendering technique that simulates the subtle shadows that occur where surfaces meet other surfaces or when they are blocked from direct light. AO can be used to add realism and depth to your renders, and it can be especially effective for close-up shots or scenes with complex geometry.
+
+There are two ways to add AO to your renders in Blender:
+
+1. Render settings: Go to Render Properties > Render Settings > World and enable the {AO} checkbox. You can then adjust the Distance and Strength settings to control the intensity of the AO effect.
+2. Shader node: Add an {AO} node to your material shader and connect it to the Surface output. You can then adjust the Distance and Strength settings directly on the node.
+
+Tips for using AO in Blender:
+
+* AO can be computationally expensive, so it is important to use it sparingly. If you are rendering a scene with a lot of geometry, consider using a lower sample count or baking the AO to a texture.
+* AO can be used to add subtle details to your renders, but it is important not to overdo it. Too much AO can make your renders look dark and muddy.
+* AO can be used to create a variety of effects, such as weathering, dirt, and grime. Experiment with different settings to achieve the desired look.
+
+Here are some examples of how AO can be used to improve the realism and depth of your renders:
+
+* Close-up shots: AO can be used to add subtle shadows and details to close-up shots of characters, objects, and environments. This can help to make your renders look more realistic and believable.
+* Scenes with complex geometry: AO can be used to add depth and definition to scenes with complex geometry, such as cityscapes, forests, and interiors. This can help to make your renders look less flat and more immersive.
+* Weathering and dirt effects: AO can be used to create a variety of weathering and dirt effects, such as dust on a car or moss on a tree trunk. This can help to make your renders look more realistic and worn-in.
+
+Overall, AO is a powerful rendering technique that can be used to add realism and depth to your renders. By understanding the basics of AO and experimenting with different settings, you can achieve a variety of effects to enhance your renders.
+
+
+
+=== More About Baking Ambient Oclusion
+
+(((Texture, "clusion Baking")))
+
+[Warning]
+{AO} Baking is mildy infuriating in Blender
+
+When Baking clusion, Here are some tips:
+
+1. Gather parts that will receive{AO} into a collection to make them easy to select.
+2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.
+3. Coplanar surfaces are a problem, including two sided, they bake black.
+4. Set 'Render Engine' to Cycles.
+5. Set Render Max Samples low eg 8, for testing, high for better quality , eg 128, 256 etc
+6. If your model has secondary LOD's ensure they don't cast a shadow on your primary model, use 'Disable In Render' in the outliner
+
+=== {AO} Steps
+
+To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Properties panel. Here's a step-by-step guide:
+
+* Select the object or objects that you want to bake the{AO} for.
+* In the Properties panel, go to the Render tab and then click on the Bake tab.
+* In the Bake tab, set the Bake Mode to clusion.
+* Set the Samples value to the number of samples you want to use for the{AO} bake. The higher the value, the more accurate the{AO} will be, but the longer the bake will take.
+* Set the Margin value to add a margin around the baked texture to prevent texture bleeding.
+* Set the Space to either "Object" or "World" depending on whether you want the{AO} to be baked in object space or world space.
+* Check the "Clear" box to clear the image before baking.
+* Check the "Normalized" box to normalize the{AO} values, which can help with artifacts and banding.
+* Click the "Bake" button to start the{AO} bake.
+
+[Note] 
+The{AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the{AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the{AO} effect to your object.
+

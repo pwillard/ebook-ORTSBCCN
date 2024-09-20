@@ -409,8 +409,65 @@ To summarize:
 
 We encountered a situation where the crosstie load needed to be placed non-uniformly, but it was realized that creating just a single textured cube object and performing minimal additional steps, such as replication with offsets would suffice. Furthermore, as a result of this process, you now have two scripts in your collection that can assist with future object manipulation in Blender.
 
+=== Using a script from the console
+
+You can execute the following code in the python console to execute an external script without opening it up in the text editor:
+
+[source,python]
+----
+filename = "/full/path/to/myscript.py"
+exec(compile(open(filename).read(), filename, 'exec'))
+----
+
+or run the following code in the python console to execute another script:
+
+[source,python]
+----
+import bpy
+
+script = bpy.data.texts["script_name.py"]
+exec(script.as_string())
+----
+
+=== Using a script from the command line
+
+Using a terminal window (command shell)  in your operating system, you can execute the following code in the python console to execute an external script without opening it up in the text editor:
+
+`blender yourblendfilenameorpath --python myscript.py `
 
 
+== Script Example
 
+So lets try another scripting example. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
 
+Lets say we know that the distance from the center of the vehicle to the center of the bogie is 3.5 meters.  We also know that the vehicle is 10 meters long so we have an idea where the couplers are.  We would also know that the vehicle is 2.9 meters wide.
+
+So what if we could place some marker references using the AXIS Plane object in Blender to visualize the locations of the bogies and couplers. Here is some sample code to do that:
+
+[source,python]
+----
+import bpy
+
+# Define the locations where objects will be placed (in this case, a list of tuples).
+object_locations = [
+    (0.0, 3.5, 0.89), # Bogie location 1
+    (0.0, -3.5, 0.89), # Bogie location 2
+    (0.0, 5.0, 0.89), # Coupler location 1
+    (0.0, -5.0, 0.89), # Coupler location 2
+    # Add more locations as needed
+]
+
+# Create a new mesh object and place it at each location
+for i, location in enumerate(object_locations):
+    # Create a new cube mesh (you can use any object type)
+    bpy.ops.object.empty_add(type='PLAIN_AXES', align='WORLD', location=location)
+
+    # Optionally, give it a unique name (e.g., Cube_1, Cube_2, etc.)
+    obj = bpy.context.object
+    obj.name = f"axis_{i+1}"
+
+    # You can also adjust other object properties like scale or rotation if needed
+    # obj.scale = (1.0, 1.0, 1.0)
+    # obj.rotation_euler = (0.0, 0.0, 0.0)
+----
 

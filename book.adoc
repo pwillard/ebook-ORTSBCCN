@@ -9,7 +9,7 @@
 :author: Pete Willard
 :email: petewillard@gmail.com
 :homepage: http://www.railsimstuff.com
-:revision: 2.3
+:revision: 2.4
 :copyright: Copyright © 2020 - 2024
 :title-page-background-image: image:images/main.jpeg[fit=scale-down]
 :encoding: utf-8
@@ -36,12 +36,12 @@
 :sourcedir: code
 :source-highlighter: rouge
 :revnumber: .0.5
-:revdate: 2023-08-10
+:revdate: 2024-09-25
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
 :version: Blender 3.6 LTS
-:BV: 3.6
+:BV: 3.6 LTS
 :AO: Ambient Occlusion
 
 

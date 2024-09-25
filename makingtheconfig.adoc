@@ -100,6 +100,12 @@ Wagon ( NAVX_105007_MT
 
 While you *can* continue to place all of your physics data in a single `WAG` or `ENG` file, you might find that this method of including other files helps out when you create many variants of the same basic model. It remains totally optional to make use of this technique.
 
+[NOTE]
+The INCLUDE token is a new token that did not exist in {MSTS}. So using it means that you are using a feature that is not supported by the original {MSTS} making the content Open Rails specific.
+
+[TIP]
+Erik Cantu has come up with a winning set of options here that would even allow swapping of trucks on an existing model because the trucks are defined in a separate file.
+
 
 === Basic ENG and WAG file Details
 
@@ -300,8 +306,8 @@ Wagon ( WVOGrain
                 )
         )
 
-        BrakeEquipmentType( "Handbrake, Triple_valve, Auxilary_reservoir, Emergency_brake_reservoir" )    <----- THIS SECTION HAS SOME SORT OF ISSUE THAT I'M NOT GOING TO CHECK,
-        BrakeSystemType( "Air_single_pipe" )                                                              <----- IN OPENRAILS THE BRAKES AREN'T RECOGNIZED
+        BrakeEquipmentType( "Handbrake, Triple_valve, Auxilary_reservoir, Emergency_brake_reservoir" )    <----- THIS SECTION HAS SOME SORT OF ISSUE THAT I'M GOING TO CHECK
+        BrakeSystemType( "Air_single_pipe" )                                                              <----- IN OPENRAILS AS THE BRAKES AREN'T RECOGNIZED
         MaxBrakeForce( 22.13kN )                                                                            !
                                      
         MaxHandbrakeForce( 22.13kN )                                                                        !
@@ -346,7 +352,7 @@ Make an `Openrails` folder inside the WVOGrain folder, where I placed a text fil
 
 [source]
 ----
-                                                                          <----- REQUIRED EMPTY LINE
+                                                                           <----- REQUIRED EMPTY LINE
 include ( "..\\WVOGrain.wag" )                                             <----- CALLS THE ORIGINAL WAG FILE
 Wagon (                                                                    <----- THIS MEANS: INSERT THE NEXT LINES IN THE WAGON SECTION
         include ( "..\\..\\Common.inc\\Wagons\\Std_Wag_Brakes.inc" )       <----- CALLS THE .INC FILE WITH THE NEW PARAMETERS
@@ -562,7 +568,7 @@ Erick Cantu is very particular about how to model a 3D Model freight car.  Using
 
 Things that you already know would be Car Dimensions, Coupler Type, Brake Type but you might still need to gather details related to Car Empty Weight and Car Loaded Weight.
 
-So, if we look at a typical NAVS Example as a guide, what will we find?  Once again we see the minimal MAIN File that references a specific shape .S file and freightAnim references for Reporting Mark decals.  
+So, if we look at a typical NAVS Example again as a guide, what will we find?  Once again we see the minimal MAIN File that references a specific shape .S file and freightAnim references for Reporting Mark decals.  
 
 ----
 SIMISA@@@@@@@@@@JINX0D0t______
@@ -693,7 +699,7 @@ While you can still use a *default* MSTS-like WAG file with {or}, after seeing w
 My recommendation is to use these settings as a guide for making new USA Based Rolling stock.  If you would like guidance on other types of vehicles, I would recommend using the resources at Peter Newell's Coals to Newcastle website: https://www.coalstonewcastle.com.au/physics/
 
 [NOTE]
-It's up to you how you want to handle your ENG and WAG files.  You can go with the \common\ 
+It's up to you how you want to handle your ENG and WAG files.  You can even go with the location reference of \common\ 
 
 
 

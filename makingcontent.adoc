@@ -14,7 +14,7 @@ Since this document will be about using Blender, other 3d modeling tools will no
 == Common Terms and Definitions
 
 ALPHA	::	 A bit map with a portion of the image that is masked-out, making the location appear see-though in the image.		
-DISTANCE LEVELS	::	 A range of shapes originating from the one main shape allowing polygon count to be kept low at further viewing distances.  Often referred to as Level of Detail, or LOD.		
+DISTANCE LEVELS	::	 See Level of Detail (LOD)
 EDGE	::	  A line created by the linking of 2 vertices ( known as a "2-dimensional object")		
 ENG FILE	::	 A file that describes to the Simulator the details of an Asset to be used as an ENGINE within {OR}. It contains physical details such as Motive and Braking values as well as Coupler type, etc.  		
 FACE	::	  A surface created by 3 or more vertices.	
@@ -93,7 +93,7 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-I recommend just using METRIC for measurements.  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
+I recommend just using METRIC for measurements. Its the default measurement in Blender and {OR}  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
 ====  Why I Use Blender 
 

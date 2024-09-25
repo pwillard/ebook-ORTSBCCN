@@ -7,6 +7,8 @@ In an attempt to be remain bitmap tool agnostic, no particular tools will recomm
 
 === Layered Format Files
 
+(((File Formats with Layer Support)))
+
 A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
 
 To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
@@ -99,7 +101,7 @@ With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the p
 {msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
 
 [NOTE]
-A conversion utility called `makeace.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `makeace` program.
+A conversion utility called `MAKEACE.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `MAKEACE` program.
 
 === ACE File Types:
 
@@ -124,7 +126,105 @@ DXT compression cannot be used for bitmap ACE files.
 For Alpha type ACE files you cannot use DXT, so the recommended option is ZLib.
 
 [TIP]
-I'm relatively sure that even the updated Makeace only supports textures up to 1024 x 1024 in size.
+I'm relatively sure that even the updated MAKEACE only supports textures up to 1024 x 1024 in size.
+
+=== Digital Graphics Basics
+
+(((Graphics Basics)))
+
+The following is a brief introduction to some of the basic concepts of digital graphics.
+
+==== Bit Depth and Color Depth
+
+Color depth describes the maximum number of colors an image can contain. This is dependent on the bit depth of its pixels. The higher the bit depth value, the more color information each pixel can display and the greater the number of colors the image can contain.
+
+==== Bit Depth
+
+Bit depth is a value that describes the number of colors that an individual pixel can display. A bit can either be on or off. Therefore, a 1-bit pixel can display two colors: black and white. An 8-bit pixel displays 256 colors. Each bit can be on or off (2 states). When combined in eight different ways (2x2x2x2x2x2x2x2 or 28) it can display up to 256 colors.
+
+Pixels are usually one of five standard bit-depths. Rarely is anything above 8 bits necessary.
+
+|===
+|Bit Depth	    |No. Colors	    |Calculation
+|1	            |2	            |2^1
+|8	            |256	        |2^8
+|16	            |65,536	        |2^16
+|24	            |16,777,216	    |2^24
+|32	            |16,777,216 plus 8-bit alpha channel    |24 + 8 bits
+|===
+
+==== Color Depth
+
+Sometimes the terms bit depth and color depth are used interchangeably. We're going to use the term color depth to describe the overall ability of an image to display colors. The distinction lies in the fact that some color modes use more than one color 'channel'. For example, The RGB color mode contains 8 bits in each of its three color channels (red, green, blue) giving an RGB image a color depth of 24 bits (8 bits per channel x 3 channels). Below are examples of an image displayed in various color modes to demonstrate how image quality and file size are affected.
+
+==== Color Modes and Bit Depth
+
+|===
+| 1-bit bitmap image	| Color Mode: Bitmap, Color Depth: 1-bit (1 channel x 21), Colors: 2, File Size: 4 kb (as GIF)
+| 4-bit indexed color image	| Color Mode: Indexed Color, Color Depth: 4-bit (1 channel x 24), Colors: 16, File Size: 8 kb (as GIF)
+| 8-bit grayscale image	| Color Mode: grayscale, Color Depth: 8-bit (1 channel x 28), Colors: 256, File Size: 24 kb (as GIF)
+|8-bit indexed color image	|Color Mode: Indexed Color, Color Depth: 8-bit (1 channel x 28), Colors: 256, File Size: 16 kb (as GIF)
+|24-bit RGB image	|Color Mode: RGB, Color Depth: 24-bit (3 channels x 8 bits per channel), Colors: 16,777,216, File Size: 12 kb (as JPEG)
+|===
+
+The increase in file sizes theoretically should be proportional to the number of bits used in an image; however, the difference in GIF and JPEG compression resulted in a smaller-than-expected 24-bit image file size.
+
+Photoshop supports 16 bits per channel. This provides for slightly better color rendering (if your monitor supports it) but increases the file size dramatically. A 16-bit pixel will display 65,536 shades of color. For Web graphics, this would be overkill.
+
+==== Bit Depth and Color Depth Summary
+
+* Bit depth is a value that describes the number of colors that an individual pixel can display.
+* The higher the bit depth, the more color information it can display.
+* Color depth describes the maximum number of colors an image can display.
+* An image's color depth is dependent on the bit depth of the image's pixels and the number of channels it contains.
+* The file size of an image is proportional to its color depth.
+
+
+=== JPG Format, lossy compression and upscaling 
+
+JPG is a lossy compression format. It is a compression format that is designed to reduce the file size of an image while maintaining the quality of the image.  It should be avoided for images that contain text or graphics with fine detail and is really not suitable as a general-purpose "saved" image format for the textures used in the simulator.
+
+(((Upscaling)))
+
+A new thing to try though is Artificial Intelligence (AI) tools that offer image upscaling.  Many have tried this and have shown that can offer some improvement to the master textures that needed to be a bit larger and sharper.  One example is https://www.topazlabs.com/gigapixel from Topaz Labs.  It is not a free tool but it does offer a free trial.  It is a bit expensive but it does offer some improvement to the textures.  
+
+Another option is to try https://github.com/upscayl .  Upscayl is a free and open source desktop application that lets you upscale your low resolution images using advanced AI Models. It is a bit slow but it does offer some improvement to the textures. 
+
+
+=== PNG Format
+Portable Network Graphic is a new bitmap file type developed in part with the Internet in mind. Its development was instigated by the GIF licensing issue and was intended as a replacement for GIF.
+
+There are two PNG sub-types, *PNG-8*, and *PNG-24*. Both use the same compression method. PNG-8 supports a single alpha channel and PNG-24 supports variable transparency (covered later). PNG-8 is limited to 8-bit color depth (256 colors), and PNG-24 can have millions of colors (24-bit color depth). Both are lossless compression formats
+
+=== PNG Format Summary
+
+* The Portable Network Graphic format was designed to replace GIF.
+* PNG-8 supports 256 colors and a single alpha channel.
+* PNG-24 supports 16.8 million colors and variable transparency.
+
+=== Vector Graphics
+
+(((Vector Graphics)))
+
+Vector graphics are created by a computer program using mathematical formulas. The program draws lines and curves using mathematical formulas. The program then stores the formulas in a file. The file contains the information needed to recreate the image. Programs that create vector graphics are called vector graphics editors. Examples are Adobe Illustrator, Affinity Designer and Corel Draw.
+
+Vector graphics are referred to as resolution-independent because they do not plot images on a pixel-by-pixel basis and so are not tied into a monitor's resolution. Vector images describe images in terms of shapes, lines, curves, points, colors, length, etc. These images rely only on the resolution of an output device (like a printer for example) to determine their final resolution.  Examples of images suitable for vector graphics are logos and type.  
+
+[WARNING]
+Vector graphics are not suitable as a replacement for bitmap images, but they are suitable for logos and typed lettering inside bitmap images.
+
+[NOTE]
+Fonts used by windows programs are vector graphics.  This is why RailSimStuff creates its own fonts with railroad symbols and logo's for others to use.
+
+==== Vector Graphics Summary
+
+* There are two main types of digital graphic files: bitmap and vector.
+* Vector files are resolution-independent.
+* Vector graphics use mathematical formulae to create the image, not pixels on a grid like bit-mapped images.
+* Simple vector images can be quite small compared to bitmap; complex images like photographs are difficult and inefficient with vectors.
+* Bitmap is still more common than vector.
+* Vector images can scale without loss of detail or a change in file size.
+
 
 
 === Preparing a texture
@@ -145,31 +245,6 @@ Once you have created your base texture for your model, you should a) Save it in
 
 Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
-=== Tools
-
-Measurements from photos.  Not perfect... but it helps.
-
-https://eleif.net/photomeasure
-
-image::images/_measure00.png[]
-
-
-For texture pre-processing, particularly for photo-based texturing, I use the following tool: https://renderhjs.net/shoebox/ to perform a fix for perspective warping when the photo is not taken directly square on the object.  It requires ADOBE AIR to run, which is available from Harman International since Adobe stopped supporting it. https://airsdk.harman.com/download
-
-image::images/shoebox1.jpg[]
-
-The "texture ripping" option in the program allows you to clip pieces from a master image and you are able to adjust the alignment while you are doing it.  This is a great way to get a good start on your photo based textures.  
-
-image::images/radio1.png[]
-
-The image to be manipulated should be in your copy/paste buffer before starting the texture tipping process.  You then click 4 adjustment points on the image and the program will automatically adjust the image to fit the 4 points. 
-
-image::images/ripper.jpg[]
-
-You can then save the image to your drive as a texture file you can import into your bitmap editor.
-
-image::images/radio.png[]
-
 
 
 ==== Decals
@@ -185,11 +260,16 @@ I'll share a Decal creation technique here using Python code for the so inclined
 The Python PIP library currently has a limitation where it requires a version of python 3 no newer than 3.12.
 
 
-=== Coding alternatives
+=== Coding alternatives to hand layout
+
+(((PYTHON, "Python, DECAL Layout")))
+
+[NOTE]
+Using Python.  There will be more on this in a later section of the documentation. This section is a quick guide to how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
 
 For the more software minded, Python 3 can be used to layout your textures using a Python package named PILLOW, (PIL for short).  Now this won't be a guide for using Python or Pillow, but I will share how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
 
-(((PYTHON, "Example DECAL Layout")))
+(((PYTHON, "Example DECAL Layout Code")))
 
 [source,python]
 ----
@@ -409,6 +489,8 @@ if __name__ == '__main__':
 
 === Layering Basics
 
+(((Graphics, Texture, Using Layers)))
+
 When working on a texture for a model, you are going to want to add bitmap layers that help to achieve the desired final result.  This means being able to adjust the parameters and effects that each layer brings to the final result.  These include making layers with more opacity so the details of lower layers are not obscured, or adding upper layers that contain effects for Grime, Rust, Dirt, Dust, as explained in the now lost "Painting Guide" that once existed on the 3DTrains.com website.  
 
 [NOTE]
@@ -453,6 +535,8 @@ There was an explanation there that you would have you add four NEW layers to yo
 
 === Applying Fonts and Lettering
 
+(((Graphics, Texture, Using Fonts)))
+
 With the layered format file open, create a new layer just above the BASE layer in the document.  This will make sure that the lettering being added is below the weathering effects. 
 
 [NOTE]
@@ -463,7 +547,9 @@ As mentioned above, the opacity of the  DECAL layer should also be adjusted so i
 
 ==== Layering Tips from Erick
 
-.Eric Cantu on Weathering
+(((Graphics, Texture, Layers, Tips)))
+
+.Erick Cantu on Weathering
 [Quote, Erick Cantu]
 When I'm walking around, I often find myself taking photographs of dirt, gravel, grass, concrete, and the like. You might think that I take these photos to use as textures. You're sort or right, but mostly wrong. I take these photos primarily to create layer masks used in weathering cars.
 
@@ -477,7 +563,7 @@ The master textures for all of my cars are always set up like this, from top to 
 4. A shadow map which contains the bulk of the detail, including panel lines, ribs, and so on
 5. Several weathering layers
 6. Car markings
-7. The base colour layer
+7. The base color layer
 8. A wireframe layer for reference (I never look at my cars in shape viewer as I'm painting - first, it wouldn't work, second, the wireframe layer makes it unnecessary)
 
 Here's an example of a simple weathering technique. Freight cars get beaten up pretty severely on the road. They often end up with dents, gouges, and scratches. We can easily create textures for gouges and scratches with photographs of grass. I start with this photo:
@@ -485,12 +571,12 @@ Here's an example of a simple weathering technique. Freight cars get beaten up p
 image::images/grass.jpg[]
 
 
-I then turn it to greyscale and darken it significantly while bumping up the contrast:
+I then turn it to grayscale and darken it significantly while bumping up the contrast:
 
 image::images/grass-contrast.jpg[]
 
 
-When you use a greyscale image as a layer mask, pure white areas will be opaque, while pure black areas will be transparent, with values in between being semi-transparent to varying degrees. It's an opacity map. I can then take a photograph or dirt, or really any image of the right size with some dark colour, apply this image as a layer mask, set the properties to "multiply," and end up with dark, scratchy areas all over the carbody. But I can milk that image some more. If you're trying to maximize your output while minimizing your time, it pays to get the most out of all of your resources. I copy the layer, rotate it 180 degrees, invert the colours, and set the properties to "addition." I decrease the opacity to 30%. The end result is this:
+When you use a grayscale image as a layer mask, pure white areas will be opaque, while pure black areas will be transparent, with values in between being semi-transparent to varying degrees. It's an opacity map. I can then take a photograph or dirt, or really any image of the right size with some dark color, apply this image as a layer mask, set the properties to "multiply," and end up with dark, scratchy areas all over the carbody. But I can milk that image some more. If you're trying to maximize your output while minimizing your time, it pays to get the most out of all of your resources. I copy the layer, rotate it 180 degrees, invert the colors, and set the properties to "addition." I decrease the opacity to 30%. The end result is this:
 
 image::images/grass-final.jpg[]
 
@@ -500,6 +586,8 @@ I am always on the lookout for walls with streaks of dirt from the rain, rusty m
 
 
 == Working with Alpha Channels
+
+(((Graphics, Texture, Alpha Channels)))
 
 Historically, {MSTS} has relied heavily on image transparency, the alpha channel in an image, to show intricate details on a model by applying a texture you can see through instead of having to model the actual shapes, thus replacing many object faces with a surface.  It doesn't always work well, but has been used heavily by creators wanting to keep poly counts to a minimum.
 
@@ -516,9 +604,46 @@ The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintSh
 [NOTE]
 There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alp[ha channel support... so just use `.TGA` or `.PNG`.
 
+=== Tools
+
+This section lists some of the "extra" tools and functions that are used to create textures.
+
+==== Merasuring Tools
+
+(((Measurements)))
+
+Measurements from photos.  Not perfect... but it helps.
+
+https://eleif.net/photomeasure
+
+image::images/_measure00.png[]
+
+==== Dealing with perspective distortion
+
+(((Perspective Distortion)))
+
+For texture pre-processing, particularly for photo-based texturing, I use the following tool: https://renderhjs.net/shoebox/ to perform a fix for perspective warping when the photo is not taken directly square on the object.  It requires ADOBE AIR to run, which is available from Harman International since Adobe stopped supporting it. https://airsdk.harman.com/download
+
+image::images/shoebox1.jpg[]
+
+The "texture ripping" option in the program allows you to clip pieces from a master image and you are able to adjust the alignment while you are doing it.  This is a great way to get a good start on your photo based textures.  
+
+image::images/radio1.png[]
+
+The image to be manipulated should be in your copy/paste buffer before starting the texture tipping process.  You then click 4 adjustment points on the image and the program will automatically adjust the image to fit the 4 points. 
+
+image::images/ripper.jpg[]
+
+You can then save the image to your drive as a texture file you can import into your bitmap editor.
+
+image::images/radio.png[]
+
+
 === ACEIT
 
-AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the the {MSTS} supplied tools `makeace` and `makeacewin` tools.
+(((AceIt, Tools)))
+
+AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the the {MSTS} supplied tools `MAKEACE` and `MAKEACEwin` tools.
 
 Aceit contains the newest and best methods for working with .ace files. 
 
@@ -530,16 +655,18 @@ Aceit contains the newest and best methods for working with .ace files.
 
 === TGATOOL2 and MAKEACE tools
 
-If you want to continue to work with `.ace` file format defined by {MSTS}, then these 2 tools, TGATool2 and Makeace were pretty much the starting point for texture manipulation. These tools are quite old.
+(((TGATool2, MAKEACE, Tools)))
+
+If you want to continue to work with `.ace` file format defined by {MSTS}, then these 2 tools, TGATool2 and MAKEACE were pretty much the starting point for texture manipulation. These tools are quite old.
 
 TGATool2:: a standalone program for working with the `.bmp`. Targa `.TGA` and `.Ace` files used by Trainsim.  It works in conjuction with the MAKEACE utility. There is an updated version in ACEIT.
 
-MakeAce:: The MakeACE utility converts industry-standard image file formats into the Kuju image file format known as ACE (extension .ACE) which can be used with
-Microsoft Train Simulator.  MakeACE supports Windows Bitmap files (extension .BMP) which contain 24-bit RGB encoded images and Truevision Targa files
+MAKEACE:: The MAKEACE utility converts industry-standard image file formats into the Kuju image file format known as ACE (extension .ACE) which can be used with
+Microsoft Train Simulator.  MAKEACE supports Windows Bitmap files (extension .BMP) which contain 24-bit RGB encoded images and Truevision Targa files
 (extension .TGA) which contain 24-bit RGB encoded or 32-bit RGBA (Red, Green, Blue + alpha "translucency" channel) encoded images.
 
 [NOTE]
-The default Makeace utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update. 
+The default MAKEACE utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update. 
 
 
 [NOTE] 
@@ -554,6 +681,8 @@ It's important to understand that simply "applying alpha" to any texture and exp
 
 
 === DXTBMP
+
+(((DXTBMP, Tools)))
 
 This is a tool that is also available from MWGFX website, as is TGATOOLS2.  Images can be passed to any paint program for editing in 24 bit and then re-imported and saved in any of the 16/24/32 bit formats.  Transparency (Alpha) channel of textures can be viewed and edited separately from the main image.  It supports `.DDS` files.
 
@@ -579,7 +708,7 @@ It's really just easier to use a tool like Paint.net for creating the `.DDS` fil
 
 If you want to just keep your hair in your head, versus pulling it out... here is my recommendation.
 
-* Use Paint.Net or GIMP (if you have a few bucks, Affinity Designer)
+* Use Paint.Net or GIMP (if you have a few extra bucks, use Affinity Designer)
 * Use the NATIVE format of your selected Bitmap Editor as your master file. (They will support "layers")
 * Export your bitmaps in TGA or PNG format for use as Blender Texture files.
 
@@ -629,7 +758,7 @@ image::images/image4.jpeg[]
 This means that the texture on the left will be replaced with the
 texture on the right once the correct night timing has been switched on.
 
-== How to Make Night Textures with Backlighting
+== How to Make Night Textures with Back Lighting
 
 Example: 
 

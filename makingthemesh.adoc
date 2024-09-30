@@ -5,9 +5,9 @@
 
 Scale:: {ORTS} as well as {MSTS} each use a scale of 1:1, that is, 1 unit in the 3D drawing area is 1 meter in the simulator and this means all things are in real-world measurements. 
  
-3D Space::  According to *Blender's view of the world*,  `-X` value is left, `+Z` value is up and a `-Y` value is the front side of the object. The "ground" level is where `Z`=0 
+3D Space::  Comparing *Blender's view of the world* to {or},  `-X` value is left, `+Z` value is up and a `-Y` value is the front side of the object. The "ground" level is where `Z`=0 
 
-Material:: In Blender, a material is a set of properties that defines how a surface appears when it is rendered. Materials can include information about the surface's color, texture, reflectivity, transparency, and other visual characteristics.
+Material:: In Blender, a material is a set of properties that defines how a surface appears when it is rendered. Materials can include information about the surface's color, texture, reflectivity, transparency, and other visual characteristics. It's not just the "texture" definition.
 
 
 [WARNING]
@@ -19,17 +19,20 @@ The *MAIN* object of your modeling collection should always be positioned at wor
 There are some general rules that all content creators should follow, regardless of the tools used. Take the next section to heart.
 
 [NOTE]
-While you _can_ have Blender work in Imperial units (feet and inches), I find it far simpler to always work in the Metric System and you won't need to change the "UNIT" settings in Blender.
+While you _can_ have Blender work in Imperial units (feet and inches), I find it far simpler to always work in the Metric System and you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.
 
 === Some Basic Things About Modeling
 
-Some recommendations From Erick Cantu of NAVS
+Some additional recommendations From Erick Cantu of NAVS
 
 1. In {OR}, it is important to try to keep the polygon count of your models low, even though it is not as critical as in some other applications. While modern PCs and simulator software have improved in their ability to handle complex models and textures, it is still important to use complexity wisely. In Blender, you can view the polygon count and other details of your model by going to Object EDIT MODE and looking at the lower right corner of the screen. When creating your models, try to avoid including faces and edges that will rarely or never be visible in the final model.
 
 2. Keep the texture files (that will eventually be included with your final model) to a minimum and use as much of the allotted texture as you can.  Each texture creates a fresh API call (state change) to a new group versus being able to batch calls together to a single texture.
 
 3. The most important tip. Don't get hung up drawing things that nobody will see.  Avoid drawing details that will remain in shadows or small details like nuts and bolts if the camera will never see it.  Inversely, now that we have the ability to have more complex models with {or}, we *can* add more modeled details where we historically were forced to rely heavily on alpha-channels in our textures. 
+
+[TIP]
+Additionally, you can model the extra details on the main mesh if you are using the results to create the master texture.  This is a great way to add more detail to your model without increasing the polygon count.  This is known as hi-poly to low-poly baking.  This is a great way to add more detail to your model without increasing the polygon count.  The extra detailed model won't be your final model but it can be used to bake things into a texture like nuts, bolts, rivets and surface details like doors and such.
 
 
 === Polygon Count and Vertex Density
@@ -40,7 +43,7 @@ For large panels, though, a minimal amount of modeling is necessary. A flat plat
 
 
 
-=== Preparation of Work
+=== Preparation Of Work
 
 * Of course, you need to figure out what you want to model
 * Find some design references (Blueprints, Scale Drawings). Referring to back issues of model railroading magazines can be helpful.  There are also some railroad cyclopedia books for sale that were published by Model Railroader Magazine as well as issues of Railroad Model Craftsman. 
@@ -73,11 +76,11 @@ image:images/alco_4_6_4_f7_1937-86137.jpg[]
 Using background images is optional, but many modelers use blueprint backgrounds as modeling aids.
 
 
-When inserting background reference drawings into Blender, it is not critical that you match up the image size to equal world space dimensions, but it can save a lot of re-scaling steps later. One of the main issues with using backgrounds in Blender is that some methods you might be accustomed to with other modeling tools don't work in Blender, such as applying backgound image to a cube and using that as your reference, since in Blender, you only see the texture in a texture viewing mode. It will dissapear in Xray/Wireframe and even solid shading modes. 
+When inserting background reference drawings into Blender, it is not critical that you match up the image size to equal world space dimensions, but it can save a lot of re-scaling steps later. One of the main issues with using backgrounds in Blender is that some methods you might be accustomed to with other modeling tools don't work in Blender, such as applying background image to a cube and using that as your reference, since in Blender, you only see the texture in a texture viewing mode. It will disappear in Xray/Wireframe and even solid shading modes. 
 
 When you insert a background using Blender's menu:Add[Image > Background],  the image WILL show up while you are in wireframe modes... but note that by default the image will ONLY be visible from the axis it faces. Be careful when you install a background image as you need to to be in the Axis View you want, since the added image will orient itself to your current view.  If you want to change this, you can enable the `Perspective View` check-box by clicking on the `EMPTY` and adjusting the setting it's properties window.
 
-Background images are added to our scene as `EMPTIES`, which means that they are not going to be part of an exported model.  To avoid accidently moving or changing the background image, you can use the filter options in the outliner, first enabling the "mouse cursor" icon and then setting the restriction toggles to disable the "mouse cursor" icon for the empties you added to the list, which will prevent you from accidently selecting the background images.
+Background images are added to our scene as `EMPTIES`, which means that they are not going to be part of an exported model.  To avoid accidentally moving or changing the background image, you can use the filter options in the outliner, first enabling the "mouse cursor" icon and then setting the restriction toggles to disable the "mouse cursor" icon for the empties you added to the list, which will prevent you from accidentally selecting the background images.
 
 The outliner filter options are pretty handy as you can also SHOW or HIDE the background image empties as needed by clicking the "eye" Icon.
 
@@ -86,7 +89,7 @@ A nice feature of the Image Background is the ability to adjust the ALPHA settin
 image:images/Background1.PNG[align=center]
 
 [TIP]
-If you want to save the background images INTO your .Blend file, you can use the menu:File[External Data > Automatically Pack Reources], which is OFF by default.
+If you want to save the background images *INTO* your .Blend file, you can use the menu:File[External Data > Automatically Pack Resources], which is OFF by default.
 
 
 When using background images and modeling a freight car, for example, you would first figure out the distance between truck centers in meters and match the background drawing scale using the grid in the 3D view.  Adjust the background image scale using the kbd:[S] and position using kbd:[G]. 
@@ -94,7 +97,7 @@ When using background images and modeling a freight car, for example, you would 
 
 
 [TIP]
-Speaking of working with images, Blender has an add on that you can install called "Insert Images as Planes". The ADD menu will now have this option available.  It will assign the material of the image to the plane and allow you to rely on things like ALPHA masking.  It is also affected by scene lighting, but like I mentioned above, this texture will only show up in a TEXTURE view mode, so this feature is not useful for a background refrence drawing. 
+Speaking of working with images, Blender has an add on that you can install called "Insert Images as Planes". The ADD menu will now have this option available.  It will assign the material of the image to the plane and allow you to rely on things like ALPHA masking.  It is also affected by scene lighting, but like I mentioned above, this texture will only show up in a TEXTURE view mode, so this feature is not useful for a background reference drawing. 
 
 
 
@@ -119,7 +122,7 @@ Using this plugin with 3D Canvas we haven't even started modelling yet and we ha
 
 [TIP]
 ====
-Something we could do with 3D Canvas  was  to enable "render 2-side faces" and it is not very clear how to do that with Blender. So, let me explain: 
+Something we could do with 3D Canvas was to enable "render 2-side faces" and it is not very clear how to do that with Blender. So, let me explain: 
 
 To create a double-sided plane in Blender, you can use the following steps:
 
@@ -191,7 +194,7 @@ Example1::  By pressing the sequence:  kbd:[G] kbd:[SHIFT] kbd:[X] you will be a
 This is the initial default screen layout you will see when you start up Blender. 
 
 [NOTE]
-For added clarity on printed copies of this document, I’ve switched to a high contrast theme in Blender Preferences.  (Preferences-->Themes-->Presets[Pulldown for options])
+For added clarity on printed copies of this document, I've switched to a high contrast theme in Blender Preferences.  (Preferences-->Themes-->Presets[Pulldown for options])
 
 image:images/mainscreen.png[]
 
@@ -466,7 +469,7 @@ image:images/CustomSettings.PNG[]
 3. Now click on `SCENE COLLECTION` at the top and rename the original main collection to `Camera`.
 4. Drag and Drop the Camera object into `Camera`.
 5. Now you can save your `.blend` file as your default startup file and you will have the scene outline setup that will work with the MSTS exporter.
-6. Optional: If you are going tocontinue to use the default cube, drag it from where it is to the MAIN_0700 collection.
+6. Optional: If you are going to continue to use the default cube, drag it from where it is to the MAIN_0700 collection.
 
 
 [TIP]
@@ -502,7 +505,7 @@ Key items to take away from exercise #1
 
 
 [NOTE]
-For added clarity on printed copies of this document, I’ve switched to a high contrast theme found in Blender Preferences. 
+For added clarity on printed copies of this document, I've switched to a high contrast theme found in Blender Preferences. 
 
 * Start with the default cube, and select it with kbd:[LMB].
 * Shift it up 1 meter. kbd:[G] kbd:[Z] kbd:[1] kbd:[ENTER]
@@ -728,23 +731,23 @@ This model is now ready for the MSTS exporter.
 The MSTS Materials shader properties provided by the exporter follow the standard material options available in MSTS:
 
 
-* Solid – A material that is using an opaque texture only.
+* Solid - A material that is using an opaque texture only.
 
-* Trans – A material that is using a transparent texture only.
+* Trans - A material that is using a transparent texture only.
 
-* Alpha – A material that is using a semi-transparent texture only.
+* Alpha - A material that is using a semi-transparent texture only.
 
-* Specularity – A lighting highlight effect that gives the illusion of shine.
+* Specularity - A lighting highlight effect that gives the illusion of shine.
 
-* Gloss – A material that is using a glossmap, which is an artificially created reflection.
+* Gloss - A material that is using a glossmap, which is an artificially created reflection.
 
-* Cruciform – A tree shape that requires it’s own material so that it can prioritize with the terrain and the surrounding objects.
+* Cruciform - A tree shape that requires it's own material so that it can prioritize with the terrain and the surrounding objects.
 
-* FullBright – A material usually assigned to the inside of trains so they never get dark.
+* FullBright - A material usually assigned to the inside of trains so they never get dark.
 
-* HalfBright – The same as full bright but at half the intensity.
+* HalfBright - The same as full bright but at half the intensity.
 
-* Dark Shade – The opposite to full bright, it reduces the overall intensity of light.
+* Dark Shade - The opposite to full bright, it reduces the overall intensity of light.
 ====
 
 In `OBJECT MODE`, under the Materials property panel, scroll down to the bottom to where the MSTS exporter section is, titled: `MSTS Materials`.  
@@ -794,7 +797,7 @@ The final step would be to copy the contents of the project's `FINAL` folder int
 
 (((Blender, "Considering Level Of Detail")))
 
-Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object’s 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
+Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object's 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
 
 Blender WILL rename your parts when you add them to a new LOD, but the MSTS exporter is looking at the COLLECTION and BASENAMES of the objects, like WHEELS, which means you won't need to rename entries that suddenly have 001 appended to their name.
 
@@ -1208,6 +1211,7 @@ image:images/MoveSelected1.JPG[]
 
 image:images/MoveSelected2.JPG[]
 
+_Needs to be finished_
 
 === Making a Vehicle
 
@@ -1315,7 +1319,7 @@ As with the previous project, we load in our reference background images.  I pic
 
 ==== Starting from the ground up
 
-I like to start constructing vehicles starting with the trucks, and for this I’m going to recommend downloading a *.blend file to simplify this.   Erick Cantu has graciously provided various trucks that we can include in our own models.  They can be downloaded from Elvas Tower.
+I like to start constructing vehicles starting with the trucks, and for this I'm going to recommend downloading a *.blend file to simplify this.   Erick Cantu has graciously provided various trucks that we can include in our own models.  They can be downloaded from Elvas Tower.
 
 You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  In the long runm this will lead to consistency between modelers.
 
@@ -1393,7 +1397,7 @@ Scene Collection
 Answer:  YES, What happened is that MAIN_2000 was created at the same level MAIN not MAIN_1000.  Only what resides below the MAIN collection will be considered for EXPORT.
 
 
-Let's Look at some other issues here whith what is shown above... Don't forget capitalization. 
+Let's Look at some other issues here with what is shown above... Don't forget capitalization. 
 
 For Example: All cases of *Bogie1* should be *BOGIE1*.
 

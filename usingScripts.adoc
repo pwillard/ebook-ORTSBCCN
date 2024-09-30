@@ -1,6 +1,6 @@
 == Introduction to Blender Scripting
 
-Blender's true potential is unlocked through scripting. Blender scripting allows users to automate repetitive tasks, create custom tools, and extend the software's capabilities to suit their specific needs.
+Some of Blender's true potential is unlocked through scripting. Blender scripting allows users to automate repetitive tasks, create custom tools, and extend the software's capabilities to suit their specific needs.
 
 Blender provides a Python API (Application Programming Interface) that enables users to interact with its internal functionalities and control almost every aspect of the software programmatically. Whether you're a beginner or an experienced programmer, Blender scripting offers a flexible and efficient way to work with 3D objects, materials, animations, and much more.
 
@@ -436,7 +436,7 @@ Using a terminal window (command shell)  in your operating system, you can execu
 `blender yourblendfilenameorpath --python myscript.py `
 
 
-== Script Example
+== Another Script Example
 
 So lets try another scripting example. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
 

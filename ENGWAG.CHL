@@ -1,0 +1,73 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ConTEXT Highlighter for Trainsim  Honest, I just whipped it togetther
+//                                   It can certainly use some work but you
+//                                   get the idea.
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+Language:               Trainsim Highlighter
+Filter:                 Trainsim files (*.eng)|*.wag
+HelpFile:
+CaseSensitive:          0
+LineComment:            comment
+BlockCommentBeg:        comment (
+BlockCommentEnd:        )
+IdentifierBegChars:     a..z A..Z _%@.
+IdentifierChars:        a..z A..Z _ 0..9
+NumConstBegChars:       0..9 $
+NumConstChars:          0..9 #abcdefABCDEF
+EscapeChar:
+
+KeyWords1:              wagon Name istenderrequired wagonshape  centreofgravity maxtilt mass
+                        wheelradius Size  InertiaTensor  Coupling  Velocity  Buffers  Adheasion
+                        DerailRailHeight  DerailRailForce DerailBufferForce NumWheels Friction AntiSlip 
+                        BrakeEquipmentType BrakeSystemType MaxBrakeForce EmergencyBrakeResMaxPressure
+                        TripleValveRatio  MaxReleaseRate  MaxApplicationRate MaxAuxilaryChargingRate
+                        EmergencyResCapacity  EmergencyResChargingRate BrakeCylinderPressureForMaxBrakeBrakeForce
+                        IntakePoint  lights  Sound Engine   Effects  Exhaust1  MaxPower MaxForce
+                        MaxContinuousForce MaxDieselLevel MaxVelocity MaxCurrent Sanding MaxTemperature
+                        MaxOilPressure Description EngineOperatingProcedures  EngineVariables
+                        BailOffButton Headlights Vigilance EmergencyStopToggle Wipers Horn AWS BellToggle
+                        DirControl Combined_Control  Brake_Dynamic Brake_Train Brake_Engine EngineControllers
+                        OverspeedMonitor VigilanceMonitor EmergencyStopMonitor  MaxSandingTime  DoesHornTriggerBell
+                        CabView  DieselUsedPerHourAtMaxPower DieselUsedPerHourAtIdle DieselSmokeEffectInitialMagnitude
+                        DieselSmokeEffectMaxMagnitude DieselSmokeEffectInitialSmokeRate DieselSmokeEffectMaxSmokeRate
+                        DieselEngineIdleRPM    DieselEngineMaxRPM dieselEngineSpeedOfMaxTractiveEffort
+                        DieselEngineMaxRPMChangeRate  MaxHandbrakeForce NumberOfHandbrakeLeverSteps
+
+KeyWords2:              Type Box  Automatic  Damping    Break  r0  Centre  Radius Angle
+                        Headlight Unit Cycle FadeIn FadeOut State  Duration  LightColour
+                        Position Transition  Angle Azimuth  DieselSpecialEffects NumNotches
+
+
+KeyWords3:              ( ) Notch  Light Spring  Stiffness  conditions states
+
+
+StringBegChar:          "
+StringEndChar:          "
+MultilineStrings:       1
+UsePreprocessor:        0
+CurrLineHighlighted:    0
+
+SpaceCol:               clWindowText clWindow
+Keyword1Col:            clBlue clWindow B
+Keyword2Col:            clGreen clWindow B
+Keyword3Col:            clGray clWindow B
+IdentifierCol:          clWindowText clWindow
+CommentCol:             clTeal clWindow I
+NumberCol:              $006699CC clWindow B
+StringCol:              clRed clWindow B
+SymbolCol:              clGray clWindow
+PreprocessorCol:        clOlive clWindow
+SelectionCol:           clWhite clNavy
+CurrentLineCol:         clBlack clYellow
+
+OverrideTxtFgColor:     0
+BlockAutoindent:        0
+BlockBegStr:
+BlockEndStr:
+MatchedBracesCol:       clYellow $00400000
+Keyword4Col:            clWindowText clWindow
+Keyword5Col:            clWindowText clWindow

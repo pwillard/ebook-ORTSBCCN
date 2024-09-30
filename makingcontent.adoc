@@ -1,13 +1,13 @@
 = Making Content for {OR} 
  
   
-About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2 never happened. {OR} strives to be backwardly compatible with nearly all existing MSTS content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than MSTS can as well as having many other changes added that are unique to {OR}. 
+About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} strives to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
 [NOTE]
 The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km. -- _from OpenRails.org website_
 
-Since this document will be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
+Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
 
 <<<
 
@@ -45,38 +45,38 @@ WAG FILE	::	 A file that describes to the Simulator the details of an Asset to b
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
 
-Made for MSTS::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {msts} might cause the vehicle to not perform optimally
+Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {{MSTS}} might cause the vehicle to not perform optimally
 Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters 
-Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work
-Made for ORTS but Compatible with MSTS:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS}
-Made for ORTS but requires MSTS::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {msts} on the system
-Made for ORTS but requires MSTS and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {msts} to be installed and relies on additional products. 
+Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
+Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {{MSTS}}
+Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {{MSTS}} and also requires files that only come with an installation of {{MSTS}} on the system
+Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {{MSTS}} to be installed and relies on additional "default" products. 
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
 
-* How comfortable are you with the Open Rails and all of its content options.
+* How comfortable are you with the Open Rails and all of its content options?
 * How much effort do you want to put into this project?
 * What is your experience with 3D modeling?
 * What is your experience with 3D modeling in Blender?
-* What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
+* What is your experience with 3D modeling for Open Rails as compared to {{MSTS}}?
 * How much flexibility do you want to have with your content?
 
 My advice is to start with the option that is easiest for you to get started with and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
 
 == Content Generation Involves:
  
-* A mesh - Your 3D model
-* Online resources and references (This is an area that is somewhat lacking with regards to 3D modeling for ORTS, but these include https://msts.steam4me.net/tutorials/index.html https://www.trainsim.com/vbts/forum.php and http://www.elvastower.com/forums/index.php )
+* A mesh - also known as your 3D model
+* Online resources and references (This is an area that is somewhat lacking with regards to 3D modeling for ORTS, but these include https://www.trainsim.com/vbts/forum.php and http://www.elvastower.com/forums/index.php )
 * A texture - A 2-dimensional bitmap image (material) that you will apply to your model, also referred to as a 'skin'
-* A UVmap of the mesh - The instructions on how to map your 2-dimensional texture to your 3d model 
-* A configuration file or set of files that describes your content to the simulator
+* A UVmap of the mesh - The instructions on how to map your 2-dimensional texture to your 3d model.  This is best done from within Blender, but you can also use a UV mapping program like UVLayout or Substance Painter.
+* A configuration file or set of files that describes your content to the simulator (This is also known as a WAG or ENG file)
 * A thumbnail jpg (optional but helpful)
 * Instructions - Let's not leave the work half done
 
 === Programs you should have:
 
 * A 3D program, {version} is recommended, but even the LATEST release - currently {BV} - should also be fine unless the *Blender's PYTHON API* has dramatically changed.
-* An Exporter add-on for the MSTS/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://github.com/pwillard/Blender_MSTS_ORTS_Exporter]
+* An Exporter add-on for the {MSTS}/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter]
 * A paint program that has channels and layers (There are multiple options here)
 * A text editor that handles UNICODE files
 
@@ -97,9 +97,9 @@ I recommend just using METRIC for measurements. Its the default measurement in B
 
 ====  Why I Use Blender 
 
-In 2002, I started using 3D Software to create content for games, primarily for {MSTS}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {version} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
+In 2002, I started using 3D Software to create content for games, primarily for {{MSTS}}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {version} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
 
-== Why Use Blender to Make Game Assets?
+== Why Many Other People Use Blender to Make Game Assets?
 
 Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
 
@@ -113,32 +113,32 @@ Blender offers a comprehensive set of tools for 3D modeling, sculpting, texturin
 Blender provides an integrated workflow, allowing you to create, edit, and animate assets seamlessly within a single application. This can save time and reduce the need to switch between different software tools.
 
 === Asset Optimization
-Blender provides tools to help optimize your assets for real-time rendering in games. You can create LODs (Level of Detail), bake textures, and manage UV maps to ensure your assets are efficiently displayed in the game engine.
+Blender provides tools to help optimize your assets for real-time rendering in games. You can create LODs (Level of Detail), bake textures, and manage UV maps to ensure your assets are efficiently displayed in real-time environments.
 
 === Community and Resources
 Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
 
 === Non-Destructive Workflow
-Blender supports non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
+Blender supports a non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
 
 === Constant Development
 Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.
 
-Ultimately, the choice of using Blender for making game assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective tool with a wide range of capabilities, Blender is definitely worth considering for your game asset creation workflow.
+Ultimately, the choice of using Blender for making game/simulator assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective (free)  tool with a wide range of capabilities, Blender is definitely worth spending the time to learn and experiment with.
 (((Blender, "Free 3D Graphics Program")))
 
-To export your model for using in MSTS or ORTS, Wayne Campbell created a very capable exporter for MSTS format `.s` files.
+To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very capable exporter for {MSTS} format `.s` files.
 
 
 === What I Can Recommend:
 
-* 3D Modeler: Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that it is free?
+* 3D Modeler: Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
 * BitMap Tools: _Serif Affinity Photo_, _Photoshop CS2_ (You can still get this for free from Adobe if you google for it) , _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ for free.
-* UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even SubstancePainter)
+* UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
 
 [NOTE] 
-CONTEXT is an abandoned editor, but it has a syntax highlighter for ENG and WAG configuration files available at *steam4me.com* website. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but I've not finished it yet.  https://github.com/pwillard/engwag
+CONTEXT is an abandoned editor, but it has a syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but I've not finished it yet.  https://github.com/pwillard/engwag
 (((Context, "An old but useful text editor")))
 
 === How to Install Blender
@@ -150,15 +150,15 @@ According to the Blender.org website, a new version is released about once per q
 While Blender CAN run from a USB stick in a portable mode, it's best to just use the MSI installer.
 
 [WARNING]
-If you are still using Windows 7, you won't be able to install a Blender version 2.93 or newer.  You really should upgrade.  Much of the content in this document will still apply to version 2.93 except for new features.
+If you are still using Windows 7, you won't be able to install a Blender version 2.93 or newer.  You really should upgrade.  Much of the content in this document will still apply to version 2.93 except for new features.  You can probably still get Blender 2.8xx to work on Windows 7, but I'm no longer 100% sure.  
 (((Windows 7, No longer supported)))
 
 [WARNING]
-If you install Blender for FREE from STEAM, the STEAM Library interface will auto-update to the latest version of Blender for you by default.  You may not like this behavior so you are warned.
+If you install Blender for FREE from STEAM, the STEAM Library interface will auto-update to the latest version of Blender for you by default unless you try to make it *not* happen.  You may not like this behavior, so you are warned.
 (((Blender, "Installed via Steam")))
 
 [NOTE]
-Between each version update, the Blender developers might move some user interface features around a bit.  You might not see the same screens shown in the examples included in this document.
+Between each version update, the Blender developers might move some user interface features around a bit.  You therefor might not see the exact same screens shown in the examples included in this document.
 
 Let's use the Blender installer from the *Blender.org* website. https://Blender.org/download/
 
@@ -175,11 +175,11 @@ From here you see various download options available. Locate the `Installer` opt
 ====
 Blender will default to using your `DOCUMENTS` folder for Models and your `%APPDATA%` folder to store program configuration data and addons under the "Blender Foundation" folder structure.  Blender will use unique entries for each version of Blender installed so it is perfectly fine to have multiple versions of Blender installed on the same PC. 
 
-It does get tricky related to the _File Associations_ pertaining to which version of Blender will open when you click on a *.Blend* file. The default will become whichever version of Blender you most recently installed.  Be warned that you might need to tweak this at times.
+It does get tricky related to the _File Associations_ pertaining to which version of Blender will open when you click on a *.blend* file. The default will become whichever version of Blender you most recently installed.  Be warned that you might need to tweak this at times.
 ====
 
 [TIP]
-The APPDATA folder is normally a hidden folder in your windows File Explorer.  You can reach the folder from a command prompt by typing `cd %appdata%`. You can also modify your File Explorer settings to not HIDE folders from you by changing the settings under menu:View[Options > View > Show hidden files, folders and drives].
+The APPDATA folder is normally a hidden folder in your windows File Explorer.  You can reach the folder from a command prompt by typing `cd %appdata%`. You can also modify your File Explorer settings to not *HIDE* folders from you by changing the settings under menu:View[Options > View > Show hidden files, folders and drives].
 
 According to Windows POWERSHELL on *my system*, the %APPDATA% Environment variable points to: 
 
@@ -189,7 +189,7 @@ PS C:\Users\willard> $env:APPDATA
 C:\Users\willard\AppData\Roaming
 ----
 
-This means that Blender USER DATA such as User Preferences, Default Startup Blend Files and 3rd Party Add-Ons will be stored in the `Blender Foundation` folder under 
+This means that Blender *USER DATA* such as `User Preferences`, Default `Startup` Blend Files and 3rd Party Add-Ons will be stored in the `Blender Foundation` folder under 
 
 `C:\Users\willard\AppData\Roaming\` + 
 
@@ -204,6 +204,8 @@ Video Link: https://youtu.be/ad4vTwCGodo
 <<<
 
 === Setting up our Blender Environment
+
+Much of this section is optional, but it will help you get started.  
 
 There are some post installation steps we will follow to customize Blender for the kind of work we will be doing.  We will start on the main one-time setup splash screen where we will make one change.  We will change the kbd:[SPACEBAR] key to perform a `SEARCH` instead of `PLAY ANIMATION`.
 (((Blender, "Setup")))
@@ -236,9 +238,9 @@ Screen with options changed to what I prefer...
 
 image::images/PREFS3.PNG[width=height,align=center]
 
-In the menu:THEMES[3D VIEWPORT] section,  a common practice is to adjust Face Orientation Alpha setting (currently BLUE)- By adjusting the alpha setting to the LEFT, the BLUE will no longer show for outside facing Normals, but will still show RED for inside facing Normals.   The BLUE is a bit jarring when the "FACE ORIENTATION" setting is enabled.  Change the Alpha value for the Blue to 0.
+In the menu:THEMES[3D VIEWPORT] section,  a common practice is to adjust Face Orientation Alpha setting (currently BLUE)- By adjusting the alpha setting to the LEFT, the BLUE will no longer show for outside facing Normals, but will still show RED for inside facing Normals.   The BLUE is a bit jarring when the "FACE ORIENTATION" setting is enabled and really isn't necessary.  You can change the Alpha value for the Blue to 0.
 
-At the bottom of this menu, you can adjust the VERTEX sizes to make them more visible by changing them from the default of 3 to a value of 5. If your screen resolution is high, making the vertex size 5 or 7 can help with visibility.
+At the bottom of this menu, you can adjust the *VERTEX* sizes to make them more visible by changing them from the default of 3 to a value of 5. If your screen resolution is high, making the vertex size 5 or 7 can help with visibility while in EDIT mode.
 
 ==== Viewport
 
@@ -269,7 +271,7 @@ In the menu:SYSTEM[MEMORY & LIMITS] section,
 * Change UNDO steps to 200 or higher. I believe that 254 is the maximum value though. The default is only 32 undo steps, which isn't much. 
 
 [TIP]
-Unless you are using the modifier stack to perform non-destructive modeling actions, most if not all actions in Blender are one-way.  This means that once you modify a shape, there is no going back unless you perform UNDO STEPS kbd:[CTRL + Z] in the current editing session.  I advise saving a copy of your work using a revision system like `crane_V1.blend`, `crane_v2.blend` where you create a new version at the start of each session.  This way you can revert to earlier editing sessions if you need to give up on your latest revisions in favor of using an older editing session. 
+Unless you are using the modifier stack to perform non-destructive modeling actions, most if not all actions in Blender are one-way.  This means that once you modify a shape, there is no going back unless you perform UNDO STEPS kbd:[CTRL + Z] in *the current editing session*.  I advise saving a copy of your work using a revision system like `crane_V1.blend`, `crane_v2.blend` where you create a new version at the start of each session.  This way you can revert to earlier editing sessions if you need to give up on your latest revisions in favor of using an older editing session. There are also some options for automatically making a backups of your work. 
 
 <<<
 
@@ -279,11 +281,12 @@ image::images/PREFS5.PNG[align=center]
 
 In the menu:SAVE & LOAD[BLEND FILES] section:
 
-Consider unchecking the `Load UI` option. When this is checked, the User Interface settings come from the .Blend file that was just opened and not the normal User Interface you have setup as default for newly created .Blend files.  This is especially troublesome, if left enabled, when you import someone else's .Blend file, as the user interface could then be very different from what you normally use.  Change this as needed, but you should know how to include (or not include) the User Interface settings when loading .Blend files.  You may find that you often want to switch this setting on and off.
+Consider unchecking the `Load UI` option at times. When this is checked, the User Interface settings for the session come from the .Blend file that was just opened and not the normal  User Interface you have setup as default for newly created .Blend files.  This is especially troublesome, if left enabled, when you import someone else's .Blend file, as the user interface could then be very different from what you normally use.  Change this as needed, but you should know how to include (or not include) the User Interface settings when loading .Blend files.  You may find that you often want to switch this setting on and off.
 
 [TIP]
 I believe that you would want to  RE-ENABLE this option if you have .Blend files that are using millimeters, common settings for 3D Printing model files, so that you would maintain proper UNITS settings when working on smaller objects while using Blender for things other than {OR}.
 
+[TIP]
 I would also adjust the "SAVE VERSIONS" option to allow for automatic backup copies of the current .Blend file to be created.
 
 
@@ -319,7 +322,7 @@ Resize the Asset Browser window by pulling up on the top of the Asset Browser wi
 
 image::images/library.png[align=center]
 
-Various libraries can be selected using the menu options on the  left.
+Various libraries can be selected using the menu options on the left.
 
 <<<
 
@@ -351,7 +354,7 @@ Add-ons are grouped by their TYPE, such as MESH, IMPORT_EXPORT, CURVE, etc.
 To get us started, here are a few built in Add-ons I recommend installing:
 
 [TIP]
-(When searching, use the word on the right (see below),for example type; `F2` to locate the built-in or already installed addons)
+(When searching, use the word on the right (see below),for example type; `F2` to locate and enable the built-in or already installed addons)
 
 * MESH: `LoopTools`
 * MESH: `F2` 
@@ -390,24 +393,29 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 |===
 | Add-on	| Where to get it	| What it does
 
-| Blender28toMSTS |Available From: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. DOCS: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf
-|Edge to Curve | Available From: https://github.com/Stromberg90/Scripts/blob/master/Blender/Edge_To_Curve.py | A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
-| Optional: Briage28 | Available From: http://jujumatic.free.fr/Files/BRIAGE_G//BRIAGE_G_2.83Pckg_3-1-412.7z  | Train/Rail Simulator Export if you also have this simulator (Dovetail Games) 
+| Blender28to{MSTS} |Available From: https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter/blob/main/Blender_{MSTS}_ORTS_Exporter.zip See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. DOCS: https://github.com/pwillard/Ebook-{MSTS}ORTSExporter/blob/main/{MSTS}ORTSExporter.pdf
+
+|Edge to Curve | Available From: https://github.com/Stromberg90/Scripts | A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
+
 |===
 
-Note: These are free add-ons, but some of the add-ons that you could want to install later might be add-ons you would need to pay for.
+[NOTE]
+====
+These are free add-ons, but some of the add-ons that you could want to install later might be add-ons you would need to pay for.
 
 There are hundreds of add-ons that are not distributed with Blender and are developed by others. To add them to the list of available add-ons, they must be installed into Blender.
 
 To install these, choose the btn:[Install…] button and use the `File Browser` to select the `.zip` or `.py` add-on file.
 
-You will then have the option to enable to disable the installed add-on using the check-box.
+You will then have the option to enable to disable the installed add-on using the add-on check-box in the list.
+====
+
 
 [TIP]
 ====
 _From Marek at ELvas Tower:_ I have been using the free `BlenderKit` add-on recently. It's enabled via *Preferences>Add-on*. `BlenderKit` has over 5000 materials and ones like rubber, metal, plastic come in handy for rolling stock texturing. I found a checker plate procedural material that I applied to the walkway sections of my model below. Because it's procedural you can scale the checker without loosing image quality. 
 
-I guessed at the scale and then rendered the image using the top down camera I had used to render the AO. I then edited the resultant render image to remove the roof and other details so only the walkway was left and placed in on the texture file in GIMP. Because the scale of the orthographic camera did not change compared to the AO everything was lined up. Blended with the AO layer below and the subtle shading its light years ahead of what I have been able to achieve in the past. 
+I guessed at the scale and then rendered the image using the top down camera I had used to render the {AO}. I then edited the resultant render image to remove the roof and other details so only the walkway was left and placed in on the texture file in GIMP. Because the scale of the orthographic camera did not change compared to the {AO} everything was lined up. Blended with the {AO} layer below and the subtle shading its light years ahead of what I have been able to achieve in the past. 
 
 And this was just the first try as a test that I spent about 20 minutes on. The render engine in Blender, along with 3D texture painting are tools that texture artists should look at as additional tools at their disposal.
 ====
@@ -425,7 +433,7 @@ We will continue making changes to the header and properties panels near the top
 
 ==== TABS
 
-Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Use *Layout* instead.  To same a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly need it for _Hard Surface Modeling_.
+Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Though your could use it to maintain an alternate view of your work in progress.  To save a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly ever need it for _Hard Surface Modeling_.
 
 image::images/TABBAR.PNG[align=center]
 
@@ -436,7 +444,7 @@ You can always tweak the TAB menus to your liking as these changes can be undone
 
 image::images/PREFS10.PNG[align=center]
 
-Define your default output resolution as 2048x2048 since we will generally be working with square textures.
+Define your default output resolution as 2048x2048 since we will generally be working with square textures. {OR} does not demand square textures the way that {MSTS} does but it is a good idea to use square textures for consistency.
 
 
 ====  Gismo settings
@@ -470,7 +478,8 @@ image::images/PREFS8.PNG[align=center]
 
 These steps help to make things more visible while editing.
 
-I also sometimes choose MATCAP and pick the leftmost MAPCAP option for better visual representation of what I'm working on in the early stages of modeling.
+[TIP]
+I also sometimes choose MATCAP and pick the leftmost MATCAP option for better visual representation of what I'm working on in the early stages of modeling. It can help to see the shape of an object in a more 3D way and makes surface errors easier to see.
 
 <<<
 
@@ -483,7 +492,7 @@ image::images/PREFS11.PNG[align=center]
 If you need to work in Imperial Units versus Metric, you would adjust the setting under the UNITS SYSTEM option in Scene Properties.  
 
 [IMPORTANT]
-Changes to `UNIT` settings can have effects in other areas, such as Camera View settings related to  `Focal Length`, `Clip Start` and `Clip End`. To adjust these values aftsr changing UNITS settings, use the _N-Panel_ `View` tab to make adjustments.
+Changes to `UNIT` settings can have effects in other areas, such as Camera View settings related to  `Focal Length`, `Clip Start` and `Clip End`. To adjust these values after changing UNITS settings, use the _N-Panel_ `View` tab to make adjustments.
 
 <<<
 
@@ -517,7 +526,7 @@ If you now select the `Shading` tab and then choose the `Viewport Shading` view 
 When you now Render your model, this would be your background if you had not chosen "transparent" in the FILM option earlier. 
 
 [TIP]
-I have used the `Abandoned Slipway` HDRI from https://hdrihaven.com as recommended by *Josh Gambrell* for neutral outdoor lighting in the past. Currently though, I am using a file called `hdri_004_nordicfxnet.hdr` aka "Railroad Crossing" from  http://www.nordicfx.net/  as it seemed more appropriate.  I did scale it down from 4K to 2K though.
+I have used the `Abandoned Slipway` HDRI from https://hdrihaven.com as recommended by *Josh Gambrell* for neutral outdoor lighting in the past. Currently though, I am using a file called `hdri_004_nordicfxnet.hdr` aka "Railroad Crossing" from  http://www.nordicfx.net/  as it seemed slightly more appropriate.  I did scale it down from 4K to 2K though.
 
 [TIP]
 There is a free HDRI addon that makes setting up the World HDRI lighting image files a bit easier called "EASY HDRI". Totally optional of course.
@@ -571,35 +580,38 @@ The information presented below is not specifically about modeling with Blender,
 (((Content Creation, "Basic Overview")))
 
 [TIP]
-Reminder, this is basically a "notebook" and started life as my collection of notes about content creation.  It may seem to jump around a lot as a result.
+Reminder, this document is basically a "notebook" and it started life as my collection of notes about content creation.  It may seem to jump around a lot as a result.
 
 
 === Orientation
 
-There is a requirement to properly orient your model if you are making rolling stock or an engine.  If you have used 3D modeling software in the past, maybe 3D Crafter / 3D Canvas or Maya you might be accustomed to Z axis being DEPTH and the X axis being WIDTH and Y axis being HEIGHT.  Blender orientation is similar to 3DS MAX where Z is HEIGHT, X is WIDTH and Y is DEPTH.
+There is a need to properly orient your model if you are making rolling stock or an engine.  If you have used 3D modeling software in the past, maybe 3D Crafter / 3D Canvas or Maya you might be accustomed to Z axis being DEPTH and the X axis being WIDTH and Y axis being HEIGHT.  Blender orientation is similar to 3DS MAX where Z is HEIGHT, X is WIDTH and Y is DEPTH.
 
 When working on things that roll on the track, the FRONT of a model is aimed towards the Positive values of the Y axis and the REAR of the model faces the negative Y axis. 
 
 [WARNING]
-Blender's default point of view differs slightly in that it considers the FRONT to be facing the -Y direction.  This comes into play when using the view keys on the keypad, where pressing  kbd:[1] for front view will have you looking at the back end of your 3D model from a MSTS and {or} perspective.
+Blender's default point of view differs slightly in that it considers the FRONT to be facing the -Y direction.  This comes into play when using the view keys on the keypad, where pressing  kbd:[1] for front view will have you looking at the back end of your 3D model from a {MSTS} and {or} perspective.
 
 
 
 === Engine/Wagon Model Hierarchy
 
-For the Blender Esporter to properly process your model, you must have a "collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other collections may be children of this collection but the `MAIN` collection is where you will place your model heirarchy but `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
+For the Blender Exporter to properly process your model, you must have a "collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other collections may be children of this collection but the `MAIN` collection is where you will place your model hierarchy but `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
 
 image:images/layout-h.png[]
+
+[WARNING]
+The Blender Exporter expects the model to be built with the collection names *capitalized*, such as `MAIN`, `MAIN_700`, BOGIE, WHEEL, etc.  If you have a collection named `main` or `main_700` the Blender Exporter will complain and will not export your model.
 
 For a model to work correctly in {OR}, there are some requirements that need to be met if you want to have the simulator properly automate animations for wheels and bogies.  For simplicity, I am implying that the A-END of the boxcar is on the right and the B-END (with Brakes) is on the left.  The Boxcar's default direction of travel in this case then would be this way, ->, or from Left to Right.  (Refer to `ORIENTATION` section above)
 
 image:images/heir.png[]
 
 [TIP]
-The way I have found to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all wheels use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will use world origin as the pivot point.  
+The way I have found to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  
 
 [NOTE]
-The Main body part does not need to be called MAIN. Modelers have been using that as a convention since 2002 so it has become a standard thing to do but it's not a requirement for {OR}. The Blender `S` file exporter by Wayne Campbell only requires that you use `MAIN` as the name of the `COLLECTION` that refers to where your model objects reside.
+The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002 so it has become a standard _thing_ to do but it's not a requirement for {OR}. The Blender `S` file exporter by Wayne Campbell only requires that you use `MAIN` as the name of the _COLLECTION_ that refers to where your model objects reside.
 
 [WARNING]
 Be careful with selecting all objects in object mode and then applying "all transformations", as it will reset all objects to have their origin (pivot point) to be `world origin`. This would change the pivot points of the bogies and wheels.
@@ -607,23 +619,23 @@ Be careful with selecting all objects in object mode and then applying "all tran
 === Standard 2 Axle Freight Bogies
 If you are looking at the model from the Left Side View, the forward direction of the model is facing right.  Starting at the right, the bogies and wheels are named according to the diagram above, where associated WHEELS parented to the related BOGIE1 or BOGIE2. 
 
-If an additional axle is needed, use WHEELS13 or 23 located behind the bogie pivot relative to forward motion and shift wheel set 2 to the center of the related BOGIE. Its is important that the naming sequence remains (11 to 23) as shown in the diagram or wheels will turn backward and shift improperly in MSTS. 
+If an additional axle is needed, use WHEELS13 or 23 located behind the bogie pivot relative to forward motion and shift wheel set 2 to the center of the related BOGIE. Its is important that the naming sequence remains (11 to 23) as shown in the diagram or wheels will turn backward and shift improperly in {MSTS}. 
 
 [NOTE] 
 You would not have a 2 axle BOGIE with WHEELS13 or WHEELS23.
 
 === Isolated Axles
 
-The MSTS naming standard for isolated axles with non-bogie wheels, is  WHEEL1, WHEEL2, WHEEL3.
+The {MSTS} naming standard for isolated axles with non-bogie wheels, is  WHEEL1, WHEEL2, WHEEL3.
 
 NOTE: These are primarily used for STEAM locomotives. Animating these wheels is not automatic and must be done using the animation tools within Blender.  The Steam wheel and linkage animation uses a series of 16 frames.  In general, it's non-trivial to to create this animation and I won't be covering it in this document.  (unless someone provides us with good notes about how it is done)
 
 In ORTS, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
 
 [WARNING]
-Some MSTS documentation leads you to believe that a third bogie is possible in MSTS - it isn't.  However, if you are modeling specifically for {or}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.
+Some {MSTS} documentation leads you to believe that a third bogie is possible in {MSTS} - it isn't.  However, if you are modeling specifically for {or}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.
 
-Microsoft recommended the following topology for the Acela as an example:
+Microsoft recommended the following topology for the Acela model as an example:
 
 ----
 MAIN ENGINE	
@@ -647,12 +659,14 @@ PANTOGRAPHTOP1
 
 
 
-=== Configuration Files
+=== Configuration Files Overview
 
 The Open Rails (OR) manual provides a good understanding of the features only available in Open Rails, which can be used to create more capable and accurate content. Although the current manual is lacking in content creation details, much of the information available for Microsoft Train Simulator content creation still applies.
 (((Configuration, "Files")))
 
 While I'm not going to create a full guide to `sd`, `ref`,`eng` and `wag`  files here in this document, we will need to create a working file if we plan to add content to {OR}.  Peter Newell's website has an in-depth look into creating good `ENG` and `WAG` files for {OR}.footnote:[https://www.coalstonewcastle.com.au/physics/format/]
+
+Scenery objects, for example, would require an `sd` file if creating for {msts}, however, {or} uses a different method to define scenery and it makes the SD file obsolete.
 
 Also, see <<Creating Rolling Stock and Locomotives>>
 
@@ -664,7 +678,7 @@ An interesting discussion occurred in 2017 about making these files better and m
 
 [quote, Erick Cantu, 20 November 2017 ]
 _____
-KUJU, an organization, defined all of the folder names we use in MSTS. The Include file concept, as applied to .engs and .wags, led me to conclude that something similar to KUJU's \common.cab directory tree was necessary for .inc files. By looking at how payware vendors used folders in \trains, I noticed that they sometimes used \common.cab, other times a product-specific folder, and occasionally something in between, such as a vendor-named folder for the unskinned mesh (e.g., 3DTrains_FPack).
+KUJU, an organization, defined all of the folder names we use in {MSTS}. The Include file concept, as applied to .engs and .wags, led me to conclude that something similar to KUJU's \common.cab directory tree was necessary for .inc files. By looking at how payware vendors used folders in \trains, I noticed that they sometimes used \common.cab, other times a product-specific folder, and occasionally something in between, such as a vendor-named folder for the un-skinned mesh (e.g., 3DTrains_FPack).
 
 In KUJU's example of a CAB file, you will see a good template for locating the "include" files. After much experimentation I'm proposing am solution that addresses these needs:
 
@@ -737,21 +751,21 @@ and
 I feel these comments about creating content from Erick are so important that they need to be documented here as a reference. These details have been extracted from forum posts at Elvas Tower and are meant as a guide if you want to emulate his results.  While these are not hard rules, they definitely give us something to work with.  
 
 [WARNING]
-Erick supplies a lot of details about his approach to modeling here. Its worth reading and keeping these as guidelines for your own modeling.
+Erick supplies a lot of details about his approach to modeling here. Its worth reading and retaining these as guidelines for your own modeling. They are not hard rules, but they are a good guideline.
 
 ==== Erick Says:
 
-* Match the right trucks to the right car. This goes beyond an A-3 or S-2 in that I make sure that my cars have the right wheel size and truck wheelbase (i.e. tonnage rating), hence why I spent so much time building a library of freight car trucks. I was planning on making my truck library available. Importing the trucks into Blender for modellers using that program could actually be very helpful.
+* Match the right trucks to the right car. This goes beyond an A-3 or S-2 in that I make sure that my cars have the right wheel size and truck wheelbase (i.e. tonnage rating), hence why I spent so much time building a library of freight car trucks. Erick's truck library is available at Elvas Tower. Importing the trucks into Blender for modellers using that program could actually be very helpful.
 
 * I map to a resolution of 1/2 inch per pixel on standard-definition cars. The alignment of all adjoining car surfaces should be within 1/1000 of a pixel so that continuous lines are not broken. I map all car sides separately. Most cars fill either the top or bottom half of a 2048 x 2048 pixel texture sheet so that large surfaces are continuous and one texture sheet can be used for two paints (for flat cars, it might be three because they take up so much less space). My standard setup now is to produce four shape files, with the first two mapped to the top and bottom of the first texture sheet, and the second two mapped to the top and bottom of the second sheet. This allows for four different paint schemes or weathering patterns per car folder, with numbers applied with decals so that each main shape can represent many cars.
 
-* Texture mapping needs to be intuitive and functional. The key questions I ask myself are: "Would I want to paint this?" "Would I need to request a modified version of this car to do [insert railroad here]'s livery?" "Can I remove parts I might not need with the alpha channel?" "Could I paint this car without using shape viewer to check my work?" I have seen some really bad mapping in the MSFS world where it was clear that the model builder was more interested in impressing everyone with how good they were at fitting some major part between spaces at an oblong angle than creating something functional (imagine entire airliner fuselage sections angled 20 or 30 degrees on a texture sheet to fit in a space - how are we supposed to do straight lines on that!?).
+* Texture mapping needs to be intuitive and functional. The key questions I ask myself are: "Would I want to paint this?" "Would I need to request a modified version of this car to do [insert railroad here]'s livery?" "Can I remove parts I might not need with the alpha channel?" "Could I paint this car without using shape viewer to check my work?" I have seen some really bad mapping in the MS Flight Simulator world where it was clear that the model builder was more interested in impressing everyone with how good they were at fitting some major part between spaces at an oblong angle than creating something functional (imagine entire airliner fuselage sections angled 20 or 30 degrees on a texture sheet to fit in a space - how are we supposed to do straight lines on that!?).
 
 * Cars should all use consistent bitmap resolution and be designed with a wide variety of systems in mind. This consistency should apply both between cars and between the constituent parts of the cars themselves, including the texture mapping scale. Ideally, triangle counts should be around 12,000 or less at the top LOD, with aggressive optimization of vertex counts through the limiting of hard edges and careful welding of UV coordinates wherever possible.
 
 * There should be no more than one texture sheet for the carbody and no more than one for the trucks. Because most cars will need at least some alpha work, the entire carbody should use a single BlendATexDiff material (with the -Trans flag OFF) unless there is a compelling reason to apply a second material. Reasons include a need to have specular highlights applied to only some parts of the mesh, or, in the case of the Foobie hoppers, to allow the car side to be mapped as a single unit, with only parts of it using an alpha channel. Adding a material means adding a drawcall, so this should be a very conscious process. It's okay to have trucks in a separate texture because animated parts are going to be a separate drawcall anyway.
 
-* The texture resolution and mesh resolution must be congruent and consistent with a target viewing distance. One of the things I really hate is when people build these super high resolution parts with super hi-res textures and then put them on a model where the gestalt is a much lower resolution. It's a waste of vertices and real estate on the textures for the detail parts because everything around them is going to look like garbage in comparison. The same goes for detail parts that are a high resolution when the rest of the mesh isn't, so you have this hilariously detailed builder's plate right next to a wheel with like 20 sides, so you'll never see the difference in the builder's plate detail without zooming in to a point where the wheel right next to it completely breaks the suspension of disbelief. A cursory glance at Turbosquid or CGTrader makes it plain that 3D model builders are terrible at this as a rule. There are some practical exceptions when running against OR limitations. For example, I backlight my number boards with lights that change based on the loocmotive's coupling status. But OR will render any alpha part ahead of another alpha part with a 1-bit alpha channel, and the light halo is a flat polygon with an alpha channel, so the only way to make the numbers look good is to bump up the texture resolution (again, 1-bit edges always look like garbage unless they're perfectly square).
+* The texture resolution and mesh resolution must be congruent and consistent with a target viewing distance. One of the things I really hate is when people build these super high resolution parts with super hi-res textures and then put them on a model where the gestalt is a much lower resolution. It's a waste of vertices and real estate on the textures for the detail parts because everything around them is going to look like garbage in comparison. The same goes for detail parts that are a high resolution when the rest of the mesh isn't, so you have this hilariously detailed builder's plate right next to a wheel with like 20 sides, so you'll never see the difference in the builder's plate detail without zooming in to a point where the wheel right next to it completely breaks the suspension of disbelief. A cursory glance at Turbosquid or CGTrader makes it plain that 3D model builders are terrible at this as a rule. There are some practical exceptions when running against OR limitations. For example, I backlight my number boards with lights that change based on the locmotive's coupling status. But OR will render any alpha part ahead of another alpha part with a 1-bit alpha channel, and the light halo is a flat polygon with an alpha channel, so the only way to make the numbers look good is to bump up the texture resolution (again, 1-bit edges always look like garbage unless they're perfectly square).
 
 * Splitting car sides into multiple sections is not recommended, as it adds unnecessary mesh divisions and UV coordinates. It may be necessary for very long cars, such as auto-racks, however, for most cars of 60 feet or less, it's really not necessary if you plan ahead. Using the top half of a texture sheet for one car and the bottom half for another creates a large, rectangular area to work with and allows for multiple cars to use a single texture sheet. Remember, Open Rails is sensitive to both drawCall counts and the total number of images across a train, so putting multiple cars in one texture isn't actually a bad idea.
 
@@ -765,9 +779,9 @@ Erick supplies a lot of details about his approach to modeling here. Its worth r
 
 * 1-bit alpha channels and aliased edges are unnecessary and unacceptable. OR renders 32-bit textures correctly, so there's no need to have separate materials just for alpha parts, accordingly, having separate materials for 1-bit alpha parts and 8-bit alpha parts is adding unnecessary drawcalls. It's much more efficient to use a single material with an 8-bit alpha channel if there's going to be any need for greyscale alpha on a model at all. The only time a 1-bit alpha channel is acceptable is when a transparent area is perfectly square. Otherwise, any curved or angled lines just look like hot garbage.
 
-* The MSTS convention of having the underside of all freight cars be completely devoid of any geometry, leaving the user to see sky when the car is viewed from below. This flies in the face of the fact that bridges are a thing, so this practice is best avoided. Car undersides do not need to be complex, but they should be present.
+* The {MSTS} convention of having the underside of all freight cars be completely devoid of any geometry, leaving the user to see sky when the car is viewed from below. This flies in the face of the fact that bridges are a thing, so this practice is best avoided. Car undersides do not need to be complex, but they should be present.
 
-* Generally, it's wise to use whatever units match your reference materials to avoid unnecessary conversions. For example, when I build a Boeing, I work in decimal inches. When I build an Airbus, I work in decimal meters. For most US stock, reference materials will be in inches.  Its not a rule though.  If you have a scale calculator handy, its not hard to convert Imperial to Metric and visa-versa.
+* Generally, it's wise to use whatever units match your reference materials to avoid unnecessary conversions. For example, when I build a Boeing, I work in decimal inches. When I build an Airbus, I work in decimal meters. For most US stock, reference materials will be in inches.  Its not a rule though.  If you have a scale calculator handy, its not hard to convert Imperial to Metric and visa-versa. (And you may learn to actually like the metric system.)
 
 * No "imagineered" details
 
@@ -793,7 +807,7 @@ The main point is to really be purposeful about the choices that you make. Littl
 
 === Additional guidance from Blender Brothers
 
-On of my mentors while I was in my beginning stages of learning Blender was Josh and Ryuu of Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
+One of my mentors while I was in my beginning stages of learning Blender was Josh and Ryuu of the Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
 
 Josh and Ryuu of Blender Brothers Say: 
 
@@ -816,12 +830,12 @@ By the way, the Blender Brothers love making their own decals. They have even re
 
 === General Texture Mapping Guidelines
 
-* Microsoft had recommended using SQUARE texture shapes that corresponded to a specific evenly sized shapes with MSTS, like 512x512, 256x256, 128x128, etc.  This limitation no longer applies in {or} and you can reasonably use a 2048x1024 sized file if you desire.
-* You should be using a paint program that understands layers and is able to save an image document in a format that maintains these layers between sessions. (PSD is a layered format)
+* Microsoft had recommended using SQUARE texture shapes that corresponded to a specific evenly sized shapes with {MSTS}, like 512x512, 256x256, 128x128, etc.  This limitation no longer applies in {or} and you can reasonably use a 2048x1024 sized file if you desire.
+* You should be using a paint program that understands layers and is able to save an image document in a format that maintains these layers between sessions. (PSD is a layered format, for example)
 * PNG files understand ALPHA channels but they do not maintain layers
 * Consider working with PNG files while modeling and DDS files in your final model for {OR}
-* Consider modeling Reporting Marks and Car Numbers as modeled DECALS instead of baking them into the main texture. 
-* Export and check results as soon as you have created a UV Map for your model before proceeding to adding details.  It's better to find issues early.
+* Consider modeling Reporting Marks and Car Numbers as modeled DECALS instead of baking them into the main texture. Decals are much easier to edit and can be applied to multiple models. 
+* Export and check results as soon as you have created a UV Map for your model before proceeding to adding more details.  It's better to find issues early.
 
 
 

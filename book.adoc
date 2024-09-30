@@ -9,7 +9,7 @@
 :author: Pete Willard
 :email: petewillard@gmail.com
 :homepage: http://www.railsimstuff.com
-:revision: 2.4
+:revision: 2.5
 :copyright: Copyright © 2020 - 2024
 :title-page-background-image: image:images/main.jpeg[fit=scale-down]
 :encoding: utf-8
@@ -35,8 +35,8 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: .0.5
-:revdate: 2024-09-25
+:revnumber: .0.1
+:revdate: 2024-09-30
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
@@ -69,7 +69,7 @@ The Long Term Release or LTS version of Blender is preferable because there are 
 
 === About The Author
 
-The individual who initially wrote this guide is not an expert in content creation and has mostly used 3DCanvas/3D Crafter for creating content for Microsoft Train Simulator from 2002 to 2016. They have also experimented with Blender, but found earlier versions difficult to use due to its cumbersome user interface. However, they found Blender 2.8 to be a vast improvement in terms of user interface and do not plan to switch to a different 3D modeling tool in the near future.
+The individual who initially wrote this guide is not an expert in game or simulator content creation and has mostly used 3DCanvas/3D Crafter for creating content for Microsoft Train Simulator from 2002 to 2016. They have also experimented with Blender, but found earlier versions  of it difficult to use due to it having a cumbersome user interface. However, they found that Blender 2.8 and newer to be a vast improvement in terms of user interface friendliness and they do not plan to switch to a different 3D modeling tool at this time.
 
 [NOTE]
 Writing in 3rd person is weird.
@@ -78,15 +78,15 @@ Writing in 3rd person is weird.
 
 This document is made possible with the contributions and feedback from people like: 
 
-* Wayne Campbell
-* Erick Cantu
-* Michelle McKell
-* Dave Nelson
-* Peter Newell
-* Curtis Holt
-* Darrin Lile
-* Josh Gambrell
-* and various Blender add-on authors
+* Wayne Campbell    - Author of the Open Rails Train Simulator Exporter for Blender
+* Erick Cantu       - Creator of NAVS - North American V-Scale products for Open Rails, available at TigerTrains.com
+* Michelle McKell   - A well known content re-skinner for Open Rails
+* Dave Nelson       - Known as Genma Saotome on the Elvas Tower forums that has contributed a LOT to the community
+* Peter Newell      - Maintainer of "Coals too Newcastle" website,  a resource web site for Open Rails
+* Curtis Holt       - A blender trainer and add-on creator
+* Darrin Lile       - A Blender trainer, particularly aimed at beginners creating game assets
+* Josh Gambrell     - A Blender trainer, add-on creator, and member of the Blender Bros. group. 
+* and big thanks to various Blender add-on authors
 
 Useful resources:
 
@@ -102,12 +102,13 @@ Useful resources:
 * https://github.com/Stromberg90/Scripts/blob/master/Blender/Edge_To_Curve.py   -Simple but handy script add-on for Pipes and Handrail creation.
 
 [NOTE]
-Some sections of the {MSTS} technical documents are also included here as reference material since some of these details exist no where else.
+Some sections of the original {MSTS} technical documents are also included here as reference material since some of these details exist no where else unless you have the original {MSTS} documentation and CDROMS.  These are now pretty outdated, and unobtainable, and are included here for reference only.
 
-=== Some References
+=== Some notes about some of the References
 
 NAVS:: North American V-Scale - Content created by or related to Erick Cantu.  Using a set of standards he developed.
 Coals to Newcastle:: Meaning,  "A silly venture", as Newcastle has plenty of coal.  Also, A website run by Peter Newell that has really good {orts} Physics documentation. 
+MSTS:: Microsoft Train Simulator - referring to the original {MSTS} CD-ROM distribution of the simulator. To many, its seems like the original {MSTS} CD-ROM distribution was slightly unfinished as the documentation was incomplete and many bugs needed to be "patched" after the fact by a solution named "MSTSBIN". There never was a version 2.0 {MSTS} release.
 
 
 

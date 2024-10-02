@@ -436,9 +436,9 @@ Using a terminal window (command shell)  in your operating system, you can execu
 `blender yourblendfilenameorpath --python myscript.py `
 
 
-== Another Script Example
+== A Few Setup Script Example
 
-So lets try another scripting example. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
+So lets try some more scripting examples. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
 
 Lets say we know that the distance from the center of the vehicle to the center of the bogie is 3.5 meters.  We also know that the vehicle is 10 meters long so we have an idea where the couplers are.  We would also know that the vehicle is 2.9 meters wide.
 
@@ -471,3 +471,35 @@ for i, location in enumerate(object_locations):
     # obj.rotation_euler = (0.0, 0.0, 0.0)
 ----
 
+If we are following along with the MSTS/OPEN RAILS Exporter documentation, we would want to create a new collection called "MAIN" and then create a sub-collection called "MAIN_700" under "MAIN".  We can use the following code to do that:
+
+
+[source,python]
+----
+import bpy
+
+# Function to create a new collection if it doesn't exist
+def create_collection(name, parent_collection=None):
+    if name not in bpy.data.collections:
+        new_collection = bpy.data.collections.new(name)
+        if parent_collection:
+            parent_collection.children.link(new_collection)
+        else:
+            bpy.context.scene.collection.children.link(new_collection)
+        return new_collection
+    else:
+        return bpy.data.collections[name]
+
+# Create the main collection "MAIN"
+main_collection = create_collection("MAIN")
+
+# Create the sub-collection "MAIN_700" under "MAIN"
+sub_collection = create_collection("MAIN_700", parent_collection=main_collection)
+
+print(f"Created collections: {main_collection.name}, {sub_collection.name}")
+
+sub_collection = create_collection("MAIN_2000", parent_collection=main_collection)
+
+print(f"Created collections: {main_collection.name}, {sub_collection.name}")
+
+----

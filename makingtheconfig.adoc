@@ -6,12 +6,21 @@ In order to ensure the precise functioning of locomotives and other rolling stoc
 You would need to gather enough prototypical data to accurately complete the physics descriptions in the `WAG` or `ENG` file. 
 
 [WARNING]
-Please note that there have been many improvements and additions to the simulator that go well beyond the capabilities an options of {MSTS}.  Many of the options listed in this section contain values and parameters that are unique to {or}. It is assumed that the reader is NOT trying to retain compatibility with legacy {MSTS} and doing do is beyond the scope of this section.  If you wish to retain {MSTS} compatibility, please refer to the technical documents that come with {MSTS}.
+Please note that there have been many improvements and additions to the simulator that go well beyond the capabilities and options of the original {MSTS}.  Many of the options listed in this section contain values and parameters that are unique to {or}. It is assumed that the reader is NOT trying to retain compatibility with legacy {MSTS} and doing so is beyond the scope of this section.  If you wish to retain {MSTS} compatibility, please refer to the technical documents that come with {MSTS}.
 
 [NOTE]
 The process of creating content and config files is often described as a complicated mess, and that description is not entirely inaccurate. However, there is a side project underway to develop a set of replacement files for MSTS 3D models, config files, and textures that are free to use and do not violate anyone's copyrights. These replacement files will serve as examples of the standards for creating 3D models, textures, and config files for Open Rails, which can be shared with everyone.
 
-== Open Rails Units of Measure
+
+== General Configuration File Format
+
+The formatting of the configuration files are based on a standard known as S-Expression.  This method, known as "symbolic expression format" pre-dates a lot of the more modern programming language solutions for managing data, like JSON or XML.  It was originally devised to build tree-structured data notation and was a commonly used with languages like LISP.  Like LISP, it is heavily dependent on parentheses.  You could even say that XML has a somewhat S-Expression like structure if you are familiar with it.
+
+The SIMIS Game Studio which eventually became KUJU, used this format to store the configuration data for the {MSTS}.  Many of the files that form part of the sim are in one of a number of formats bearing the "SIMISA" signature at the top of the file. The SIMIS file format is identified a 16 byte or longer signature and header, with the remainder of the file being an inner format/data.  For example; you might see `SIMISA@@@@@@@@@@JINX0D0t______` at the top of a file.  This header section does not get compressed with the rest of the file, and is only used to identify the file type. The remaining data is compressed using the Zlib's DEFLATE algorithm.
+
+
+
+== Open Rails "Units of Measure"
 
 (((ORTS, "Units")))
 
@@ -22,7 +31,7 @@ Source: http://www.coalstonewcastle.com.au/physics/or-parameter-uom/
 
 *Note:*
 
-* The default UoM shown in the "Default" column is the UoM value that OR assumes if no UoM value is included in the parameter statement. *(However it is always good practice to include the relevant UoM)*
+* The UoM values shown in the "Default" column is the UoM value that OR assumes if no UoM value is included in the parameter statement. *(However it is always good practice to include the relevant UoM)*
 * The "Alternative UoMs" column shows alternate UoM currently supported by OR.
 * The UoM should directly follow the numerical value in the parameter with any spacing, otherwise it will not be correctly interpreted.
 

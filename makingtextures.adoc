@@ -91,7 +91,7 @@ You know how sometimes people report that their icons or textures become a rainb
 [TIP]
 Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
 
-With *GIMP*, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, MIPMAP, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
+With *GIMP*, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, mipmap, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
 
 With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type:  DDS`. In the Save Settings window, you would select *DXT1* and under *Error Metric*, and check *Generate Mip Maps* and *Use Best Quality*.
 
@@ -117,7 +117,7 @@ No compression:: the image is stored uncompressed.
 
 ZLib compression:: this is a lossless compression technique similar to that used by programs such as PKZIP and WinZip.
 
-DXT compression:: this is a lossy technique that can only be used for Solid and Trans type texture ACE files.  It may crate unwanted arifacts.
+DXT compression:: this is a lossy technique that can only be used for Solid and Trans type texture ACE files.  It may crate unwanted artifacts.
 
 [WARNING]
 DXT compression cannot be used for bitmap ACE files.
@@ -162,7 +162,7 @@ Sometimes the terms bit depth and color depth are used interchangeably. We're go
 |===
 | 1-bit bitmap image	| Color Mode: Bitmap, Color Depth: 1-bit (1 channel x 21), Colors: 2, File Size: 4 kb (as GIF)
 | 4-bit indexed color image	| Color Mode: Indexed Color, Color Depth: 4-bit (1 channel x 24), Colors: 16, File Size: 8 kb (as GIF)
-| 8-bit grayscale image	| Color Mode: grayscale, Color Depth: 8-bit (1 channel x 28), Colors: 256, File Size: 24 kb (as GIF)
+| 8-bit gray-scale image	| Color Mode: gray-scale, Color Depth: 8-bit (1 channel x 28), Colors: 256, File Size: 24 kb (as GIF)
 |8-bit indexed color image	|Color Mode: Indexed Color, Color Depth: 8-bit (1 channel x 28), Colors: 256, File Size: 16 kb (as GIF)
 |24-bit RGB image	|Color Mode: RGB, Color Depth: 24-bit (3 channels x 8 bits per channel), Colors: 16,777,216, File Size: 12 kb (as JPEG)
 |===
@@ -246,6 +246,147 @@ Once you have created your base texture for your model, you should a) Save it in
 Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
 
+[NOTE]
+Pete Willard has used this technique with Brick Building scenery, where the background layer is the seamless brick pattern.  Windows and doors are painted on top of the background layer. 
+
+
+=== Setting up Blender for Texture Mapping and Baking 
+
+(((Texturing, "Setting up Blender for Texture Mapping and Baking")))
+
+_This section contributed by Scott Brunner._
+
+This is intended as a primer - not a tutorial - so I'll be addressing the concepts at play - that need to be considered for Mapping and Baking operations in Blender.
+
+First - set yourself up for success. Blender is an application that heavily relies on addons - there are thousands of them - I'll only be discussing (3) that I find essential for our task at hand - and are free. I've tried others - another modeler might prefer a different set of addons. Only the last three on my list pertain to mapping and baking operations.
+
+image::images/AO_Init.png[]
+
+In this setup, Blender 4.3 is being used and since Blender 4.2 many of the external addons are now available in the *Get Extensions* option under *Preferences*. *Texil Density Checker* is available via *Get Extensions* in Blender 4.3. *UV Layout* is an official Blender addon available via *Add-ons* option. The last one - *TexTools* is available from GitHub and needs to be installed from the downloaded zip file.
+
+Texel Density Checker:: shows up the *N Side Menu* when in the *UV Mapping* window. It allows you to get the texel density of an Island - or - set the texel density of an island. For the best-looking models - you want a consistent texel density - and this makes is extremely easy to set on each island as you map it.
+
+UV Layout:: adds mapping functions to the *Top Menu* in the *UV Mapping* window. Some of the most important features are the ability to export your *UV Map* to a texture file so you can load it into your paint program - and - the *Pack Islands* function to efficiently pack your islands in the most efficient manner possible.
+
+TexTools:: shows up the *N Side Menu* when in the *UV Mapping* window. This adds a host of operations for manipulating your *UV Map* and single click *Baking*. If you've tried the default Blender *Baking* operation - this makes your life infinitely easier.
+
+Textools Download: https://github.com/franMarz/TexTools-Blender
+
+Textools Addon Video: https://www.youtube.com/watch?v=rEcJQ6Jdue4
+
+
+Lets do a quick review of terms again...
+
+(((Texturing, "Common Terms")))
+
+Texel Density:: - refers to the number of texture pixels (texels) per unit of 3D surface area. It's an important concept for ensuring that textures appear consistent and detailed across different parts of a model. Maintaining a consistent texel density is crucial for achieving a uniform look, especially when combining multiple objects in a scene.​
+
+Seams:: - are the edges where a 3D model is "cut" or "split" during the unwrapping process. These cuts allow the 3D surface to be laid out flat in 2D space with minimal distortion. *Seams* only work under the following *Unwrap* operations: *Angle Based*, *Conformal*, and *Minimal Stretch*. _Regarding *Minimal Stretch*, this might have been added in Blender 4.3._
+
+UV Mapping or Unwrapping:: - is the process of projecting a 2D image texture onto a 3D model's surface. It involves unwrapping the 3D model into a flat 2D plane, much like peeling an orange and laying its skin flat. This allows textures, such as images or patterns, to be precisely applied to the model, ensuring that each part of the texture aligns correctly with the corresponding part of the model's surface.
+
+UV Vertex or UV:: - is a point in the 2D space of a UV map that corresponds to a vertex on a 3D model. These UV vertices are used to define the position of the texture coordinates, determining how a 2D texture is applied to the surface of the 3D model. Essentially, they serve as the anchors for mapping the texture accurately onto the model's surface, ensuring that the details of the texture align correctly with the geometry of the model.
+
+UV Island:: - is a contiguous group of UV vertices and edges that form a separate, unbroken piece of the UV map. It represents a section of the 3D model's surface that has been unwrapped and flattened for texturing purposes. Each *UV Island* typically corresponds to a distinct part of the 3D model, making it easier to apply detailed textures accurately.
+
+Pack Islands:: - in *UV mapping* is the process of organizing and arranging *UV Islands* efficiently within the UV space to maximize the use of texture space. You can do this with entire texture sheets or any subset therein. You can define a Margin to set how much space is kept between Islands.
+
+Tiling Texture:: - is a small, seamless image or pattern that is repeated, or "tiled," across a surface to create a continuous, uniform appearance. This technique is particularly useful for covering large areas without visible seams or repetitions, like walls, floors, or any large surfaces in 3D environments. By seamlessly repeating the texture, it allows for efficient use of memory and resources, as a single small texture can cover extensive areas without noticeable patterns or disruptions.
+
+Swatches:: - I don't think this is an official name - just what I call it. It's using small little swatches of material - that won't have any detail or baking applied - used on small parts, edges, or parts that aren't seen often.
+
+Baking:: - refers to the process of capturing detailed lighting, shading, and other surface information, such as ambient occlusion and reflections, and storing it in a texture map. These affects are created with Ray Tracing and add a great deal of "pop" to any model.
+
+Ray Tracing:: - is a rendering technique used in computer graphics to simulate the way light interacts with objects in a scene to produce highly realistic images.
+
+Material:: - defines how a 3D object's surface interacts with light and gives it its color, texture, and reflective properties. If you change the specular shine on two different objects mapped to a single texture - that will require two *Materials*.
+
+Draw Calls:: - for our purposes - it's every time we need to load a texture sheet to the video card - which is a resource intensive process - *Draw Calls* significantly impact performance - so you want to minimize them. Each *Material* you use - will - at a minimum - be a single *Draw Call*.
+
+Ambient Occlusion or AO:: - is a shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting. It simulates the soft shadows and subtle shading that occur in corners, creases, and near intersections of objects, where light is less likely to reach. This effect adds a sense of depth and realism to the scene by enhancing the perception of surface details and contact points between objects.​
+
+
+
+[TIP]
+Keep a uniform texel density - I usually use one texel density for the large parts - body of the model - and a higher texel density for the smaller parts.
+
+[TIP]
+Unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another.
+
+
+I'll be using the RS3 as a reference model. I typically start out with two fairly large texture sheets - one for parts that have a Specular Shine and another for Flat or no shine parts. Typically - the upper painted metal body gets shine - the lower body does not. Some parts don't look good with shine - like handrails - so experiment and see what works best for you. I'll be focusing on the main body of the model for our discussion - as the trucks/bogies are a child - forcing a *Draw Call* - so it makes sense to have a separate texture just for them.
+
+On the following texture images - a couple things to note:
+
+The first two images are of the same flat texture - one with *Ambient Occlusion* and one without. It clearly shows how much you gain by taking the time to *Bake* *AO* into your textures. It's practically required.
+On the first two images - you can see the *Swatches* I use on various parts of the model - the hinges are probably the most identifiable. Multiple parts overlay each other in these little squares so the {ao} makes a mess of this - if it's included in the *Bake*. In your paint program this is easily addressed by simply placing the *Swatch* layer above your {ao} layer.
+
+image::images/Prime-Flat-No-AO.jpg[]
+image::images/Prime-Flat.jpg[]
+image::images/Prime.jpg[]
+
+
+==== SEAMS
+
+To create a seam - you must be in edit mode - select the desired edges - then menu:Edge[Mark Seam].
+
+Applicable Commands:
+
+kbd:[L] - Select all parts by Texture or Seam.
+
+Seams Supported Unwraps:
+
+* *Angle Based*
+* *Conformal*
+* *Minimal Stretch*
+
+===== Purpose of Seams
+
+Unwrapping the Model:: Seams allow you to "cut" your 3D model so it can be laid out flat in 2D space, similar to how you might cut and unfold a cardboard box. This process is known as unwrapping.
+Reducing Distortion:: By strategically placing seams, you can reduce the amount of distortion that occurs when the 3D model is flattened. This helps to ensure that textures are applied accurately and without stretching.
+Isolating UV Islands:: Seams help define UV islands, which are separate, contiguous areas of the UV map. These islands can be textured more precisely, making it easier to apply detailed textures to specific parts of the model.
+Texture Alignment:: Well-placed seams help align textures correctly, minimizing visible mismatches and ensuring a seamless appearance on the final model.
+
+
+===== How to Place Seams
+
+Strategic Placement:: Place seams in less visible areas of the model, such as along edges or in natural creases, to minimize their appearance in the final texture.
+Testing Unwraps:: Experiment with different seam placements and unwraps to find the best configuration that minimizes distortion and maximizes texture quality.
+Consistency:: Ensure that the seams create manageable UV islands that make texturing easier and more efficient.
+
+<<<
+
+Marked Seams in Red
+
+image::images/Seams1.jpg[]
+
+Select Desired Faces by Seam - Pressing kdb:[L] - Faces Must Be Fully Enclosed by Seams for Selection to Work
+
+image::images/Seams2.jpg[]
+
+Conformal Unwrap
+
+image::images/Seams3.jpg[]
+
+Results in (3) Perfectly Unwrapped Islands
+
+image::images/Seams4.jpg[]
+
+Same Conformal Unwrap Without the Use of Seams - Completely Unusable
+
+image::images/Seams5.jpg[]
+
+
+Once you have your *UV Islands* - you can set their *Texel Density* using *Texel Density Checker* - make sure you set your texture size appropriately on the top of the *Texel Density Checker* tool panel. Then just move them to where you want them placed on your texture.
+
+You can save your *UV Map* to a texture file in the *UV Mapping* window by selecting *UV* *Export UV Map*. I would suggest setting the *Fill Opacity* to 1 for best results. It basically gives you a page out of a coloring book to apply your textures to.
+
+One other important tip in the *UV Mapping* window - on the top left toolbar - there's a tiny little icon that has two arrows - one up the other down - at a 45 degree angle. This synchronizes the *UV Map* to your mesh. Where this comes in handy - you can select a *UV Island* and you may not know what it's mapped to - then move your mouse over to the *3D Viewport* and press kbd:[.] - it focuses and zooms in on the object that is mapped to your *UV Island*. Extremely helpful.
+
+_So easy a caveman could do it._
+
+image::images/UVmap.jpg[]
+
 
 ==== Decals
 
@@ -265,7 +406,7 @@ The Python PIP library currently has a limitation where it requires a version of
 (((PYTHON, "Python, DECAL Layout")))
 
 [NOTE]
-Using Python.  There will be more on this in a later section of the documentation. This section is a quick guide to how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
+Regarding the use of Python.  There will be more on this in a later section of the documentation. This section here is a quick guide to how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
 
 For the more software minded, Python 3 can be used to layout your textures using a Python package named PILLOW, (PIL for short).  Now this won't be a guide for using Python or Pillow, but I will share how I have been able to layout sections of a texture to create absolute placement and sizes for UV coordinates using code.
 
@@ -542,7 +683,7 @@ With the layered format file open, create a new layer just above the BASE layer 
 [NOTE]
 While it might seem like a shameless plug for my website, you will find a number of railroad related fonts at http://www.railsimstuff.com to help with adding lettering and logo details to your textures.  In case you are wondering, the fonts are all free and I make no money from this web site, in fact it only costs me money to keep it running so it is a labor of love that I have provided for nearly 20 years.
 
-As mentioned above, the opacity of the  DECAL layer should also be adjusted so it does not hide underlying details.  The effect for decals though needs to resemble having been painted on, so the opacity will mbe much closer to 75% versus a lower value.
+As mentioned above, the opacity of the DECAL layer should also be adjusted so it does not hide underlying details.  The effect for decals though needs to resemble having been painted on, so the opacity will mbe much closer to 75% versus a lower value.
 
 
 ==== Layering Tips from Erick
@@ -571,16 +712,16 @@ Here's an example of a simple weathering technique. Freight cars get beaten up p
 image::images/grass.jpg[]
 
 
-I then turn it to grayscale and darken it significantly while bumping up the contrast:
+I then turn it to gray-scale and darken it significantly while bumping up the contrast:
 
 image::images/grass-contrast.jpg[]
 
 
-When you use a grayscale image as a layer mask, pure white areas will be opaque, while pure black areas will be transparent, with values in between being semi-transparent to varying degrees. It's an opacity map. I can then take a photograph or dirt, or really any image of the right size with some dark color, apply this image as a layer mask, set the properties to "multiply," and end up with dark, scratchy areas all over the carbody. But I can milk that image some more. If you're trying to maximize your output while minimizing your time, it pays to get the most out of all of your resources. I copy the layer, rotate it 180 degrees, invert the colors, and set the properties to "addition." I decrease the opacity to 30%. The end result is this:
+When you use a gray-scale image as a layer mask, pure white areas will be opaque, while pure black areas will be transparent, with values in between being semi-transparent to varying degrees. It's an opacity map. I can then take a photograph or dirt, or really any image of the right size with some dark color, apply this image as a layer mask, set the properties to "multiply," and end up with dark, scratchy areas all over the car-body. But I can milk that image some more. If you're trying to maximize your output while minimizing your time, it pays to get the most out of all of your resources. I copy the layer, rotate it 180 degrees, invert the colors, and set the properties to "addition." I decrease the opacity to 30%. The end result is this:
 
 image::images/grass-final.jpg[]
 
-Because the textures for the car are not perfectly symmetrical, it's hard to tell that the light, additive layer is the same image as the dark layer, but rotated 180 degrees. Similarly, I can rotate both images 180 degrees, change the opacity values slightly, and add perhaps another layer of spotty dirt, and those same layers easily create a carbody that looks totally different. You could go back to the original image and flip the scratch layers horizontally for a third carbody, or vertically for a fourth.
+Because the textures for the car are not perfectly symmetrical, it's hard to tell that the light, additive layer is the same image as the dark layer, but rotated 180 degrees. Similarly, I can rotate both images 180 degrees, change the opacity values slightly, and add perhaps another layer of spotty dirt, and those same layers easily create a car-body that looks totally different. You could go back to the original image and flip the scratch layers horizontally for a third car-body, or vertically for a fourth.
 
 I am always on the lookout for walls with streaks of dirt from the rain, rusty metal, or anything that looks patchy. You can get so many great layer masks from those things, and most of us are carrying a perfectly-adequate camera in our pockets these days anyway. I used to hate weathering. Now it's quite easy and enjoyable, taking very little of my time.
 
@@ -593,7 +734,7 @@ Historically, {MSTS} has relied heavily on image transparency, the alpha channel
 
 In addition, you would use Alpha Channels in an image to create the translucency you see when looking at/through glass such as a window.
 
-Both of these techniques require that you start with an image format that understands the concept of a transparency mask.  In the case of "image cutting", you would rely on a 1 bit Alpha channel that is either see through or opaque, however, in the case of a a Window, whis is semi opaque, you would rely on a 8 bit Alpha channel with 255 shades of gray between Full Black (transparent) and Full white (opaque).
+Both of these techniques require that you start with an image format that understands the concept of a transparency mask.  In the case of "image cutting", you would rely on a 1 bit Alpha channel that is either see through or opaque, however, in the case of a Window, which is semi opaque, you would rely on a 8 bit Alpha channel with 255 shades of gray between Full Black (transparent) and Full white (opaque).
 
 The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintShop Pro, etc has their own idea about how to manipulate this Alpha Masking.
 
@@ -608,7 +749,7 @@ There are many formats of BMP bitmap file, including those with alpha channel su
 
 This section lists some of the "extra" tools and functions that are used to create textures.
 
-==== Merasuring Tools
+==== Measuring Tools
 
 (((Measurements)))
 
@@ -732,6 +873,9 @@ For exporting to {OR} and {MSTS}, you need to also have the MSTS Materials setti
 image::images/alpha2.PNG[]
 
 For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the gray scale Alpha Channel used for Glass, while `Transparancy ON/OFF` is the one bit mask where only BLACK RGB (0.0.0) is transparent in a mask.
+
+
+== 
 
 
 
@@ -878,7 +1022,7 @@ Tips for using AO in Blender:
 Here are some examples of how AO can be used to improve the realism and depth of your renders:
 
 * Close-up shots: AO can be used to add subtle shadows and details to close-up shots of characters, objects, and environments. This can help to make your renders look more realistic and believable.
-* Scenes with complex geometry: AO can be used to add depth and definition to scenes with complex geometry, such as cityscapes, forests, and interiors. This can help to make your renders look less flat and more immersive.
+* Scenes with complex geometry: AO can be used to add depth and definition to scenes with complex geometry, such as city scapes, forests, and interiors. This can help to make your renders look less flat and more immersive.
 * Weathering and dirt effects: AO can be used to create a variety of weathering and dirt effects, such as dust on a car or moss on a tree trunk. This can help to make your renders look more realistic and worn-in.
 
 Overall, AO is a powerful rendering technique that can be used to add realism and depth to your renders. By understanding the basics of AO and experimenting with different settings, you can achieve a variety of effects to enhance your renders.
@@ -889,10 +1033,10 @@ Overall, AO is a powerful rendering technique that can be used to add realism an
 
 (((Texture, "clusion Baking")))
 
-[Warning]
-{AO} Baking is mildy infuriating in Blender
 
-When Baking clusion, Here are some tips:
+{AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
+
+When Baking occlusion, Here are some general tips:
 
 1. Gather parts that will receive{AO} into a collection to make them easy to select.
 2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.

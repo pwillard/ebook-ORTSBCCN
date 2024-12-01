@@ -1,0 +1,214 @@
+= Blender Content Creation Notebook : A guide to making content for Open Rails
+:toc:
+:toclevels: 5
+:toc-title: Content Creation Notebook
+:sectnums!:
+:sectids!:
+:chapter-label:
+:doctype: book
+:author: Pete Willard
+:email: petewillard@gmail.com
+:homepage: http://www.railsimstuff.com
+:revision: 2.5
+:copyright: Copyright © 2020 - 2024
+:title-page-background-image: image:images/main.jpeg[fit=scale-down]
+:encoding: utf-8
+:lang: EN
+:experimental:
+:icons: font
+:pdf-page-size: [8.25in, 10.9in]
+:gr: `
+:mu: µ
+:ohm: Ω
+:dot: *
+:union: ∩
+:degree: °
+:C: ©
+:arrow: →
+:shift:
+:bar: |
+:bleft: [
+:bright: ]
+:hash: #
+:bslash: \
+:BL: {
+:BR: }
+:sourcedir: code
+:source-highlighter: rouge
+:revnumber: .0.1
+:revdate: 2024-09-30
+:OR: Open Rails
+:ORTS: Open Rails Train Simulator
+:MSTS: Microsoft Train Simulator
+:version: Blender 3.6 LTS
+:BV: 3.6 LTS
+:AO: Ambient Occlusion
+
+
+<<<
+:numbered!:
+[colophon]
+
+Open Rails, Blender Content Creator Notebook
+
+{revdate} {revision}{revnumber} {author}  
+
+This work is li­censed un­der a creative commons attribution-share-alike 4.0 international license
+
+image::images/CC-BY-SA.svg[width=87,height=30,align=center]
+
+
+== Open Rails, Blender Content Creator Notebook
+
+== About This Document
+
+This guide covers the use of Blender 2.8, including {version} or higher for creating content for Open Rails. It is recommended to use the latest Long Term Support (LTS) release of Blender for the best compatibility with the instructions provided in this document. Please note that older versions of Blender will not be covered or supported in this guide. At the time of this update, Blender Version {BV} is the most recent release and {version} is the most recent Long Term Support release.
+
+[NOTE]
+The Long Term Release or LTS version of Blender is preferable because there are only bug fixes applied to these releases, not new features so things like the User Interface will not change. 
+
+=== About The Author
+
+The individual who initially wrote this guide is not an expert in game or simulator content creation and has mostly used 3DCanvas/3D Crafter for creating content for Microsoft Train Simulator from 2002 to 2016. They have also experimented with Blender, but found earlier versions  of it difficult to use due to it having a cumbersome user interface. However, they found that Blender 2.8 and newer to be a vast improvement in terms of user interface friendliness and they do not plan to switch to a different 3D modeling tool at this time.
+
+[NOTE]
+Writing in 3rd person is weird.
+
+=== Contributor and Resources
+
+This document is made possible with the contributions and feedback from people like: 
+
+* Wayne Campbell    - Author of the Open Rails Train Simulator Exporter for Blender
+* Erick Cantu       - Creator of NAVS - North American V-Scale products for Open Rails, available at TigerTrains.com
+* Michelle McKell   - A well known content re-skinner for Open Rails
+* Dave Nelson       - Known as Genma Saotome on the Elvas Tower forums that has contributed a LOT to the community
+* Peter Newell      - Maintainer of "Coals too Newcastle" website,  a resource web site for Open Rails
+* Curtis Holt       - A blender trainer and add-on creator
+* Darrin Lile       - A Blender trainer, particularly aimed at beginners creating game assets
+* Josh Gambrell     - A Blender trainer, add-on creator, and member of the Blender Bros. group. 
+* and big thanks to various Blender add-on authors
+
+Useful resources:
+
+* http://www.elvastower.com
+* http://trainsim.com
+* http://www.textures.com  You need to login to downloadfootnote:[The site offers Free Registration and free downloads once signed up]
+* https://www.blendersecrets.org/   Author of many tips and tricks videos as well as a book
+* https://curtisholt.online/    A really good Blender Trainer and add-on creator
+* https://blender.org   Where to download Blender from
+* https://www.coalstonewcastle.com.au/physics/  ORTS Information
+* http://www.nordicfx.net/      HDRI backgrounds
+* https://polyhaven.com/  Textures and HDRI Backgrounds
+* https://github.com/Stromberg90/Scripts/blob/master/Blender/Edge_To_Curve.py   -Simple but handy script add-on for Pipes and Handrail creation.
+
+[NOTE]
+Some sections of the original {MSTS} technical documents are also included here as reference material since some of these details exist no where else unless you have the original {MSTS} documentation and CDROMS.  These are now pretty outdated, and unobtainable, and are included here for reference only.
+
+=== Some notes about some of the References
+
+NAVS:: North American V-Scale - Content created by or related to Erick Cantu.  Using a set of standards he developed.
+Coals to Newcastle:: Meaning,  "A silly venture", as Newcastle has plenty of coal.  Also, A website run by Peter Newell that has really good {orts} Physics documentation. 
+MSTS:: Microsoft Train Simulator - referring to the original {MSTS} CD-ROM distribution of the simulator. To many, its seems like the original {MSTS} CD-ROM distribution was slightly unfinished as the documentation was incomplete and many bugs needed to be "patched" after the fact by a solution named "MSTSBIN". There never was a version 2.0 {MSTS} release.
+
+
+
+== Conventions Used
+
+NOTE: Regular Note.
+
+WARNING: Pay attention to these.
+
+IMPORTANT: You should know this.
+
+CAUTION: With care, you can succeed.
+
+TIP: Optional, but good to know.
+
+`Highlighting`
+
+*BOLD*
+
+_Italic_
+
+----
+Source code
+----
+
+kbd:[LMB]:: Left Mouse Button
+kbd:[MMB]:: Middle Mouse Button
+kbd:[RMB]:: Right Mouse Button
+_N-Panel_:: Number Panel, kbd:[N] Hotkey in Main 3D Window
+btn:[ENTER]:: Sometimes you will see KEYBOARD entry look like this
+
+
+Referenced footnotes appear at the *end* of Chapters
+
+Web Links should be active and will open in your web browser if your PDF reader supports it.
+
+
+:numbered!:
+[preface]
+== Preface
+
+OpenRails is an open-source train simulator platform designed to replicate the experience of operating trains on various railway systems. It was developed as an alternative to Microsoft Train Simulator (MSTS) and is compatible with MSTS content, allowing users to enjoy a wide range of routes, locomotives, and rolling stock created for MSTS.
+
+Here are some key points about OpenRails:
+
+Compatibility: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to MSTS, especially on newer hardware.
+
+Enhanced Graphics: OpenRails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
+
+Physics and Realism: OpenRails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
+
+Third-Party Content: OpenRails is compatible with a wide range of third-party content created for MSTS. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the MSTS community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
+
+Community and Development: OpenRails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
+
+Open-Source Nature: OpenRails is an open-source project, which means its source code is freely available for modification and enhancement. This allows developers to contribute to the project and create new features or fix issues.
+
+It's worth noting that OpenRails is not a standalone game but rather a simulation platform. While it provides a framework for train simulation, it relies on third-party content and addons to provide the routes, trains, and other elements of the virtual railway environment.
+
+Overall, OpenRails offers a robust and customizable train simulation experience for enthusiasts who enjoy operating trains on various virtual railway systems.
+
+
+=== Here is the list of things that I assume about the reader.
+
+* You are new to Blender
+* You are reasonably new to content creation for Open Rails
+* You have Open Rails installed and working
+* You have installed TSRE5 for Consist management
+* You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[A good example is the Paint.net, KRITA or GIMP all of which are free] 
+* You have some idea about how {OR} and {MSTS} content is created
+* You have a project in mind, but you understand that you will not create your Magnum Opus on a first try.
+
+If you have prior experience with GMAX, Train Sim Modeler or 3D Canvas, it will be a plus, but it is not required.
+
+
+=== Organization of This Document
+
+As the title implies, this document is based on a collection of notes I made while learning to make content for {OR}.  As a result, it may not be the most organized or useful document on the subjects discussed within it but it is primarily aimed at filling a void in the available documentation set for {OR}.  This document is FREE and Open Source.  It will ultimately live on in a GITHUB repository created for it.  This means that others are welcome to fork a copy, edit it to add sections or fix errors, if desired.  I,  the author,  do not claim unrealistic ownership of the ideas and concepts contained within.  In fact, I struggle to consider myself the sole author of this manual at this point. Of course, at the moment, I am entirely responsible for its content, but I have created, gathered, reorganized and rephrased the contents as needed since it comes from many different sources. 
+
+Due to the way this document originated, it may seem to jump around and be repetitive at times. My apologies in advance if this bothers you but if you are so inspired, you are welcome to help fixing any errors, problems or omissions.
+
+
+
+:sectids!:
+:numbered!:
+include::makingcontent.adoc[]
+include::makingthemesh.adoc[]
+include::makingtextures.adoc[]
+include::usingScripts.adoc[]
+include::makingtheconfig.adoc[]
+include::making3dcabs.adoc[]
+include::appendix.adoc[]
+include::appendix2.adoc[]
+
+[index]
+== Index
+
+
+
+
+
+
+

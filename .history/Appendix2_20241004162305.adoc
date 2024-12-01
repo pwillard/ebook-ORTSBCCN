@@ -1,0 +1,54 @@
+== Appendix II 
+
+=== Consider Transitioning away from MSTS to Open Rails
+
+By the year 2023, MSTS is roughly 23 years old clearly abandoned as a dead-end by its creators.  The fact that it has lived on this long is a testament to its community and not specifically how well the program actually worked as it had numerous flaws that never got corrected.  Many years after MSTS was introduced and the sequel to MSTS was ultimately cancelled a team of talented programmers decided to build an open source replacement. This is how we got OpenRails
+
+At some point most MSTS users will want to transition away from MSTS to ORTS. ORTS, by design has an advantage over all other current train simulators in that it can utilize a vast amount of the existing legacy MSTS content that has been created over the years. Most content will work without many issues, however, some items may need a bit of tweaking to be able to run correctly in ORTS.
+
+
+=== The ORTS Program
+
+The ORTS program installs in a location that will remain totally isolated from simulator content, which is a fundamental difference from the way MSTS works.  The benefits of this approach are numerous but the primary benefit is that you will never need to reinstall content when you perform an update or re-installation of ORTS.  You can completely delete and reinstall ORTS and then inform it about where your content is and you are ready to go.
+
+You are also able to isolate content as there are some cases where some content installations will affect others.  Since content locations can be switched within ORTS, you can eliminate there issues and just select the isolated route installations as needed. This eliminates the need for legacy solutions like Trainstore with MSTS.
+
+Technically, you do not need any MSTS content to use {or} but if you have an old MSTS installation installed or saved then hhe beauty of the ORTS solution is that the following items are the only things that have to be copied over from the old MSTS installations:
+
+* GLOBAL folder
+* SOUND folder
+* ROUTES folder
+* TRAINS folder 
+
+All other MSTS files are not required and are redundant under ORTS. 
+
+[NOTE]
+As a content developer, you will still need a set of utilities like Aceit, TGATOOLS2 and FFEDIT_SUB to actually access and manipulate content without the MSTS *UTILS* folder.
+
+A typical {or} solution that does not depend on a complete MSTS installation could be set up like this:
+
+Installation
+
+|===
+| Program location              | Comment
+
+| C:\progam files (x86)\ORTS    | Where the PROGRAM gets installed
+|===
+
+Content
+
+|===
+| Program location              | Comment
+
+| C:\ORTS\TrainSimulations\     | Any TrainSimulations Freeware/Payware content (Global, Routes, Sound, Trains)
+| C:\ORTSWORLD\                 | Copied over legacy MSTS installation content folders (Global, Routes, Sound, Trains)
+| C:\OR\GNRR                    | Any custom or 3rd party installations that don't have MSTS dependencies
+| C:\OR\_xxx_                   | Where _XXX_ is any other route that will share (Global, Routes, Sound,Trains) from the OR folder
+| c:\OR\developer               | Any *work in progress routes*
+| C:\OR\                        | (Global, Routes, Sound,Trains)
+|===
+
+
+
+
+

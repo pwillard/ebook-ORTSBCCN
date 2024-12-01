@@ -2,7 +2,7 @@
 
 === Consider Transitioning away from MSTS to Open Rails
 
-By the year 2023, MSTS is roughly 23 years old clearly abandoned as a ded-end by its creators.  The fact that it has lived on this long is a testament to its community and not specifically how well the program actually worked as it had numerous flaws that never got corrected.  Many years after MSTS was introduced and the sequel to MSTS was ultimately cancelled a team of talented programmers decided to build an open source replacement. This is how we got OpenRails
+By the year 2023, MSTS is roughly 23 years old clearly abandoned as a dead-end by its creators.  The fact that it has lived on this long is a testament to its community and not specifically how well the program actually worked as it had numerous flaws that never got corrected.  Many years after MSTS was introduced and the sequel to MSTS was ultimately cancelled a team of talented programmers decided to build an open source replacement. This is how we got OpenRails
 
 At some point most MSTS users will want to transition away from MSTS to ORTS. ORTS, by design has an advantage over all other current train simulators in that it can utilize a vast amount of the existing legacy MSTS content that has been created over the years. Most content will work without many issues, however, some items may need a bit of tweaking to be able to run correctly in ORTS.
 

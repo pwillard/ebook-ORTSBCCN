@@ -1,0 +1,508 @@
+== Introduction to Blender Scripting
+(((Scripting, "Using Python")))
+
+Some of Blender's true potential is unlocked through scripting. Blender scripting allows users to automate repetitive tasks, create custom tools, and extend the software's capabilities to suit their specific needs.
+
+Blender provides a Python API (Application Programming Interface) that enables users to interact with its internal functionalities and control almost every aspect of the software programmatically. Whether you're a beginner or an experienced programmer, Blender scripting offers a flexible and efficient way to work with 3D objects, materials, animations, and much more.
+
+With scripting, you can perform complex operations that would be tedious or time-consuming to achieve manually.  Mastering Blender scripting opens up a many possibilities for efficiency in your workflow.
+
+In this section, we will explore the fundamentals of Blender scripting, starting with some basics and gradually diving into more advanced concepts. We will cover essential topics such as accessing and manipulating objects, materials, as well as exploring scripting techniques for creating custom tools and add-ons. 
+
+Before diving into Blender scripting, it's recommended to have a basic understanding of the Python programming language. However, even if you're new to programming, this guide will try to provide you with the necessary foundations to get started.
+
+Whether you're looking to automate repetitive tasks or wish to extend Blender's functionality, Blender scripting is a valuable skill that can enhance your workflow.
+
+=== Actually Doing It
+
+So we now consider diving in to Python.  The Python that you find embedded in Blender is the same Python you find everywhere else, with one exception. That is, it includes the Python Blender Library (or API) for accessing the internal features of Blender.  The `Library` is called "BPY".  You will often see at the very top of Python code written for Blender the following line of code:  `import bpy`.  This is where you add all of the Blender functionality to your code. 
+
+To get started with Python though, you should probably set up a development environment for Python.  This way you can begin to learn how to code in Python and practice and develop ideas without actually having to do it it inside Blender. 
+
+Getting started with Python is relatively easy and straightforward. Here's a step-by-step guide to help you begin your Python journey:
+
+Install Python:: Visit the official Python website (https://www.python.org) and download the latest version of Python for your operating system. Follow the installation instructions provided by the Python installe
+
+Set up a development environment:: You'll need a code editor or an integrated development environment (IDE) to write and run your Python code. Some popular choices include Visual Studio Code, PyCharm, and Atom. Choose the one that suits your preferences and install it.
+
+Learn the basics:: Familiarize yourself with the fundamentals of Python programming. There are numerous online resources, tutorials, and books available to help you learn Python. Some recommended beginner-friendly resources include:
+
+* "Python.org" - The official Python website provides a comprehensive tutorial (https://docs.python.org/3/tutorial/) to get you started.
+* Codecademy's Python course (https://www.codecademy.com/learn/learn-python)
+* "Automate the Boring Stuff with Python" by Al Sweigart (https://automatetheboringstuff.com/)
+* "Python Crash Course" by Eric Matthes
+
+Practice coding:: As you learn the basics, it's essential to practice writing Python code. You can solve coding challenges on platforms like HackerRank (https://www.hackerrank.com/domains/tutorials/10-days-of-statistics) or LeetCode (https://leetcode.com/problemset/all/).
+
+Explore Python libraries and frameworks:: Python offers a vast ecosystem of libraries and frameworks that extend its capabilities. Depending on your interests and goals, you can explore libraries such as NumPy for numerical computations, Pandas for data manipulation, Matplotlib for data visualization, or Django for web development. Look for resources specific to the libraries or frameworks you wish to explore.
+
+Join the Python community:: Engaging with the Python community is a great way to learn, ask questions, and collaborate with others. Participate in online forums like the Python subreddit (https://www.reddit.com/r/Python/) or join Python-related communities on platforms like Discord or Slack.
+
+Build projects:: To solidify your Python skills, start working on small projects. Projects provide practical experience and help you apply what you've learned. Think of something you'd like to create—a web scraper, a calculator, a data analysis tool—and work towards building it using Python.
+
+Remember, learning programming is an iterative process. Start small, be patient, and gradually tackle more complex concepts. With practice and persistence, you'll gain confidence and proficiency in Python.
+
+[TIP]
+Embarcadero has a Python IDE that is quite handy and much better than the one that comes with Python by default.  You can get it here: https://www.embarcadero.com/free-tools/pyscripter/free-download
+
+As mentioned, Blender has a built-in Python API and Python interpreter that allows you to control its functionality programmatically. 
+
+
+[NOTE]
+There is a Blender Add-On called *SERPENS* that will help you develop Blender GUI based add-ons from your code. Its a paid add-on, but its really neat.
+
+=== Blender and ChatGPT
+(((Scripting,"Chatgpt")))
+
+If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is, quite simply, the best artificial intelligence chatbot ever released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit.  There are two ways to make use of the chatbot and these are: 
+
+1. Interactively using a chat session at https://chat.openai.com
+2. Accessing the chatbot using code via the API using a private API KEY.
+
+[NOTE]
+An API, or Application Programming Interface, is a set of rules and protocols that allows different software applications to communicate and interact with each other. It defines the methods, data formats, and conventions that applications should follow to request and exchange information. APIs play a crucial role in enabling software integration, fostering collaboration between different systems, and promoting the development of interconnected applications.
+
+By integrating ChatGPT with Blender Python scripts, you can augment your knowledge of Python without the need for being a whiz-bang Python coder. Many of the scripts that will be shown in this section were actually supplied by ChatGPT.  While the responses from ChatGPT sometimes contain coding errors, ChatGPT also can be told about errors and can generate updates to the script response until it finally works.  The responses can also be used as a starting point for a more detailed Python script. 
+
+ChatGPT, based on the GPT-3.5 architecture, is designed to generate human-like text based on a given prompt. It has been trained on a vast amount of diverse and high-quality data, making it capable of understanding and responding to a wide range of questions, instructions, and conversational prompts. By leveraging ChatGPT's language generation capabilities, you can solve specific problems or get answers to particular questions related to your Blender projects.
+
+
+==== Incorporating ChatGPT into your scripts 
+
+Here are the steps to integrate ChatGPT with your Blender Python scripts:
+
+Installation and Setup:: Ensure you have Blender installed on your machine, along with a compatible version of Python. You can download Blender from the official website (blender.org) and install the required Python packages using pip or a package manager like Anaconda. (The authors preference is to avoid Anaconda)
+
+Importing the ChatGPT Library:: Incorporate the ChatGPT library into your Python environment. OpenAI provides an API that allows developers to interact with ChatGPT programmatically. You'll need to obtain an API key to access the OPENAI ChatGPT service.
+
+Establishing a Connection:: Use the API key to establish a connection with the ChatGPT service. This connection will enable you to send prompts and receive responses from the language model.
+
+Script Integration:: Within your Blender Python scripts, incorporate the necessary code to communicate with ChatGPT. You can prompt the model with questions, provide instructions, or engage in a dialogue with the model. Retrieve the generated text from ChatGPT and use it to influence the behavior of your Blender scene.
+
+
+[TIP]
+Remember to handle the limitations of ChatGPT, such as potential biases or generating incorrect information in response to questions. Preprocessing user inputs, providing context, and implementing appropriate error handling can help mitigate these issues and provide a better user experience.
+
+To summarize, integrating ChatGPT with Blender Python scripts opens up a whole new aspect of Blender, especially for those that need a little extra help and don't have a human mentor handy. 
+
+
+[NOTE]
+There is an add-on available for Blender that integrates ChatGPT with Blender using the ChatGPT API.  It's currently a $5.00 purchase... but feedback seems positive. The addon has the capability to either provide guidance for accomplishing a task or try to carry out the task independently. https://ryanaddons.lemonsqueezy.com/checkout/buy/70eb3e1e-8500-40ff-a652-beef1a511106   The author has not used it.
+
+==== Getting an API Key from OPENAI
+
+Blender Python code developers using ChatGPT are required to use an API key to utilize ChatGPT API from within Python *code*. They can generate this key by logging in to OpenAI's website and selecting "View API Keys". Here is the step-by-step guide.
+
+[TIP]
+You do not have to use the API or use Python code to access ChatGPT. You can always use the interactive chat by using the https://chat.openai.com web interface to ask your questions and have conversations.
+
+To use ChatGPT through the API though, you must create a free account and generate the API key(s). Fortunately, it is pretty straightforward.
+
+You can request an API KEY by signing up here: https://beta.openai.com/signup. You can use your Google or Microsoft account to sign up if you don't want to create a unique UserName & Password combination for OPENAI. You may need a valid mobile number to verify your account.
+
+Once you have an account, you can chose the "View API Keys" option in your profile to "Create a new secret key", which is your API KEY.  
+
+[NOTE]
+Remember, the key created has access to both GPT-4 and ChatGPT models. You don't need separate API keys. ChatGPT-3.5 Turbo is the current ChatGPT default model.
+
+[WARNING]
+You MUST save the key that shows up on the screen when you create a new key.  It will never be shown to you again and if you lose it, you will need to make a new one.
+
+==== API costs
+
+API Queries are not free. Please note that you will be charged based on your monthly usage. The cost structure is as follows: 750 words (aka 1000 tokens). Below is a table representing the cost per 1000 tokens:
+
+|===
+|   Model   |   Cost (Input)
+
+|GPT-3.5 Turbo (4k  context)    |           $0.0015 (13x cheaper than GPT-3 Davinci)
+|GPT-3.5 Turbo (16k context )   |           $0.003
+|===
+
+For example, if you use 10,000 tokens per day of GPT-3 Turbo for 20 days a month, you will be charged 400 cents per month, i.e. 0.002 * 10 * 20.
+
+If you plan to use it regularly, you need to add your credit card information here https://beta.openai.com/account/billing/payment-methods
+
+You can also set up a usage limit if you have a paid set up, say, $10/month at https://beta.openai.com/account/billing/limits​
+
+[NOTE]
+The author is currently not well versed on using the API, so can only provide limited feedback on the experience. 
+
+=== Running a Blender Python Script Inside Blender
+(((Scripting, "Inside Blender")))
+
+To run a Blender script, follow these steps:
+
+(((Python, "Running A Script")))
+
+* Open Blender: Launch the Blender application on your computer. It's probably best to  you have the latest version of Blender installed to have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support, (LTS VERSION) of Blender is probably the best choice.
+
+* Open the Text Editor: Once Blender is open, locate the Text Editor. You can find it by selecting the "Scripting" workspace from the top bar or by navigating to the "Editor Type" dropdown at the top left of any editor area and choosing "Text Editor".
+
+* Create a New Text Block: In the Text Editor, click on the "New" button to create a new text block. This will provide you with a clean space to write or paste your script.
+
+* Write or Import your Script: You have a few options here:
+a. Write the script: If you're familiar with Python scripting, you can directly write your script in the Text Editor. Ensure that your script follows the correct syntax and indentation rules of the Python language.
+b. Import an existing script: If you have a pre-existing script saved as a file on your computer, you can open it in the Text Editor by clicking on the "Open" button and navigating to the script's location.
+c. COPY/PASTE the script code from somewhere. For example,  clicking `copy code` from a ChatGPT conversation and then pasting it into the code editor window of Blender.
+
+* Run the Script: Once you have your script ready in the Text Editor, you can run it by clicking on the "Run Script" button or by using the keyboard shortcut kbd:[Alt] + kbd:[P]. Blender will execute the script, and its functionality will take effect within the Blender environment.
+
+* Observe the Results: Depending on the script you've written or imported, you will see the desired outcome within the Blender interface. This could involve creating or modifying objects, materials, animations, or any other aspect of the 3D scene.
+
+[NOTE]
+It's important to ensure that your script interacts with Blender's API correctly and that it doesn't contain any errors that might cause unexpected behavior or crashes. Always double-check your code for syntax errors or logic mistakes before running it.
+
+By following these steps, you can easily run a Blender script and leverage the power of scripting to automate tasks, create custom tools, or extend Blender's functionality to suit your specific needs.
+
+=== A Collection of Scripts
+
+The following scripts are tested examples of very simple scripts to help get you started with scripting.  They are only a few lines each so you can take the time to digest them and learn how they work.
+
+==== Fixing Material Problems
+
+Let's say you have completed some steps with your project that involved using multiple copies of the same object to be placed around your scene.  Let's also say that these parts actually came from another model so you ended up using a `COPY/PASTE` operation to get them into your scene.  With this as our background setup, what is a possible issue that we might encounter?  Do you know?
+
+Well, one thing that happens when you `COPY/PASTE`, is that your parts get renamed to be unique, which is normal for a `DUPLICATE` operation as well,  but your material reference gets replicated the same way, in other words, it gets renamed.  So if your project has been using a Material named "MAIN"... you will likely end up with a material named "MAIN01" and so on.  This will happen with any objects that were duplicated using `COPY/PASTE` instead of a `DUPLICATE` operation.
+
+[TIP]
+Duplicate objects are created by using kbd:[SHIFT] + kbd:[D] and the process will not try to create a duplicated unique material reference.
+
+
+The goal of the script then 
+So, if you can to fix this issue so you don't end up with 20 materials that are all actually 100% identical, you can run the following script:
+
+[source,python]
+----
+import bpy
+
+# Get the currently active material or create a new one
+material_name = "main"  # Replace with your desired material name
+material = bpy.data.materials.get(material_name)
+if material is None:
+    material = bpy.data.materials.new(name=material_name)
+
+# Assign the material to each selected object
+selected_objects = bpy.context.selected_objects
+for obj in selected_objects:
+    if obj.type == 'MESH':
+        if obj.data.materials:
+            # If the object already has materials, replace the first one
+            obj.data.materials[0] = material
+        else:
+            # If the object has no materials, assign the new material
+            obj.data.materials.append(material)
+----
+
+
+Now selected materials will just have the one assignment of your choosing in slot 0.  It doesn't completely eliminate the issue of material mismanagement, but its a start.
+
+<<<
+
+==== Making copies
+
+While making a copy of an object is easy enough with kbd:[SHIFT] + kbd:[D], sometimes you want to make a copy and offset it by a specific amount.  This next ChatGPT generated script will do that.
+
+image::images/makingcopies.jpg[scale=50%]
+
+To use this script, follow these steps:
+
+* Open Blender and make sure the object you want to duplicate is selected.
+* Open the "Scripting" layout.
+* Create a new text block in the text editor and paste the script.
+* Run the script by clicking the "Run Script" button or pressing Alt+P.
+* The selected object will be duplicated, and the duplicate will be offset by 3 meters in the -Y axis.
+
+Make sure you have the desired unit settings in Blender before running the script to ensure the correct offset distance. Using the Metric units is assumed since it is the default setting.
+
+[source,python]
+----
+import bpy
+
+# Get the selected object
+selected_obj = bpy.context.object
+
+# Duplicate the selected object
+duplicated_obj = selected_obj.copy()
+bpy.context.collection.objects.link(duplicated_obj)
+
+# Offset the duplicated object
+duplicated_obj.location.y -= 3.0
+
+----
+
+<<<
+
+==== Make Selected Objects Become ASSETS
+
+[WARNING]
+The Asset Browser is a Blender feature introduced in version 3.0, therefore, this script will not work on older versions of Blender as the feature is not available.
+
+To use this script, follow these steps:
+
+* Open Blender and switch to the scripting layout.
+* Create or open a new Blender file.
+* Select the objects that you want to mark as assets.
+* Open the "Text Editor" panel and create a new text block.
+* Copy and paste the script into the text block.
+* Click the "Run Script" button or press "Alt+P" to execute the script.
+
+The selected objects will now be marked as assets.
+
+[NOTE]
+Please note that this script assumes you have the necessary objects selected in Blender before running it. Also, make sure to save your work before running the script, as it will modify the objects in your scene.
+
+[source,python]
+----
+import bpy
+
+def mark_objects_as_asset():
+    # Get the currently selected objects
+    selected_objects = bpy.context.selected_objects
+
+    # Iterate over each selected object
+    for obj in selected_objects:
+        # Mark the object as an asset
+        obj.asset_mark()
+
+# Call the function to mark selected objects as assets
+mark_objects_as_asset()
+
+----
+
+<<<
+
+=== Automating the Boring Stuff with Python
+
+_"Hey, isn't that the title of a book from Al Sweigert?"_
+
+
+_"Why yes, it is and it is the inspiration for the following Blender Python code"_
+
+
+
+[NOTE]
+The book "Automate the Boring Stuff with Python" is available from NoStarch Press or Amazon but it is also free to read.  https://automatetheboringstuff.com/#toc  I highly recommend it.
+
+
+=== So what are we going to do next?
+
+When working on a Blender model, you often encounter tasks that require repetitive steps. These tasks can become tedious, especially when you need to repeat them a large number of times, such as 56 times. This is how it all began. Now, let's discuss what led up to this.
+
+While working on the crosstie load for my Norfolk Southern Crosstie Gondola, it was realized that we only needed to create a single crosstie, apply a texture to it, and then use an ARRAY MODIFIER to duplicate it until the objects filled the gondola load area. Below is the final result.
+
+image:images/view.png[]
+
+But how did I get there?
+
+The initial crosstie shape is created using a cube primitive. The dimensions used are  7" x 9"  x  9'  or in Blender ->   Metric (Z = 0.1778m  Y = .2286m  X = 2.7492m). The next steps are to Apply Rotation and Scale and then to texture it.
+
+
+image:images/step1.PNG[]
+
+So now that we have a crosstie built and textured (Not covered here, sorry), it needs to be replicated to fill the gondola load area.  This is made easier by using the *ARRAY MODIFIER* (Under Wrench Icon)
+
+image:images/step2.PNG[]
+
+The settings used are:   *CONSTANT OFFSET* (Not default)  Y Axis OFFSET VALUE: 0.027 (or so). 
+
+[NOTE]
+Uncheck Relative Offset. Zero Out the `X` Field value.  But we need to FILL the area... so the initial `Count` field is "2" and it needs to be increased to fit the area (in this scene, it needed 56 arrayed items to make it fit)
+
+image:images/step3.PNG[]
+
+Great!  We have a FILLED gondola with an array of crossties and we still only needed to make one crosstie to start with.  BUT!  They are all way too uniform and look unnatural.  The problem is, these objects (as they are now) will all continue to imitate any changes we make to the original cube since the array modifier is still *active*.  So now we need to *APPLY* the *ARRAY* modifier while in OBJECT mode.
+
+image:images/step4.PNG[]
+
+Our next problem is that these arrayed objects are all still basically the same grouped object.  All of these objects will also share the SAME origin point as well.  So the next step to do we to break them apart.
+
+* Select the crosstie object (cube)
+* Press kbd:[TAB] for EDIT MODE
+* Press kbd:[P] - to Separate.  Now choose:  "By loose parts" from the menu.
+
+
+Now all of the individual items are *created*, having been separated from the original. (Check your collection list as in this case we now have 56 CUBES that make up the crossties)
+
+All the crossties share the same origin location, making individual adjustments to them is currently rather challenging. Therefore, it becomes necessary to assign each crosstie its own origin point based on its specific geometry. This will allow for easier customization and modifications to each crosstie.
+
+Normally in this case, we would need to make 56 individual edits!  Oh the DRUDGE!  So, let's make use of Blender's scripting TAB.
+
+image:images/step5.PNG[]
+
+Make sure all of your objects (crossties) are currently selected.  (You might want to just select them all from the Collection list.)
+
+[source,python]
+----
+# After running the script, the origin of each selected object will be set 
+# to its geometry. Please note that this script assumes you have the 
+# objects selected before running it.
+import bpy
+
+# Get the selected objects
+selected_objects = bpy.context.selected_objects
+
+# Iterate over the selected objects
+for obj in selected_objects:
+    # Set the object as active
+    bpy.context.view_layer.objects.active = obj
+    # Set the pivot point to the object's geometry
+    bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')
+
+# Select all objects again to refresh the selection
+bpy.ops.object.select_all(action='DESELECT')
+for obj in selected_objects:
+    obj.select_set(True)
+
+----
+
+Open the scripting tab in Blender, follow these steps: 
+
+1. In Blender and navigate to the top header of the application.
+2. Locate and click on the "Scripting" tab.
+3. Within the "Scripting" tab, go to the "Text" tab.
+4. Choose "Create New" to create a new file.
+5. Enter or paste the provided code into the Blender Python Editor window.
+
+image:images/step6.PNG[]
+
+Press the `RUN` icon to run the code. (You will see that it did something in the windows on the left).  You can switch back to LAYOUT from the Scripting tab for a better view.
+
+image:images/step7.PNG[]
+
+Now all of the objects have their own origin based on their specific geometry. (See all the orange origin dots on each crosstie?)
+
+The next step is to randomize the `Z` axis location of these objects (crossties) so they look less uniform.
+
+In the Blender Python Editor (Scripting Tab), create a NEW text document and enter/paste-in the following code:
+
+[source,python]
+----
+import bpy
+from random import uniform
+
+# Get the selected objects
+selected_objects = bpy.context.selected_objects
+
+# Iterate over each selected object
+for obj in selected_objects:
+    # Generate a random offset in the range of -0.05m to 0.05m
+    offset = uniform(-0.05, 0.05)
+    
+    # Update the object's location
+    obj.location.z += offset
+
+----
+
+image:images/step8.PNG[]
+
+Press the `RUN` icon to run the code. 
+
+You will end up with the following...
+
+image:images/step9.PNG[]
+
+and finally...
+
+image:images/view.png[]
+
+To summarize:
+
+We encountered a situation where the crosstie load needed to be placed non-uniformly, but it was realized that creating just a single textured cube object and performing minimal additional steps, such as replication with offsets would suffice. Furthermore, as a result of this process, you now have two more scripts in your collection that can assist with future object manipulation in Blender.
+
+=== Using a script from the console
+
+You can execute the following code in the python console to execute an external script without opening it up in the text editor:
+
+[source,python]
+----
+filename = "/full/path/to/myscript.py"
+exec(compile(open(filename).read(), filename, 'exec'))
+----
+
+or run the following code in the python console to execute another script:
+
+[source,python]
+----
+import bpy
+
+script = bpy.data.texts["script_name.py"]
+exec(script.as_string())
+----
+
+=== Using a script from the command line
+
+Using a terminal window (command shell)  in your operating system, you can execute the following code in the python console to execute an external script without opening it up in the text editor:
+
+`blender yourblendfilenameorpath --python myscript.py `
+
+
+== A Few Setup Script Examples
+(((Scripting, "helping you setup")))
+
+So lets try some more scripting examples. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
+
+Lets say we know that the distance from the center of the vehicle to the center of the bogie is 3.5 meters.  We also know that the vehicle is 10 meters long so we have an idea where the couplers are.  We would also know that the vehicle is 2.9 meters wide.
+
+So what if we could place some marker references using the AXIS Plane object in Blender to visualize the locations of the bogies and couplers. Here is some sample code to do that:
+
+[source,python]
+----
+import bpy
+
+# Define the locations where objects will be placed (in this case, a list of tuples).
+object_locations = [
+    (0.0, 3.5, 0.89), # Bogie location 1
+    (0.0, -3.5, 0.89), # Bogie location 2
+    (0.0, 5.0, 0.89), # Coupler location 1
+    (0.0, -5.0, 0.89), # Coupler location 2
+    # Add more locations as needed
+]
+
+# Create a new mesh object and place it at each location
+for i, location in enumerate(object_locations):
+    # Create a new cube mesh (you can use any object type)
+    bpy.ops.object.empty_add(type='PLAIN_AXES', align='WORLD', location=location)
+
+    # Optionally, give it a unique name (e.g., Cube_1, Cube_2, etc.)
+    obj = bpy.context.object
+    obj.name = f"axis_{i+1}"
+
+    # You can also adjust other object properties like scale or rotation if needed
+    # obj.scale = (1.0, 1.0, 1.0)
+    # obj.rotation_euler = (0.0, 0.0, 0.0)
+----
+
+If we are following along with the MSTS/OPEN RAILS Exporter documentation, we would want to create a new collection called "MAIN" and then create a sub-collection called "MAIN_700" under "MAIN".  We can use the following code to do that:
+
+
+[source,python]
+----
+import bpy
+
+# Function to create a new collection if it doesn't exist
+def create_collection(name, parent_collection=None):
+    if name not in bpy.data.collections:
+        new_collection = bpy.data.collections.new(name)
+        if parent_collection:
+            parent_collection.children.link(new_collection)
+        else:
+            bpy.context.scene.collection.children.link(new_collection)
+        return new_collection
+    else:
+        return bpy.data.collections[name]
+
+# Create the main collection "MAIN"
+main_collection = create_collection("MAIN")
+
+# Create the sub-collection "MAIN_700" under "MAIN"
+sub_collection = create_collection("MAIN_700", parent_collection=main_collection)
+
+print(f"Created collections: {main_collection.name}, {sub_collection.name}")
+
+sub_collection = create_collection("MAIN_2000", parent_collection=main_collection)
+
+print(f"Created collections: {main_collection.name}, {sub_collection.name}")
+
+----

@@ -12,6 +12,7 @@ Since this document will primarily be about using Blender, other 3d modeling too
 <<<
 
 == Common Terms and Definitions
+(((Making Contentm TERMS. DEFINITIONS)))
 
 ALPHA	::	 A bit map with a portion of the image that is masked-out, making the location appear see-though in the image.		
 DISTANCE LEVELS	::	 See Level of Detail (LOD)
@@ -45,11 +46,11 @@ WAG FILE	::	 A file that describes to the Simulator the details of an Asset to b
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
 
-Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {{MSTS}} might cause the vehicle to not perform optimally
+Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {MSTS} might cause the vehicle to not perform optimally
 Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters 
 Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
-Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {{MSTS}}
-Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {{MSTS}} and also requires files that only come with an installation of {{MSTS}} on the system
+Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS}
+Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {{MSTS}} on the system
 Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {{MSTS}} to be installed and relies on additional "default" products. 
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
@@ -133,9 +134,12 @@ To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very 
 === What I Can Recommend:
 
 * 3D Modeler: Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
-* BitMap Tools: _Serif Affinity Photo_, _Photoshop CS2_ (You can still get this for free from Adobe if you google for it) , _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ for free.
+* BitMap Tools: _Serif Affinity Photo or Designer_, _Photoshop CS2_ (You can still get this for free from Adobe if you google for it) , _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ or _Krita_ for free.
 * UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
+
+[NOTE]
+Much of this document was created with Blender version 3.6 LTS and I've not attempted to use Version 4.x.
 
 [NOTE] 
 CONTEXT is an abandoned editor, but it has a syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but I've not finished it yet.  https://github.com/pwillard/engwag
@@ -338,7 +342,7 @@ The Add-ons section lets you manage secondary scripts, called “Add-ons” that
 
 Blender’s add-ons are split into two groups depending on who writes or supports them:
 
-Official:: Add-ons that are written by Blender developers.
+Official:: Add-ons that are written by Blender developers and/or are included with Blender.
 Community:: Add-ons that are written by people in the Blender community.
 
 ===== Enabling and Disabling Add-Ons
@@ -389,23 +393,32 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 
 (((Blender, "Community Add-ons")))
 
-[cols="1,3,3"]
-|===
-| Add-on	| Where to get it	| What it does
 
-| Blender28to{MSTS} |Available From: https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter/blob/main/Blender_{MSTS}_ORTS_Exporter.zip See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. DOCS: https://github.com/pwillard/Ebook-{MSTS}ORTSExporter/blob/main/{MSTS}ORTSExporter.pdf
+1)  Blender28toMSTS
+* Available From: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip 
+* See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] 
+* Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. 
+* DOCS: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf
 
-|Edge to Curve | Available From: https://github.com/Stromberg90/Scripts | A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
+2) Edge to Curve
+* Available From: https://github.com/Stromberg90/Scripts
+* A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
 
-|===
+3) Export To Blend
+* Available from: https://blendermarket.com/products/export-to-blend 
+* Price: $5.00
+* This add-on allows you to export your model to a `.blend` file.
+* It allows you to export the model to a `.blend` file with all the materials, textures, and textures coordinates and is useful when you want to create a library of *parts* for your 3D modeling.
+
+
 
 [NOTE]
 ====
-These are free add-ons, but some of the add-ons that you could want to install later might be add-ons you would need to pay for.
+Most of these are free add-ons, but some of the add-ons that you could want to install later might be add-ons you would need to pay for.
 
-There are hundreds of add-ons that are not distributed with Blender and are developed by others. To add them to the list of available add-ons, they must be installed into Blender.
+There are hundreds of add-ons that are not distributed with Blender and are developed by others. To add them to the list of available add-ons, they must be installed into Blender. BlenderMarket and GUMROAD are the two most popular places to find add-ons.
 
-To install these, choose the btn:[Install…] button and use the `File Browser` to select the `.zip` or `.py` add-on file.
+To install the 3rd-party add-ons, choose the btn:[Install…] button and use the `File Browser` to select the `.zip` or `.py` add-on file.
 
 You will then have the option to enable to disable the installed add-on using the add-on check-box in the list.
 ====
@@ -413,6 +426,8 @@ You will then have the option to enable to disable the installed add-on using th
 
 [TIP]
 ====
+*BLENDERKIT*
+
 _From Marek at ELvas Tower:_ I have been using the free `BlenderKit` add-on recently. It's enabled via *Preferences>Add-on*. `BlenderKit` has over 5000 materials and ones like rubber, metal, plastic come in handy for rolling stock texturing. I found a checker plate procedural material that I applied to the walkway sections of my model below. Because it's procedural you can scale the checker without loosing image quality. 
 
 I guessed at the scale and then rendered the image using the top down camera I had used to render the {AO}. I then edited the resultant render image to remove the roof and other details so only the walkway was left and placed in on the texture file in GIMP. Because the scale of the orthographic camera did not change compared to the {AO} everything was lined up. Blended with the {AO} layer below and the subtle shading its light years ahead of what I have been able to achieve in the past. 
@@ -584,6 +599,7 @@ Reminder, this document is basically a "notebook" and it started life as my coll
 
 
 === Orientation
+((( Content Creation, "Orientation")))
 
 There is a need to properly orient your model if you are making rolling stock or an engine.  If you have used 3D modeling software in the past, maybe 3D Crafter / 3D Canvas or Maya you might be accustomed to Z axis being DEPTH and the X axis being WIDTH and Y axis being HEIGHT.  Blender orientation is similar to 3DS MAX where Z is HEIGHT, X is WIDTH and Y is DEPTH.
 
@@ -596,12 +612,14 @@ Blender's default point of view differs slightly in that it considers the FRONT 
 
 === Engine/Wagon Model Hierarchy
 
+(((Content Creation, "Engine/Wagon Model Hierarchy")))
+
 For the Blender Exporter to properly process your model, you must have a "collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other collections may be children of this collection but the `MAIN` collection is where you will place your model hierarchy but `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
 
 image:images/layout-h.png[]
 
 [WARNING]
-The Blender Exporter expects the model to be built with the collection names *capitalized*, such as `MAIN`, `MAIN_700`, BOGIE, WHEEL, etc.  If you have a collection named `main` or `main_700` the Blender Exporter will complain and will not export your model.
+The Blender Exporter expects the model to be built with the collection names *capitalized*, such as `MAIN`, `MAIN_700`, `BOGIE`, `WHEEL`, etc.  If you have a collection named `main` or `main_700` the Blender Exporter will complain and will not export your model.
 
 For a model to work correctly in {OR}, there are some requirements that need to be met if you want to have the simulator properly automate animations for wheels and bogies.  For simplicity, I am implying that the A-END of the boxcar is on the right and the B-END (with Brakes) is on the left.  The Boxcar's default direction of travel in this case then would be this way, ->, or from Left to Right.  (Refer to `ORIENTATION` section above)
 
@@ -672,8 +690,8 @@ Also, see <<Creating Rolling Stock and Locomotives>>
 
 === Various General Notes about Content Creation
 
-[.lead]
-An interesting discussion occurred in 2017 about making these files better and more useful in the post-Microsoft Train Simulator world. 
+
+_An interesting discussion occurred in 2017 about making these files better and more useful in the post-Microsoft Train Simulator world._
 
 
 [quote, Erick Cantu, 20 November 2017 ]
@@ -747,6 +765,7 @@ and
 
 
 === General Modelling Standards from Erick Cantu
+(((General Modeling Standards, continued)))
 
 I feel these comments about creating content from Erick are so important that they need to be documented here as a reference. These details have been extracted from forum posts at Elvas Tower and are meant as a guide if you want to emulate his results.  While these are not hard rules, they definitely give us something to work with.  
 
@@ -763,11 +782,11 @@ Erick supplies a lot of details about his approach to modeling here. Its worth r
 
 * Cars should all use consistent bitmap resolution and be designed with a wide variety of systems in mind. This consistency should apply both between cars and between the constituent parts of the cars themselves, including the texture mapping scale. Ideally, triangle counts should be around 12,000 or less at the top LOD, with aggressive optimization of vertex counts through the limiting of hard edges and careful welding of UV coordinates wherever possible.
 
-* There should be no more than one texture sheet for the carbody and no more than one for the trucks. Because most cars will need at least some alpha work, the entire carbody should use a single BlendATexDiff material (with the -Trans flag OFF) unless there is a compelling reason to apply a second material. Reasons include a need to have specular highlights applied to only some parts of the mesh, or, in the case of the Foobie hoppers, to allow the car side to be mapped as a single unit, with only parts of it using an alpha channel. Adding a material means adding a drawcall, so this should be a very conscious process. It's okay to have trucks in a separate texture because animated parts are going to be a separate drawcall anyway.
+* There should be no more than one texture sheet for the car body and no more than one for the trucks. Because most cars will need at least some alpha work, the entire car-body should use a single BlendATexDiff material (with the -Trans flag OFF) unless there is a compelling reason to apply a second material. Reasons include a need to have specular highlights applied to only some parts of the mesh, or, in the case of the _Foobie_ hoppers, to allow the car side to be mapped as a single unit, with only parts of it using an alpha channel. Adding a material means adding a draw-call, so this should be a very conscious process. It's okay to have trucks in a separate texture because animated parts are going to be a separate draw-call anyway.
 
-* The texture resolution and mesh resolution must be congruent and consistent with a target viewing distance. One of the things I really hate is when people build these super high resolution parts with super hi-res textures and then put them on a model where the gestalt is a much lower resolution. It's a waste of vertices and real estate on the textures for the detail parts because everything around them is going to look like garbage in comparison. The same goes for detail parts that are a high resolution when the rest of the mesh isn't, so you have this hilariously detailed builder's plate right next to a wheel with like 20 sides, so you'll never see the difference in the builder's plate detail without zooming in to a point where the wheel right next to it completely breaks the suspension of disbelief. A cursory glance at Turbosquid or CGTrader makes it plain that 3D model builders are terrible at this as a rule. There are some practical exceptions when running against OR limitations. For example, I backlight my number boards with lights that change based on the locmotive's coupling status. But OR will render any alpha part ahead of another alpha part with a 1-bit alpha channel, and the light halo is a flat polygon with an alpha channel, so the only way to make the numbers look good is to bump up the texture resolution (again, 1-bit edges always look like garbage unless they're perfectly square).
+* The texture resolution and mesh resolution must be congruent and consistent with a target viewing distance. One of the things I really hate is when people build these super high resolution parts with super hi-res textures and then put them on a model where the gestalt is a much lower resolution. It's a waste of vertices and real estate on the textures for the detail parts because everything around them is going to look like garbage in comparison. The same goes for detail parts that are a high resolution when the rest of the mesh isn't, so you have this hilariously detailed builder's plate right next to a wheel with like 20 sides, so you'll never see the difference in the builder's plate detail without zooming in to a point where the wheel right next to it completely breaks the suspension of disbelief. A cursory glance at Turbosquid or CGTrader makes it plain that 3D model builders are terrible at this as a rule. There are some practical exceptions when running against OR limitations. For example, I backlight my number boards with lights that change based on the locomotive's coupling status. But OR will render any alpha part ahead of another alpha part with a 1-bit alpha channel, and the light halo is a flat polygon with an alpha channel, so the only way to make the numbers look good is to bump up the texture resolution (again, 1-bit edges always look like garbage unless they're perfectly square).
 
-* Splitting car sides into multiple sections is not recommended, as it adds unnecessary mesh divisions and UV coordinates. It may be necessary for very long cars, such as auto-racks, however, for most cars of 60 feet or less, it's really not necessary if you plan ahead. Using the top half of a texture sheet for one car and the bottom half for another creates a large, rectangular area to work with and allows for multiple cars to use a single texture sheet. Remember, Open Rails is sensitive to both drawCall counts and the total number of images across a train, so putting multiple cars in one texture isn't actually a bad idea.
+* Splitting car sides into multiple sections is not recommended, as it adds unnecessary mesh divisions and UV coordinates. It may be necessary for very long cars, such as auto-racks, however, for most cars of 60 feet or less, it's really not necessary if you plan ahead. Using the top half of a texture sheet for one car and the bottom half for another creates a large, rectangular area to work with and allows for multiple cars to use a single texture sheet. Remember, Open Rails is sensitive to both draw-call counts and the total number of images across a train, so putting multiple cars in one texture isn't actually a bad idea.
 
 * The top node's pivot should be 2 inches below the rail to ensure that wheels sit on the rails correctly. (Keep in mind that you might need to tweak this for proper ride height)
 
@@ -777,19 +796,19 @@ Erick supplies a lot of details about his approach to modeling here. Its worth r
 
 * Keeping draw-call counts low is important. Keeping overall texture counts low is even more important. Car bodies should strive to use both a single texture sheet and a single material for that sheet unless there is a need to have more than one material (e.g., for specular roofs on cars with flat sides). We can always place multiple car-bodies in a single sheet if a single square texture is not adequate. This has been NAVS standard practice for freight cars for some time now.
 
-* 1-bit alpha channels and aliased edges are unnecessary and unacceptable. OR renders 32-bit textures correctly, so there's no need to have separate materials just for alpha parts, accordingly, having separate materials for 1-bit alpha parts and 8-bit alpha parts is adding unnecessary drawcalls. It's much more efficient to use a single material with an 8-bit alpha channel if there's going to be any need for greyscale alpha on a model at all. The only time a 1-bit alpha channel is acceptable is when a transparent area is perfectly square. Otherwise, any curved or angled lines just look like hot garbage.
+* 1-bit alpha channels and aliased edges are unnecessary and unacceptable. OR renders 32-bit textures correctly, so there's no need to have separate materials just for alpha parts, accordingly, having separate materials for 1-bit alpha parts and 8-bit alpha parts is adding unnecessary draw-calls. It's much more efficient to use a single material with an 8-bit alpha channel if there's going to be any need for grey-scale alpha on a model at all. The only time a 1-bit alpha channel is acceptable is when a transparent area is perfectly square. Otherwise, any curved or angled lines just look like hot garbage.
 
 * The {MSTS} convention of having the underside of all freight cars be completely devoid of any geometry, leaving the user to see sky when the car is viewed from below. This flies in the face of the fact that bridges are a thing, so this practice is best avoided. Car undersides do not need to be complex, but they should be present.
 
 * Generally, it's wise to use whatever units match your reference materials to avoid unnecessary conversions. For example, when I build a Boeing, I work in decimal inches. When I build an Airbus, I work in decimal meters. For most US stock, reference materials will be in inches.  Its not a rule though.  If you have a scale calculator handy, its not hard to convert Imperial to Metric and visa-versa. (And you may learn to actually like the metric system.)
 
-* No "imagineered" details
+* No "imagineered" details, create as accurately as possible.
 
 * Within the target viewing distance I set, I try to model everything that should be visible but at a consistent resolution with the rest of the model, for example, I build the brake rigging in its entirety, but I use very simple shapes to do it because my target viewing distance for a standard-definition car is no closer then when the whole car is visible on-screen. The resolution of every part on the model needs to increase exponentially as you get closer, so this was the balance I struck.
 
 * Taper your wheel treads. Please, just do it. It's really obvious when you don't.
 
-* Ensure that all UV coordinates that can be welded are welded and plan your mapping ahead of time to ensure that you can weld as many UV coordinates as is possible. Texture vertices matter just as much as drawcalls.
+* Ensure that all UV coordinates that can be welded are welded and plan your mapping ahead of time to ensure that you can weld as many UV coordinates as is possible. Texture vertices matter just as much as draw-calls.
 
 * For the same reason, plan hard edges with purpose. If an edge is always going to be in a dark area, smooth it.
 
@@ -803,7 +822,7 @@ Erick supplies a lot of details about his approach to modeling here. Its worth r
 
 * If a feature can't be done right, it doesn't get added. This is why my track sounds don't incorporate switch and crossing sounds, even though OR allows for it, because you can't account for the truck spacing or the different number of wheels as it presently stands, so it's always going to break the suspension of disbelief.
 
-The main point is to really be purposeful about the choices that you make. Little things will really accumulate over the course of a long train, especially when AI trains enter the equation. This is why I was so intent on redoing my car sounds, because I had been less purposeful about the way that my streams were set up and it was maxing out the number of streams active at any given time. This is also why I have moved from individual car textures to paint and weathering variations with car numbers applied via decals, because the number of textures, based on my testing, is the single biggest determinant of performance across an entire train. The tradeoff was one extra drawcall per car (the decal shape) so that an entire train with discrete car numbers and multiple weathering patterns could be built with a very small number of textures. In the case of my BN hoppers, 100 cars use 13 texture sheets (every 25 cars uses two car body texture sheets and one decal sheet, with all cars using the same truck texture). To do the same thing without the decal shapes would have taken 51 sheets (one for every two cars plus the truck texture).
+The main point is to really be purposeful about the choices that you make. Little things will really accumulate over the course of a long train, especially when AI trains enter the equation. This is why I was so intent on redoing my car sounds, because I had been less purposeful about the way that my streams were set up and it was maxing out the number of streams active at any given time. This is also why I have moved from individual car textures to paint and weathering variations with car numbers applied via decals, because the number of textures, based on my testing, is the single biggest determinant of performance across an entire train. The tradeoff was one extra draw-call per car (the decal shape) so that an entire train with discrete car numbers and multiple weathering patterns could be built with a very small number of textures. In the case of my BN hoppers, 100 cars use 13 texture sheets (every 25 cars uses two car body texture sheets and one decal sheet, with all cars using the same truck texture). To do the same thing without the decal shapes would have taken 51 sheets (one for every two cars plus the truck texture).
 
 === Additional guidance from Blender Brothers
 

@@ -78,7 +78,7 @@ Using background images is optional, but many modelers use blueprint backgrounds
 
 When inserting background reference drawings into Blender, it is not critical that you match up the image size to equal world space dimensions, but it can save a lot of re-scaling steps later. One of the main issues with using backgrounds in Blender is that some methods you might be accustomed to with other modeling tools don't work in Blender, such as applying background image to a cube and using that as your reference, since in Blender, you only see the texture in a texture viewing mode. It will disappear in Xray/Wireframe and even solid shading modes. 
 
-When you insert a background using Blender's menu:Add[Image > Background],  the image WILL show up while you are in wireframe modes... but note that by default the image will ONLY be visible from the axis it faces. Be careful when you install a background image as you need to to be in the Axis View you want, since the added image will orient itself to your current view.  If you want to change this, you can enable the `Perspective View` check-box by clicking on the `EMPTY` and adjusting the setting it's properties window.
+When you insert a background using Blender's menu:Add[Image > Background],  the image WILL show up while you are in wire-frame modes... but note that by default the image will ONLY be visible from the axis it faces. Be careful when you install a background image as you need to to be in the Axis View you want, since the added image will orient itself to your current view.  If you want to change this, you can enable the `Perspective View` check-box by clicking on the `EMPTY` and adjusting the setting it's properties window.
 
 Background images are added to our scene as `EMPTIES`, which means that they are not going to be part of an exported model.  To avoid accidentally moving or changing the background image, you can use the filter options in the outliner, first enabling the "mouse cursor" icon and then setting the restriction toggles to disable the "mouse cursor" icon for the empties you added to the list, which will prevent you from accidentally selecting the background images.
 
@@ -177,7 +177,7 @@ As I said, Blender isn't the easiest program to learn, but even a first-week nov
 |===
 
 [TIP]
-Pressing kbd:[GG] as in pressing the kbd:[G] key twice, will allow you to SLIDE move along an edge.
+Pressing kbd:[GG] as in pressing the kbd:[G] key twice, will allow you to SLIDE vertices along an edge.
 
 [TIP]
 When scaling with the mouse, the closer your mouse is to the object, the more impact the mouse has on scale movement.  If you want more control, begin the kbd:[S] operation with the mouse cursor further way from the selected item's origin.
@@ -400,7 +400,7 @@ The operation has an "Adjust Last Operation" panel where you can still adjust so
 For more precise adjustments, you can turn on the "Edge Length" feature in "Viewport Overlays" to visually see the edge lenths.
 
 [TIP]
-The "smoothness" value will scale  the selected loop cuts using a fallof profile.
+The "smoothness" value will scale the selected loop cuts using a fall-off profile.
 
 [TIP]
 You can use the function kbd:[CTRL-F] or Search for "Tris to Quads" to un-triangulate a shape to possibly regain the ability to use the Loop Cut options again.
@@ -478,7 +478,7 @@ You would later create as many LOD based MAIN_xxxx collections as needed for you
 image:images/MyCollection.JPG[]
 
 
-[IMPORTANT]
+[NOTE]
 ----
 You will want to download and install the "Blender 2.8 to MSTS Exporter".  https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip
 
@@ -495,7 +495,7 @@ This is a quick tutorial on general model building.   To get started, we are mak
 
  * We are building a very simple shape without using a background image.
  * We only need a few general dimensions.  
- * We will re-make my first Blender project for MSTS;  The Jersey Barrier, 12', by 42" by by 32". 
+ * We will re-make my first Blender project;  The Jersey Barrier, 12', by 42" by by 32". 
 
 Key items to take away from exercise #1
 
@@ -563,7 +563,7 @@ image:images/oops2.jpg[]
 We are in ViewPort "Shading Solid" Mode.
 
 [WARNING]
-Do you understand what happened?  We only selected the FRONT facing vertices! We didn't touch the ones in the back. Press kbd:[CTRL,Z] to undo if you completed the above step. To select ALL of the vertices that we really want to select, we need to be in `XRAY/Wireframe` mode. To chose this mode, press kbd:[Z] and chose `WIREFRAME`, making sure that the viewport mode on the top right of the screen agrees. You can also toggle Wireframe mode by using kbd:[ALT] kbd:[Z]. The Circle with LINES in it and the `X-RAY` icon next to it should also be highlighted.
+Do you understand what happened?  We only selected the FRONT facing vertices! We didn't touch the ones in the back. Press kbd:[CTRL,Z] to undo if you completed the above step. To select ALL of the vertices that we really want to select, we need to be in `XRAY/Wireframe` mode. To chose this mode, press kbd:[Z] and chose `WIREFRAME`, making sure that the viewport mode on the top right of the screen agrees. You can also toggle Wire-frame mode by using kbd:[ALT] kbd:[Z]. The Circle with LINES in it and the `X-RAY` icon next to it should also be highlighted.
 
 * Make sure you are in vertex select mode kbd:[1], and also in the front view kbd:[1] we will remove the left side vertices. Press the kbd:[Z] key and select `WIREFRAME`,  Press kbd:[Keypad 1], and then kbd:[1] on the keyboard to select front view & vertex mode. You should see your vertex dots and the model will look transparent now and not solid.  
 
@@ -688,7 +688,7 @@ Materials are an important part of creating realistic and visually appealing 3D 
 
 * Your object likely received a default empty material. Let's update it.  Under `SURFACE PROPERTIES`, Click the small circle on the left side of the `BASE COLOR` field.  You will get a list of options.   
 
-* Choose  `Image Texture` and we will thhen locate the Concrete texture we will use. (You can create your own or use the one I created for this)  You should have some texture file ready in advance.
+* Choose  `Image Texture` and we will then locate the Concrete texture we will use. (You can create your own or use the one I created for this)  You should have some texture file ready in advance.
 
 * Under `BASE COLOR` you now see `+NEW` and `OPEN` icons.  Click `OPEN` and chose your existing texture file. The `UV SQUARE` background image in the UV Window should now display your image behind your `UV ISLANDS`.  If you choose `NEW`, you will have a blank image assigned to the material, which in this case is not helpful.
 
@@ -761,7 +761,7 @@ In `OBJECT MODE`, under the Materials property panel, scroll down to the bottom 
 * Chose menu:FILE[EXPORT > OPENRAILS/MSTS(s)] file, and choose where to save. Use the browser to select your project's `\final\` folder and modify the filename as needed...  I chose `barrier.s` for example.  The bottom of the screen will say "Finished OK" when done.
 
 [NOTE] 
-The exporter will ONLY create the `.S` file and by default assume your texture is `.ace`.  Converting your `TGA`, `.JPG` or `.PNG` textures to `.ACE` (or .`DDS` ) remains for you do as you will need to do this manually ourside of Blender.
+The exporter will ONLY create the `.S` file and by default assume your texture is `.ace`.  Converting your `TGA`, `.JPG` or `.PNG` textures to `.ACE` (or .`DDS` ) remains for you do as you will need to do this manually outside of Blender.
 
 
 For a sanity check... edit your exported `.S` file with a unicode editor to make sure your texture reference is correct.
@@ -782,8 +782,10 @@ Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used 
 
 [NOTE]
 ====
-ABOUT DDS SUPORT 
+ABOUT DDS SUPPORT 
 With a master texture file, in a `PSD` format for example,  and using PAINT.NET to keep the layers intact, you cave save it from PAINT.NET as a `.DDS` file natively.   As a result, a minimal amount of after-the-fact editing is needed.  To work in Blender, save a copy the master `PSD` file as a `PNG` file and to work with in Blender. Then save a copy of the master `PSD` file as a `DDS` file.
+
+Also note that even is an S file references a `.ace`, Open Rails will attempt to find a `.dds` with the same name, and if found, it will use the `.dds` instead of the `.ace` file.  This is a nice feature. To me, relying on it does seem to be a bit lazy.
 ====
 
 [IMPORTANT]
@@ -1231,6 +1233,8 @@ Archives and Magazines: Check out digital archives of automotive magazines from 
 
 ==== Organizing Your Reference Material
 
+((( Modeling, "Reference Material")))
+
 Once you have collected a sufficient number of reference images, it's essential to organize them for easy access during the modeling process. Create a folder on your computer dedicated to this project and categorize your images based on different aspects of the van:
 
 * Exterior: Include photos of the van from various angles, showing details like headlights, taillights, grille, and body lines.
@@ -1321,7 +1325,7 @@ As with the previous project, we load in our reference background images.  I pic
 
 I like to start constructing vehicles starting with the trucks, and for this I'm going to recommend downloading a *.blend file to simplify this.   Erick Cantu has graciously provided various trucks that we can include in our own models.  They can be downloaded from Elvas Tower.
 
-You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  In the long runm this will lead to consistency between modelers.
+You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  In the long run, this will lead to consistency between modelers.
 
 [TIP]
 I have also uploaded a usable Blender example of 100T truck, based on Erick's there as well.  Available items include: "Source files for NAVS N-Series freight car trucks", "Source files for NAVS Z-Series freight car trucks", "100T Roller Bearing Truck Blender Object" some of which are also available at Trainsim.com as well.    Erick's trucks include attached couplers. I often choose to separate the couplers but that is left up to you to decide.  Erick has good reasons for keeping couplers attached to truck rotations.

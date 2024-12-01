@@ -1,4 +1,5 @@
 == Introduction to Blender Scripting
+(((Scripting, "Using Python")))
 
 Some of Blender's true potential is unlocked through scripting. Blender scripting allows users to automate repetitive tasks, create custom tools, and extend the software's capabilities to suit their specific needs.
 
@@ -20,7 +21,7 @@ To get started with Python though, you should probably set up a development envi
 
 Getting started with Python is relatively easy and straightforward. Here's a step-by-step guide to help you begin your Python journey:
 
-Install Python:: Visit the official Python website (https://www.python.org) and download the latest version of Python for your operating system. Follow the installation instructions provided by the Python installer.
+Install Python:: Visit the official Python website (https://www.python.org) and download the latest version of Python for your operating system. Follow the installation instructions provided by the Python installe
 
 Set up a development environment:: You'll need a code editor or an integrated development environment (IDE) to write and run your Python code. Some popular choices include Visual Studio Code, PyCharm, and Atom. Choose the one that suits your preferences and install it.
 
@@ -44,14 +45,14 @@ Remember, learning programming is an iterative process. Start small, be patient,
 [TIP]
 Embarcadero has a Python IDE that is quite handy and much better than the one that comes with Python by default.  You can get it here: https://www.embarcadero.com/free-tools/pyscripter/free-download
 
-
 As mentioned, Blender has a built-in Python API and Python interpreter that allows you to control its functionality programmatically. 
 
 
 [NOTE]
-There is a Blender Add-On called SERPENS that will help you develop Blender HUI based add-ons from your code. Its a paid add-on, but its really neat.
+There is a Blender Add-On called *SERPENS* that will help you develop Blender GUI based add-ons from your code. Its a paid add-on, but its really neat.
 
 === Blender and ChatGPT
+(((Scripting,"Chatgpt")))
 
 If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is, quite simply, the best artificial intelligence chatbot ever released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit.  There are two ways to make use of the chatbot and these are: 
 
@@ -128,10 +129,11 @@ You can also set up a usage limit if you have a paid set up, say, $10/month at h
 The author is currently not well versed on using the API, so can only provide limited feedback on the experience. 
 
 === Running a Blender Python Script Inside Blender
+(((Scripting, "Inside Blender")))
 
 To run a Blender script, follow these steps:
 
-(((Python, "Runing A Script")))
+(((Python, "Running A Script")))
 
 * Open Blender: Launch the Blender application on your computer. It's probably best to  you have the latest version of Blender installed to have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support, (LTS VERSION) of Blender is probably the best choice.
 
@@ -196,6 +198,77 @@ for obj in selected_objects:
 Now selected materials will just have the one assignment of your choosing in slot 0.  It doesn't completely eliminate the issue of material mismanagement, but its a start.
 
 <<<
+
+==== 3DC Export/Import Issues
+
+If you are exporting a 3D model from 3D Crafter/3D Canvas  and importing it into Blender, you may encounter various issues with the UV mapping and materials.  
+
+Below is a more complete example of how to cope with these issues, submitted by Scott Brunner.
+
+[NOTE]
+This script below contains a scale factor for converting FEET to METERS.  If you are not using FEET, you can remove (comment out)  the scale factor.
+
+[source,python]
+----
+import bpy
+
+for mesh in bpy.data.meshes :           # for every mesh in the .blend file
+    if len( mesh.uv_layers ) == 0:      #   if it doesn't have any uv maps
+        mesh.uv_layers.new()            #     create one
+    if not mesh.uv_layers.get('UVMap'): #   if it doesn't have one with the default name
+        firstmap = mesh.uv_layers[0]    #     rename the first map
+        firstmap.name = 'UVMap'         #     to the default name
+
+# Remove "S_" prefix from object names
+for obj in bpy.data.objects:
+    if obj.name.startswith("S_"):
+        obj.name = obj.name[2:]
+
+# Remove "_mat" suffix from object names
+for obj in bpy.data.objects:
+    if "_mat" in obj.name:
+        obj.name = obj.name.split("_mat")[0]
+        
+scale_factor = 0.3047999902464
+
+for obj in bpy.data.objects:
+    obj.scale = (scale_factor, scale_factor, scale_factor)
+    
+textures = set()
+
+# get all textures used in current scene
+for obj in bpy.data.objects:
+    for slot in obj.material_slots:
+        mat = slot.material
+        if mat.use_nodes:
+            for node in mat.node_tree.nodes:
+                if node.type == 'TEX_IMAGE':
+                    textures.add(node.image.name)
+
+# create new materials
+for texture in textures:
+    material_name = texture.split(".")[0]
+    new_material = bpy.data.materials.new(material_name)
+    new_material.use_nodes = True
+    bsdf = new_material.node_tree.nodes["Principled BSDF"]
+    # create new texture node and set its image
+    texture_node = new_material.node_tree.nodes.new("ShaderNodeTexImage")
+    texture_node.image = bpy.data.images[texture]
+    # link texture node to the material output
+    new_material.node_tree.links.new(texture_node.outputs[0], bsdf.inputs[0])
+
+# replace materials for objects
+for obj in bpy.data.objects:
+    for slot in obj.material_slots:
+        mat = slot.material
+        if mat.use_nodes:
+            for node in mat.node_tree.nodes:
+                if node.type == 'TEX_IMAGE':
+                    texture_name = node.image.name
+                    new_material_name = texture_name.split(".")[0]
+                    obj.material_slots[slot.name].material = bpy.data.materials[new_material_name]​
+----
+
 
 ==== Making copies
 
@@ -283,7 +356,7 @@ _"Why yes, it is and it is the inspiration for the following Blender Python code
 The book "Automate the Boring Stuff with Python" is available from NoStarch Press or Amazon but it is also free to read.  https://automatetheboringstuff.com/#toc  I highly recommend it.
 
 
-=== So what are we going to do?
+=== So what are we going to do next?
 
 When working on a Blender model, you often encounter tasks that require repetitive steps. These tasks can become tedious, especially when you need to repeat them a large number of times, such as 56 times. This is how it all began. Now, let's discuss what led up to this.
 
@@ -407,7 +480,7 @@ image:images/view.png[]
 
 To summarize:
 
-We encountered a situation where the crosstie load needed to be placed non-uniformly, but it was realized that creating just a single textured cube object and performing minimal additional steps, such as replication with offsets would suffice. Furthermore, as a result of this process, you now have two scripts in your collection that can assist with future object manipulation in Blender.
+We encountered a situation where the crosstie load needed to be placed non-uniformly, but it was realized that creating just a single textured cube object and performing minimal additional steps, such as replication with offsets would suffice. Furthermore, as a result of this process, you now have two more scripts in your collection that can assist with future object manipulation in Blender.
 
 === Using a script from the console
 
@@ -436,7 +509,8 @@ Using a terminal window (command shell)  in your operating system, you can execu
 `blender yourblendfilenameorpath --python myscript.py `
 
 
-== A Few Setup Script Example
+== A Few Setup Script Examples
+(((Scripting, "helping you setup")))
 
 So lets try some more scripting examples. Let's say we want to create a new vehicle in Blender. We can use the following code to create the beginnings anew vehicle in Blender if we know some of the key measurements  
 

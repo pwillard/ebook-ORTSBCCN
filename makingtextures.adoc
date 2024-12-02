@@ -360,7 +360,7 @@ Marked Seams in Red
 
 image::images/Seams1.jpg[]
 
-Select Desired Faces by Seam - Pressing kdb:[L] - Faces Must Be Fully Enclosed by Seams for Selection to Work
+Select Desired Faces by Seam - Pressing kbd:[L] - Faces Must Be Fully Enclosed by Seams for Selection to Work
 
 image::images/Seams2.jpg[]
 
@@ -372,6 +372,9 @@ Results in (3) Perfectly Unwrapped Islands
 
 image::images/Seams4.jpg[]
 
+
+<<< 
+    
 Same Conformal Unwrap Without the Use of Seams - Completely Unusable
 
 image::images/Seams5.jpg[]
@@ -386,6 +389,33 @@ One other important tip in the *UV Mapping* window - on the top left toolbar - t
 _So easy a caveman could do it._
 
 image::images/UVmap.jpg[]
+
+
+==== Packing Islands
+
+Pack Islands:: - in *UV mapping* is the process of organizing and arranging *UV Islands* efficiently within the UV space to maximize the use of texture space. You can do this with entire texture sheets or any subset therein. You can define a Margin to set how much space is kept between Islands.
+
+In practical use - you're probably going to be unwrapping far more faces than I did in my example above. You probably want to group them by texture used and perhaps proximity to each other. Instead of manually trying to juggle your *UV Islands* - Blender has included a great tool called *Pack Islands*.
+
+
+*Realistic Unwrapping*
+
+image::images/Pack1.jpg[]
+
+*Set Your Texel Density as Required*
+
+image::images/Pack2.jpg[]
+
+*Pack Islands - menu:UV[Pack Islands] - Uncheck Scale - Set Your Margin*
+
+image::images/Pack3.jpg[]
+
+*Result - An Efficiently Packed Group of UV Islands*
+
+image::images/Pack4.jpg[]
+
+The packed group of UV Islands - is ready to be moved where desired on your texture sheet.
+
 
 
 ==== Decals

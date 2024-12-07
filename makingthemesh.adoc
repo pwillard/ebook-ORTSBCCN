@@ -1339,7 +1339,7 @@ If you feel so inclined, you could create your own wheel sets from scratch, but 
 
 ==== Vehicle LOD - Level of Detail Settings
 
-(((BLENDER, "Level Of Detail")))
+(((Blender, "Level Of Detail")))
 
 In realtime computer graphics, a technique called "level of detail" (LOD) is commonly used in various applications ranging from commercial simulators to PC and console games.
 

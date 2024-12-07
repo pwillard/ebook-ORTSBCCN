@@ -308,7 +308,7 @@ In the menu:FILE PATHS[DATA] section:
 * I usually define a common "textures" location for my 'library' objects, items that I share across multiple models.  %USERPROFILE%/DOCUMENTS/Blender/TEXTURES, for example.
 * The SCRIPTS location is where you would place your Blender Python Scripts (There is one we may need to use that we will discuss in another section of this document)
 
-`The next section applies only if you have installed Blender version 3.0 or newer.`
+`The next section applies only if you have installed Blender version 3.0 or newer, however, there are changes in Blender 4.0 that may affect this section as methods for installing Blender addons may change.  For example, Blender 4.0 now installs  built-in addons after installation using the network instead of being included in the installer program.`
 
 In the menu:FILE PATHS[Asset Libraries] section:
 

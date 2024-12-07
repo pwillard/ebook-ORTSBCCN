@@ -5,6 +5,33 @@ This section is about creating textures that will be applied to your 3d models. 
 [NOTE]
 In an attempt to be remain bitmap tool agnostic, no particular tools will recommended or favored.  Most options available have very similar capabilities,  though some are just easier to use than others.
 
+
+ Author's Note: I'm never going to be an Adobe Fanboy.  You will not  find me saying good things about Adobe products.  I'm just a humble user who wants to help others learn and use their tools better.  While I'm not going to promote Adobe products I may recommend alternatives that are free and open source and possibly a few products that are for purchase.    Also, I recommend that you use what you are familiar with and not try to learn a new tool just to do this type of work unless you are starting out as a true beginner.  
+
+
+=== Bitmap Tools Overview
+
+(((Texture, "Tools Overview")))
+
+
+==== What are bitmap tools? 
+
+Bitmap tools are digital software applications designed for creating, editing, and manipulating bitmap graphics, also known as raster graphics. These graphics are composed of a grid of tiny squares, or pixels, where each pixel is assigned a specific color value to form an image. Bitmap tools are essential for tasks like photo editing, digital painting, and pixel art, as they allow artists and designers to work with high levels of detail. They often include features like brush tools, layer management, filters, and color correction, enabling precise control over individual pixels or entire sections of an image. Popular examples of bitmap tools include Adobe Photoshop, GIMP, and Krita, each offering unique capabilities to cater to creative professionals and hobbyists alike. While bitmap graphics excel in realism and intricate detail, they are resolution-dependent, meaning their quality can degrade when scaled up or down, making bitmap tools particularly suited for projects where exact resolution and detail are critical.
+
+==== Why do we use bitmap tools?
+
+Bitmap tools are crucial for creating and refining textures for 3D models because they allow artists to craft the detailed surface details that make a model appear realistic and visually appealing. Here’s why they are essential:
+
+Detailed Texture Creation:: Bitmap tools enable artists to create intricate textures, such as fabric patterns, skin details, metallic finishes, or weathering effects. These details are mapped onto the surface of 3D models, bringing them to life by simulating real-world materials.
+
+Seamless UV Mapping:: 3D models require UV maps, which are flattened representations of the model's surface. Bitmap tools allow artists to paint directly onto UV maps, ensuring that textures align seamlessly across the model’s geometry without distortion.
+
+Layered Editing:: Good Bitmap tools support layers, which allow for non-destructive editing. You can stack effects like dirt, scratches, or decals on separate layers, making it easy to tweak or adjust specific elements without starting over. 
+
+Integration with 3D Software:: Bitmap tools integrate seamlessly with 3D modeling software, allowing artists to export textures in formats compatible with tools like Blender. This workflow ensures that the textures look as intended on the 3D model.
+
+In summary, bitmap tools bridge the gap between 2D artistry and 3D modeling, enabling the creation of rich, lifelike textures that elevate the visual quality of 3D assets.
+
 === Layered Format Files
 
 (((File Formats with Layer Support)))
@@ -98,10 +125,16 @@ With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the p
 
 == Using ACE Textures
 
+(((Texture, "ACE")))
+
+
 {msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
 
 [NOTE]
 A conversion utility called `MAKEACE.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `MAKEACE` program.
+
+[TIP]
+{OR} has the ability to automatically use DDS files if they are present, even if the model's `S` file defines an ACE file.  This is a great way to use DDS files without having to convert them to ACE files.  The downside is that the DDS files are really not editable as they will lose detail on every export.  In other words, the DDS files use a lossy compression method, which means you will lose detail and color information compared to the original texture.
 
 === ACE File Types:
 
@@ -192,6 +225,9 @@ Another option is to try https://github.com/upscayl .  Upscayl is a free and ope
 
 
 === PNG Format
+
+(((Texture, "PNG Format")))
+
 Portable Network Graphic is a new bitmap file type developed in part with the Internet in mind. Its development was instigated by the GIF licensing issue and was intended as a replacement for GIF.
 
 There are two PNG sub-types, *PNG-8*, and *PNG-24*. Both use the same compression method. PNG-8 supports a single alpha channel and PNG-24 supports variable transparency (covered later). PNG-8 is limited to 8-bit color depth (256 colors), and PNG-24 can have millions of colors (24-bit color depth). Both are lossless compression formats
@@ -243,7 +279,7 @@ If your model is wide but not tall, as many vehicle models are, then you might c
 
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
-Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
+Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be re-skinned by 3rd parties, then you can conceivably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
 
 [NOTE]
@@ -328,6 +364,9 @@ image::images/Prime.jpg[]
 
 ==== SEAMS
 
+(((UV Mapping, "Seams")))
+
+
 To create a seam - you must be in edit mode - select the desired edges - then menu:Edge[Mark Seam].
 
 Applicable Commands:
@@ -393,6 +432,8 @@ image::images/UVmap.jpg[]
 
 ==== Packing Islands
 
+(((UV Mapping, "Packing Islands")))
+
 Pack Islands:: - in *UV mapping* is the process of organizing and arranging *UV Islands* efficiently within the UV space to maximize the use of texture space. You can do this with entire texture sheets or any subset therein. You can define a Margin to set how much space is kept between Islands.
 
 In practical use - you're probably going to be unwrapping far more faces than I did in my example above. You probably want to group them by texture used and perhaps proximity to each other. Instead of manually trying to juggle your *UV Islands* - Blender has included a great tool called *Pack Islands*.
@@ -421,7 +462,8 @@ The packed group of UV Islands - is ready to be moved where desired on your text
 ==== Decals
 
 (((Texture, "Decals")))
-A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
+
+A newer _concept_, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
 
 A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
 
@@ -509,9 +551,12 @@ if __name__ == '__main__':
     image.save("out.png","PNG")
 ----
 
-I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.
+I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.  
 
-Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique I employ
+[NOTE]
+If you are familiar with Trainz series of simulators, this is very close to the method they use with their auto-numbering system.
+
+ Author's Note: Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique that I employ
 
 (((PYTHON, "Example Reporting Marks")))
 
@@ -773,11 +818,11 @@ The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintSh
 *  A .bmp FILE "technically" cannot contain and Alpha Channel... so if you are using a .BMP file... the alpha channel will just be *gone* and it would be something you need to fix/recover.
 
 [NOTE]
-There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alp[ha channel support... so just use `.TGA` or `.PNG`.
+There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alpha channel support... so just use `.TGA` or `.PNG`.
 
 === Tools
 
-This section lists some of the "extra" tools and functions that are used to create textures.
+This section lists some of the "extra" tools and functions that are used to create or work with textures.
 
 ==== Measuring Tools
 
@@ -845,7 +890,7 @@ I no longer recommend using TGAtools2 from MGGrapphics unless you are just tryin
 
 When you need to modify a texture that has been saved in the .ace file format, TGATools2A is typically the software of choice for opening the .ACE file. You can obtain TGATools2A through an Ace-It utility installation. Once you have the .ace file open in TGATools2A, it's advisable to promptly save it as a .tga file.
 
-While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop and make direct edits.
+While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop, PaintShop Pro, etc and make direct edits.
 
 [TIP]
 It's important to understand that simply "applying alpha" to any texture and expecting it to function seamlessly on any model is not always feasible. While it's possible to "transparently remove" portions of a model by adding an alpha channel to the texture, it may also be necessary to modify the shape file to properly utilize the alpha component of the texture. However, if your goal is to merely correct the existing alpha, and the shape is already set up for it, these considerations may not be applicable in this context.
@@ -877,6 +922,8 @@ It's really just easier to use a tool like Paint.net for creating the `.DDS` fil
 
 === Alpha materials in Blender
 
+(((Blender, Materials with Alpha Layer)))
+
 If you want to just keep your hair in your head, versus pulling it out... here is my recommendation.
 
 * Use Paint.Net or GIMP (if you have a few extra bucks, use Affinity Designer)
@@ -884,9 +931,9 @@ If you want to just keep your hair in your head, versus pulling it out... here i
 * Export your bitmaps in TGA or PNG format for use as Blender Texture files.
 
 [NOTE]
-Affinity does not support exporting to DDS, but use Paint.NET or GIMP to export the file used by Blender to DDS format.
+Affinity products do not support exporting to DDS, but you can use Paint.NET or GIMP to export the file used by Blender to the DDS format usable with {or}.
 
-When you finally export your model(s) to the `S` file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP as a following step.
+When you finally export your model(s) to the `S` file format using the MSTS/{or} Exporter script, export the DDS format from Paint.net or GIMP as a follow-up step.
 
 ==== The Shader Editor
 
@@ -903,9 +950,6 @@ For exporting to {OR} and {MSTS}, you need to also have the MSTS Materials setti
 image::images/alpha2.PNG[]
 
 For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the gray scale Alpha Channel used for Glass, while `Transparancy ON/OFF` is the one bit mask where only BLACK RGB (0.0.0) is transparent in a mask.
-
-
-== 
 
 
 
@@ -951,7 +995,7 @@ If you are also working on the 3D MODEL while texturing, you would not model the
 (((Texture, Snow)))
 Snow textures must also be created, so that your buildings and other
 objects will look correct when there is snow lying on the ground. These,
-too, are created using the original, daytime textures. The extshape.dat
+too, are created using the original, daytime textures. The `extshape.dat`
 file must be updated in relation to this (see the “How to write a .ref
 file” document for further clarification) and must be placed in the
 route’s snow textures directory accordingly. The snow texture will only
@@ -1036,9 +1080,11 @@ image::images/ao7.jpg[]
 
 === Ambient Occlusion
 
+(((Texture, "Ambient Occlusion Baking")))
+
 To Recap... Blender {AO} (AO) is a rendering technique that simulates the subtle shadows that occur where surfaces meet other surfaces or when they are blocked from direct light. AO can be used to add realism and depth to your renders, and it can be especially effective for close-up shots or scenes with complex geometry.
 
-There are two ways to add AO to your renders in Blender:
+There are a few ways to add AO to your renders in Blender, these include:
 
 1. Render settings: Go to Render Properties > Render Settings > World and enable the {AO} checkbox. You can then adjust the Distance and Strength settings to control the intensity of the AO effect.
 2. Shader node: Add an {AO} node to your material shader and connect it to the Surface output. You can then adjust the Distance and Strength settings directly on the node.
@@ -1060,8 +1106,6 @@ Overall, AO is a powerful rendering technique that can be used to add realism an
 
 
 === More About Baking Ambient Oclusion
-
-(((Texture, "clusion Baking")))
 
 
 {AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.

@@ -168,9 +168,8 @@ Well, one thing that happens when you `COPY/PASTE`, is that your parts get renam
 [TIP]
 Duplicate objects are created by using kbd:[SHIFT] + kbd:[D] and the process will not try to create a duplicated unique material reference.
 
-
-The goal of the script then 
-So, if you can to fix this issue so you don't end up with 20 materials that are all actually 100% identical, you can run the following script:
+ 
+The goal of the script then is to fix this issue so you don't end up with 20 materials that are all actually 100% identical, you can run the following script:
 
 [source,python]
 ----

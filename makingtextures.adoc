@@ -457,6 +457,20 @@ image::images/Pack4.jpg[]
 
 The packed group of UV Islands - is ready to be moved where desired on your texture sheet.
 
+==== Windows 
+
+(((textures, "Windows)))
+
+
+* Separated the glass faces into its own object.
+* Apply a greyish blue texture partially translucent - `RGBA = 25, 28, 32, 220`
+* In the MSTS Materials panel, set the Transparency to `Alpha Sorted, Lighting = Normal`.
+
+[NOTE]
+Other Blender users have had success with using `alpha blended transparency`
+
+[TIP]
+Don't use DXT compression when you make your .ace file.
 
 
 ==== Decals
@@ -1105,12 +1119,12 @@ Overall, AO is a powerful rendering technique that can be used to add realism an
 
 
 
-=== More About Baking Ambient Oclusion
+=== More About Baking Ambient Occlusion
 
 
 {AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
 
-When Baking occlusion, Here are some general tips:
+When Baking occlusion, Here are some general tips (From Wayne Campbell):
 
 1. Gather parts that will receive{AO} into a collection to make them easy to select.
 2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.

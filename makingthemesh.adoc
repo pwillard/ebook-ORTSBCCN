@@ -793,7 +793,7 @@ When adding lighting/illumination effects to your model, you will need to separa
 
 
 [TIP]
-Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used in the `.S` file as `.DDS` instead of `.ACE`
+Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used in the `.S` file as `.DDS` instead of `.ACE`. Though, if {or} does not find an `ACE` file, it will attempt to use a `DDS` file of the same name.
 
 
 ----

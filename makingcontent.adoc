@@ -45,13 +45,14 @@ WAG FILE	::	 A file that describes to the Simulator the details of an Asset to b
 
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
+(((Content Design, "Choices")))
 
 Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {MSTS} might cause the vehicle to not perform optimally
 Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters 
 Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
-Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS}
-Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {{MSTS}} on the system
-Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {{MSTS}} to be installed and relies on additional "default" products. 
+Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS} (This is more work than just running in {or})
+Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {MSTS} on the system
+Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {MSTS} to be installed and relies on additional "default" products. 
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
 
@@ -62,9 +63,11 @@ Deciding on which option to use might be difficult, but you should try to make a
 * What is your experience with 3D modeling for Open Rails as compared to {{MSTS}}?
 * How much flexibility do you want to have with your content?
 
-My advice is to start with the option that is easiest for you to get started with and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
+The author's advice is to start with the option that is easiest for you to understand and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
 
 == Content Generation Involves:
+
+(((Blender, "Getting Started")))
  
 * A mesh - also known as your 3D model
 * Online resources and references (This is an area that is somewhat lacking with regards to 3D modeling for ORTS, but these include https://www.trainsim.com/vbts/forum.php and http://www.elvastower.com/forums/index.php )
@@ -83,10 +86,10 @@ My advice is to start with the option that is easiest for you to get started wit
 
 NOTE: If you are also making models for Trainz Simulator, note that the latest versions of Trainz will accept the native Blender FBX exporter file format as output. 
 
-=== What I use:
+=== What the author uses:
 
-* 3d Modeler: {version} 
-* Bitmap tool (any one of these, interchangeably): Serif Affinity Photo, Serif Affinity Designer, PaintShopPro Version 7, Paint.net or Photoshop CS2
+* 3d Modeler: {bv}
+* Bitmap tool (any one of these, interchangeably): Serif Affinity Photo, Serif Affinity Designer, PaintShopPro Version 7, Paint.net or Photoshop CS2, Krita, GIMP, etc.
 * UV/Shader tool: Blender has this  built in, 3rd party options exist, however I don't use them. 
 * Text Editor: _Microsoft Visual Studio Code_ 
 * Metric Conversion Calculator (I have one built into hand held calculator, but you can use Google for this)
@@ -94,13 +97,15 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-I recommend just using METRIC for measurements. Its the default measurement in Blender and {OR}  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
+I recommend just using METRIC for measurements. It's the default measurement in Blender and {OR}.  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
-====  Why I Use Blender 
+====  Why the Author Uses Blender 
 
-In 2002, I started using 3D Software to create content for games, primarily for {{MSTS}}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {version} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
+(((Blender, "Why Blender?")))
 
-== Why Many Other People Use Blender to Make Game Assets?
+In 2002, I started using 3D Software to create content for games, primarily for {{MSTS}}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {BV} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
+
+== Why Many Other People Use Blender to Make Content?
 
 Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
 
@@ -133,7 +138,7 @@ To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very 
 
 === What I Can Recommend:
 
-* 3D Modeler: Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
+* 3D Modeler: Bare Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
 * BitMap Tools: _Serif Affinity Photo or Designer_, _Photoshop CS2_ (You can still get this for free from Adobe if you google for it) , _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ or _Krita_ for free.
 * UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
@@ -146,6 +151,8 @@ CONTEXT is an abandoned editor, but it has a syntax highlighter for ENG and WAG 
 (((Context, "An old but useful text editor")))
 
 === How to Install Blender
+
+(((Blender, "Installation")))
 
 According to the Blender.org website, a new version is released about once per quarter.  I'm going to assume you are installing Blender on a Windows 64 BIT platform.  I would recommend that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. Currently, this is{BV}.
 (((Blender, "Installation")))
@@ -208,6 +215,8 @@ Video Link: https://youtu.be/ad4vTwCGodo
 <<<
 
 === Setting up our Blender Environment
+
+(((Blender, "Setup")))
 
 Much of this section is optional, but it will help you get started.  
 
@@ -277,6 +286,9 @@ In the menu:SYSTEM[MEMORY & LIMITS] section,
 [TIP]
 Unless you are using the modifier stack to perform non-destructive modeling actions, most if not all actions in Blender are one-way.  This means that once you modify a shape, there is no going back unless you perform UNDO STEPS kbd:[CTRL + Z] in *the current editing session*.  I advise saving a copy of your work using a revision system like `crane_V1.blend`, `crane_v2.blend` where you create a new version at the start of each session.  This way you can revert to earlier editing sessions if you need to give up on your latest revisions in favor of using an older editing session. There are also some options for automatically making a backups of your work. 
 
+[TIP]
+If using Blender 4.3, you should also go into "System Settings" under Network and check "Allow Online Access".
+
 <<<
 
 ==== Save & Load
@@ -288,13 +300,15 @@ In the menu:SAVE & LOAD[BLEND FILES] section:
 Consider unchecking the `Load UI` option at times. When this is checked, the User Interface settings for the session come from the .Blend file that was just opened and not the normal  User Interface you have setup as default for newly created .Blend files.  This is especially troublesome, if left enabled, when you import someone else's .Blend file, as the user interface could then be very different from what you normally use.  Change this as needed, but you should know how to include (or not include) the User Interface settings when loading .Blend files.  You may find that you often want to switch this setting on and off.
 
 [TIP]
-I believe that you would want to  RE-ENABLE this option if you have .Blend files that are using millimeters, common settings for 3D Printing model files, so that you would maintain proper UNITS settings when working on smaller objects while using Blender for things other than {OR}.
+You would want to  RE-ENABLE this option if you have .Blend files that are using millimeters, common settings for 3D Printing model files, so that you would maintain proper UNITS settings when working on smaller objects while using Blender for things other than {OR}.
 
 [TIP]
-I would also adjust the "SAVE VERSIONS" option to allow for automatic backup copies of the current .Blend file to be created.
+You would also want to adjust the "SAVE VERSIONS" option to allow for automatic backup copies of the current .Blend file to be created.
 
 
 ==== File Paths
+
+(((Blender, "File Paths")))
 
 Since {OR} is a Windows Program, file paths mentioned here are "modern" Windows file paths.  You can use the Windows Explorer to navigate to these locations.
 
@@ -331,6 +345,8 @@ Various libraries can be selected using the menu options on the left.
 <<<
 
 ==== Add-Ons
+
+(((Blender, "Add-ons")))
 
 image::images/ADD-ON.PNG[align=center]
 
@@ -448,6 +464,8 @@ We will continue making changes to the header and properties panels near the top
 
 ==== TABS
 
+(((Blender, "TABS")))
+
 Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Though your could use it to maintain an alternate view of your work in progress.  To save a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly ever need it for _Hard Surface Modeling_.
 
 image::images/TABBAR.PNG[align=center]
@@ -485,6 +503,8 @@ Under Overlays (Select the default cube and change to `EDIT MODE` using kbd:[TAB
 
 ==== Shading Settings  
 
+(((Blender, "Shading Settings")))
+
 image::images/PREFS8.PNG[align=center]
 
 * Under SOLID VIEWPORT SHADING (Locate the Solid Circle Icon and use pulldown on the right of it), change the following:
@@ -499,6 +519,8 @@ I also sometimes choose MATCAP and pick the leftmost MATCAP option for better vi
 <<<
 
 ==== Units
+
+(((Blender, "Units of Measure")))
 
 image::images/PREFS11.PNG[align=center]
 
@@ -648,7 +670,7 @@ The {MSTS} naming standard for isolated axles with non-bogie wheels, is  WHEEL1,
 
 NOTE: These are primarily used for STEAM locomotives. Animating these wheels is not automatic and must be done using the animation tools within Blender.  The Steam wheel and linkage animation uses a series of 16 frames.  In general, it's non-trivial to to create this animation and I won't be covering it in this document.  (unless someone provides us with good notes about how it is done)
 
-In ORTS, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
+In {or}, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
 
 [WARNING]
 Some {MSTS} documentation leads you to believe that a third bogie is possible in {MSTS} - it isn't.  However, if you are modeling specifically for {or}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.
@@ -762,6 +784,8 @@ and
 
 `\common.model\USA`
 
+[NOTE]
+If you closely examine NAVS releases, they follow a format like this.
 
 
 === General Modelling Standards from Erick Cantu

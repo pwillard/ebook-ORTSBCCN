@@ -10,6 +10,7 @@ In an attempt to be remain bitmap tool agnostic, no particular tools will recomm
 
 
 === Bitmap Tools Overview
+In this section, we will provide an overview of the various bitmap tools available and why they are important for creating textures for 3D models. We will also discuss the features and capabilities of bitmap tools that make them essential for texture creation and editing.
 
 (((Texture, "Tools Overview")))
 
@@ -36,7 +37,7 @@ In summary, bitmap tools bridge the gap between 2D artistry and 3D modeling, ena
 
 (((File Formats with Layer Support)))
 
-A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
+A feature of any proper bitmap tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
 
 To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
 
@@ -81,6 +82,8 @@ While the list of tools is not a complete list of available software that suppor
 In summary, choose a tool that has a native layered file format that can also support PNG and possibly DDS.  For maximum compatibility, choose a free tool, like GIMP or Paint.net, otherwise, save your master documents in `PSD` or `ORA` format
 
 === Using DDS Textures
+
+(((Texture, "DDS FILES")))
 
 DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
 
@@ -137,6 +140,7 @@ A conversion utility called `MAKEACE.exe` was supplied with {MSTS}. Newer tools 
 {OR} has the ability to automatically use DDS files if they are present, even if the model's `S` file defines an ACE file.  This is a great way to use DDS files without having to convert them to ACE files.  The downside is that the DDS files are really not editable as they will lose detail on every export.  In other words, the DDS files use a lossy compression method, which means you will lose detail and color information compared to the original texture.
 
 === ACE File Types:
+There are three types of ACE files:
 
 Solid::  these are created by converting 24-bit BMP or TGA files and the resulting ACE file contains only solid pixels.  You might use such ACE files for the general texture detail on buildings and trains you are creating.
 
@@ -145,6 +149,7 @@ Trans:: these are created by converting 32-bit TGA files and specifying the tran
 Alpha:: these are creating by converting 32-bit TGA files and not specifying the transparency mask option.  The resulting ACE files will contain solid and both partially and completely transparent pixels.  This texture type can be used in a similar way to the Trans type, except it also allows you to create effects such as tinted windows.
 
 === ACE File Compression
+There are two types of compression that can be applied to ACE files:
 
 No compression:: the image is stored uncompressed.
 
@@ -213,11 +218,13 @@ Photoshop supports 16 bits per channel. This provides for slightly better color 
 * The file size of an image is proportional to its color depth.
 
 
-=== JPG Format, lossy compression and upscaling 
+=== JPG Format, lossy compression and UpScaling
+
+(((Texture, "JPG Format"))) 
 
 JPG is a lossy compression format. It is a compression format that is designed to reduce the file size of an image while maintaining the quality of the image.  It should be avoided for images that contain text or graphics with fine detail and is really not suitable as a general-purpose "saved" image format for the textures used in the simulator.
 
-(((Upscaling)))
+(((Texture,"Upscaling")))
 
 A new thing to try though is Artificial Intelligence (AI) tools that offer image upscaling.  Many have tried this and have shown that can offer some improvement to the master textures that needed to be a bit larger and sharper.  One example is https://www.topazlabs.com/gigapixel from Topaz Labs.  It is not a free tool but it does offer a free trial.  It is a bit expensive but it does offer some improvement to the textures.  
 
@@ -264,6 +271,7 @@ Fonts used by windows programs are vector graphics.  This is why RailSimStuff cr
 
 
 === Preparing a texture
+(((Texture, "Preparing a texture")))
 
 .When creating textures. remember
 [quote, Erick Cantu]
@@ -1005,8 +1013,8 @@ If you are also working on the 3D MODEL while texturing, you would not model the
 
 == How to Make Snow Textures
 
-
 (((Texture, Snow)))
+
 Snow textures must also be created, so that your buildings and other
 objects will look correct when there is snow lying on the ground. These,
 too, are created using the original, daytime textures. The `extshape.dat`
@@ -1027,6 +1035,8 @@ image::images/image3.jpeg[]
 image::images/image6.jpeg[]
 
 === Highlights and Shadows
+
+(((Texture, "Shadows")))
 
 A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the {AO} layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an {AO} layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
 
@@ -1120,6 +1130,8 @@ Overall, AO is a powerful rendering technique that can be used to add realism an
 
 
 === More About Baking Ambient Occlusion
+
+(((Texture, "Baking Ambient Occlusion, additional")))
 
 
 {AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.

@@ -5,11 +5,39 @@ This section is about creating textures that will be applied to your 3d models. 
 [NOTE]
 In an attempt to be remain bitmap tool agnostic, no particular tools will recommended or favored.  Most options available have very similar capabilities,  though some are just easier to use than others.
 
+
+ Author's Note: I'm never going to be an Adobe Fanboy.  You will not  find me saying good things about Adobe products.  I'm just a humble user who wants to help others learn and use their tools better.  While I'm not going to promote Adobe products I may recommend alternatives that are free and open source and possibly a few products that are for purchase.    Also, I recommend that you use what you are familiar with and not try to learn a new tool just to do this type of work unless you are starting out as a true beginner.  
+
+
+=== Bitmap Tools Overview
+In this section, we will provide an overview of the various bitmap tools available and why they are important for creating textures for 3D models. We will also discuss the features and capabilities of bitmap tools that make them essential for texture creation and editing.
+
+(((Texture, "Tools Overview")))
+
+
+==== What are bitmap tools? 
+
+Bitmap tools are digital software applications designed for creating, editing, and manipulating bitmap graphics, also known as raster graphics. These graphics are composed of a grid of tiny squares, or pixels, where each pixel is assigned a specific color value to form an image. Bitmap tools are essential for tasks like photo editing, digital painting, and pixel art, as they allow artists and designers to work with high levels of detail. They often include features like brush tools, layer management, filters, and color correction, enabling precise control over individual pixels or entire sections of an image. Popular examples of bitmap tools include Adobe Photoshop, GIMP, and Krita, each offering unique capabilities to cater to creative professionals and hobbyists alike. While bitmap graphics excel in realism and intricate detail, they are resolution-dependent, meaning their quality can degrade when scaled up or down, making bitmap tools particularly suited for projects where exact resolution and detail are critical.
+
+==== Why do we use bitmap tools?
+
+Bitmap tools are crucial for creating and refining textures for 3D models because they allow artists to craft the detailed surface details that make a model appear realistic and visually appealing. Here’s why they are essential:
+
+Detailed Texture Creation:: Bitmap tools enable artists to create intricate textures, such as fabric patterns, skin details, metallic finishes, or weathering effects. These details are mapped onto the surface of 3D models, bringing them to life by simulating real-world materials.
+
+Seamless UV Mapping:: 3D models require UV maps, which are flattened representations of the model's surface. Bitmap tools allow artists to paint directly onto UV maps, ensuring that textures align seamlessly across the model’s geometry without distortion.
+
+Layered Editing:: Good Bitmap tools support layers, which allow for non-destructive editing. You can stack effects like dirt, scratches, or decals on separate layers, making it easy to tweak or adjust specific elements without starting over. 
+
+Integration with 3D Software:: Bitmap tools integrate seamlessly with 3D modeling software, allowing artists to export textures in formats compatible with tools like Blender. This workflow ensures that the textures look as intended on the 3D model.
+
+In summary, bitmap tools bridge the gap between 2D artistry and 3D modeling, enabling the creation of rich, lifelike textures that elevate the visual quality of 3D assets.
+
 === Layered Format Files
 
 (((File Formats with Layer Support)))
 
-A feature of any proper bit map tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
+A feature of any proper bitmap tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
 
 To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
 
@@ -55,6 +83,8 @@ In summary, choose a tool that has a native layered file format that can also su
 
 === Using DDS Textures
 
+(((Texture, "DDS FILES")))
+
 DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
 
 (((Texture, "DDS FILES")))
@@ -98,12 +128,19 @@ With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the p
 
 == Using ACE Textures
 
+(((Texture, "ACE")))
+
+
 {msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
 
 [NOTE]
 A conversion utility called `MAKEACE.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `MAKEACE` program.
 
+[TIP]
+{OR} has the ability to automatically use DDS files if they are present, even if the model's `S` file defines an ACE file.  This is a great way to use DDS files without having to convert them to ACE files.  The downside is that the DDS files are really not editable as they will lose detail on every export.  In other words, the DDS files use a lossy compression method, which means you will lose detail and color information compared to the original texture.
+
 === ACE File Types:
+There are three types of ACE files:
 
 Solid::  these are created by converting 24-bit BMP or TGA files and the resulting ACE file contains only solid pixels.  You might use such ACE files for the general texture detail on buildings and trains you are creating.
 
@@ -112,6 +149,7 @@ Trans:: these are created by converting 32-bit TGA files and specifying the tran
 Alpha:: these are creating by converting 32-bit TGA files and not specifying the transparency mask option.  The resulting ACE files will contain solid and both partially and completely transparent pixels.  This texture type can be used in a similar way to the Trans type, except it also allows you to create effects such as tinted windows.
 
 === ACE File Compression
+There are two types of compression that can be applied to ACE files:
 
 No compression:: the image is stored uncompressed.
 
@@ -180,11 +218,13 @@ Photoshop supports 16 bits per channel. This provides for slightly better color 
 * The file size of an image is proportional to its color depth.
 
 
-=== JPG Format, lossy compression and upscaling 
+=== JPG Format, lossy compression and UpScaling
+
+(((Texture, "JPG Format"))) 
 
 JPG is a lossy compression format. It is a compression format that is designed to reduce the file size of an image while maintaining the quality of the image.  It should be avoided for images that contain text or graphics with fine detail and is really not suitable as a general-purpose "saved" image format for the textures used in the simulator.
 
-(((Upscaling)))
+(((Texture,"Upscaling")))
 
 A new thing to try though is Artificial Intelligence (AI) tools that offer image upscaling.  Many have tried this and have shown that can offer some improvement to the master textures that needed to be a bit larger and sharper.  One example is https://www.topazlabs.com/gigapixel from Topaz Labs.  It is not a free tool but it does offer a free trial.  It is a bit expensive but it does offer some improvement to the textures.  
 
@@ -192,6 +232,9 @@ Another option is to try https://github.com/upscayl .  Upscayl is a free and ope
 
 
 === PNG Format
+
+(((Texture, "PNG Format")))
+
 Portable Network Graphic is a new bitmap file type developed in part with the Internet in mind. Its development was instigated by the GIF licensing issue and was intended as a replacement for GIF.
 
 There are two PNG sub-types, *PNG-8*, and *PNG-24*. Both use the same compression method. PNG-8 supports a single alpha channel and PNG-24 supports variable transparency (covered later). PNG-8 is limited to 8-bit color depth (256 colors), and PNG-24 can have millions of colors (24-bit color depth). Both are lossless compression formats
@@ -228,6 +271,7 @@ Fonts used by windows programs are vector graphics.  This is why RailSimStuff cr
 
 
 === Preparing a texture
+(((Texture, "Preparing a texture")))
 
 .When creating textures. remember
 [quote, Erick Cantu]
@@ -243,14 +287,205 @@ If your model is wide but not tall, as many vehicle models are, then you might c
 
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
-Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be reskinned by 3rd parties, then you can conceiveably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
+Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be re-skinned by 3rd parties, then you can conceivably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
+
+[NOTE]
+Pete Willard has used this technique with Brick Building scenery, where the background layer is the seamless brick pattern.  Windows and doors are painted on top of the background layer. 
+
+
+=== Setting up Blender for Texture Mapping and Baking 
+
+(((Texturing, "Setting up Blender for Texture Mapping and Baking")))
+
+_This section contributed by Scott Brunner._
+
+This is intended as a primer - not a tutorial - so I'll be addressing the concepts at play - that need to be considered for Mapping and Baking operations in Blender.
+
+First - set yourself up for success. Blender is an application that heavily relies on addons - there are thousands of them - I'll only be discussing (3) that I find essential for our task at hand - and are free. I've tried others - another modeler might prefer a different set of addons. Only the last three on my list pertain to mapping and baking operations.
+
+image::images/AO_Init.png[]
+
+In this setup, Blender 4.3 is being used and since Blender 4.2 many of the external addons are now available in the *Get Extensions* option under *Preferences*. *Texil Density Checker* is available via *Get Extensions* in Blender 4.3. *UV Layout* is an official Blender addon available via *Add-ons* option. The last one - *TexTools* is available from GitHub and needs to be installed from the downloaded zip file.
+
+Texel Density Checker:: shows up the *N Side Menu* when in the *UV Mapping* window. It allows you to get the texel density of an Island - or - set the texel density of an island. For the best-looking models - you want a consistent texel density - and this makes is extremely easy to set on each island as you map it.
+
+UV Layout:: adds mapping functions to the *Top Menu* in the *UV Mapping* window. Some of the most important features are the ability to export your *UV Map* to a texture file so you can load it into your paint program - and - the *Pack Islands* function to efficiently pack your islands in the most efficient manner possible.
+
+TexTools:: shows up the *N Side Menu* when in the *UV Mapping* window. This adds a host of operations for manipulating your *UV Map* and single click *Baking*. If you've tried the default Blender *Baking* operation - this makes your life infinitely easier.
+
+Textools Download: https://github.com/franMarz/TexTools-Blender
+
+Textools Addon Video: https://www.youtube.com/watch?v=rEcJQ6Jdue4
+
+
+Lets do a quick review of terms again...
+
+(((Texturing, "Common Terms")))
+
+Texel Density:: - refers to the number of texture pixels (texels) per unit of 3D surface area. It's an important concept for ensuring that textures appear consistent and detailed across different parts of a model. Maintaining a consistent texel density is crucial for achieving a uniform look, especially when combining multiple objects in a scene.​
+
+Seams:: - are the edges where a 3D model is "cut" or "split" during the unwrapping process. These cuts allow the 3D surface to be laid out flat in 2D space with minimal distortion. *Seams* only work under the following *Unwrap* operations: *Angle Based*, *Conformal*, and *Minimal Stretch*. _Regarding *Minimal Stretch*, this might have been added in Blender 4.3._
+
+UV Mapping or Unwrapping:: - is the process of projecting a 2D image texture onto a 3D model's surface. It involves unwrapping the 3D model into a flat 2D plane, much like peeling an orange and laying its skin flat. This allows textures, such as images or patterns, to be precisely applied to the model, ensuring that each part of the texture aligns correctly with the corresponding part of the model's surface.
+
+UV Vertex or UV:: - is a point in the 2D space of a UV map that corresponds to a vertex on a 3D model. These UV vertices are used to define the position of the texture coordinates, determining how a 2D texture is applied to the surface of the 3D model. Essentially, they serve as the anchors for mapping the texture accurately onto the model's surface, ensuring that the details of the texture align correctly with the geometry of the model.
+
+UV Island:: - is a contiguous group of UV vertices and edges that form a separate, unbroken piece of the UV map. It represents a section of the 3D model's surface that has been unwrapped and flattened for texturing purposes. Each *UV Island* typically corresponds to a distinct part of the 3D model, making it easier to apply detailed textures accurately.
+
+Pack Islands:: - in *UV mapping* is the process of organizing and arranging *UV Islands* efficiently within the UV space to maximize the use of texture space. You can do this with entire texture sheets or any subset therein. You can define a Margin to set how much space is kept between Islands.
+
+Tiling Texture:: - is a small, seamless image or pattern that is repeated, or "tiled," across a surface to create a continuous, uniform appearance. This technique is particularly useful for covering large areas without visible seams or repetitions, like walls, floors, or any large surfaces in 3D environments. By seamlessly repeating the texture, it allows for efficient use of memory and resources, as a single small texture can cover extensive areas without noticeable patterns or disruptions.
+
+Swatches:: - I don't think this is an official name - just what I call it. It's using small little swatches of material - that won't have any detail or baking applied - used on small parts, edges, or parts that aren't seen often.
+
+Baking:: - refers to the process of capturing detailed lighting, shading, and other surface information, such as ambient occlusion and reflections, and storing it in a texture map. These affects are created with Ray Tracing and add a great deal of "pop" to any model.
+
+Ray Tracing:: - is a rendering technique used in computer graphics to simulate the way light interacts with objects in a scene to produce highly realistic images.
+
+Material:: - defines how a 3D object's surface interacts with light and gives it its color, texture, and reflective properties. If you change the specular shine on two different objects mapped to a single texture - that will require two *Materials*.
+
+Draw Calls:: - for our purposes - it's every time we need to load a texture sheet to the video card - which is a resource intensive process - *Draw Calls* significantly impact performance - so you want to minimize them. Each *Material* you use - will - at a minimum - be a single *Draw Call*.
+
+Ambient Occlusion or AO:: - is a shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting. It simulates the soft shadows and subtle shading that occur in corners, creases, and near intersections of objects, where light is less likely to reach. This effect adds a sense of depth and realism to the scene by enhancing the perception of surface details and contact points between objects.​
+
+
+
+[TIP]
+Keep a uniform texel density - I usually use one texel density for the large parts - body of the model - and a higher texel density for the smaller parts.
+
+[TIP]
+Unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another.
+
+
+I'll be using the RS3 as a reference model. I typically start out with two fairly large texture sheets - one for parts that have a Specular Shine and another for Flat or no shine parts. Typically - the upper painted metal body gets shine - the lower body does not. Some parts don't look good with shine - like handrails - so experiment and see what works best for you. I'll be focusing on the main body of the model for our discussion - as the trucks/bogies are a child - forcing a *Draw Call* - so it makes sense to have a separate texture just for them.
+
+On the following texture images - a couple things to note:
+
+The first two images are of the same flat texture - one with *Ambient Occlusion* and one without. It clearly shows how much you gain by taking the time to *Bake* *AO* into your textures. It's practically required.
+On the first two images - you can see the *Swatches* I use on various parts of the model - the hinges are probably the most identifiable. Multiple parts overlay each other in these little squares so the {ao} makes a mess of this - if it's included in the *Bake*. In your paint program this is easily addressed by simply placing the *Swatch* layer above your {ao} layer.
+
+image::images/Prime-Flat-No-AO.jpg[]
+image::images/Prime-Flat.jpg[]
+image::images/Prime.jpg[]
+
+
+==== SEAMS
+
+(((UV Mapping, "Seams")))
+
+
+To create a seam - you must be in edit mode - select the desired edges - then menu:Edge[Mark Seam].
+
+Applicable Commands:
+
+kbd:[L] - Select all parts by Texture or Seam.
+
+Seams Supported Unwraps:
+
+* *Angle Based*
+* *Conformal*
+* *Minimal Stretch*
+
+===== Purpose of Seams
+
+Unwrapping the Model:: Seams allow you to "cut" your 3D model so it can be laid out flat in 2D space, similar to how you might cut and unfold a cardboard box. This process is known as unwrapping.
+Reducing Distortion:: By strategically placing seams, you can reduce the amount of distortion that occurs when the 3D model is flattened. This helps to ensure that textures are applied accurately and without stretching.
+Isolating UV Islands:: Seams help define UV islands, which are separate, contiguous areas of the UV map. These islands can be textured more precisely, making it easier to apply detailed textures to specific parts of the model.
+Texture Alignment:: Well-placed seams help align textures correctly, minimizing visible mismatches and ensuring a seamless appearance on the final model.
+
+
+===== How to Place Seams
+
+Strategic Placement:: Place seams in less visible areas of the model, such as along edges or in natural creases, to minimize their appearance in the final texture.
+Testing Unwraps:: Experiment with different seam placements and unwraps to find the best configuration that minimizes distortion and maximizes texture quality.
+Consistency:: Ensure that the seams create manageable UV islands that make texturing easier and more efficient.
+
+<<<
+
+Marked Seams in Red
+
+image::images/Seams1.jpg[]
+
+Select Desired Faces by Seam - Pressing kbd:[L] - Faces Must Be Fully Enclosed by Seams for Selection to Work
+
+image::images/Seams2.jpg[]
+
+Conformal Unwrap
+
+image::images/Seams3.jpg[]
+
+Results in (3) Perfectly Unwrapped Islands
+
+image::images/Seams4.jpg[]
+
+
+<<< 
+    
+Same Conformal Unwrap Without the Use of Seams - Completely Unusable
+
+image::images/Seams5.jpg[]
+
+
+Once you have your *UV Islands* - you can set their *Texel Density* using *Texel Density Checker* - make sure you set your texture size appropriately on the top of the *Texel Density Checker* tool panel. Then just move them to where you want them placed on your texture.
+
+You can save your *UV Map* to a texture file in the *UV Mapping* window by selecting *UV* *Export UV Map*. I would suggest setting the *Fill Opacity* to 1 for best results. It basically gives you a page out of a coloring book to apply your textures to.
+
+One other important tip in the *UV Mapping* window - on the top left toolbar - there's a tiny little icon that has two arrows - one up the other down - at a 45 degree angle. This synchronizes the *UV Map* to your mesh. Where this comes in handy - you can select a *UV Island* and you may not know what it's mapped to - then move your mouse over to the *3D Viewport* and press kbd:[.] - it focuses and zooms in on the object that is mapped to your *UV Island*. Extremely helpful.
+
+_So easy a caveman could do it._
+
+image::images/UVmap.jpg[]
+
+
+==== Packing Islands
+
+(((UV Mapping, "Packing Islands")))
+
+Pack Islands:: - in *UV mapping* is the process of organizing and arranging *UV Islands* efficiently within the UV space to maximize the use of texture space. You can do this with entire texture sheets or any subset therein. You can define a Margin to set how much space is kept between Islands.
+
+In practical use - you're probably going to be unwrapping far more faces than I did in my example above. You probably want to group them by texture used and perhaps proximity to each other. Instead of manually trying to juggle your *UV Islands* - Blender has included a great tool called *Pack Islands*.
+
+
+*Realistic Unwrapping*
+
+image::images/Pack1.jpg[]
+
+*Set Your Texel Density as Required*
+
+image::images/Pack2.jpg[]
+
+*Pack Islands - menu:UV[Pack Islands] - Uncheck Scale - Set Your Margin*
+
+image::images/Pack3.jpg[]
+
+*Result - An Efficiently Packed Group of UV Islands*
+
+image::images/Pack4.jpg[]
+
+The packed group of UV Islands - is ready to be moved where desired on your texture sheet.
+
+==== Windows 
+
+(((textures, "Windows)))
+
+
+* Separated the glass faces into its own object.
+* Apply a greyish blue texture partially translucent - `RGBA = 25, 28, 32, 220`
+* In the MSTS Materials panel, set the Transparency to `Alpha Sorted, Lighting = Normal`.
+
+[NOTE]
+Other Blender users have had success with using `alpha blended transparency`
+
+[TIP]
+Don't use DXT compression when you make your .ace file.
 
 
 ==== Decals
 
 (((Texture, "Decals")))
-A newer concept, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
+
+A newer _concept_, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers backed into the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` files and many have done in the past.
 
 A DECAL is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
 
@@ -338,9 +573,12 @@ if __name__ == '__main__':
     image.save("out.png","PNG")
 ----
 
-I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.
+I have also been able to automate the creation of various number styles with Alpha channel backgrounds.  This technique utilizes TTF fonts to create each number as a 64x64 image that can be called as a separate decal.  While not super efficient, it could allow for widely varying car numbers without too much effort. For USA, this method would rely on 6 separate decals and extra number slots would need a blank 64x64 alpha image.  
 
-Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique I employ
+[NOTE]
+If you are familiar with Trainz series of simulators, this is very close to the method they use with their auto-numbering system.
+
+ Author's Note: Using this method is still in the experimental stage for me... but it is something I'm looking forward to making a standard technique that I employ
 
 (((PYTHON, "Example Reporting Marks")))
 
@@ -602,11 +840,11 @@ The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintSh
 *  A .bmp FILE "technically" cannot contain and Alpha Channel... so if you are using a .BMP file... the alpha channel will just be *gone* and it would be something you need to fix/recover.
 
 [NOTE]
-There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alp[ha channel support... so just use `.TGA` or `.PNG`.
+There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alpha channel support... so just use `.TGA` or `.PNG`.
 
 === Tools
 
-This section lists some of the "extra" tools and functions that are used to create textures.
+This section lists some of the "extra" tools and functions that are used to create or work with textures.
 
 ==== Measuring Tools
 
@@ -674,7 +912,7 @@ I no longer recommend using TGAtools2 from MGGrapphics unless you are just tryin
 
 When you need to modify a texture that has been saved in the .ace file format, TGATools2A is typically the software of choice for opening the .ACE file. You can obtain TGATools2A through an Ace-It utility installation. Once you have the .ace file open in TGATools2A, it's advisable to promptly save it as a .tga file.
 
-While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop and make direct edits.
+While the .ace format is primarily used within MSTS (Microsoft Train Simulator), the Targa format (.tga) is more versatile and compatible with a wider range of software applications. TGATools2A offers the capability to independently edit the color and alpha components of the texture. Alternatively, you can also open the .tga file in software like Photoshop, PaintShop Pro, etc and make direct edits.
 
 [TIP]
 It's important to understand that simply "applying alpha" to any texture and expecting it to function seamlessly on any model is not always feasible. While it's possible to "transparently remove" portions of a model by adding an alpha channel to the texture, it may also be necessary to modify the shape file to properly utilize the alpha component of the texture. However, if your goal is to merely correct the existing alpha, and the shape is already set up for it, these considerations may not be applicable in this context.
@@ -706,6 +944,8 @@ It's really just easier to use a tool like Paint.net for creating the `.DDS` fil
 
 === Alpha materials in Blender
 
+(((Blender, Materials with Alpha Layer)))
+
 If you want to just keep your hair in your head, versus pulling it out... here is my recommendation.
 
 * Use Paint.Net or GIMP (if you have a few extra bucks, use Affinity Designer)
@@ -713,9 +953,9 @@ If you want to just keep your hair in your head, versus pulling it out... here i
 * Export your bitmaps in TGA or PNG format for use as Blender Texture files.
 
 [NOTE]
-Affinity does not support exporting to DDS, but use Paint.NET or GIMP to export the file used by Blender to DDS format.
+Affinity products do not support exporting to DDS, but you can use Paint.NET or GIMP to export the file used by Blender to the DDS format usable with {or}.
 
-When you finally export your model(s) to the `S` file format using the MSTS Exporter script, export the DDS format from Paint.net or GIMP as a following step.
+When you finally export your model(s) to the `S` file format using the MSTS/{or} Exporter script, export the DDS format from Paint.net or GIMP as a follow-up step.
 
 ==== The Shader Editor
 
@@ -773,11 +1013,11 @@ If you are also working on the 3D MODEL while texturing, you would not model the
 
 == How to Make Snow Textures
 
-
 (((Texture, Snow)))
+
 Snow textures must also be created, so that your buildings and other
 objects will look correct when there is snow lying on the ground. These,
-too, are created using the original, daytime textures. The extshape.dat
+too, are created using the original, daytime textures. The `extshape.dat`
 file must be updated in relation to this (see the “How to write a .ref
 file” document for further clarification) and must be placed in the
 route’s snow textures directory accordingly. The snow texture will only
@@ -795,6 +1035,8 @@ image::images/image3.jpeg[]
 image::images/image6.jpeg[]
 
 === Highlights and Shadows
+
+(((Texture, "Shadows")))
 
 A layer, or layers, used for "hard coded" shadows and possibly highlights, which could otherwise be known as the {AO} layer, should reside near the DECAL layer and the BASE layer for a decent effect, though you could migrate the highlights layer higher in the stack.  How to create an {AO} layer using the Blender render engine is covered in another section of this document, but if you do create this layer using Blender, this is where it would be inserted.  The color of this layer will essentially be only black and white.  You can always choose to create and edit this layer manually as well. 
 
@@ -862,9 +1104,11 @@ image::images/ao7.jpg[]
 
 === Ambient Occlusion
 
+(((Texture, "Ambient Occlusion Baking")))
+
 To Recap... Blender {AO} (AO) is a rendering technique that simulates the subtle shadows that occur where surfaces meet other surfaces or when they are blocked from direct light. AO can be used to add realism and depth to your renders, and it can be especially effective for close-up shots or scenes with complex geometry.
 
-There are two ways to add AO to your renders in Blender:
+There are a few ways to add AO to your renders in Blender, these include:
 
 1. Render settings: Go to Render Properties > Render Settings > World and enable the {AO} checkbox. You can then adjust the Distance and Strength settings to control the intensity of the AO effect.
 2. Shader node: Add an {AO} node to your material shader and connect it to the Surface output. You can then adjust the Distance and Strength settings directly on the node.
@@ -885,14 +1129,14 @@ Overall, AO is a powerful rendering technique that can be used to add realism an
 
 
 
-=== More About Baking Ambient Oclusion
+=== More About Baking Ambient Occlusion
 
-(((Texture, "clusion Baking")))
+(((Texture, "Baking Ambient Occlusion, additional")))
 
 
 {AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
 
-When Baking occlusion, Here are some general tips:
+When Baking occlusion, Here are some general tips (From Wayne Campbell):
 
 1. Gather parts that will receive{AO} into a collection to make them easy to select.
 2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.

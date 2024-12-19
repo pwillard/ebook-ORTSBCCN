@@ -54,79 +54,8 @@ There is a Blender Add-On called *SERPENS* that will help you develop Blender GU
 === Blender and ChatGPT
 (((Scripting,"Chatgpt")))
 
-If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is, quite simply, the best artificial intelligence chatbot ever released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit.  There are two ways to make use of the chatbot and these are: 
+If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is, quite simply, the best artificial intelligence chatbot ever released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python. 
 
-1. Interactively using a chat session at https://chat.openai.com
-2. Accessing the chatbot using code via the API using a private API KEY.
-
-[NOTE]
-An API, or Application Programming Interface, is a set of rules and protocols that allows different software applications to communicate and interact with each other. It defines the methods, data formats, and conventions that applications should follow to request and exchange information. APIs play a crucial role in enabling software integration, fostering collaboration between different systems, and promoting the development of interconnected applications.
-
-By integrating ChatGPT with Blender Python scripts, you can augment your knowledge of Python without the need for being a whiz-bang Python coder. Many of the scripts that will be shown in this section were actually supplied by ChatGPT.  While the responses from ChatGPT sometimes contain coding errors, ChatGPT also can be told about errors and can generate updates to the script response until it finally works.  The responses can also be used as a starting point for a more detailed Python script. 
-
-ChatGPT, based on the GPT-3.5 architecture, is designed to generate human-like text based on a given prompt. It has been trained on a vast amount of diverse and high-quality data, making it capable of understanding and responding to a wide range of questions, instructions, and conversational prompts. By leveraging ChatGPT's language generation capabilities, you can solve specific problems or get answers to particular questions related to your Blender projects.
-
-
-==== Incorporating ChatGPT into your scripts 
-
-Here are the steps to integrate ChatGPT with your Blender Python scripts:
-
-Installation and Setup:: Ensure you have Blender installed on your machine, along with a compatible version of Python. You can download Blender from the official website (blender.org) and install the required Python packages using pip or a package manager like Anaconda. (The authors preference is to avoid Anaconda)
-
-Importing the ChatGPT Library:: Incorporate the ChatGPT library into your Python environment. OpenAI provides an API that allows developers to interact with ChatGPT programmatically. You'll need to obtain an API key to access the OPENAI ChatGPT service.
-
-Establishing a Connection:: Use the API key to establish a connection with the ChatGPT service. This connection will enable you to send prompts and receive responses from the language model.
-
-Script Integration:: Within your Blender Python scripts, incorporate the necessary code to communicate with ChatGPT. You can prompt the model with questions, provide instructions, or engage in a dialogue with the model. Retrieve the generated text from ChatGPT and use it to influence the behavior of your Blender scene.
-
-
-[TIP]
-Remember to handle the limitations of ChatGPT, such as potential biases or generating incorrect information in response to questions. Preprocessing user inputs, providing context, and implementing appropriate error handling can help mitigate these issues and provide a better user experience.
-
-To summarize, integrating ChatGPT with Blender Python scripts opens up a whole new aspect of Blender, especially for those that need a little extra help and don't have a human mentor handy. 
-
-
-[NOTE]
-There is an add-on available for Blender that integrates ChatGPT with Blender using the ChatGPT API.  It's currently a $5.00 purchase... but feedback seems positive. The addon has the capability to either provide guidance for accomplishing a task or try to carry out the task independently. https://ryanaddons.lemonsqueezy.com/checkout/buy/70eb3e1e-8500-40ff-a652-beef1a511106   The author has not used it.
-
-==== Getting an API Key from OPENAI
-
-Blender Python code developers using ChatGPT are required to use an API key to utilize ChatGPT API from within Python *code*. They can generate this key by logging in to OpenAI's website and selecting "View API Keys". Here is the step-by-step guide.
-
-[TIP]
-You do not have to use the API or use Python code to access ChatGPT. You can always use the interactive chat by using the https://chat.openai.com web interface to ask your questions and have conversations.
-
-To use ChatGPT through the API though, you must create a free account and generate the API key(s). Fortunately, it is pretty straightforward.
-
-You can request an API KEY by signing up here: https://beta.openai.com/signup. You can use your Google or Microsoft account to sign up if you don't want to create a unique UserName & Password combination for OPENAI. You may need a valid mobile number to verify your account.
-
-Once you have an account, you can chose the "View API Keys" option in your profile to "Create a new secret key", which is your API KEY.  
-
-[NOTE]
-Remember, the key created has access to both GPT-4 and ChatGPT models. You don't need separate API keys. ChatGPT-3.5 Turbo is the current ChatGPT default model.
-
-[WARNING]
-You MUST save the key that shows up on the screen when you create a new key.  It will never be shown to you again and if you lose it, you will need to make a new one.
-
-==== API costs
-
-API Queries are not free. Please note that you will be charged based on your monthly usage. The cost structure is as follows: 750 words (aka 1000 tokens). Below is a table representing the cost per 1000 tokens:
-
-|===
-|   Model   |   Cost (Input)
-
-|GPT-3.5 Turbo (4k  context)    |           $0.0015 (13x cheaper than GPT-3 Davinci)
-|GPT-3.5 Turbo (16k context )   |           $0.003
-|===
-
-For example, if you use 10,000 tokens per day of GPT-3 Turbo for 20 days a month, you will be charged 400 cents per month, i.e. 0.002 * 10 * 20.
-
-If you plan to use it regularly, you need to add your credit card information here https://beta.openai.com/account/billing/payment-methods
-
-You can also set up a usage limit if you have a paid set up, say, $10/month at https://beta.openai.com/account/billing/limits​
-
-[NOTE]
-The author is currently not well versed on using the API, so can only provide limited feedback on the experience. 
 
 === Running a Blender Python Script Inside Blender
 (((Scripting, "Inside Blender")))
@@ -156,6 +85,7 @@ It's important to ensure that your script interacts with Blender's API correctly
 By following these steps, you can easily run a Blender script and leverage the power of scripting to automate tasks, create custom tools, or extend Blender's functionality to suit your specific needs.
 
 === A Collection of Scripts
+(((Scripting, "Scripts")))
 
 The following scripts are tested examples of very simple scripts to help get you started with scripting.  They are only a few lines each so you can take the time to digest them and learn how they work.
 
@@ -269,7 +199,8 @@ for obj in bpy.data.objects:
 ----
 
 
-==== Making copies
+==== Making Copies
+
 
 While making a copy of an object is easy enough with kbd:[SHIFT] + kbd:[D], sometimes you want to make a copy and offset it by a specific amount.  This next ChatGPT generated script will do that.
 

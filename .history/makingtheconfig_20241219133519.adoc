@@ -1,6 +1,8 @@
 
 == Creating Rolling Stock and Locomotives
 
+(((ORTS, "Creating Rolling Stock and Locomotives")))
+
 In order to ensure the precise functioning of locomotives and other rolling stock, it is crucial to acquire as much authentic data as possible and comprehend the expected behavior of the locomotive or rolling stock.  These bits of collected data will be used to flesh out the `ENG` and `WAG` files that accompany the 3D Model and textures that make up a particular content item that can be added to {OR}.
 
 You would need to gather enough prototypical data to accurately complete the physics descriptions in the `WAG` or `ENG` file. 
@@ -13,6 +15,8 @@ The process of creating content and config files is often described as a complic
 
 
 == General Configuration File Format
+
+(((ORTS, "General Configuration File Format")))
 
 The formatting of the configuration files are based on a standard known as S-Expression.  This method, known as "symbolic expression format" pre-dates a lot of the more modern programming language solutions for managing data, like JSON or XML.  It was originally devised to build tree-structured data notation and was a commonly used with languages like LISP.  Like LISP, it is heavily dependent on parentheses.  You could even say that XML has a somewhat S-Expression like structure if you are familiar with it.
 
@@ -117,6 +121,7 @@ Erik Cantu has come up with a winning set of options here that would even allow 
 
 
 === Basic ENG and WAG file Details
+(((ORTS, "Basic ENG and WAG file Details")))
 
 The goal of this section is to assist the reader when creating new vehicles or when upgrading their old MSTS ENG and WAG files to current ORTS standards.
 
@@ -523,6 +528,8 @@ Clear are mud still, I suppose... more examples are needed.
 
 ===== Option 1 - The Benefits of Common Folders for Re-skinners
 
+(((ORTS, "The Benefits of Common Folders for Re-skinners")))
+
 Lets say you were going to repaint one of Erick's models.  If this is the case, all you really need to do is create a new folder for your content, develop a new SKIN and adjust the existing SHAPE details to refer to the new TEXTURE.  Many of the NAVS releases also include a paint kit release that offer much in the way of guidance for re-skinning, making these the best choice for newcomers that want to give it a try.  
 
 For example, if you used the NAVS 40 ft Boxcar kit as a base model, your WAG files would basically look like this (Taken from CP 40 foot Grain Boxcars by JW Mercer and based on NAVS_BOXCAR_40_PS-TYPE car by Erick Cantu):
@@ -558,6 +565,8 @@ If you did not have the NAVS 40 Ft Box car installed, you would need to install 
 
 
 ===== Option 2 - Completely New Content (with possible help from NAVS)
+
+(((ORTS, "Completely New Content")))
 
 When creating new content, the amount of work involved can seem daunting at first.  Not only do you need to consider the 3D Model and Texturing details, you need to research the Physics and Sounds for the model.  
 
@@ -699,7 +708,7 @@ Comment ( //////////Brakes - general\\\\\\\\\\ )
 
 ----
 
-Notice how Erick has carefully layed out the design of the overall `WAG` file and the related INCLUDES to allow for sharing of common settings and to allow for a refinement of specific details.  Also note that the CAR BODY is actually a Freight Anim entry and the MAIN BODY of the vehicle is actually based on the type of BOGEY used.  A novel idea that is worth imitating in our own designs.  The TRUCK texture file (shared among all variants) is located in the same folder as  `../NAVS_COMMON/Boxcar_50_PS-Type/PS-Type_50_LD_A3_Plain.inc` while the car body texture and decal texture is located in the same location as the main WAG file.
+Notice how Erick has carefully laid out the design of the overall `WAG` file and the related INCLUDES to allow for sharing of common settings and to allow for a refinement of specific details.  Also note that the CAR BODY is actually a Freight Anim entry and the MAIN BODY of the vehicle is actually based on the type of BOGEY used.  A novel idea that is worth imitating in our own designs.  The TRUCK texture file (shared among all variants) is located in the same folder as  `../NAVS_COMMON/Boxcar_50_PS-Type/PS-Type_50_LD_A3_Plain.inc` while the car body texture and decal texture is located in the same location as the main WAG file.
 
 
 While you can still use a *default* MSTS-like WAG file with {or}, after seeing what Erick has done, you might be able to see why embracing the new way could be beneficial.  This NAVS method is very re-painter-friendly and the fact that Erick also supplies a layered BITMAP file is the ultimate in "being nice to re-painters".
@@ -712,7 +721,9 @@ It's up to you how you want to handle your ENG and WAG files.  You can even go w
 
 
 
-==== Another Example of Rolling Stock 
+==== Another Example of Rolling Stock
+
+(((ORTS, "Another Example of Rolling Stock"))) 
 
 Here is an example of a traditional MSTS style WAG file for USA style rolling stock.  This is a BLLW release.  It contains NONE of the new tokens related to {or} specifically so should work reliably in MSTS as well.  It does utilize `FreightAnim` though the WAG for this car is to an EMPTY car, so the freight anim setting is commented out.  In {OR}, only one Coupling entry is used, so {OR} will only need to see one in the WAG file.
 
@@ -800,7 +811,9 @@ Wagon ( BLLW-H21a-PRR01
 If you keep up with changes in {or}, you will see that some items have changes to be a bit more logical, for instance, if you supply the new DERAIL COEFICIENT tokens then you no longer need to supply `NUMWHEELS` as `ORTSNumAxles` from the Derail values makes it redundant.  Additionally, you only need to supply one `COUPLING` token, not two.   Refer to Derail Coefficient section of the {or} manual for further details.
 
 
-== Specifying lights on locomotives and wagons
+== Specifying Lights on Locomotives and Wagons
+
+(((ORTS, "Specifying Lights on Locomotives and Wagons")))
 
 
 === Introduction
@@ -832,6 +845,7 @@ Lights are specified as part of a locomotive/wagon’s .eng file (the same file 
 * Angle 
 
 ==== Setting requirements 
+(((Lights, "Setting requirements")))
 
 The first thing you must specify is when you want the light or lights in question to come on.  This is done by setting a number of flags to define the requirements for the lights concerned to light – if no requirements are listed, the light will always be on.
 
@@ -890,6 +904,7 @@ Cone:: A “real” light which has an effect on the polygons around it.  Again,
 
 
 ==== Fade-in and Fade-out times
+(((Lights,"Fade-in and Fade-out times")))
 
 These values simply let you define a number of seconds that the light will take to brighten to the brightness of its current state when it is lit, and the number of seconds it will take to die away when it is switched off.  If you specify 0 for both values, the light will light and darken instantaneously.
 
@@ -928,6 +943,8 @@ the polygon "disc" for glow lights.
 * Angle(n) (Cone lights only) the radius of the cone, in degrees.
 
 ==== Examples
+(((Lights,"Examples")))
+
 
 Here are a few examples, taken from the Dash 9 .eng file.
 
@@ -1087,6 +1104,7 @@ Light	(
 ----
 
 === A brief explanation of hexadecimal numbers
+(((Hexadecimal,"Numbering")))
 
 Hexadecimal is a base 16 counting system used by computers.  Humans generally use base 10.  In base 10, we have a units column, a tens column, a hundreds (ten squared) column, etc. and numbers can be described by specifying a value for each column.  
 

@@ -43,7 +43,7 @@
 :version: Blender 4.2 LTS
 :BV: 3.6.16 LTS
 :AO: Ambient Occlusion
-
+:NV: 4.3.10
 
 <<<
 :numbered!:

@@ -10,7 +10,7 @@
 :email: petewillard@gmail.com
 :homepage: http://www.railsimstuff.com
 :revision: 2.5
-:copyright: Copyright © 2020 - 2024
+:copyright: Copyright © 2020 - 2025
 :title-page-background-image: image:images/main.jpeg[fit=scale-down]
 :encoding: utf-8
 :lang: EN
@@ -35,13 +35,13 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: .0.1
-:revdate: 2024-09-30
+:revnumber: 2.5.0.3
+:revdate: 2024-10-4
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
-:version: Blender 3.6 LTS
-:BV: 3.6 LTS
+:version: Blender 4.2 LTS
+:BV: 3.6.16 LTS
 :AO: Ambient Occlusion
 
 
@@ -150,17 +150,17 @@ Web Links should be active and will open in your web browser if your PDF reader 
 [preface]
 == Preface
 
-OpenRails is an open-source train simulator platform designed to replicate the experience of operating trains on various railway systems. It was developed as an alternative to Microsoft Train Simulator (MSTS) and is compatible with MSTS content, allowing users to enjoy a wide range of routes, locomotives, and rolling stock created for MSTS.
+OpenRails is an open-source train simulator platform designed to replicate the experience of operating trains on various railway systems. It was developed as an alternative to Microsoft Train Simulator (MSTS) and is compatible with {MSTS} content, allowing users to enjoy a wide range of routes, locomotives, and rolling stock created for {MSTS}.
 
 Here are some key points about OpenRails:
 
-Compatibility: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to MSTS, especially on newer hardware.
+Compatibility: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to {MSTS}, especially on newer hardware.
 
 Enhanced Graphics: OpenRails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
 
 Physics and Realism: OpenRails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
 
-Third-Party Content: OpenRails is compatible with a wide range of third-party content created for MSTS. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the MSTS community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
+Third-Party Content: OpenRails is compatible with a wide range of third-party content created for {MSTS}. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the {MSTS} community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
 
 Community and Development: OpenRails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
 

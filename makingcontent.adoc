@@ -2,6 +2,7 @@
  
   
 About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} strives to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
+
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
 [NOTE]
@@ -60,7 +61,7 @@ Deciding on which option to use might be difficult, but you should try to make a
 * How much effort do you want to put into this project?
 * What is your experience with 3D modeling?
 * What is your experience with 3D modeling in Blender?
-* What is your experience with 3D modeling for Open Rails as compared to {{MSTS}}?
+* What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
 * How much flexibility do you want to have with your content?
 
 The author's advice is to start with the option that is easiest for you to understand and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
@@ -97,13 +98,13 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-I recommend just using METRIC for measurements. It's the default measurement in Blender and {OR}.  I realize that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
+Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
 ====  Why the Author Uses Blender 
 
 (((Blender, "Why Blender?")))
 
-In 2002, I started using 3D Software to create content for games, primarily for {{MSTS}}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {BV} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
+From Pete Willard:: In 2002, I started using 3D Software to create content for games, primarily for {MSTS}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {BV} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
 
 == Why Many Other People Use Blender to Make Content?
 
@@ -147,18 +148,20 @@ To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very 
 Much of this document was created with Blender version 3.6 LTS and I've not attempted to use Version 4.x.
 
 [NOTE] 
-CONTEXT is an abandoned editor, but it has a syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but I've not finished it yet.  https://github.com/pwillard/engwag
+CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but it's not finished it yet.  https://github.com/pwillard/engwag
+
 (((Context, "An old but useful text editor")))
 
 === How to Install Blender
 
 (((Blender, "Installation")))
 
-According to the Blender.org website, a new version is released about once per quarter.  I'm going to assume you are installing Blender on a Windows 64 BIT platform.  I would recommend that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. Currently, this is{BV}.
+According to the Blender.org website, a new version is released about once per quarter.  The assumption is that you are installing Blender on a Windows 64 BIT platform.  It is recommended that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. Currently, this is{BV}.
+
 (((Blender, "Installation")))
 
 [TIP]
-While Blender CAN run from a USB stick in a portable mode, it's best to just use the MSI installer.
+While Blender *can* run from a USB stick in a portable mode, it's best to just use the MSI installer.
 
 [WARNING]
 If you are still using Windows 7, you won't be able to install a Blender version 2.93 or newer.  You really should upgrade.  Much of the content in this document will still apply to version 2.93 except for new features.  You can probably still get Blender 2.8xx to work on Windows 7, but I'm no longer 100% sure.  
@@ -243,7 +246,7 @@ I would also consider unchecking the "Splash Screen" option as once you see it a
 
 image::images/PREFS2.PNG[align=center]
 
-Screen with options changed to what I prefer...
+Screen with options changed to what _Pete Willard_ prefers...
 
 <<<
 
@@ -303,7 +306,7 @@ Consider unchecking the `Load UI` option at times. When this is checked, the Use
 You would want to  RE-ENABLE this option if you have .Blend files that are using millimeters, common settings for 3D Printing model files, so that you would maintain proper UNITS settings when working on smaller objects while using Blender for things other than {OR}.
 
 [TIP]
-You would also want to adjust the "SAVE VERSIONS" option to allow for automatic backup copies of the current .Blend file to be created.
+You would also want to adjust the `SAVE VERSIONS` option to allow for automatic backup copies of the current ``.Blend` file to be created.
 
 
 ==== File Paths
@@ -329,7 +332,8 @@ In the menu:FILE PATHS[Asset Libraries] section:
 * This setting will default to  %USERPROFILE%/DOCUMENTS/Blender/ASSETS
 * If you would like to have multiple ASSET library sections, you would kbd:[LMB] click on the kbd:[+] symbol on the bottom right of the "Asset Libraries" window to add a new ASSET Folder(s) to the list.
 
-You will see that I have renamed the default "user" location's name to be "FREIGHT" and changed the folder location it references and I also added an additional library folder for ENGINE related library objects.
+You will see that we have renamed the default "user" location's name to be "FREIGHT" and changed the folder location it references and I also added an additional library folder for ENGINE related library objects.  This is just a personal preference and you can name these folders whatever you like.  You can also add additional folders to this list by clicking on the "+" symbol at the bottom right of the "Asset Libraries" window.
+
 
 [NOTE]
 Asset Library files are .Blend files with 1 or more objects in them that are specifically *marked* as ASSET OBJECTS.  This will make them show up in the Asset Browser window. Objects in the .Blend files that are NOT marked as asset objects will not be seen and will not be available as Asset Library Objects.
@@ -361,6 +365,12 @@ Blender’s add-ons are split into two groups depending on who writes or support
 Official:: Add-ons that are written by Blender developers and/or are included with Blender.
 Community:: Add-ons that are written by people in the Blender community.
 
+[NOTE]
+Blender 4.x now includes a built-in Add-On Manager that allows you to install add-ons from the internet.  This is the preferred method of installing add-ons.  This is the method we will use to install the add-ons we need for {OR} when using the latest version of Blender.  There is also a new option called `Extensions` for add-ons that meet Blender's community standards. _You must have enabled the "Allow Online Access" from the network settings under "System" preferences for this feature to work._ 
+
+[TIP]
+With the latest versions of Blender, To install an add-on, click on the "Install" button on the right side of the add-on you want to install.  This will download the add-on and install it in the correct location for Blender to find it.  You can also search for add-ons by name or category using the search bar at the top of the Add-ons window.
+
 ===== Enabling and Disabling Add-Ons
 
 Enable and disable an add-on by checking or unchecking the check-box of the add-on you have selected. Add-ons are immediately available when checked, or disabled when unchecked.
@@ -373,8 +383,7 @@ Add-ons are grouped by their TYPE, such as MESH, IMPORT_EXPORT, CURVE, etc.
 
 To get us started, here are a few built in Add-ons I recommend installing:
 
-[TIP]
-(When searching, use the word on the right (see below),for example type; `F2` to locate and enable the built-in or already installed addons)
+
 
 * MESH: `LoopTools`
 * MESH: `F2` 
@@ -384,6 +393,8 @@ To get us started, here are a few built in Add-ons I recommend installing:
 * ADD MESH: `Extra Objects` 
 * MESH: `Automirror` 
 
+[TIP]
+(When searching, use the word on the right (see below),for example type; `F2` to locate and enable the built-in or already installed addons)
 
 Loop Tools:: This and EDIT MODE addon that has a lot of operators for turning any number of edges into a circle or curve, It can bridge edge loops *and* add segments while doing it, it can turn sloppy loops into a perfect curve, it can flatten things at graduated angles unlike using kbd:[S] kbd:[X] kbd:[0].... It can TWIST things... It has a cool LOFT option (PLAY WITH IT) and finally, it can average out the distance between a series of vertices using the SPACE option. When in EDIT MODE, it will show up on the right side _N-Panel_ menu under the `EDIT` tab or in the kbd:[RMB] menu.
 
@@ -423,8 +434,9 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 3) Export To Blend
 * Available from: https://blendermarket.com/products/export-to-blend 
 * Price: $5.00
-* This add-on allows you to export your model to a `.blend` file.
+* This add-on allows you to export your selected model object to a new `.blend` file.
 * It allows you to export the model to a `.blend` file with all the materials, textures, and textures coordinates and is useful when you want to create a library of *parts* for your 3D modeling.
+
 
 
 
@@ -496,7 +508,8 @@ An option in Overlays that you might want enabled is `Statistics` at it will hel
 [TIP]
 Below is a change that is also very related to your personal preference so it is optional.  Some feel this creates a *really* messy edit window on complex shapes.
 
-Under Overlays (Select the default cube and change to `EDIT MODE` using kbd:[TAB]. If there is no default cube, then use menu:Add[Mesh > Cube] to place a cube in the scene and go to EDIT mode using kbd:[TAB].)  In the `OVERLAYS` drop down, enable the `EDGE LENGTH` check-box.  This will show the actual edge unit lengths of selected objects when you have and edge or edges selected. 
+Under Overlays (Select the default cube and change to `EDIT MODE` using kbd:[TAB]. If there is no default cube, then use menu:Add[Mesh > Cube] to place a cube in the scene and go to EDIT mode using kbd:[TAB].)  In the `OVERLAYS` drop down, enable the `EDGE LENGTH` check-box.  This will show the actual edge unit lengths of selected objects when you have and edge or edges selected.   There are addons such as "Construction Lines" that do a better job if you want this feature.
+
 
 
 <<<
@@ -511,10 +524,12 @@ image::images/PREFS8.PNG[align=center]
 ** Enable the check-box next to Shadow
 ** Enable the check-box next to Cavity +
 
-These steps help to make things more visible while editing.
+These steps help to make things more visible while editing objects.
+
+(((Blender, "MATCAP")))
 
 [TIP]
-I also sometimes choose MATCAP and pick the leftmost MATCAP option for better visual representation of what I'm working on in the early stages of modeling. It can help to see the shape of an object in a more 3D way and makes surface errors easier to see.
+I also sometimes choose MATCAP and pick the leftmost MATCAP option for better visual representation of what I'm working on in the early stages of modeling. It can help to see the shape of an object in a more 3D way and also makes surface errors easier to see.
 
 <<<
 
@@ -529,7 +544,7 @@ image::images/PREFS11.PNG[align=center]
 If you need to work in Imperial Units versus Metric, you would adjust the setting under the UNITS SYSTEM option in Scene Properties.  
 
 [IMPORTANT]
-Changes to `UNIT` settings can have effects in other areas, such as Camera View settings related to  `Focal Length`, `Clip Start` and `Clip End`. To adjust these values after changing UNITS settings, use the _N-Panel_ `View` tab to make adjustments.
+Changes to `UNIT` settings can have effects in other areas, such as Camera View settings related to  `Focal Length`, `Clip Start` and `Clip End`. To adjust these values after changing UNITS settings, use the _N-Panel_ `View` tab to make adjustments.  If you end up with unusual clipping or part of your model disappearing when you zoon out, you need to adjust your _clip end_ settings.
 
 <<<
 
@@ -551,8 +566,7 @@ menu:Properties Panels[Scene > Film] In the Film section,  Enable the check-box 
 
 Related to the `Shading` Tab on the Top Bar Menu, we will make some adjustments for lighting.  Rather than rely on actual `light` objects in our scene, we can create general illumination effects based on HDRI images. 
 
-This step requires that you have already downloaded an example HDRI file from one of the HDRI WEB SITE locations mentioned at the beginning of this document.  The downloaded HDRI files should be located in your menu:Documents[Blender > HDRI] folder that you create for this purpose.  See TIPS below for what I am using.
-
+This step requires that you have already downloaded an example HDRI file from one of the HDRI WEB SITE locations mentioned at the beginning of this document.  The downloaded HDRI files could be located in your menu:Documents[Blender > HDRI] folder that you create for this purpose.  See TIPS below for usage details.
 
 In the "World Properties" panel (globe icon on the right),  Add "Background" in the Surface pulldown menu.  In the Color section, select "Environment Texture". This will allow us to chose the HDRI we downloaded and made available for Blender to use.   Select the "Open" button and choose the HDRI file you want to use using the "File Browser".
 
@@ -560,13 +574,13 @@ Now, when you chose Render, you will be using the lighting from the HDRI file.
 
 If you now select the `Shading` tab and then choose the `Viewport Shading` view icon (The one to the right of Solid Shading Icon) you would then choose the pulldown on the right (viewport shading) and then adjust the default lighting setting to `Scene World`.   You will now see your work with the new HDRI background in place.
 
-When you now Render your model, this would be your background if you had not chosen "transparent" in the FILM option earlier. 
+When you Render your model from here on, this would be your background if you had not chosen "transparent" in the FILM option earlier. 
 
 [TIP]
-I have used the `Abandoned Slipway` HDRI from https://hdrihaven.com as recommended by *Josh Gambrell* for neutral outdoor lighting in the past. Currently though, I am using a file called `hdri_004_nordicfxnet.hdr` aka "Railroad Crossing" from  http://www.nordicfx.net/  as it seemed slightly more appropriate.  I did scale it down from 4K to 2K though.
+The `Abandoned Slipway` HDRI from https://hdrihaven.com comes recommended by *Josh Gambrell* for neutral outdoor lighting in the past. There is also a file called `hdri_004_nordicfxnet.hdr` aka "Railroad Crossing" from  http://www.nordicfx.net/  as it seemed slightly more appropriate.  I did scale it down from 4K to 2K though.
 
 [TIP]
-There is a free HDRI addon that makes setting up the World HDRI lighting image files a bit easier called "EASY HDRI". Totally optional of course.
+There is a free HDRI addon that makes setting up the World HDRI lighting image files a bit easier called "EASY HDRI". _Totally optional of course._
 
 
 image::images/REMOVELIGHT.PNG[align=center]
@@ -575,7 +589,7 @@ The last thing we need to do now that we have replaced how we do our lighting fo
 
 <<<
 
-=== Done, for now
+=== Done, for now... almost
 
 One last step... +
 
@@ -605,27 +619,27 @@ image::images/folder2.JPG[]
 
 
 [NOTE]
-I snipped a lot of details out for brevity and left some in as examples.  EXPORT is for renders and such, IMPORT is for things I'm converting from 3DCANVAS and TSM. PROJECTS, should be obvious, but I use prefixes and a naming standard to make things easy to find. I use  a SHARED folder for things that all projects will share, like Asset Libraries and common textures.  I prefix my Freight cars with FRT, Scenery with SCN and Engines with ENG... you get the idea.
+ A lot of details have been snipped out for brevity. Regarding handy folders to create,  EXPORT is for renders and such, IMPORT is for things being converted from 3DCANVAS and TSM or other external 3D model sources. PROJECTS, should be obvious, but using prefixes and a naming standard to make things easy to find. I use  a SHARED folder for things that all projects will share, like Asset Libraries and common textures.  I prefix my Freight cars with FRT, Scenery with SCN and Engines with ENG... you get the idea.
 
 <<<
 
 
 == Content Creation Overview
 
-The information presented below is not specifically about modeling with Blender, it is about how to create items that comply with the simulator requirements and guidelines.  Some references to my old 3DC notes are included here.
+The information presented below is not specifically about modeling with Blender, it is about how to create items that comply with the simulator requirements and guidelines.  Some references to old 3DCrafter notes are included here, as well.
 
 (((Content Creation, "Basic Overview")))
 
 [TIP]
-Reminder, this document is basically a "notebook" and it started life as my collection of notes about content creation.  It may seem to jump around a lot as a result.
+Reminder, this document is basically a "notebook" and it started life as my collection of notes about content creation.  It may seem to jump around a lot while the concepts are being gathered.  Expect changes and updates.
 
 
 === Orientation
 ((( Content Creation, "Orientation")))
 
-There is a need to properly orient your model if you are making rolling stock or an engine.  If you have used 3D modeling software in the past, maybe 3D Crafter / 3D Canvas or Maya you might be accustomed to Z axis being DEPTH and the X axis being WIDTH and Y axis being HEIGHT.  Blender orientation is similar to 3DS MAX where Z is HEIGHT, X is WIDTH and Y is DEPTH.
+There is a need to properly orient your model if you are making rolling stock or an engine.  If you have used 3D modeling software in the past, maybe 3D Crafter / 3D Canvas or Maya, etc where you might be accustomed to Z axis being DEPTH and the X axis being WIDTH and Y axis being HEIGHT.  Blender orientation is similar to 3DS MAX where Z is HEIGHT, X is WIDTH and Y is DEPTH.
 
-When working on things that roll on the track, the FRONT of a model is aimed towards the Positive values of the Y axis and the REAR of the model faces the negative Y axis. 
+When working on items that roll on the track, the FRONT of a model is aimed towards the Positive values of the Y axis and the REAR of the model faces the negative Y axis. 
 
 [WARNING]
 Blender's default point of view differs slightly in that it considers the FRONT to be facing the -Y direction.  This comes into play when using the view keys on the keypad, where pressing  kbd:[1] for front view will have you looking at the back end of your 3D model from a {MSTS} and {or} perspective.
@@ -636,7 +650,7 @@ Blender's default point of view differs slightly in that it considers the FRONT 
 
 (((Content Creation, "Engine/Wagon Model Hierarchy")))
 
-For the Blender Exporter to properly process your model, you must have a "collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other collections may be children of this collection but the `MAIN` collection is where you will place your model hierarchy but `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
+For the Blender Exporter to properly process your model, you must have a "Collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other exported Collections will be children of this Collection but the `MAIN` collection is where you will place your model hierarchy. `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
 
 image:images/layout-h.png[]
 
@@ -648,18 +662,20 @@ For a model to work correctly in {OR}, there are some requirements that need to 
 image:images/heir.png[]
 
 [TIP]
-The way I have found to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  
+The way to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  
 
 [NOTE]
 The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002 so it has become a standard _thing_ to do but it's not a requirement for {OR}. The Blender `S` file exporter by Wayne Campbell only requires that you use `MAIN` as the name of the _COLLECTION_ that refers to where your model objects reside.
 
 [WARNING]
-Be careful with selecting all objects in object mode and then applying "all transformations", as it will reset all objects to have their origin (pivot point) to be `world origin`. This would change the pivot points of the bogies and wheels.
+Be careful with selecting all objects in object mode and then applying "all transformations", as it will reset all objects to have their origin (pivot point) to be `world origin`. This would change the pivot points of the bogies and wheels, etc.
 
 === Standard 2 Axle Freight Bogies
+(((Content Creation, "Standard 2 Axle Freight Bogies")))
+
 If you are looking at the model from the Left Side View, the forward direction of the model is facing right.  Starting at the right, the bogies and wheels are named according to the diagram above, where associated WHEELS parented to the related BOGIE1 or BOGIE2. 
 
-If an additional axle is needed, use WHEELS13 or 23 located behind the bogie pivot relative to forward motion and shift wheel set 2 to the center of the related BOGIE. Its is important that the naming sequence remains (11 to 23) as shown in the diagram or wheels will turn backward and shift improperly in {MSTS}. 
+If an additional axle is needed, use WHEELS13 or WHEELS23 located behind the bogie pivot relative to forward motion and shift wheel set 2 to the center of the related BOGIE. It's is important that the naming sequence remains (11 to 23) as shown in the diagram or wheels will turn backward and shift improperly in {MSTS}. 
 
 [NOTE] 
 You would not have a 2 axle BOGIE with WHEELS13 or WHEELS23.
@@ -706,7 +722,7 @@ The Open Rails (OR) manual provides a good understanding of the features only av
 
 While I'm not going to create a full guide to `sd`, `ref`,`eng` and `wag`  files here in this document, we will need to create a working file if we plan to add content to {OR}.  Peter Newell's website has an in-depth look into creating good `ENG` and `WAG` files for {OR}.footnote:[https://www.coalstonewcastle.com.au/physics/format/]
 
-Scenery objects, for example, would require an `sd` file if creating for {msts}, however, {or} uses a different method to define scenery and it makes the SD file obsolete.
+Scenery objects, for example, would require an `sd` file if creating for {msts}, however, {or} uses a different method to define scenery and it makes the SD file obsolete under many conditions.
 
 Also, see <<Creating Rolling Stock and Locomotives>>
 
@@ -791,16 +807,19 @@ If you closely examine NAVS releases, they follow a format like this.
 === General Modelling Standards from Erick Cantu
 (((General Modeling Standards, continued)))
 
-I feel these comments about creating content from Erick are so important that they need to be documented here as a reference. These details have been extracted from forum posts at Elvas Tower and are meant as a guide if you want to emulate his results.  While these are not hard rules, they definitely give us something to work with.  
+It is felt that these comments about creating content from Erick are so important that they need to be documented here as a reference. These details have been extracted from forum posts at Elvas Tower and are meant as a guide if you want to emulate his results.  While these are not hard rules, they definitely give us something to thin about and try to work with.  
 
 [WARNING]
-Erick supplies a lot of details about his approach to modeling here. Its worth reading and retaining these as guidelines for your own modeling. They are not hard rules, but they are a good guideline.
+Erick supplies a lot of details about his approach to modeling here. It's worth reading and retaining these as guidelines for your own modeling. They are not hard rules, but they are a good guideline.
 
 ==== Erick Says:
 
+
 * Match the right trucks to the right car. This goes beyond an A-3 or S-2 in that I make sure that my cars have the right wheel size and truck wheelbase (i.e. tonnage rating), hence why I spent so much time building a library of freight car trucks. Erick's truck library is available at Elvas Tower. Importing the trucks into Blender for modellers using that program could actually be very helpful.
 
-* I map to a resolution of 1/2 inch per pixel on standard-definition cars. The alignment of all adjoining car surfaces should be within 1/1000 of a pixel so that continuous lines are not broken. I map all car sides separately. Most cars fill either the top or bottom half of a 2048 x 2048 pixel texture sheet so that large surfaces are continuous and one texture sheet can be used for two paints (for flat cars, it might be three because they take up so much less space). My standard setup now is to produce four shape files, with the first two mapped to the top and bottom of the first texture sheet, and the second two mapped to the top and bottom of the second sheet. This allows for four different paint schemes or weathering patterns per car folder, with numbers applied with decals so that each main shape can represent many cars.
+* I map to a resolution of 1/2 inch per pixel on standard-definition cars. The alignment of all adjoining car surfaces should be within 1/1000 of a pixel so that continuous lines are not broken. I map all car sides separately. Most cars fill either the top or bottom half of a 2048 x 2048 pixel texture sheet so that large surfaces are continuous and one texture sheet can be used for two paints (for flat cars, it might be three because they take up so much less space). 
+
+* My standard setup now is to produce four shape files, with the first two mapped to the top and bottom of the first texture sheet, and the second two mapped to the top and bottom of the second sheet. This allows for four different paint schemes or weathering patterns per car folder, with numbers applied with decals so that each main shape can represent many cars.
 
 * Texture mapping needs to be intuitive and functional. The key questions I ask myself are: "Would I want to paint this?" "Would I need to request a modified version of this car to do [insert railroad here]'s livery?" "Can I remove parts I might not need with the alpha channel?" "Could I paint this car without using shape viewer to check my work?" I have seen some really bad mapping in the MS Flight Simulator world where it was clear that the model builder was more interested in impressing everyone with how good they were at fitting some major part between spaces at an oblong angle than creating something functional (imagine entire airliner fuselage sections angled 20 or 30 degrees on a texture sheet to fit in a space - how are we supposed to do straight lines on that!?).
 
@@ -846,11 +865,13 @@ Erick supplies a lot of details about his approach to modeling here. Its worth r
 
 * If a feature can't be done right, it doesn't get added. This is why my track sounds don't incorporate switch and crossing sounds, even though OR allows for it, because you can't account for the truck spacing or the different number of wheels as it presently stands, so it's always going to break the suspension of disbelief.
 
-The main point is to really be purposeful about the choices that you make. Little things will really accumulate over the course of a long train, especially when AI trains enter the equation. This is why I was so intent on redoing my car sounds, because I had been less purposeful about the way that my streams were set up and it was maxing out the number of streams active at any given time. This is also why I have moved from individual car textures to paint and weathering variations with car numbers applied via decals, because the number of textures, based on my testing, is the single biggest determinant of performance across an entire train. The tradeoff was one extra draw-call per car (the decal shape) so that an entire train with discrete car numbers and multiple weathering patterns could be built with a very small number of textures. In the case of my BN hoppers, 100 cars use 13 texture sheets (every 25 cars uses two car body texture sheets and one decal sheet, with all cars using the same truck texture). To do the same thing without the decal shapes would have taken 51 sheets (one for every two cars plus the truck texture).
+The main point is to really be purposeful about the choices that you make. Little things will really accumulate over the course of a long train, especially when AI trains enter the equation. This is why I was so intent on redoing my car sounds, because I had been less purposeful about the way that my streams were set up and it was maxing out the number of streams active at any given time. 
+
+This is also why I have moved from individual car textures to paint and weathering variations with car numbers applied via decals, because the number of textures, based on my testing, is the single biggest determinant of performance across an entire train. The tradeoff was one extra draw-call per car (the decal shape) so that an entire train with discrete car numbers and multiple weathering patterns could be built with a very small number of textures. In the case of my BN hoppers, 100 cars use 13 texture sheets (every 25 cars uses two car body texture sheets and one decal sheet, with all cars using the same truck texture). To do the same thing without the decal shapes would have taken 51 sheets (one for every two cars plus the truck texture).
 
 === Additional guidance from Blender Brothers
 
-One of my mentors while I was in my beginning stages of learning Blender was Josh and Ryuu of the Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
+From Pete Willard:: One of my mentors while I was in my beginning stages of learning Blender was Josh and Ryuu of the Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
 
 Josh and Ryuu of Blender Brothers Say: 
 
@@ -858,7 +879,7 @@ Josh and Ryuu of Blender Brothers Say:
 
 ==== Blender Brother's Gold Rule
 
-Always think about visual anchors when I add details. Visual anchors are like stars in a constellation. Remove a star, and the constellation loses its sense. Your eyes dart from one star to another, ignoring everything else. What lies between the stars is just negative space. Let's dive into five tips that can help you get a grip on this concept and apply it:
+Always think about visual anchors when adding details. Visual anchors are like stars in a constellation. Remove a star, and the constellation loses its sense. Your eyes dart from one star to another, ignoring everything else. What lies between the stars is just negative space. Let's dive into five tips that can help you get a grip on this concept and apply it:
 
 * *Embrace the 70/30 Rule* Keep 70% of your design clean (that's your negative space) and cluster your details in the remaining 30%. This approach creates visual anchors, helping the eyes move from one cluster to another.
 * *Keep Details to scale* Adding an oversized detail to an object can make it look cartoonish. If needed, use a scale reference to keep things realistic.

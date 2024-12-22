@@ -321,7 +321,7 @@ Use kbd:[SHIFT + D] to Duplicate the selected object +
 
 EDIT MODE:: The *selected* item in `OBJECT MODE` becomes the focused object when moving to `EDIT MODE`. `EDIT MODE` is a focused mode and you will not accidentally select other parts of the model in this mode. This mode available for all object types that can be rendered, as it is dedicated to manipulating their “shape”. The `EDIT MODE` allows adjustment of Vertices, Edges and Faces for mesh object types as well as the control points for curves, surfaces and points. 
 
-(((Blender, "Ediut Mode")))
+(((Blender, "Edit Mode")))
 
 [TIP]
 In `EDIT MODE`, the object selected will show Vertices, Edges and Faces.  Selected edges, vertices or faces will adopt a highlight color when selected. Also notice the larger tool set on the left compared to `OBJECT MODE`.
@@ -469,20 +469,23 @@ You might be tempted to try to use the Mirror Modifier, however, that operation 
 * Export your model as soon as you get the initial UV mapping completed so you can find issues earlier rather than later as a time saver
 * Remember that you can `hide` and `un-hide` collections and objects in the Outliner to help with focused modeling
 * Remember to use `Smooth Edges` and `Auto Smooth` settings
+* When you want to select a loop, you can use the kbd:[ALT] key to select all the edges that make up the loop. 
+* When you wan to select the shortest path of edges between to selected edges, use kbd:[CTRL] + kbd:[SHIFT]
+
 
 
 === Setting up your Initial Workspace
+
+(((Blender, "Workspace")))
 
 [TIP]
 ----
 You have a way to set some custom options that you always need to change and then save that as default to avoid having to perform those changes when you start a new project.
 
 The default workspace in Blender 2.8+ is something you will see in a lot of in YouTube tutorial videos. The first thing they will often do is select and then delete the "default cube".  Rather than go through this every time, it is possible for you to delete it, and then save your current cube-less `.blend` file as your new startup file. (I don't actually recommend it though) 
-
-(((Blender, "Workspace")))
-
-`FILE->DEFAULT->Save Startup File`
 ----
+
+`FILE->DEFAULT->Save Startup File` will save your current workspace as your default startup file.  This will help you get started faster and with a consistent layout.
 
 [WARNING]
 Before you do that just yet, go over to your `Outliner` window... and do the following:

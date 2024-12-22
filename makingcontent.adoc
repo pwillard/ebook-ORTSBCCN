@@ -357,8 +357,6 @@ image::images/ADD-ON.PNG[align=center]
 
 In the menu:ADD-ONS[OFFICIAL + COMMUNITY] section:
 
-(((Blender, "Add-Ons")))
-
 The Add-ons section lets you manage secondary scripts, called “Add-ons” that extend Blender's functionality. In this section you can search, install, enable and disable Add-ons. Blender comes with some useful Add-ons built-in that are ready to be enabled. You can also develop and add your own, or install any of the ones you might find on the web.
 
 Blender’s add-ons are split into two groups depending on who writes or supports them:

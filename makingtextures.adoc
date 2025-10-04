@@ -1,12 +1,12 @@
-== Bitmap Editing
+== Bitmap Editing and Texture Workflow
 
-This section is about creating textures that will be applied to your 3d models. Its not about how good you are at it.  Being good at textures takes time and practice, just like 3D modeling.
+This chapter covers practical ways to create, edit, and export textures for your 3D models. It focuses on clear workflows and tool‑agnostic guidance rather than brand loyalty. Texture skills grow with practice—just like modeling.
 
 [NOTE]
-In an attempt to be remain bitmap tool agnostic, no particular tools will recommended or favored.  Most options available have very similar capabilities,  though some are just easier to use than others.
+To remain tool‑agnostic, no single bitmap editor is endorsed. Most current editors share comparable features; some are simply easier to use.
 
 
- Author's Note: I'm never going to be an Adobe Fanboy.  You will not  find me saying good things about Adobe products.  I'm just a humble user who wants to help others learn and use their tools better.  While I'm not going to promote Adobe products I may recommend alternatives that are free and open source and possibly a few products that are for purchase.    Also, I recommend that you use what you are familiar with and not try to learn a new tool just to do this type of work unless you are starting out as a true beginner.  
+ Author's Note: I’m not an Adobe evangelist. My goal is to help you get great results with the tools you prefer—free/open‑source or commercial. If you’re new, feel free to start with a free tool; if you’re already fluent in something, use it rather than switching mid‑project.
 
 
 === Bitmap Tools Overview
@@ -15,11 +15,11 @@ In this section, we will provide an overview of the various bitmap tools availab
 (((Texture, "Tools Overview")))
 
 
-==== What are bitmap tools? 
+==== Bitmap Tools Overview
 
-Bitmap tools are digital software applications designed for creating, editing, and manipulating bitmap graphics, also known as raster graphics. These graphics are composed of a grid of tiny squares, or pixels, where each pixel is assigned a specific color value to form an image. Bitmap tools are essential for tasks like photo editing, digital painting, and pixel art, as they allow artists and designers to work with high levels of detail. They often include features like brush tools, layer management, filters, and color correction, enabling precise control over individual pixels or entire sections of an image. Popular examples of bitmap tools include Adobe Photoshop, GIMP, and Krita, each offering unique capabilities to cater to creative professionals and hobbyists alike. While bitmap graphics excel in realism and intricate detail, they are resolution-dependent, meaning their quality can degrade when scaled up or down, making bitmap tools particularly suited for projects where exact resolution and detail are critical.
+Bitmap (raster) editors let you paint and manipulate pixels on a grid. They’re essential for photo editing, digital painting, and texture authoring. Typical features include layers, blend modes, masks, brushes, filters, color correction, and precise per‑pixel control. Popular choices include GIMP, Krita, Paint.NET, Affinity Photo/Designer, and Photoshop. Raster images are resolution‑dependent—scaling them up can reduce quality—so work at an appropriate resolution from the start.
 
-==== Why do we use bitmap tools?
+==== Why bitmap tools matter for 3D
 
 Bitmap tools are crucial for creating and refining textures for 3D models because they allow artists to craft the detailed surface details that make a model appear realistic and visually appealing. Here’s why they are essential:
 
@@ -33,11 +33,12 @@ Integration with 3D Software:: Bitmap tools integrate seamlessly with 3D modelin
 
 In summary, bitmap tools bridge the gap between 2D artistry and 3D modeling, enabling the creation of rich, lifelike textures that elevate the visual quality of 3D assets.
 
+
 === Layered Format Files
 
 (((File Formats with Layer Support)))
 
-A feature of any proper bitmap tool that is to be used with creating textures for our models is the ability to save files that retain isolated working layers.  A bitmap tool that does not understand the concept of working with layered overlay modes is practically useless as you will want to be able to add weathering and decals to a base texture and control opacity values of layers.  
+For serious texture work you need layers (with opacity and blend modes). Save a master file that preserves layers; export flattened copies for your game/sim.
 
 To recommend a few tools and formats, the following list should be a guide on what you can use (These all support layers):
 
@@ -71,10 +72,10 @@ One additional tool to mention is InkScape, which like Affinity Designer, is a V
 
 
 [TIP]
-'DDS' files use 'lossy' compression which means that you will lose detail and color information compared to your original texture.  You should treat a DDS file like a PDF... it's a final document that is not designed for future editing as each editing session has the ability to degrade image quality.
+DDS uses lossy compression. Treat DDS like a final delivery format (similar to PDF), not a master for repeated edits. Always keep a lossless layered master.
 
 [WARNING]
-Simple tools, like the native Windows Paint option in Windows, are not a good choice for creating textures for 3D Models, though Microsoft does have plans to make PAINT work better in the future.
+Very simple editors (e.g., legacy MS Paint) are poor choices for layered texture work.
 
 [NOTE]
 While the list of tools is not a complete list of available software that supports layers, these are likely the most common.  I have not included the obvious package named "Adobe PhotoShop" in the list.  Adobe PhotoShop still uses the PSD format for its own files. If you own it (or rent it) then it will do the job.  I no longer use this product so I can't determine which import/export file format options are available.  I assume it can support PNG and DDS file formats as well.
@@ -85,13 +86,13 @@ In summary, choose a tool that has a native layered file format that can also su
 
 (((Texture, "DDS FILES")))
 
-DDS is the file extension used to denote the Microsoft DirectDraw Surface (.dds) texture file format. The Microsoft DirectDraw Surface (.dds) file format stores textures and cubic environment maps, with or without mipmaps. It was introduced with DirectX 7.0. Although the format is not natively supported by most graphic editing applications, there are a number of Tools designed to handle the format.
+DDS (DirectDraw Surface) stores GPU‑friendly compressed textures (with optional mipmaps). Benefits include smaller memory footprint and fast GPU upload. Ideal for large scenes or hardware with limited VRAM. Export from modern editors (Paint.NET, GIMP+plugin) rather than legacy tools.
 
 (((Texture, "DDS FILES")))
 Using `.DDS` textures for your materials has the advantage of reducing the memory usage of textures by slightly decreasing their quality (Though honestly, not as bad as the ACE file format). This is helpful if you have a limited amount of graphics card and system memory and want to include as many textures as possible. Additionally, this method is particularly suitable for organic/nature textures where precision is not critical.
 
 [CAUTION]
-It is advised that you always have a MASTER document saved in a native bitmap format since the `DDS` format is a LOSSY document format so you will potentially loose image quality with every edit session of a DDS file.  The advice is to NEVER edit a DDS file and always work from a lossless master.  If the creator of content only supplies a DDS file with their release, you should ask them for a master file, or only use the supplied file to generate a working master you can use to work from so you have minimal degradation.
+Always maintain a layered, lossless master. Do not round‑trip edit DDS; repeated saves degrade quality.
 
 For working with DDS, the easiest approach is to utilize Paint.net or GIMP as both can export DDS textures directly. Exporting large 32-bit ACE textures using the original MSTS tools is often not feasible and some people won't even have access to MSTS TOOLS if they only use {OR}.  The most significant advantage of using GIMP or Paint.net is that exporting is much more straightforward and faster compared to outdated programs like TgaTool2.
 
@@ -290,8 +291,24 @@ Once you have created your base texture for your model, you should a) Save it in
 Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be re-skinned by 3rd parties, then you can conceivably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
 
 
-[NOTE]
-Pete Willard has used this technique with Brick Building scenery, where the background layer is the seamless brick pattern.  Windows and doors are painted on top of the background layer. 
+[TIP]
+For scenery like brick buildings, use a seamless base (e.g., brick) below windows/doors layers.
+
+
+=== Which Comes First?
+
+The model or the texture?  It depends on your references and goals.  
+
+* Texture first: works when starting from photos and rough dimensions.
+
+* Model first: is best with drawings/specs; unwrap, UV → Export UV layout, paint against the guide, then replace the blank texture in Blender.
+
+
+=== UV Mapping Basics
+
+(((Texturing, "UV Mapping Basics")))
+
+image::images/tex-uvmap.jpg[]
 
 
 === Setting up Blender for Texture Mapping and Baking 
@@ -370,7 +387,7 @@ image::images/Prime-Flat.jpg[]
 image::images/Prime.jpg[]
 
 
-==== SEAMS
+==== Using SEAMS to Unwrap the Model
 
 (((UV Mapping, "Seams")))
 
@@ -842,6 +859,86 @@ The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintSh
 [NOTE]
 There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alpha channel support... so just use `.TGA` or `.PNG`.
 
+=== Creating Alpha Channels with GIMP
+
+(((GIMP, "Alpha Channels")))
+
+This document is a brief tutorial on Alpha Channel usage in GIMP (GNU Image Manipulation Program).  It covers the basics of creating and editing alpha channels (transparency) in GIMP, including how to use the tools, how to select and refine the selection, and how to save your work.
+
+=== Step 1: Start GIMP
+Open GIMP (GNU Image Manipulation Program).
+
+=== Step 2: Open your image
+Go to `File → Open` and select the image you want to edit.  
+TIP: GIMP supports many formats, such as `.png`, `.jpg`, `.bmp`, and `.tif`.
+
+For this example, we'll use a `.png` image that has a sky background that we want to make transparent and a cityscape in the foreground we cant to keep.
+
+image::images/GIMP1.png[]
+
+=== Step 3: Add an alpha channel
+To allow transparency, add an alpha channel if one doesn't already exist:  
+`Layer → Transparency → Add Alpha Channel`  
+(If this option is grayed out, the layer already has an alpha channel.)
+
+
+
+=== Step 4: Select the image area
+Choose the *Fuzzy Select Tool* (the “Magic Wand” equivalent).  
+Click on the part of the image you want transparent.  
+Adjust the *Threshold* in the Tool Options to expand or limit the selection.
+
+It might take a few tries to get the selection just right.  Or maybe even invert the selection if you selected the wrong part or selection is easier.
+To do this, choose `Select → Invert` or press `Ctrl+I`.
+
+image::images/Screenshot1.png[]
+
+
+=== Step 5: Refine the selection
+Use the *Select → Grow* or *Select → Shrink* commands to fine-tune edges.  
+You can also use *Quick Mask* (`Shift+Q`) for precise painting.
+
+image::images/screenshot2.png[]
+
+=== Step 6: Clear or fill the selection
+With the selection active:  
+* Press **Delete** → removes the selected pixels (they become transparent).  
+* Or go to `Edit → Fill with FG/BG Color` (set FG or BG to black/white for alpha control).  
+
+image::images/screenshot3.png[]
+
+NOTE: In GIMP’s alpha channel,  
+* Black = fully transparent  
+* White = fully opaque  
+* Gray = semi-transparent  
+
+=== Step 7: Save your work
+To preserve alpha transparency, export to a format that supports it:  
+* `.png` (recommended for web and most modern uses)  
+* `.tga` (if specifically required)  
+* `.xcf` (GIMP’s native format, for keeping layers and masks editable)
+
+image::images/screenshot4.png[]
+
+Use `File → Export As …` and select your preferred format.  
+For PNG, ensure **Save color values from transparent pixels** is enabled.  
+For TGA, disable **RLE compression** if compatibility is an issue.
+
+=== Step 8: Optional: Use a layer mask
+Instead of directly editing transparency, you can create a layer mask:  
+`Layer → Mask → Add Layer Mask` → *Initialize to Selection*.  
+This gives you non-destructive control over transparency and can be applied later.
+
+=== Conclusion
+
+Remember to save your project frequently in GIMP's native `.xcf` format, and keep backups of original images.
+
+TIP:  
+Using a **layer mask** is usually safer than directly erasing pixels.  
+You can always refine the mask with brushes, gradients, or filters — and convert it back into an alpha channel at export.
+
+
+
 === Tools
 
 This section lists some of the "extra" tools and functions that are used to create or work with textures.
@@ -877,6 +974,14 @@ You can then save the image to your drive as a texture file you can import into 
 image::images/radio.png[]
 
 
+=== ACE2BMP
+
+(((ACE2BMP, Tools)))    
+
+ACE2BMP is a command line tool - to use in scripts - to covert ACE texture files to BMP texture files. It was created by David Webb and tested by me. Usage: ACE2BMP.exe [Source Ace] [Destination BMP]. (issued under GNU General Public License) By Scottb613
+
+It is available at ElvasTower Downloads section.  For the technical types, the original author's source code is available at https://github.com/djw-zr/ace2bmp
+
 === ACEIT
 
 (((AceIt, Tools)))
@@ -889,6 +994,10 @@ Aceit contains the newest and best methods for working with .ace files.
 * Then run Aceit. 
 * Enter as the input the .bmp file you created then enter where the output will go (usually your routes texture folder)
 * Then finally, save it.
+
+[NOTE]
+Aceit itself is very old and it may have difficulty being installed ot get running on modern Windows systems.  You may need to run it in compatibility mode for Windows XP SP3 or consider using ACE2BMP utility.
+
 
 
 === TGATOOL2 and MAKEACE tools
@@ -904,8 +1013,7 @@ Microsoft Train Simulator.  MAKEACE supports Windows Bitmap files (extension .BM
 (extension .TGA) which contain 24-bit RGB encoded or 32-bit RGBA (Red, Green, Blue + alpha "translucency" channel) encoded images.
 
 [NOTE]
-The default MAKEACE utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update. 
-
+The default MAKEACE utility that was supplied with {MSTS} has limitations and it is highly recommended that you replace it with the ACEIT utility. At the very least, get the MSTS TOOLS 1.4 update.   
 
 [NOTE] 
 I no longer recommend using TGAtools2 from MGGrapphics unless you are just trying to recover images from existing ACE files.
@@ -1043,13 +1151,16 @@ A layer, or layers, used for "hard coded" shadows and possibly highlights, which
 [TIP]
 The blend mode for the [ao] layer could also be "multiply" instead of "normal"
 
-== Generated Shadows
+== Generated Shadows - Ambient Occlusion
 
-(((Texture, clusion)))
+(((Texture, ambient occlusion)))
 
-{AO} is the generation of hard-coded or `baked` shadows instead of relying in dymanic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
+{AO} is the generation of hard-coded or `baked` shadows instead of relying in dynamic lighting to generate shadows for an in-game asset.  It provides extra depth to an asset that would not be achieved otherwise.
 
 Marek on Elvas Tower shared how he achieves {AO} on his models and it is shared here.  
+
+[TIP]
+There are many ways to achieve {AO} in Blender, so you will probably need to experiment with methods to see which one works best for your model or your sanity.
 
 [NOTE]
 Your model needs to be UV UNWRAPPED prior to baking out an {AO} image as described here.
@@ -1102,7 +1213,7 @@ It is important to be aware that any lights in the scene, including environment 
 
 image::images/ao7.jpg[]
 
-=== Ambient Occlusion
+=== Ambient Occlusion, workflow
 
 (((Texture, "Ambient Occlusion Baking")))
 
@@ -1127,14 +1238,59 @@ Here are some examples of how AO can be used to improve the realism and depth of
 
 Overall, AO is a powerful rendering technique that can be used to add realism and depth to your renders. By understanding the basics of AO and experimenting with different settings, you can achieve a variety of effects to enhance your renders.
 
+=== Ambient Occlusion Baking with GIMP
 
+(((Texture, "Ambient Occlusion Baking, GIMP")))
+
+[TIP]
+Tips from Marek
+
+Here are the settings I use in the shading menu when I perform an AO bake.
+
+image::images/AO_Bake_Blender.jpg[]
+
+Firstly, ignore the Metallic and Roughness texture nodes connected to the Principled BSDF shader. These are used for glTF exports and will not impact on AO baking or .S export.
+
+This model uses a single 4K texture for the external model called generic_sd40-2_4096.png. Each object on the model has had its faces UV Mapped to a unique location where I want it on the texture file.
+
+When ready to bake, I create a new 4K image texture node called AO_BAKE_4096.png. You can see this node below the principled BSDF but it is not connected to anything. I leave it below and to the right of the Principled BSDF so that it is easy to find and to remind me not to connect it to anything.
+
+In the Render Properties tab I have set the samples to 2048 which is high but gives a fine high resolution AO. Denosie is ticked as it improves the quality of the bake. I use the OptiX Denoiser as this is faster on my graphics card. Bake type is set to Ambient Occlusion. Device is set to GPU compute because Nvidia 2070 is considerably faster at baking than CPU. Version 4 of Blender can use the Vulkan engine which is supposed to be faster than OpenGL which is limited to being single threaded as I understand it. Test both to see which is faster for you using Edit > Preferences > System > Display Graphics > Backend > Vulkan or OpenGL
+
+I always bake at least 2 objects at the same time. If I bake a single object I get a black background for some reason. If I have 2 or more objects selected when baking, I get a transparent background which is what I want when importing into my 2D graphics program.
+
+Also before baking, I unplug the Alpha noodle between the Base Colour and Principled BSDF. If the alpha noodle is connected, and the UV Map of the object being baked is over an untextured/alpha area of the base colour, the resultant bake will be all black. Took me ages to work this one out.
+
+When the objects I want to bake are UV Mapped over a unique area of the texture file, I again ensure that the alpha noodle is not connected. I confirm I have 2 or more objects selected. I then left click to highlight the AO_BAKE_4096.png texture in the Shader Editor. This is important as Blender will now render the bake to the selected texture. In the UV editor on the left hand side I have the target AO_BAKE_4096.png texture selected so I can see the progress of the baking process.
+
+I then click on the 'Bake' button in the 'Render Properties' tab. The progress bar along the bottom of the screen shows how slowly it is going. The denoising does not show in the progress bar and makes Blender look like it has frozen. Baking objects with a small number of faces does not take long. For large parts with many triangles 10-15 minutes at 2048 samples is the norm with my models on my computer.
+
+Once the bake has completed, I use the Image > Save As drop down menu in the UV Editor and I save the file as AO_BAKE_4096.png.
+
+In the Blender screen shot you can see the AO for the fuel tank on the bottom left of the texture with the rest of the area being transparent/alpha.
+
+I then go into GIMP and then import the AO_BAKE_4096.png file as a layer on top of my already present AO layer which is a combination of all the other objects that have baked the AO for over time.
+
+image::images/AO_Bake_GIMP1.jpg[]
+
+I then merge that imported AO layer into the existing AO layer so I have a single AO layer. Below this AO layer I have the diffuse colours. I then apply the 'Multiply' mode to the AO layer that blends it with the underlying coloured layers.
+
+image::images/AO_Bake_GIMP2.jpg[]
+
+I then export this from GIMP as the texture file that is applied to the model in Blender, in this model it is generic_SD40-2_4096.png and export it as generic_SD40-2_4096.dds for use directly in OpenRails.
+
+The next object/s that need to have their AO baked, are unwrapped to another unique location on the texture file, selected and baked to the AO_BAKE_4096.png file as described above. This same file is used to transfer the AO bake from Blender to be combined with the AO layer in GIMP.
+
+If you are using texture files with different resolutions then make the texture file you are going to bake the AO to the same size.
+
+If you get unexpected black areas in your bake then that can be caused by different things. Having the alpha noodle connected when baking has already been mentioned above. Flipped normals are another common cause. Other geometry overlapping the baked surface is another common cause. These can be hard to find, especially if you have hidden some objects, they still mask the baking process.
 
 === More About Baking Ambient Occlusion
 
 (((Texture, "Baking Ambient Occlusion, additional")))
 
 
-{AO} Baking is mildy infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
+{AO} Baking is potentially infuriating in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
 
 When Baking occlusion, Here are some general tips (From Wayne Campbell):
 

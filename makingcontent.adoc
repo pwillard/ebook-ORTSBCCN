@@ -749,58 +749,17 @@ _____
 
 Proposal for saving space on a PC:
 
-Making use of a `COMMON` folder to store shared details across multiple bits of content.   This can also be about improving performance as well
+Making use of a `COMMON` folder to store shared details across multiple bits of content.   This can also be about improving performance as well. Let's Say you are John Doe...
 
 Within the `\trains` directory,
 
-Add `\common.fleet`
+Add `\johndoe.common.` 
 
-and 
+Here you can place items that are common among multiple models.
 
-Add `\common.model`
-
-
-Within both of those directories, add folders (one for your own country and others only as needed) for country codes. 
-
-Examples:
-
-----
-\AUS Australia
-\AUT Austria
-\BRA Brazil
-\CAN Canada
-\CHE Switzerland
-\CHN China
-\CZE Czechia
-\DEU Germany
-\FRA France
-\GBR United Kingdom
-\HRV Croatia
-\HUN Hungary
-\IND India
-\ITA Italy
-\JPN Japan
-\NLD Netherlands
-\POL Poland
-\RUS Russian Federation
-\SVK Slovakia
-\SVN Slovenia
-\SWE Sweden
-\UKR Ukraine
-\USA United States of America
-\ZAF South Africa
-----
-
-For myself, this means I should strive to have (at least) this format somehow:
-
-`\common.fleet\USA`
-
-and 
-
-`\common.model\USA`
 
 [NOTE]
-If you closely examine NAVS releases, they follow a format like this.
+If you closely examine Erick's NAVS releases, they follow a format like this.
 
 
 === General Modelling Standards from Erick Cantu
@@ -870,7 +829,7 @@ This is also why I have moved from individual car textures to paint and weatheri
 
 === Additional guidance from Blender Brothers
 
-From Pete Willard:: One of my mentors while I was in my beginning stages of learning Blender was Josh and Ryuu of the Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
+From Pete Willard:: One of my mentors while I was in my beginning stages of learning Blender was Josh of the Blender Brothers.  I subscribed to their Youtube channel and I get regular email updates about their ideas and helpful tips.
 
 Josh and Ryuu of Blender Brothers Say: 
 

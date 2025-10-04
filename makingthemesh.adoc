@@ -673,7 +673,7 @@ If we look at the object back in OBJECT MODE with the Solid Viewport Shader, we 
 === Texturing
 (((Blender, "Texturing")))
 
-The goal with texturing is to be able to apply a 2 dimensional bitmap to a 3 Dimensional object. Its rather tricky and there are multiple ways to do it.  The easiest is to just `Mark Seams`` and then UNWRAP the object, then moving the resulting `UV Islands` into position on your bitmap. 
+The goal with texturing is to be able to apply a 2 dimensional bitmap to a 3 Dimensional object. Its rather tricky and there are multiple ways to do it.  The easiest is to just `Mark Seams` and then UNWRAP the object, then moving the resulting `UV Islands` into position on your bitmap. 
 
 [NOTE]
 While I say it is the easiest way here, that is a bit misleading.  Sometimes, using the `Mark Seams` and `Unwrap` steps create more work for texture creation than is reasonable.  Especially if the object is complex but non-organic, like a Boxcar, Engine or Building. 
@@ -697,6 +697,12 @@ image:images/markedseams.png[]
 image:images/uvedit1.png[]
 
 * In the `EDIT MODE` window select  the `UV` tab , or press kbd:[U] and then chose `UNWRAP`. 
+
+[TIP]
+If you want the *EASY BUTTON* for Mark Seams, try this:  menu:Select->Select Sharp Edges and then press kbd:[CTRL,E] and `Mark Seam`. 
+
+[TIP]
+When unwrapping the kind of models we are making, it's usually a good choice to use the "conformal" method. It is a drop down option under unwrap.
 
 [WARNING]
 If nothing happens in the left `UV EDIT` window, you probably didn't have everything selected. 

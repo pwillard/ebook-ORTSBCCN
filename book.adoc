@@ -41,9 +41,10 @@
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
 :version: Blender 4.2 LTS
-:BV: 3.6.16 LTS
+:BV: 4.3.10 
 :AO: Ambient Occlusion
 :NV: 4.3.10
+:older: 3.6.x LTS
 
 <<<
 :numbered!:
@@ -62,10 +63,10 @@ image::images/CC-BY-SA.svg[width=87,height=30,align=center]
 
 == About This Document
 
-This guide covers the use of Blender 2.8, including {version} or higher for creating content for Open Rails. It is recommended to use the latest Long Term Support (LTS) release of Blender for the best compatibility with the instructions provided in this document. Please note that older versions of Blender will not be covered or supported in this guide. At the time of this update, Blender Version {BV} is the most recent release and {version} is the most recent Long Term Support release.
+This guide covers the use of Blender starting with version 2.8, including {version} or higher for creating content for Open Rails. It is recommended to use the latest Long Term Support (LTS) release of Blender for the best compatibility with the instructions provided in this document. Please note that older versions of Blender will not be covered or supported in this guide. At the time of this update, Blender Version {BV} is the most recent release and {version} is the most recent Long Term Support release. 
 
 [NOTE]
-The Long Term Release or LTS version of Blender is preferable because there are only bug fixes applied to these releases, not new features so things like the User Interface will not change. 
+The Long Term Release or LTS version of Blender is preferable because there are only bug fixes applied to these releases, not new features so things like the User Interface will not change.  3.6 LTS should be just fine, for example.
 
 === About The Author
 

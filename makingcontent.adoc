@@ -1,12 +1,15 @@
 = Making Content for {OR} 
  
   
-About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} strives to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
+About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} attempts to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
 
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
-[NOTE]
-The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km. -- _from OpenRails.org website_
+.OPEN RAILS
+----
+The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km.
+----
+ _from OpenRails.org website_
 
 Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
 
@@ -64,7 +67,14 @@ Deciding on which option to use might be difficult, but you should try to make a
 * What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
 * How much flexibility do you want to have with your content?
 
-The author's advice is to start with the option that is easiest for you to understand and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
+.Author's Advice
+----
+Start with the option that is easiest for you to understand and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
+----
+
+[TIP]
+Share your work. Don't work in a vacuum. Talk to other content developers and see what they are doing. This will help you get feedback and help you avoid making the same mistakes as others.  It also creates a level of involvement and accountability that can help you grow as a content creator and give you a push to not leave projects half-done.
+
 
 == Content Generation Involves:
 
@@ -91,9 +101,9 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 
 * 3d Modeler: {bv}
 * Bitmap tool (any one of these, interchangeably): Serif Affinity Photo, Serif Affinity Designer, PaintShopPro Version 7, Paint.net or Photoshop CS2, Krita, GIMP, etc.
-* UV/Shader tool: Blender has this  built in, 3rd party options exist, however I don't use them. 
+* UV/Shader tool: Blender has this  built in, 3rd party options exist (like Substance Painter ), however I don't use them. 
 * Text Editor: _Microsoft Visual Studio Code_ 
-* Metric Conversion Calculator (I have one built into hand held calculator, but you can use Google for this)
+* Metric Conversion Calculator (I have one built into hand held calculator, but you can use Google for this as well)
 * A Scale Calculator: Converting dimensions from a scale drawing. (there is on on my website at http://www.railsimstuff.com ) 
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
@@ -110,32 +120,23 @@ From Pete Willard:: In 2002, I started using 3D Software to create content for g
 
 Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
 
-=== Open-Source and Free
-Blender is open-source software, which means it's free to use and has an active community of developers and users. This makes it accessible to a wide range of users, including hobbyists, indie game developers, and professionals.
+Open-Source and Free:: Blender is open-source software, which means it's free to use and has an active community of developers and users. This makes it accessible to a wide range of users, including hobbyists, indie game developers, and professionals.
 
-=== Versatility
-Blender offers a comprehensive set of tools for 3D modeling, sculpting, texturing, rigging, animation, rendering, and more. It can handle a variety of asset types, from characters and environments to props and special effects, making it a versatile choice for game development.
+Versatility:: Blender offers a comprehensive set of tools for 3D modeling, sculpting, texturing, rigging, animation, rendering, and more. It can handle a variety of asset types, from characters and environments to props and special effects, making it a versatile choice for game development.
 
-=== Integrated Workflow
-Blender provides an integrated workflow, allowing you to create, edit, and animate assets seamlessly within a single application. This can save time and reduce the need to switch between different software tools.
+Integrated Workflow:: Blender provides an integrated workflow, allowing you to create, edit, and animate assets seamlessly within a single application. This can save time and reduce the need to switch between different software tools.
 
-=== Asset Optimization
-Blender provides tools to help optimize your assets for real-time rendering in games. You can create LODs (Level of Detail), bake textures, and manage UV maps to ensure your assets are efficiently displayed in real-time environments.
+Asset Optimization:: Blender provides tools to help optimize your assets for real-time rendering in games. You can create LODs (Level of Detail), bake textures, and manage UV maps to ensure your assets are efficiently displayed in real-time environments.
 
-=== Community and Resources
-Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
+Community and Resources:: Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
 
-=== Non-Destructive Workflow
-Blender supports a non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
+Non-Destructive Workflow:: Blender supports a non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
 
-=== Constant Development
-Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.
+Constant Development:: Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.  In fact, Blender might get updates faster than you can keep up.
 
 Ultimately, the choice of using Blender for making game/simulator assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective (free)  tool with a wide range of capabilities, Blender is definitely worth spending the time to learn and experiment with.
 
-
-
-To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very capable exporter for {MSTS} format `.s` files.
+To export your model for using with {MSTS} or ORTS, Wayne Campbell created a very capable exporter add-on for {MSTS} format `.s` files.
 
 
 === What I Can Recommend:
@@ -145,8 +146,10 @@ To export your model for using in {MSTS} or ORTS, Wayne Campbell created a very 
 * UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
 
-[NOTE]
-Much of this document was created with Blender version 3.6 LTS and I've not attempted to use Version 4.x.
+.Author's Note:
+****
+Much of this document was created with Blender version 3.6 LTS and but I have been using {BV} lately.
+****
 
 [NOTE] 
 CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but it's not finished it yet.  https://github.com/pwillard/engwag
@@ -157,7 +160,9 @@ CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and
 
 (((Blender, "Installation")))
 
+[NOTE]
 According to the Blender.org website, a new version is released about once per quarter.  The assumption is that you are installing Blender on a Windows 64 BIT platform.  It is recommended that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. Currently, this is{BV}.
+
 
 (((Blender, "Installation")))
 
@@ -196,7 +201,7 @@ It does get tricky related to the _File Associations_ pertaining to which versio
 [TIP]
 The APPDATA folder is normally a hidden folder in your windows File Explorer.  You can reach the folder from a command prompt by typing `cd %appdata%`. You can also modify your File Explorer settings to not *HIDE* folders from you by changing the settings under menu:View[Options > View > Show hidden files, folders and drives].
 
-According to Windows POWERSHELL on *my system*, the %APPDATA% Environment variable points to: 
+According to Windows POWERSHELL, an example of the %APPDATA% Environment variable points to: 
 
 [.listing]
 ----
@@ -222,7 +227,7 @@ Video Link: https://youtu.be/ad4vTwCGodo
 
 (((Blender, "Setup")))
 
-Much of this section is optional, but it will help you get started.  
+Much of this section is optional, but it will help you get started.  Also note: these settings and steps may vary depending on your version of Blender.
 
 There are some post installation steps we will follow to customize Blender for the kind of work we will be doing.  We will start on the main one-time setup splash screen where we will make one change.  We will change the kbd:[SPACEBAR] key to perform a `SEARCH` instead of `PLAY ANIMATION`.
 (((Blender, "Setup")))
@@ -380,6 +385,146 @@ Blender 4.x now includes a built-in Add-On Manager that allows you to install ad
 
 [TIP]
 With the latest versions of Blender, To install an add-on, click on the "Install" button on the right side of the add-on you want to install.  This will download the add-on and install it in the correct location for Blender to find it.  You can also search for add-ons by name or category using the search bar at the top of the Add-ons window.
+
+
+===== Installing Add-Ons with Version 4.x
+
+== Installing Add-ons in Blender 4.3
+
+Blender add-ons expand Blender’s functionality with new tools,
+import/export features, UI panels, and automation utilities. Add-ons
+may be included with Blender or provided as third-party ZIP packages.
+
+=== Enabling Built-In Add-ons
+
+. Open *Edit → Preferences…*
+. Select the *Add-ons* tab
+. Use the search box to locate the desired add-on
+. Enable it by checking the box next to its name
+
+NOTE: Some bundled add-ons may require a small download the first time
+they are enabled.
+
+=== Installing Third-Party Add-ons
+
+. Download the add-on package in `.zip` format
+. In Blender: *Edit → Preferences → Add-ons*
+. Click the *Install…* button in the upper-right
+. Select the ZIP file and click *Install Add-on*
+. Enable the add-on using its checkbox
+
+TIP: Do not extract the ZIP file unless you are specifically instructed to.
+The ZIP must contain an `__init__.py` file in its root folder to install properly.
+
+=== After Installation
+
+Some add-ons:
+
+* Add new panels to the Sidebar (press `N`) in the 3D Viewport
+* Add menu items under *File → Import* or *File → Export*
+* Provide configuration options under the add-on’s *Preferences* section
+
+If *Auto Save Preferences* is enabled (it is by default), Blender
+will remember your enabled add-ons next time it starts.
+
+=== Add-on File Locations
+
+|===
+|Type |Location
+
+|Built-in Add-ons
+|Installed with Blender in the program directory
+
+|User-installed Add-ons
+|Stored in the user profile without requiring administrator access
+|===
+
+To reveal the installed location:
+*Preferences → Add-ons →* Gear icon → *Show in File Browser*
+
+=== Troubleshooting
+
+|===
+|Issue |Solution
+
+|Add-on does not appear after installation
+|Ensure you selected a ZIP containing an `__init__.py` (not a folder inside another folder)
+
+|Add-on throws errors
+|Verify it supports Blender 4.3
+
+|Panel or tool not visible
+|Check the Sidebar (`N`) or menus under *File → Import/Export*
+
+|Add-on disabled after restart
+|Enable *Auto Save Preferences*
+|===
+
+TIP: Download add-ons from trusted sources (GitHub, Blender Market, etc.).
+
+==== Also in Blender 4.x - Extensions
+
+image::images/editors_preferences_section_extensions.png[align=center]
+
+Here’s a detailed breakdown of the Extensions system introduced in Blender (starting around version 4.x), how it differs from the traditional Add-ons system, and how you can use it in your workflow.
+
+🔍 What are “Extensions”?
+
+In Blender, “Extensions” is a term encompassing add-ons, themes, keymap packages, and other modular enhancements to the core software. 
+
+
+The official online platform for these is Blender Extensions Platform (via extensions.blender.org). It is a repository and sharing site for free/open-source extensions. 
+
+The key idea: make it easier to find, install, enable, update, and manage these modular enhancements all from within Blender. 
+
+
+[Note]
+While “Add-ons” is still a valid term, in newer versions the UI uses “Extensions” to highlight the full range of extension types, not just Python scripts. 
+
+Enabling the feature: (first time only) +
+
+* Open Edit → Preferences → go to Extensions tab (or sometimes Get Extensions).
+
+* If prompted, allow Online Access so you can see the repository of extensions. 
+
+* Once enabled, you'll see the list of available extensions from the official platform inside Blender.
+
+Browsing for new extensions:
+
+* Click on the “Get More Extensions” button at the bottom of the Extensions tab.
+
+* This will open the Extensions Platform website in your default web browser.
+
+* You can search for extensions by name, category, or author.
+
+Installing extensions:
+
+* Click on the “Install” button next to the extension you want to install.
+
+* This will download and install the extension in the correct location for Blender to find it.
+
+Enabling and disabling extensions:
+
+* Click on the checkbox next to the extension you want to enable or disable.
+
+* The extension will immediately be enabled or disabled.
+
+Updating extensions:
+
+* Click on the “Update” button next to the extension you want to update.
+
+* This will check for updates and install them if available.
+
+Uninstalling extensions:
+
+* Click on the “Uninstall” button next to the extension you want to uninstall.
+
+* This will remove the extension from Blender.
+
+🔧 How to use Extensions in Blender
+
+Extensions are modular enhancements to the core software that can be enabled and disabled as needed. 
+
 
 ===== Enabling and Disabling Add-Ons
 

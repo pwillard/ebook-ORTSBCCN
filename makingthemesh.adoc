@@ -23,7 +23,7 @@ The *MAIN* object of your modeling collection should always be positioned at wor
 There are some general rules that all content creators should follow, regardless of the tools used. Take the next section to heart.
 
 [NOTE]
-While you _can_ have Blender work in Imperial units (feet and inches), I find it far simpler to always work in the Metric System and you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.
+While you _can_ have Blender work in Imperial units (feet and inches), It may be far simpler to always work in the Metric System since you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.
 
 === Some Basic Things About Modeling
 (((Blender, "Modeling Tips")))
@@ -112,15 +112,16 @@ Speaking of working with images, Blender has an add on that you can install call
 === Some things I will miss about using 3D Canvas
 (((3D Canvas, "Nice Things")))
 
-I will digress for a moment to share one of the reasons why using 3D CANVAS was so helpful in the initial stages of making a model.
+We will digress for a moment to share one of the reasons why using 3D CANVAS was so helpful in the initial stages of making a model.
 
-3D Canvas/Crafter has a train content ENGINEER add-on `Trainworks -> Train Simulator Engineer` that behaves as a quick start tool which places fully modeled wheels, axles and truck shapes and the base body element, all of which are customizable.  This add-on is sorely missed in Blender as nothing even close to it exists.  In reality though, it only saves you a few minutes.  If you have a ready made truck-set and couplers, for example, it is pretty easy to import and place them at the correct location. This doesn't mean that an add-on like this isn't being considered.
+The 3D Canvas/Crafter platform includes a train content ENGINEER add-on — Trainworks -> Train Simulator Engineer — that functions as a quick-start utility for assembling train models. It automatically places fully modeled wheels, axles, truck assemblies, and a base body element, all of which can be customized. Unfortunately, Blender lacks anything comparable to this feature. In practice, though, the time savings are modest; if you already have a prepared truck set and couplers, positioning them correctly is straightforward. That said, a similar add-on for Blender is certainly under consideration.
 
 image:images/3dengineer.PNG[]
 
 
 image:images/Result.PNG[library.png]
 
+[NOTE]
 Since this is really just a set of preset shapes with customizable values and locations, it's not impossible to consider that Blender's scripting language could be used to recreate the same tool using Python.  While I'm not in any position to create this Blender Script myself, it would be a welcome sight to see one or literally any thing else {OR} related beyond the existing `.S` File Exporter we have from Wayne Campbell.
 
 image:images/Result.PNG[]
@@ -158,27 +159,40 @@ Solidify will transform a plane into a cube and you will have all those sides to
 
 === Where to start?
 
-I feel like we can try to make a simple scenery object as a first project and try to make it by manipulating the default cube. 
+A good initial project is to create a simple scenery object by modifying the default cube.
 
 ==== Do we need a quick 3D Modeling primer?
 (((Blender, "Modeling Primer")))
 
-A basic Blender concept is that  you will spend a lot of time with your right hand on the mouse and your left hand typing keyboard shortcuts. Blender is very much still a key-based program, though in recent releases with the additional of optional pie-menus and onscreen widgets, you can initiate quite a number of operations with just the mouse or a single key press and the mouse.
+A fundamental concept in Blender is the close interaction between mouse and keyboard. The right hand is typically used for mouse navigation, while the left hand handles keyboard shortcuts. Although Blender has introduced optional pie menus and on-screen widgets in recent releases, it remains largely a key-driven program. Many operations can still be executed more efficiently through shortcut keys combined with precise mouse actions.
 
-Every piece of 3D software I've used is based on a set of core concepts and constructs.  These are often called primitives and Blender is loaded with them.  By far, the most used primitive when creating new hard surface models is the `cube` closely followed by the `cylinder` and `plane`.  Blender refers to these items as "mesh objects".  
+Like most 3D software, Blender is built around a set of core elements known as primitives. These are the foundational building blocks for creating models. Among them, the most commonly used for hard-surface modeling are the cube, followed by the cylinder and plane. Blender refers to these items collectively as mesh objects.
 
-By adjusting the scale, rotation, and location or by adding to or subtracting from the faces, vertices and edges of these primitives, we can create the various adjustments and transformations needed to create a particular shape.   It is honestly a bit overwhelming at first. The only way to learn how to become better and faster a is by *not* only watching or reading tutorials, but by just "doing it" in Blender yourself.  
+By adjusting the scale, rotation, and position of these primitives—or by manipulating their faces, vertices, and edges—it becomes possible to construct and refine virtually any shape. The process can feel overwhelming at first, but proficiency comes through hands-on practice. Observation and tutorials are helpful, yet true understanding develops only through active experimentation within Blender itself.
 
 [NOTE]
-So, of course I mean that you should watch and read tutorials to get better acquainted with Blender features. However, you are still going to need to just try and make a few things yourself. For example, my first real export into {or} was a 12' long Jersey style concrete barrier.  Nice and simple.
+----
+It is important to watch and read tutorials to become familiar with Blender's features and workflow. However, practical experience is essential. Experimenting and creating a few simple models is the best way to build confidence and skill. 
+
+For example, an excellent beginner project might be something straightforward, such as a 12-foot Jersey-style concrete barrier.  It is simple, structured, and easy to refine.
+----
 
 image:images/barrier.png[]
 
 
 [TIP]
-My experience has been that I begin to work on something with the complete understanding that I will trash it, or some of it, as I discover a better way to do it.
+When starting a new project, approach it with the understanding that some or all of the work may need to be redone. As new and more efficient techniques are discovered, revising or discarding earlier attempts is a natural part of the learning and creative process.
 
-As I said, Blender isn't the easiest program to learn, but even a first-week novice should be able to produce a simple model like the one above using a few fundamental commands: 
+
+Although Blender has a steep learning curve, even a beginner can produce a simple model like the one shown above by applying a few basic commands.
+
+=== The 3D Viewport
+(((Blender, "Viewport")))
+
+The 3D Viewport is the main workspace in Blender. It is where you will see your models, textures, and other objects. It is divided into two sections: the 3D View and the Properties panel.
+
+Adding a new MESH object to the scene can be done by clicking on the "Add" menu and selecting "Mesh" and then "Cube". This will create a new cube object with default dimensions of 1x1x1. You can adjust the dimensions by clicking on the cube and dragging the edges or corners.
+
 
 [cols="30,70", options="header"]
 |===
@@ -205,6 +219,9 @@ Example1::  By pressing the sequence:  kbd:[G] kbd:[SHIFT] kbd:[X] you will be a
 (((Blender, "Interface")))
 
 This is the initial default screen layout you will see when you start up Blender. 
+
+[TIP]
+Don't get too attached to the default layout.  It seems that the Blender developers like to change things up from time to time. Some of the examples shown here may not match the latest version of Blender.    
 
 [NOTE]
 For added clarity on printed copies of this document, I've switched to a high contrast theme in Blender Preferences.  (Preferences-->Themes-->Presets[Pulldown for options])
@@ -478,12 +495,12 @@ You might be tempted to try to use the Mirror Modifier, however, that operation 
 
 (((Blender, "Workspace")))
 
-[TIP]
-----
+.Default workspace setup
+****
 You have a way to set some custom options that you always need to change and then save that as default to avoid having to perform those changes when you start a new project.
 
 The default workspace in Blender 2.8+ is something you will see in a lot of in YouTube tutorial videos. The first thing they will often do is select and then delete the "default cube".  Rather than go through this every time, it is possible for you to delete it, and then save your current cube-less `.blend` file as your new startup file. (I don't actually recommend it though) 
-----
+****
 
 `FILE->DEFAULT->Save Startup File` will save your current workspace as your default startup file.  This will help you get started faster and with a consistent layout.
 
@@ -506,13 +523,13 @@ You would later create as many LOD based MAIN_xxxx collections as needed for you
 image:images/MyCollection.JPG[]
 
 
-[NOTE]
-----
+.Exporter
+****
 You will want to download and install the "Blender 2.8 to MSTS Exporter".  https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip
 
 The Documentation is included in the ZIP file.  The documentation is also available separately at this location: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf  Use the DOWNLOAD button to get a readable local copy.
+****
 
-----
 
 
 == Actually Modeling Something
@@ -713,14 +730,14 @@ image:images/unwrap0.png[]
 
 * Give your model a new material. In the `PROPERTIES` window on the right side, locate the sphere with a grid inside it near the bottom of the Properties window.  That is the material panel. 
 
-[TIP]
-====
+.Blender Materials
+****
 To create a material in Blender, you can use the Material tab in the Properties panel. In the Material tab, you can specify the material's color and texture, as well as adjust its properties such as specular intensity, roughness, and transparency. You can also use the Shader editor to create more complex materials using nodes.
 
 Once you have created a material, you can apply it to an object in your scene by selecting the object and then clicking the "Assign" button in the Material tab. The material will be applied to the surface of the object, and will be used to determine how the object appears when it is rendered.
 
 Materials are an important part of creating realistic and visually appealing 3D scenes in Blender, as they allow you to control the appearance of objects and surfaces in your scene
-====
+****
 
 * Your object likely received a default empty material. Let's update it.  Under `SURFACE PROPERTIES`, Click the small circle on the left side of the `BASE COLOR` field.  You will get a list of options.   
 
@@ -762,8 +779,7 @@ This model is now ready for the MSTS exporter.
 
 (((Texture, "Shader Properties")))
 
-[NOTE]
-====
+
 The MSTS Materials shader properties provided by the exporter follow the standard material options available in MSTS:
 
 
@@ -784,7 +800,7 @@ The MSTS Materials shader properties provided by the exporter follow the standar
 * HalfBright - The same as full bright but at half the intensity.
 
 * Dark Shade - The opposite to full bright, it reduces the overall intensity of light.
-====
+
 
 In `OBJECT MODE`, under the Materials property panel, scroll down to the bottom to where the MSTS exporter section is, titled: `MSTS Materials`.  
 
@@ -821,13 +837,13 @@ Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used 
 
 (((Texture, "About DDS")))
 
-[NOTE]
-====
-ABOUT DDS SUPPORT 
+
+.ABOUT DDS SUPPORT 
+****
 With a master texture file, in a `PSD` format for example,  and using PAINT.NET to keep the layers intact, you cave save it from PAINT.NET as a `.DDS` file natively.   As a result, a minimal amount of after-the-fact editing is needed.  To work in Blender, save a copy the master `PSD` file as a `PNG` file and to work with in Blender. Then save a copy of the master `PSD` file as a `DDS` file.
 
 Also note that even is an S file references a `.ace`, Open Rails will attempt to find a `.dds` with the same name, and if found, it will use the `.dds` instead of the `.ace` file.  This is a nice feature. To me, relying on it does seem to be a bit lazy.
-====
+****
 
 [IMPORTANT]
 Again, the Exporter script  will *only* create the model `.S` file.  You still need to create all the final textures and the ENG or WAG or similar related files that define your model to the simulator.
@@ -935,6 +951,20 @@ For Trains:: The FINAL folder would contain the `s` file, the DDS or ACE texture
 Vehicle related content resides in the `trains` folder.  The ENG or WAG, Shape and Texture files reside in the same folder unless making use of {OR}'s `INCLUDE` feature.  Rolling stock no longer needs `SD` files in {or}.
 
 
+ 
+Higher resolution models should have more LOD levels than lower resolution models.  Building the LODS is best done just before the model is exported and before separate pieces of the model are merged together, allowing you to isolate sections that will still be visible at a distance.  You really should save object merges until the very end.
+
+Surely you can export test versions of the model before any merging of objects to see if the model is working as expected.   The goal in the end though is to simplify the final hierarchy in the model.
+
+[TIP]
+While Blender does have a method of saving incremental edits and numbered saves, you will probably be better served if you make use of the "SAVE AS" option and create your own WIP VERSION saves to numbered files... (IE; `ProjectA_01.blend`, `ProjectA_02.blend`, etc). When my project working folder gets crowded, I usually move all of the opder saves into a folder named "OLDER".
+
+Initially, you will save the main model as the top Level of Detail version or LOD0.  You would then Clone this into a new collection, following the LOD NAMING convention of the MSTS/OR Exporter.  You would then hide the contents of the LOD0 collection and work on the cloned version, renaming the parts to match the new LOD LEVEL.  You would then start removing or simplifying objects that would not be seen at the new LOD distance.  IE; Interiors that won't be seen are a good candidate at this stage.  Gladhands, stirrups and any indide facing polygons are candidates as well.
+
+On a 3rd LOD setting, you might want to just remake shapes from cube and cylinder primitives to keep the polycount low.
+
+
+
 
 
 <<<
@@ -953,14 +983,6 @@ One way to accomplish the re-use of the common parts is to `duplicate` one with 
 [WARNING]
 You should not use kbd:[CTRL,C] and kbd:[CTRL,V] to duplicate objects as an alternative to kbd:[SHIFT,D] because the standard copy/paste operation will make new copies of everything, including Materials.  So your MAIN texture would become MAIN001, MAIN002 etc on each copy/paste operation.
 
-[TIP]
-====
-A particularly nice add-on for Blender, if you are using a version older than 3.0,  is "Asset Management". Yes, I know,  it costs $40, but I don't regret it.  I don't even use all of its features.  It does let me export objects into an asset library. It creates a thumb-nail of object to assist with locating the item in the future from a grid of object pictures.  When you select an object from Asset Management, it will be inserted into your project.   
-
-https://Blendermarket-production.herokuapp.com/products/asset-management  
-
-This add-on has been made somewhat redundant now that Blender 3.0+ comes with an Asset Browser but it does still work in version 3.0.
-====
 
 === A Brute-Force Library solution
 
@@ -1422,7 +1444,18 @@ I like to start constructing vehicles starting with the trucks, and for this I'm
 You really should not need to make your own truck and coupler models.  These are pretty standardized objects with a minimal number of variations.  Chances are good that you can find available models to import instead of making them yourself.  In the long run, this will lead to consistency between modelers.
 
 [TIP]
-I have also uploaded a usable Blender example of 100T truck, based on Erick's there as well.  Available items include: "Source files for NAVS N-Series freight car trucks", "Source files for NAVS Z-Series freight car trucks", "100T Roller Bearing Truck Blender Object" some of which are also available at Trainsim.com as well.    Erick's trucks include attached couplers. I often choose to separate the couplers but that is left up to you to decide.  Erick has good reasons for keeping couplers attached to truck rotations.
+=== Example: 100-Ton Truck Model
+
+A usable Blender example of a 100-ton freight truck is provided, based on Erick’s original model. Available resources include the following:
+
+* *Source files for NAVS N-Series freight car trucks*  
+* *Source files for NAVS Z-Series freight car trucks*  
+* *100T Roller Bearing Truck Blender Object*
+
+Some of these items are also available through *Trainsim.com*.
+
+Erick’s truck models include attached couplers by default. In practice, couplers can be separated if desired, depending on the needs of the project. Keeping them attached allows the couplers to follow truck rotations accurately, which is the reasoning behind Erick’s design choice.
+
 
 Using these existing objects, we can Append the ready-to-use model into our initial blend file.
 

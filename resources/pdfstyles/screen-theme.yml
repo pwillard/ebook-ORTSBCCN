@@ -38,6 +38,7 @@ page:
   margin: [0.5in, 0.67in, 0.67in, 0.67in]
   size: PORTRAIT
 base:
+  text_align: left
   align: left
   # color as hex string (leading # is optional)
   font_color: 222222

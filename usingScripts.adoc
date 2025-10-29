@@ -507,3 +507,42 @@ sub_collection = create_collection("MAIN_2000", parent_collection=main_collectio
 print(f"Created collections: {main_collection.name}, {sub_collection.name}")
 
 ----
+
+=== Creating a basic UV Map layout
+
+On of the things that Erick Cantu recommends is to get the right proportions for the UV map layout.  Here is an example script to create a basic UV map layout for a 40 ft Boxcar with reasonably correct proportions.
+
+
+Quick Start: +
+
+* pip install Pillow
+* get the source code from github: `https://github.com/pwillard/blender-uv-layout`
+* If you downloaded the ZIP file, Save it to a folder on your computer and extract it.
+* You will have a folder called "blender-uv-layout" on your computer.
+* Inside the folder will be the files: `blender-uv-layout.py` and `uv_meta.json`
+
+The uv-meta.json file contains the metadata for the UV layout.  You can edit this file to change the layout.
+
+
+Rather than post the code here, I will provide a link to the Github repository.  You can download the files and follow the instructions in the README.md file to create your own UV layout.
+
+https://github.com/pwillard/blender-uv-layout
+
+
+
+=== Creating a DECAL sheet
+
+(((PYTHON, "Python, DECAL Layout")))
+
+Here is an example script to create a decal sheet in Blender.  The resulting image will be a set of reporting marks on an Alpha background that can use used with the freightAnim decal method discussed in the _making textures_ section of this documentation.
+
+image::images/decal1.png[scale=50%]
+
+Rather than post the code here, I will provide a link to the Github repository.
+
+https://github.com/pwillard/repmark
+
+
+
+
+

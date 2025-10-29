@@ -186,12 +186,12 @@ Hopefully, Blender.org will continue its practice of creating LTS releases.
 
 From here you see various download options available. Locate the `Installer` option and download it.  Double-clicking the downloaded `.MSI` file will begin the install. The `.MSI` file does all the work.
 
-[NOTE]
-====
+.Blender Defaults
+****
 Blender will default to using your `DOCUMENTS` folder for Models and your `%APPDATA%` folder to store program configuration data and addons under the "Blender Foundation" folder structure.  Blender will use unique entries for each version of Blender installed so it is perfectly fine to have multiple versions of Blender installed on the same PC. 
 
 It does get tricky related to the _File Associations_ pertaining to which version of Blender will open when you click on a *.blend* file. The default will become whichever version of Blender you most recently installed.  Be warned that you might need to tweak this at times.
-====
+****
 
 [TIP]
 The APPDATA folder is normally a hidden folder in your windows File Explorer.  You can reach the folder from a command prompt by typing `cd %appdata%`. You can also modify your File Explorer settings to not *HIDE* folders from you by changing the settings under menu:View[Options > View > Show hidden files, folders and drives].
@@ -291,7 +291,7 @@ In the menu:SYSTEM[MEMORY & LIMITS] section,
 Unless you are using the modifier stack to perform non-destructive modeling actions, most if not all actions in Blender are one-way.  This means that once you modify a shape, there is no going back unless you perform UNDO STEPS kbd:[CTRL + Z] in *the current editing session*.  I advise saving a copy of your work using a revision system like `crane_V1.blend`, `crane_v2.blend` where you create a new version at the start of each session.  This way you can revert to earlier editing sessions if you need to give up on your latest revisions in favor of using an older editing session. There are also some options for automatically making a backups of your work. 
 
 [TIP]
-If using Blender 4.3, you should also go into "System Settings" under Network and check "Allow Online Access".
+If using Blender 4.3 or newer, you should also go into "System Settings" under Network and check "Allow Online Access".
 
 <<<
 
@@ -326,18 +326,29 @@ In the menu:FILE PATHS[DATA] section:
 * I usually define a common "textures" location for my 'library' objects, items that I share across multiple models.  %USERPROFILE%/DOCUMENTS/Blender/TEXTURES, for example.
 * The SCRIPTS location is where you would place your Blender Python Scripts (There is one we may need to use that we will discuss in another section of this document)
 
-`The next section applies only if you have installed Blender version 3.0 or newer, however, there are changes in Blender 4.0 that may affect this section as methods for installing Blender addons may change.  For example, Blender 4.0 now installs  built-in addons after installation using the network instead of being included in the installer program.`
+=== Version Compatibility Notice
+
+The following section applies to Blender version 3.0 and later. Be aware that certain changes introduced in Blender 4.0 may affect the procedures described here, particularly those related to add-on installation.
+
+Beginning with Blender 4.0, many built-in add-ons are no longer bundled directly with the installer. Instead, they are downloaded and installed over the network after the initial setup. This change may alter the steps required for managing or enabling add-ons in newer versions.
+
 
 In the menu:FILE PATHS[Asset Libraries] section:
 
 * This setting will default to  %USERPROFILE%/DOCUMENTS/Blender/ASSETS
 * If you would like to have multiple ASSET library sections, you would kbd:[LMB] click on the kbd:[+] symbol on the bottom right of the "Asset Libraries" window to add a new ASSET Folder(s) to the list.
 
-You will see that we have renamed the default "user" location's name to be "FREIGHT" and changed the folder location it references and I also added an additional library folder for ENGINE related library objects.  This is just a personal preference and you can name these folders whatever you like.  You can also add additional folders to this list by clicking on the "+" symbol at the bottom right of the "Asset Libraries" window.
+=== Customizing Asset Library Locations
+
+In this setup, the default *user* library location has been renamed to *FREIGHT*, and its folder path has been updated accordingly. An additional library folder has also been added for *ENGINE*-related assets. 
+
+These changes are purely a matter of personal preference—library folders can be named and organized in any way that suits your workflow. Additional folders may be added at any time by clicking the "+" icon located at the bottom right of the *Asset Libraries* window.
 
 
-[NOTE]
-Asset Library files are .Blend files with 1 or more objects in them that are specifically *marked* as ASSET OBJECTS.  This will make them show up in the Asset Browser window. Objects in the .Blend files that are NOT marked as asset objects will not be seen and will not be available as Asset Library Objects.
+
+.Asset Library Files
+****
+Asset Library files are `.Blend` files with 1 or more objects in them that are specifically *marked* as ASSET OBJECTS.  This will make them show up in the Asset Browser window. Objects in the .Blend files that are NOT marked as asset objects will not be seen and will not be available as Asset Library Objects.
 
 To see the Asset Library while you are editing 3D models, using the "Layout" tab at the top of the screen you will see the Animation Window at the bottom. We will replace this window with the Asset Browser window by clicking the small "clock" pulldown menu next to the PLAYBACK tab of the Animation window and then select the "Asset Browser" item from this menu.
 
@@ -346,7 +357,7 @@ Resize the Asset Browser window by pulling up on the top of the Asset Browser wi
 image::images/library.png[align=center]
 
 Various libraries can be selected using the menu options on the left.
-
+****
 <<<
 
 ==== Add-Ons
@@ -372,6 +383,9 @@ With the latest versions of Blender, To install an add-on, click on the "Install
 
 ===== Enabling and Disabling Add-Ons
 
+[NOTE]
+Blender has discontinued including all of the built in add-on that it previously included in the installation distribution. You can still get them, you just need to install them from the internet now.
+
 Enable and disable an add-on by checking or unchecking the check-box of the add-on you have selected. Add-ons are immediately available when checked, or disabled when unchecked.
 
 To locate a built-in add-on, use the search option and then use the check-box to enable it.
@@ -381,8 +395,6 @@ image::images/ADDON-SEARCH.PNG[align=center]
 Add-ons are grouped by their TYPE, such as MESH, IMPORT_EXPORT, CURVE, etc. 
 
 To get us started, here are a few built in Add-ons I recommend installing:
-
-
 
 * MESH: `LoopTools`
 * MESH: `F2` 
@@ -725,8 +737,70 @@ Scenery objects, for example, would require an `sd` file if creating for {msts},
 
 Also, see <<Creating Rolling Stock and Locomotives>>
 
-=== Various General Notes about Content Creation
+=== Include Files in Configurations
+(((Configuration, "Include")))
 
+The use of `Include()` statements in SIMIS files is becoming more common in {OR} configurations but use if the INCLUDE feature us entirely optional.
+
+
+In both Microsoft Train Simulator (MSTS) and Open Rails Train Simulator (ORTS), `.wag` and `.eng` files are essential files that allow the simulators to identify an asset as either a locomotive or non motorized vehicle.  Historically, these files are large and complicated and they contain a large amount of replcated data among similar items.  Historically, MSTS files needed to be fully self-contained with limited ability to make callouts to other files.  In ORTS, the `.wag` and `.eng` files are much simpler and easier to manage since they now have the ability to `include` other ready-made `.inc` files into them, resulting in a smaller file size and easier management.
+
+This is particularly beneficial when you are create a group of similar cars that may only differ in a few details or maybe just the car reporting marks.
+
+The `INC` file is an external file that doesn't even need to be in the same directory as the `.wag` or `.eng` file, although sometimes that option makes the most sense.  The `INC` file just needs to be defined in a way that {OR} is able to find it and include it into the `.wag` or `.eng` file.
+
+When ORTS loads a locomotive or car, it reads the beginning of the main `.eng` or `.wag` file, until it gets to the “Include” statement. It then searches for the `.inc` file in the specified file path, after which it reads the data from the `.inc` file, and inserts the `.inc` file's data into the locomotive or car's physics data. When ORTS reaches the end of the `.inc` file, it then returns to the main `.eng` or `.wag` file and continues reading its data until it either finds another “Include” statement (at which point the `.inc` file reading cycle starts again) or reaches the end of the main `.eng` or `.wag` file.
+
+
+For location, there are 4 general locations
+
+* In sub-folder in the .wag or .eng folder.
+* Directly in the .wag or .eng folder. (Could get messy)
+* In a special folder somewhere else specific to `.wag` or `.eng` files having the same .s file.
+* In a special folder somewhere else for use by many `.wag` or `.eng` files, referred to as `common` folders.
+
+You should try to come up with your own naming standard that allows for common items as well as shared items specific to a particular master shape file.
+
+==== General INC file structure
+
+(((Configuration, "Include, Structure")))
+
+INC files are still Standard {OR} configuration documents, so SIMIS format file rules and structure still apply.  But there are some additional considerations to keep in mind when creating INC files.
+
+* The first line of the INC file must be left blank
+* There should be no SIMIS header in the file, so no "SIMISA@@@@@@@@@@JINX0D0t______" line
+* It is probably quite helpfule to liberally use "COMMENT()" sections in your INC file
+* INC files are only really useful for configration items that are shared among multiple locomotives or cars. 
+* INC files are for {OR} only, as MSTS cannot use them.
+* {OR} will read include files in a top down fashion.  Any duplicated content items would be overwritten by the last include file read.
+
+==== Items well suited to INC files
+
+* Coupler Details - Coupler details that are common to many locomotives or cars.
+* Wagon Details - Wagon details that are common to many locomotives or cars, such as SMS (sound) and Empty or Loaded states vehicles.
+* Brake Details - Brake details that are common to many locomotives or cars.
+* Lights - Lights that are common to similar vehicles.
+* Davis Coefficients - Davis coefficients that are common to similar vehicles.
+
+Just be sure to make sensible choices as it can get complicated pretty quickly.
+
+==== Specifiying relative references
+
+
+(((Configuration, "relative reference")))
+
+Getting {OR} to locate your INC files is important.  You will use relative referenes to refer to include files by including in a way that references their location to the main file.  Here is an example of how to do this:
+
+* if the INC file is in the same folder as the main file, use a relative reference like this: `INCLUDE("filename.inc")`
+* if the INC file is in a subfolder, use a relative reference like this: `INCLUDE("subfolder/filename.inc")`
+* if the INC file is in a different folder, use an absolute reference like this: `INCLUDE("C:/path/to/filename.inc") or use `referential naming` such as `..\common.inc\filename.inc` to refer to a file in a common folder that is up one level from the current folder location.
+
+
+
+
+
+[NOTE]
+There is a way to make content that uses this technique that remains compatible with legacy MSTS, but it will not be covered in this document.
 
 _An interesting discussion occurred in 2017 about making these files better and more useful in the post-Microsoft Train Simulator world._
 
@@ -747,19 +821,135 @@ _____
 
 <<<
 
-Proposal for saving space on a PC:
+=== Config File Deconstruction
 
-Making use of a `COMMON` folder to store shared details across multiple bits of content.   This can also be about improving performance as well. Let's Say you are John Doe...
+(((Configuration, "Deconstruction")))
 
-Within the `\trains` directory,
+To create a working configuration file, we need to understand the different parts of the file and how they work together.  Here is a brief overview of the different parts of a configuration file:
 
-Add `\johndoe.common.` 
+* Header - This is the first line of the file and contains information about the file type and version.
+* Body - This is the main part of the file and contains the actual configuration data.
 
-Here you can place items that are common among multiple models.
+
+==== Header
+
+The first line of the file is the header and contains information about the file type and version.  The header is always the first line of the file and always starts with "SIMISA@@@@@@@@@@JINX0D0t______".  The header is followed by a blank line.  The header is not part of the configuration data and is used by the simulator to identify the file type and version.  Yes, differernt file type will have different header lines.
+
+[source,text]
+----
+SIMISA@@@@@@@@@@JINX0D0t______
+
+----
+
+
+==== Body
+
+The body of the file contains the actual configuration data.  
+
+Below is a randomly selected *basic*, MSTS-compatible body of a configuration file:
+
+[source,text]
+----
+Wagon ( CP_218041_LD 
+	Type ( Freight ) 
+	WagonShape ( CP_218041.s )
+	Name ( "HiCube 60 CP 218041 LD" ) 
+	Size ( 3.108m 5.211m 20.531m ) 
+	comment ( 38.46t empty, ~115t full ) 
+	Mass ( 120t-us )
+	WheelRadius ( 36in/2 ) 
+	InertiaTensor ( 
+		Box ( 3.1m 3.54m 19.931m ) 
+	) 
+	Comment("===================== Coupling =====================")
+	Coupling ( 
+		Type ( Automatic ) 
+		Spring ( 
+			Stiffness ( 8e4N/m 4.5e6N/m ) 
+			Damping ( 2e6N/m/s 2e6N/m/s ) 
+			Break ( 250000lb 250000lb) 
+			r0 ( 12cm 12cm ) 
+		) 
+		Velocity ( 0.2m/s ) 
+	) 
+	Coupling ( 
+		Type ( Automatic ) 
+		Spring ( 
+			Stiffness ( 8e4N/m 4.5e6N/m ) 
+			Damping ( 2e6N/m/s 2e6N/m/s ) 
+			Break ( 250000lb 250000lb) 
+			r0 ( 12cm 12cm ) 
+		) 
+		Velocity ( -0.2m/s ) 
+	) 
+	Commant("===================== Derail, Davis and Braking =====================")
+	DerailRailHeight ( 5cm ) 
+	DerailRailForce ( 2.5*115t ) 
+	DerailBufferForce ( 1123kN ) 
+	NumWheels ( 8 ) 
+	ORTSBearingType ( Roller ) 
+	ORTSDavis_A ( 1168.33 ) 
+	ORTSDavis_B ( 18.9210 ) 
+	ORTSDavis_C ( 1.928619 ) 
+	Commant("===================== Brakes =====================")
+	BrakeEquipmentType ( "Handbrake, Triple_valve, Auxilary_reservoir, Emergency_brake_reservoir" ) 
+	BrakeSystemType ( "Air_single_pipe" ) 
+	comment ( Load/Empty valve? = Yes ) 
+	MaxBrakeForce ( 67.665kN ) 
+	MaxHandbrakeForce ( 112.776kN ) 
+	NumberOfHandbrakeLeverSteps ( 100 ) 
+	BrakePipeVolume ( 0.61ft^3 ) 
+	EmergencyResCapacity ( 0.973ft^3 ) 
+	ORTSBrakeShoeFriction ( 0.0 0.49 8.0 0.436 16.1 0.4 24.1 0.371 32.2 0.35 40.2 0.336 48.3 0.325 56.3 0.318 64.4 0.309 72.2 0.304 80.5 0.298 88.5 0.295 96.6 0.289 104.6 0.288) 
+	EmergencyBrakeResMaxPressure ( 90 ) 
+	TripleValveRatio ( 2.5 ) 
+	MaxReleaseRate ( 50 ) 
+	MaxApplicationRate ( 50 ) 
+	MaxAuxilaryChargingRate ( 20 ) 
+	EmergencyResVolumeMultiplier ( 1.461 ) 
+	EmergencyResChargingRate ( 20 ) 
+	BrakeCylinderPressureForMaxBrakeBrakeForce ( 77 ) 
+
+	Commant("===================== Sound =====================")
+	Sound ( "..\\..\\TS_COMMON_SOUND\\freight.sms" ) 
+
+) 
+----
+
+Within this file you can see all of the key sections of the configuration file.  The first section is the Wagon definition, which contains information about the wagon itself, such as the type, shape, name, size, and mass.  The second section is the Coupling definition, which contains information about the coupling between the wagon and the train, such as the type of coupling, the stiffness, damping, break force, and velocity.  The third section is the Derail and  and Braking definition, which contains information about the brake system, such as the type of brake equipment, the type of brake system, and the brake cylinder pressure for the maximum brake force and Davis Coefficients.  The final section refers to the sound file used by the wagon.
+
+You will notice that the S (shape definitione) and the SOUND entry are references to external files.  These are references that are compatible with legacy MSTS. 
+
+[TIP]
+The coupler and braking sections could easily be shared among multiple models, so they could be placed in an INC file and included in the main configuration file.  This would make the configuration file smaller and easier to manage.
+
+
+=== Example ORTS Configuration Layout
+
+(((Configuration, "Sample Layout")))
+
+While the `Include()` statement can be added to any SIMIS file. AFAIK there isn't much use for them outside of `.wag` and `.eng` files. Here is an example of how the ORTS configuration files are laid out using the INCLUDE format:
+
+We will outline  an example of a standard boxcar WAG configuration file.  Since my work is focused on RailSimStuff.com, I will use the RSS prefix for my files.
+
+* We will use NAVS Freight Sounds - NAVSFR10.ZIP 
+* We will use RSS_COMMON.INC - RSS_COMMON.INC - Coupler Details
+* We will use RSS_WAGON.INC - RSS_WAGON.INC	- Wagon Details
+* The main WAG file will contain the Freight ANIM decal definitions
+
+image::images/folderlayout.png[]
+
+
 
 
 [NOTE]
-If you closely examine Erick's NAVS releases, they follow a format like this.
+If you use Visual Studio Code, you can use the `File: Open Folder` command to open the folder containing your `.wag` and `.eng` files.  This will allow you to easily navigate to the `.inc` files and edit them.  There is an addon for VSCODE that understands syntax highlkigting of ENG and WAG files, so you can see what is happening in real-time.  https://github.com/matejpacha/ORTSFileSupportForVSC
+
+
+
+
+
+
 
 
 === General Modelling Standards from Erick Cantu

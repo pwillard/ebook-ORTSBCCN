@@ -40,8 +40,8 @@
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
-:version: Blender 4.2 LTS
-:BV: 4.3.10 
+:version: Blender 4.5 LTS
+:BV: 4.5.3 
 :AO: Ambient Occlusion
 :NV: 4.3.10
 :older: 3.6.x LTS

@@ -9,8 +9,8 @@
 :author: Pete Willard
 :email: petewillard@gmail.com
 :homepage: http://www.railsimstuff.com
-:revision: 2.5
-:copyright: Copyright © 2020 - 2025
+:revision: 2.6
+:copyright: Copyright © 2020 - 2026
 :title-page-background-image: image:images/main.jpeg[fit=scale-down]
 :encoding: utf-8
 :lang: EN
@@ -35,15 +35,15 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: 2.5.0.5
-:revdate: 2024-12-22
+:revnumber: 2.6.0.0
+:revdate: 2026-01-28
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
 :version: Blender 4.5 LTS
-:BV: 4.5.3 
+:BV: 5.0.1 
 :AO: Ambient Occlusion
-:NV: 4.3.10
+:NV: 4.5
 :older: 3.6.x LTS
 
 <<<
@@ -64,6 +64,9 @@ image::images/CC-BY-SA.svg[width=87,height=30,align=center]
 == About This Document
 
 This guide covers the use of Blender starting with version 2.8, including {version} or higher for creating content for Open Rails. It is recommended to use the latest Long Term Support (LTS) release of Blender for the best compatibility with the instructions provided in this document. Please note that older versions of Blender will not be covered or supported in this guide. At the time of this update, Blender Version {BV} is the most recent release and {version} is the most recent Long Term Support release. 
+
+[WARNING]
+I am aware that Blender version 5.0+ is now available and that some of the instructions in this document may need to be updated to work with the latest version. However, I have not tested the latest version of Blender and cannot guarantee that the instructions will work as expected.
 
 [NOTE]
 The Long Term Release or LTS version of Blender is preferable because there are only bug fixes applied to these releases, not new features so things like the User Interface will not change.  3.6 LTS should be just fine, for example.
@@ -100,10 +103,10 @@ Useful resources:
 * https://www.coalstonewcastle.com.au/physics/  ORTS Information
 * http://www.nordicfx.net/      HDRI backgrounds
 * https://polyhaven.com/  Textures and HDRI Backgrounds
-* https://github.com/Stromberg90/Scripts/blob/master/Blender/Edge_To_Curve.py   -Simple but handy script add-on for Pipes and Handrail creation.
+
 
 [NOTE]
-Some sections of the original {MSTS} technical documents are also included here as reference material since some of these details exist no where else unless you have the original {MSTS} documentation and CDROMS.  These are now pretty outdated, and unobtainable, and are included here for reference only.
+Some sections of the original {MSTS} technical documents are also included here as reference material since some of these details exist no where else unless you have the original {MSTS} documentation and CDROMS.  These are now pretty outdated, and unobtainable to some people and are included here for reference only.
 
 === Some notes about some of the References
 
@@ -155,17 +158,17 @@ OpenRails is an open-source train simulator platform designed to replicate the e
 
 Here are some key points about OpenRails:
 
-Compatibility: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to {MSTS}, especially on newer hardware.
+Compatibility:: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to {MSTS}, especially on newer hardware.
 
-Enhanced Graphics: OpenRails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
+Enhanced Graphics:: OpenRails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
 
-Physics and Realism: OpenRails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
+Physics and Realism:: OpenRails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
 
-Third-Party Content: OpenRails is compatible with a wide range of third-party content created for {MSTS}. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the {MSTS} community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
+Third-Party Content:: OpenRails is compatible with a wide range of third-party content created for {MSTS}. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the {MSTS} community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
 
-Community and Development: OpenRails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
+Community and Development:: OpenRails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
 
-Open-Source Nature: OpenRails is an open-source project, which means its source code is freely available for modification and enhancement. This allows developers to contribute to the project and create new features or fix issues.
+Open-Source Nature:: OpenRails is an open-source project, which means its source code is freely available for modification and enhancement. This allows developers to contribute to the project and create new features or fix issues.
 
 It's worth noting that OpenRails is not a standalone game but rather a simulation platform. While it provides a framework for train simulation, it relies on third-party content and addons to provide the routes, trains, and other elements of the virtual railway environment.
 

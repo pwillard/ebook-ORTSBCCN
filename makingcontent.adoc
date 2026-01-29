@@ -5,11 +5,10 @@ About ORTS:: The Open Rails Train Simulator is an open source project that exist
 
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
-.OPEN RAILS
-----
+OPEN RAILS::
 The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km.
-----
- _from OpenRails.org website_
+
+_from OpenRails.org website_
 
 Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
 
@@ -17,6 +16,8 @@ Since this document will primarily be about using Blender, other 3d modeling too
 
 == Common Terms and Definitions
 (((Making Contentm TERMS. DEFINITIONS)))
+
+There is just no way to avoid using the jargon related to 3D modeling and content creation. Here are some common terms and definitions that you should become familiar with:
 
 ALPHA	::	 A bit map with a portion of the image that is masked-out, making the location appear see-though in the image.		
 DISTANCE LEVELS	::	 See Level of Detail (LOD)
@@ -62,21 +63,23 @@ Deciding on which option to use might be difficult, but you should try to make a
 
 * How comfortable are you with the Open Rails and all of its content options?
 * How much effort do you want to put into this project?
-* What is your experience with 3D modeling?
+* What is your experience with 3D modeling in general (Train Sim Modeler, GMAX, 3D Canvas, etc.)?
 * What is your experience with 3D modeling in Blender?
 * What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
 * How much flexibility do you want to have with your content?
 
 .Author's Advice
 ----
-Start with the option that is easiest for you to understand and then adjust as you go. Some developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
+Start with the option that is easiest for you to understand and then adjust as you go. Some content developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
 ----
 
 [TIP]
 Share your work. Don't work in a vacuum. Talk to other content developers and see what they are doing. This will help you get feedback and help you avoid making the same mistakes as others.  It also creates a level of involvement and accountability that can help you grow as a content creator and give you a push to not leave projects half-done.
 
 
-== Content Generation Involves:
+== Content Generation
+
+To go over some of the steps involved in creating content for Open Rails, we will create a quick list of the steps involved in creating a simple train related model.  This is not a comprehensive list of all the steps involved, but it should give you a good idea of what is involved in creating content for Open Rails.
 
 (((Blender, "Getting Started")))
  
@@ -90,7 +93,7 @@ Share your work. Don't work in a vacuum. Talk to other content developers and se
 
 === Programs you should have:
 
-* A 3D program, {version} is recommended, but even the LATEST release - currently {BV} - should also be fine unless the *Blender's PYTHON API* has dramatically changed.
+* A 3D program, {version} is recommended, but even the LATEST release - currently {BV} - should also be fine unless the *Blender's PYTHON API* has dramatically changed. (In the case of Blender 5.0, this is the case and the Exporter add-on will need to be updated.) 
 * An Exporter add-on for the {MSTS}/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter]
 * A paint program that has channels and layers (There are multiple options here)
 * A text editor that handles UNICODE files
@@ -100,7 +103,7 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 === What the author uses:
 
 * 3d Modeler: {bv}
-* Bitmap tool (any one of these, interchangeably): Serif Affinity Photo, Serif Affinity Designer, PaintShopPro Version 7, Paint.net or Photoshop CS2, Krita, GIMP, etc.
+* Bitmap tool (any one of these, interchangeably): Canva Affinity Studio (free) or Paint.net
 * UV/Shader tool: Blender has this  built in, 3rd party options exist (like Substance Painter ), however I don't use them. 
 * Text Editor: _Microsoft Visual Studio Code_ 
 * Metric Conversion Calculator (I have one built into hand held calculator, but you can use Google for this as well)
@@ -108,7 +111,7 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 * A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their Imperial units but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
+Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their _U.S. customary units_   but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
 ====  Why the Author Uses Blender 
 
@@ -136,13 +139,13 @@ Constant Development:: Blender's development is ongoing, with new features and i
 
 Ultimately, the choice of using Blender for making game/simulator assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective (free)  tool with a wide range of capabilities, Blender is definitely worth spending the time to learn and experiment with.
 
-To export your model for using with {MSTS} or ORTS, Wayne Campbell created a very capable exporter add-on for {MSTS} format `.s` files.
+To export your model for using with {MSTS} or {OR}, there is a very capable exporter add-on for {MSTS} format `.s` files.
 
 
 === What I Can Recommend:
 
 * 3D Modeler: Bare Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
-* BitMap Tools: _Serif Affinity Photo or Designer_, _Photoshop CS2_ (You can still get this for free from Adobe if you google for it) , _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ or _Krita_ for free.
+* BitMap Tools: _Canva Affinity Studio_ (free), _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ or _Krita_ for free.
 * UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
 
@@ -161,7 +164,7 @@ CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and
 (((Blender, "Installation")))
 
 [NOTE]
-According to the Blender.org website, a new version is released about once per quarter.  The assumption is that you are installing Blender on a Windows 64 BIT platform.  It is recommended that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. Currently, this is{BV}.
+According to the Blender.org website, a new version is released about once per quarter.  The assumption is that you are installing Blender on a Windows 64 BIT platform.  It is recommended that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. {BV} is currently being used, a new release is available.
 
 
 (((Blender, "Installation")))
@@ -215,7 +218,7 @@ This means that Blender *USER DATA* such as `User Preferences`, Default `Startup
 
 in other words, my config files and addons are located at + 
 
-`C:\Users\willard\AppData\Roaming\Blender Foundation\Blender\3.3\config`   
+`C:\Users\willard\AppData\Roaming\Blender Foundation\Blender\4.5\config`   
 
 Below is an old video link, but you will get the general idea of how to install and initially configure Blender...  These steps are also contained below.
 (((Blender, "Installation Video")))
@@ -333,7 +336,7 @@ In the menu:FILE PATHS[DATA] section:
 
 === Version Compatibility Notice
 
-The following section applies to Blender version 3.0 and later. Be aware that certain changes introduced in Blender 4.0 may affect the procedures described here, particularly those related to add-on installation.
+The following section applies to Blender version 3.0 and later. Be aware that certain changes introduced in Blender 4.0 or Blender 5.0 may affect the procedures described here, particularly those related to add-on installation.
 
 Beginning with Blender 4.0, many built-in add-ons are no longer bundled directly with the installer. Instead, they are downloaded and installed over the network after the initial setup. This change may alter the steps required for managing or enabling add-ons in newer versions.
 
@@ -389,13 +392,11 @@ With the latest versions of Blender, To install an add-on, click on the "Install
 
 ===== Installing Add-Ons with Version 4.x
 
-== Installing Add-ons in Blender 4.3
-
 Blender add-ons expand Blender’s functionality with new tools,
 import/export features, UI panels, and automation utilities. Add-ons
 may be included with Blender or provided as third-party ZIP packages.
 
-=== Enabling Built-In Add-ons
+===== Enabling Built-In Add-ons
 
 . Open *Edit → Preferences…*
 . Select the *Add-ons* tab
@@ -405,7 +406,7 @@ may be included with Blender or provided as third-party ZIP packages.
 NOTE: Some bundled add-ons may require a small download the first time
 they are enabled.
 
-=== Installing Third-Party Add-ons
+===== Installing Third-Party Add-ons
 
 . Download the add-on package in `.zip` format
 . In Blender: *Edit → Preferences → Add-ons*
@@ -416,7 +417,7 @@ they are enabled.
 TIP: Do not extract the ZIP file unless you are specifically instructed to.
 The ZIP must contain an `__init__.py` file in its root folder to install properly.
 
-=== After Installation
+==== After Installation
 
 Some add-ons:
 
@@ -468,7 +469,7 @@ image::images/editors_preferences_section_extensions.png[align=center]
 
 Here’s a detailed breakdown of the Extensions system introduced in Blender (starting around version 4.x), how it differs from the traditional Add-ons system, and how you can use it in your workflow.
 
-🔍 What are “Extensions”?
+*What are “Extensions”?*
 
 In Blender, “Extensions” is a term encompassing add-ons, themes, keymap packages, and other modular enhancements to the core software. 
 
@@ -521,12 +522,12 @@ Uninstalling extensions:
 
 * This will remove the extension from Blender.
 
-🔧 How to use Extensions in Blender
+*How to use Extensions in Blender*
 
 Extensions are modular enhancements to the core software that can be enabled and disabled as needed. 
 
 
-===== Enabling and Disabling Add-Ons
+==== Enabling and Disabling Add-Ons
 
 [NOTE]
 Blender has discontinued including all of the built in add-on that it previously included in the installation distribution. You can still get them, you just need to install them from the internet now.
@@ -593,6 +594,13 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 * This add-on allows you to export your selected model object to a new `.blend` file.
 * It allows you to export the model to a `.blend` file with all the materials, textures, and textures coordinates and is useful when you want to create a library of *parts* for your 3D modeling.
 
+4) TrainSimTools
+* Available from: https://github.com/pwillard/TrainSimTools/releases/tag/v1.0.0
+* This is an optional add-on that is available to assist with setup and manipulation of the modeling process specific to MSTS/ORTS modeling.
+* For example, it will create the required "collections" setup on-the-fly so you don't have to hard-code the collection structure into your startup configuration.  This is helpful when you are working with multiple models where some of them are not Train Sime related. 
+* This add-on is a work-in-progress.
+
+
 
 
 
@@ -600,7 +608,7 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 ====
 Most of these are free add-ons, but some of the add-ons that you could want to install later might be add-ons you would need to pay for.
 
-There are hundreds of add-ons that are not distributed with Blender and are developed by others. To add them to the list of available add-ons, they must be installed into Blender. BlenderMarket and GUMROAD are the two most popular places to find add-ons.
+There are hundreds of add-ons that are not distributed with Blender and are developed by others. To add them to the list of available add-ons, they must be installed into Blender. BlenderMarket (Now called superhive, for some reason : https://superhivemarket.com/) and GUMROAD are the two most popular places to find add-ons.
 
 To install the 3rd-party add-ons, choose the btn:[Install…] button and use the `File Browser` to select the `.zip` or `.py` add-on file.
 
@@ -633,13 +641,14 @@ We will continue making changes to the header and properties panels near the top
 ==== TABS
 
 (((Blender, "TABS")))
-
 Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Though your could use it to maintain an alternate view of your work in progress.  To save a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly ever need it for _Hard Surface Modeling_.
 
 image::images/TABBAR.PNG[align=center]
 
 [NOTE]
 You can always tweak the TAB menus to your liking as these changes can be undone by clicking on the `+` symbol in the menu to *add* additional TAB menu options.  Be sure to save your changes using the file menu option menu:File[Defaults>Save Startup File]. 
+
+<<<
 
 ==== Scene Settings
 
@@ -695,9 +704,9 @@ I also sometimes choose MATCAP and pick the leftmost MATCAP option for better vi
 
 image::images/PREFS11.PNG[align=center]
 
-(((Blender, "Units, Feet, Meters, Metric, Imperial")))
+(((Blender, "Units, Feet, Meters, Metric, U.S. customary units ")))
 
-If you need to work in Imperial Units versus Metric, you would adjust the setting under the UNITS SYSTEM option in Scene Properties.  
+If you need to work in U.S. customary units  versus Metric, you would adjust the setting under the UNITS SYSTEM option in Scene Properties.  
 
 [IMPORTANT]
 Changes to `UNIT` settings can have effects in other areas, such as Camera View settings related to  `Focal Length`, `Clip Start` and `Clip End`. To adjust these values after changing UNITS settings, use the _N-Panel_ `View` tab to make adjustments.  If you end up with unusual clipping or part of your model disappearing when you zoon out, you need to adjust your _clip end_ settings.
@@ -888,19 +897,22 @@ Also, see <<Creating Rolling Stock and Locomotives>>
 The use of `Include()` statements in SIMIS files is becoming more common in {OR} configurations but use if the INCLUDE feature us entirely optional.
 
 
-In both Microsoft Train Simulator (MSTS) and Open Rails Train Simulator (ORTS), `.wag` and `.eng` files are essential files that allow the simulators to identify an asset as either a locomotive or non motorized vehicle.  Historically, these files are large and complicated and they contain a large amount of replcated data among similar items.  Historically, MSTS files needed to be fully self-contained with limited ability to make callouts to other files.  In ORTS, the `.wag` and `.eng` files are much simpler and easier to manage since they now have the ability to `include` other ready-made `.inc` files into them, resulting in a smaller file size and easier management.
+In both Microsoft Train Simulator (MSTS) and Open Rails Train Simulator (ORTS), `.wag` and `.eng` files are essential files that allow the simulators to identify an asset as either a locomotive or non motorized vehicle.  Historically, these files are large and complicated and they contain a large amount of replicated data among similar items.  Historically, MSTS files needed to be fully self-contained with limited ability to make callouts to other files.  In ORTS, the `.wag` and `.eng` files are much simpler and easier to manage since they now have the ability to `include` other ready-made `.inc` files into them, resulting in a smaller file size and easier management.
 
 This is particularly beneficial when you are create a group of similar cars that may only differ in a few details or maybe just the car reporting marks.
 
 The `INC` file is an external file that doesn't even need to be in the same directory as the `.wag` or `.eng` file, although sometimes that option makes the most sense.  The `INC` file just needs to be defined in a way that {OR} is able to find it and include it into the `.wag` or `.eng` file.
 
+[WARNING]
+When `.INC` files are used with your `.ENG` and `.WAG` files, they need to contain a blank line at the beginning of the file.  For safety sake, you should also make sure that they have a blank line at the end of the file as well.
+
 When ORTS loads a locomotive or car, it reads the beginning of the main `.eng` or `.wag` file, until it gets to the “Include” statement. It then searches for the `.inc` file in the specified file path, after which it reads the data from the `.inc` file, and inserts the `.inc` file's data into the locomotive or car's physics data. When ORTS reaches the end of the `.inc` file, it then returns to the main `.eng` or `.wag` file and continues reading its data until it either finds another “Include” statement (at which point the `.inc` file reading cycle starts again) or reaches the end of the main `.eng` or `.wag` file.
 
 
-For location, there are 4 general locations
+*For file locations, there are four general locations used* 
 
 * In sub-folder in the .wag or .eng folder.
-* Directly in the .wag or .eng folder. (Could get messy)
+* Directly in the .wag or .eng folder. (Could get messy so use with caution)
 * In a special folder somewhere else specific to `.wag` or `.eng` files having the same .s file.
 * In a special folder somewhere else for use by many `.wag` or `.eng` files, referred to as `common` folders.
 
@@ -939,9 +951,6 @@ Getting {OR} to locate your INC files is important.  You will use relative refer
 * if the INC file is in the same folder as the main file, use a relative reference like this: `INCLUDE("filename.inc")`
 * if the INC file is in a subfolder, use a relative reference like this: `INCLUDE("subfolder/filename.inc")`
 * if the INC file is in a different folder, use an absolute reference like this: `INCLUDE("C:/path/to/filename.inc") or use `referential naming` such as `..\common.inc\filename.inc` to refer to a file in a common folder that is up one level from the current folder location.
-
-
-
 
 
 [NOTE]
@@ -1088,7 +1097,7 @@ image::images/folderlayout.png[]
 
 
 [NOTE]
-If you use Visual Studio Code, you can use the `File: Open Folder` command to open the folder containing your `.wag` and `.eng` files.  This will allow you to easily navigate to the `.inc` files and edit them.  There is an addon for VSCODE that understands syntax highlkigting of ENG and WAG files, so you can see what is happening in real-time.  https://github.com/matejpacha/ORTSFileSupportForVSC
+If you use Visual Studio Code, you can use the `File: Open Folder` command to open the folder containing your `.wag` and `.eng` files.  This will allow you to easily navigate to the `.inc` files and edit them.  There is an addon for VSCODE that understands syntax highlighting of ENG and WAG files, so you can see what is happening in real-time.  https://github.com/matejpacha/ORTSFileSupportForVSC
 
 
 
@@ -1136,7 +1145,7 @@ Erick supplies a lot of details about his approach to modeling here. It's worth 
 
 * The {MSTS} convention of having the underside of all freight cars be completely devoid of any geometry, leaving the user to see sky when the car is viewed from below. This flies in the face of the fact that bridges are a thing, so this practice is best avoided. Car undersides do not need to be complex, but they should be present.
 
-* Generally, it's wise to use whatever units match your reference materials to avoid unnecessary conversions. For example, when I build a Boeing, I work in decimal inches. When I build an Airbus, I work in decimal meters. For most US stock, reference materials will be in inches.  Its not a rule though.  If you have a scale calculator handy, its not hard to convert Imperial to Metric and visa-versa. (And you may learn to actually like the metric system.)
+* Generally, it's wise to use whatever units match your reference materials to avoid unnecessary conversions. For example, when I build a Boeing, I work in decimal inches. When I build an Airbus, I work in decimal meters. For most US stock, reference materials will be in inches.  Its not a rule though.  If you have a scale calculator handy, its not hard to convert U.S. customary units  to Metric and visa-versa. (And you may learn to actually like the metric system.)
 
 * No "imagineered" details, create as accurately as possible.
 

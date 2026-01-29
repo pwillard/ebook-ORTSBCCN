@@ -356,11 +356,11 @@ Use kbd:[F] Fill Face +
 
 
 [NOTE]
-There are 3 sub-modes in `EDIT MODE`; kbd:[1] Vertex Edit, kbd:[2] Edge Edit and kbd:[3] Face Edit. 
+There are three sub-modes in `EDIT MODE`; kbd:[1] Vertex Edit, kbd:[2] Edge Edit and kbd:[3] Face Edit. 
 
 <<<
 
-=== The 4 major edit-mode tools you are likely to use the most are listed below.
+=== The four major edit-mode tools you are likely to use the most are listed below.
 
 [NOTE]
 There are now thousands of YouTube videos about modeling in in Blender if any of these concepts mentioned here are not clear.
@@ -418,6 +418,9 @@ image:images/bevel.png[]
 
 [NOTE]
 A Bevel on a FLAT PLANE will create an INSET.
+
+[TIP]
+There are multiple bevel options in Blender version 5.  Worth looking into if thats the version you are using.
 
 
 <<<
@@ -488,6 +491,7 @@ You might be tempted to try to use the Mirror Modifier, however, that operation 
 * Remember to use `Smooth Edges` and `Auto Smooth` settings
 * When you want to select a loop, you can use the kbd:[ALT] key to select all the edges that make up the loop. 
 * When you wan to select the shortest path of edges between to selected edges, use kbd:[CTRL] + kbd:[SHIFT]
+* You can change the viewport shading options from studio to matcap and then select a lighting setup option to get different shading effects on your work.  Some options really do make it easier to see what you are working on, such as "Clay" or "Metal Car Paint". 
 
 
 
@@ -525,9 +529,12 @@ image:images/MyCollection.JPG[]
 
 .Exporter
 ****
-You will want to download and install the "Blender 2.8 to MSTS Exporter".  https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip
+You will want to download and install the "MSTS Exporter". https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/download/4.8.2/io_export_mstsexporter_4-8-2.zip
 
-The Documentation is included in the ZIP file.  The documentation is also available separately at this location: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf  Use the DOWNLOAD button to get a readable local copy.
+The Documentation is included in the ZIP file.  The documentation is also available separately at this location: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/download/4.8.2/MstsExporterDocumentation.zip
+
+NOTE: Version numbers may change as updates are made. Use the latest version available at https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/
+
 ****
 
 
@@ -842,7 +849,8 @@ Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used 
 ****
 With a master texture file, in a `PSD` format for example,  and using PAINT.NET to keep the layers intact, you cave save it from PAINT.NET as a `.DDS` file natively.   As a result, a minimal amount of after-the-fact editing is needed.  To work in Blender, save a copy the master `PSD` file as a `PNG` file and to work with in Blender. Then save a copy of the master `PSD` file as a `DDS` file.
 
-Also note that even is an S file references a `.ace`, Open Rails will attempt to find a `.dds` with the same name, and if found, it will use the `.dds` instead of the `.ace` file.  This is a nice feature. To me, relying on it does seem to be a bit lazy.
+Also note that even if an S file references a `.ace`, Open Rails will attempt to find a `.dds` with the same name, and if found, it will use the `.dds` instead of the `.ace` file.  This is a nice feature. To me, relying on it does seem to be a bit lazy so it's best to always specify what your intended format is.
+
 ****
 
 [IMPORTANT]
@@ -856,7 +864,7 @@ The final step would be to copy the contents of the project's `FINAL` folder int
 
 (((Blender, "Considering Level Of Detail")))
 
-Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create MAIN_0500 or rename MAIN_0700 to MAIN_0500. You add content to a new LOD level collections by dragging parts around or using the M key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object's 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
+Once you have your main model created, you should consider creating Level of Detail or "LOD" entries.  These are easy to add or change by editing LOD collection name, eg create `MAIN_0500` or rename `MAIN_0700` to `MAIN_0500`. You add content to a new LOD level collections by dragging parts around or using the kbd:[M] key to assign collections. With collections, all your LOD assignments show in the outline panel and you can hide or un-hide whole collections as needed since your LOD assignments are also clearly shown in the object's 'Collection' panel.  Making use of the filter options and checkboxes of the Outliner helps to focus your work.
 
 Blender WILL rename your parts when you add them to a new LOD, but the MSTS exporter is looking at the COLLECTION and BASENAMES of the objects, like WHEELS, which means you won't need to rename entries that suddenly have 001 appended to their name.
 
@@ -864,7 +872,7 @@ You can select a group of objects in the Outliner by using the kbd:[SHIFT-LMB] t
 
 ==== Guidelines for creating LOD versions
 
-Level of Detail of versions of a base model are determined by how much detail is visible based on the distance the camera is from the camera (or player view).  When your camera is very close to an object in {or}, then you want to see the maximum detail available.  As your view of an object becomes far away, there is no reason to display the full detail of the object as much of it will be hidden or to small to see. The reduced polygon models (LODS) will increase graphic performace by reducing the amount of drawing that needs to be performed by the graphics card.   For example, your main model might have 2000 polygons, but at 750 meters, you might only need to display 200 polygons and at 3000 meters, you might only need to display 50 or so polygons to get the same overall effect.
+Level of Detail of versions of a base model are determined by how much detail is visible based on the distance the camera is from the camera (or player view).  When your camera is very close to an object in {or}, then you want to see the maximum detail available.  As your view of an object becomes far away, there is no reason to display the full detail of the object as much of it will be hidden or to small to see. The reduced polygon models (LODS) will increase graphic performance by reducing the amount of drawing that needs to be performed by the graphics card.   For example, your main model might have 2000 polygons, but at 750 meters, you might only need to display 200 polygons and at 3000 meters, you might only need to display 50 or so polygons to get the same overall effect.
 
 You define your intentions for each level of detail in your outliner.  As explained earlier, you define your LODS using a naming convention under the MAIN collection where each lod distance setting is part of the sub-collection name, for example:
 
@@ -903,6 +911,9 @@ You can use the DECIMATE operation in Blender to quickly reduce the polycount of
 [TIP]
 ACE files are no longer mandatory for {or} and if you do not plan to make your work compatible with {MSTS}, the DDS format is a good choice, provided you can get your PNG or TGA files converted to DDS format.
 
+[NOTE]
+
+Pete Willard has been working on Command Line tools that batch convert ACE files to PNG files.  You can then convert these to DDS format using the command line tools. (or you can use Microsoft "texconv.exe" to convert the files) You can find the tools at: https://github.com/pwillard/Ace2DDS
 
 ==== Next Steps
 
@@ -1071,15 +1082,15 @@ You can also run multiple versions of Blender side by side. Blender version 2.79
 [NOTE]
 As of version 3.6 LTS, Blender once again supports importing of 3DS files.
 
-*  UVMapping can survive an import operation... but material and texture selection probably didn't. 
+*  UVMapping might survive an import operation... but material and texture selection probably didn't. You most likely need to manually assign materials and textures to your imported objects.
 
-* The import step has also probably has assigned a new material for each object and to be honest, it's easier to manage if you have all objects that use the same texture also use the same material (unless you need special alpha or reflective properties for something like metal or glass). 
+* The import step has also probably has assigned a new material names for each object and to be honest, it's easier to manage if you have all objects that use the same texture also use the same material (unless you need special alpha or reflective properties for something like metal or glass). 
 
-* You also will probably need to manually tell the `S` file exporter (under MSTS Materials) where to find the texture file under the `BaseColorFilePath` input field.
+* You also will probably need to manually tell the `S` file exporter (under MSTS Materials) where to find the texture file under the `BaseColorFilePath` input field in addition to assigning the texture to the material.
 
-* Lastly, from personal experience, if you are importing a `DAE` (Collada format) file from say `3DC`, you might encounter an issue with `UVMAP` assignment in `SHADER EDITOR` where you are not getting the right `UV map` assigned and you see no texture in the `Material Preview` mode  (Commonly called `LOOKDEV` mode).  
+* Lastly, from personal experience, if you are importing a `DAE` (Collada format) file from say `3DCanvas`, you might encounter an issue with `UVMAP` assignment in `SHADER EDITOR` where you are not getting the right `UV map` assigned and you see no texture in the `Material Preview` mode  (Commonly called `LOOKDEV` mode).  
 
-This the second tab from the right in the viewport selections. Everything will LOOK right in the `Material Preview`, but exports will fail with a "Missing UVMAP in:" error when you try to use the `S` file exporter.  _See the next section for how to deal with this problem._
+This is the second tab from the right in the viewport selections, by the way. Everything will LOOK right in the `Material Preview`, but exports will fail with a "Missing UVMAP in:" error when you try to use the `S` file exporter.  _See the next section for how to deal with this problem._
 
 Material Preview 
 image:images/lookdev.jpg[]
@@ -1134,6 +1145,8 @@ To use this code:
 * Last, you would press the "RUN" arrow icon in the file window menu to run it.
 
 It will fix the UVMAP naming on all objects for you.
+
+This code is also included in the add-on: https://github.com/pwillard/Blender_trainsimstools
 
 
 == Model Exercise #2
@@ -1330,6 +1343,9 @@ image:images/MoveSelected2.JPG[]
 
 _Needs to be finished_
 
+[NOTE]
+The completed version of the model can be found in the Trainsim.com file download section. Title: 2-Stall Reparations Depot
+
 === Making a Vehicle
 (((Blender, "Making a vehicle")))
 
@@ -1446,7 +1462,7 @@ You really should not need to make your own truck and coupler models.  These are
 [TIP]
 === Example: 100-Ton Truck Model
 
-A usable Blender example of a 100-ton freight truck is provided, based on Erick’s original model. Available resources include the following:
+A usable Blender example of a 100-ton freight truck is provided, based on Erick's original model. Available resources include the following:
 
 * *Source files for NAVS N-Series freight car trucks*  
 * *Source files for NAVS Z-Series freight car trucks*  
@@ -1454,7 +1470,7 @@ A usable Blender example of a 100-ton freight truck is provided, based on Erick�
 
 Some of these items are also available through *Trainsim.com*.
 
-Erick’s truck models include attached couplers by default. In practice, couplers can be separated if desired, depending on the needs of the project. Keeping them attached allows the couplers to follow truck rotations accurately, which is the reasoning behind Erick’s design choice.
+Erick's truck models include attached couplers by default. In practice, couplers can be separated if desired, depending on the needs of the project. Keeping them attached allows the couplers to follow truck rotations accurately, which is the reasoning behind Erick's design choice.
 
 
 Using these existing objects, we can Append the ready-to-use model into our initial blend file.

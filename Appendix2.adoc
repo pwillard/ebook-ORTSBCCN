@@ -32,20 +32,19 @@ Installation
 |===
 | Program location              | Comment
 
-| C:\progam files (x86)\{OR}    | Where the PROGRAM gets installed
+| C:\progam files (x86)\OpenRails    | Where the PROGRAM gets installed
 |===
 
 Content
-
 |===
 | Program location              | Comment
 
-| C:\{OR}\TrainSimulations\     | Any TrainSimulations Freeware/Payware content (Global, Routes, Sound, Trains)
-| C:\{OR}WORLD\                 | Copied over legacy {MSTS} installation content folders (Global, Routes, Sound, Trains)
-| C:\{OR}\GNRR                    | Any custom or 3rd party installations that don't have {MSTS} dependencies
-| C:\{OR}\_xxx_                   | Where _XXX_ is any other route that will share (Global, Routes, Sound,Trains) from the OR folder
-| C:\{OR}\developer               | Any *work in progress routes*
-| C:\{OR}\                        | (Global, Routes, Sound,Trains)
+| C:\ORTS\TrainSimulations\     | Any TrainSimulations Freeware/Payware content (Global, Routes, Sound, Trains)
+| C:\ORTSWORLD\                 | Copied over legacy MSTS installation content folders (Global, Routes, Sound, Trains)
+| C:\ORTS\GNRR                    | Any custom or 3rd party installations that don't have MSTS dependencies
+| C:\ORTS\_xxx_                   | Where _XXX_ is any other route that will share (Global, Routes, Sound,Trains) from the OR folder
+| C:\ORTS\developer               | Any *work in progress routes*
+| C:\ORTS\                        | (Global, Routes, Sound,Trains)
 |===
 
 

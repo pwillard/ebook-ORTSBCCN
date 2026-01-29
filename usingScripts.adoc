@@ -54,7 +54,7 @@ There is a Blender Add-On called *SERPENS* that will help you develop Blender GU
 === Blender and ChatGPT
 (((Scripting,"Chatgpt")))
 
-If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is, quite simply, the best artificial intelligence chatbot ever released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python. 
+If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is a very good artificial intelligence chatbot released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python. 
 
 
 === Running a Blender Python Script Inside Blender

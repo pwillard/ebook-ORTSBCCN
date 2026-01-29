@@ -14,7 +14,7 @@ UV mapping and 3d object unwrapping are the same process. The term simply refers
 ----
 I'm not an Adobe evangelist. My goal is to help you get great results with the tools you prefer—whether they are free/open-source or commercial. If you're new to texturing, starting with a free tool is perfectly fine. If you're already comfortable with a particular bitmap tool, the techniques in this guide focus on workflows that use layers, which most modern tools support.
 
-My concern with Adobe products is the subscription model—you pay monthly just to keep access to the software. If you already subscribe, it makes sense to continue using the tools you know. But I do not recommend purchasing Adobe Photoshop solely for occasional 3D texturing work.
+My concern with Adobe products is the subscription model, you pay monthly just to keep access to the software. If you already subscribe, it makes sense to continue using the tools you know. But I do not recommend purchasing Adobe Photoshop solely for occasional 3D texturing work.
 ----
 
 === Bitmap Tools Overview
@@ -43,9 +43,9 @@ To recommend a few tools and formats, the following list should be a guide on wh
 |===
 | Tool                  | File Type |   Comment 
 
-| Affinity Designer     | .afdesign |   Proprietary, Native
-| Affinity Designer     | .psd      |   An Import/Export Option
-| Affinity Designer     | .tiff     |   An Import/Export Option
+| Affinity Studio       | .af       |   Proprietary, Native
+| Affinity Studio       | .psd      |   An Import/Export Option
+| Affinity Studio       | .tiff     |   An Import/Export Option
 | Gimp                  | .xcf      |   Native
 | Gimp                  | .psd      |   An Import/Export Option
 | Gimp                  | .ora      |   An Import/Export Option (plugin)
@@ -56,6 +56,7 @@ To recommend a few tools and formats, the following list should be a guide on wh
 | Paint.Net             | .pdn      |   Native
 | Paint.Net             | .psd      |   An Import/Export Option
 | Paint.Net             | .ora      |   An Import/Export Option (plugin)
+| Paint.Net             | .dds      |   An Import/Export Option, Alpha Only
 | PaintShopPro          | .psp      |   Proprietary, Native
 | PaintShopPro          | .psd      |   An Import/Export Option
 |===
@@ -70,7 +71,7 @@ You will not find Adobe Photoshop listed here. Photoshop continues to rely on it
 * Open Raster, `ORA`, is a newer file format that is supposed to replace `PSD` as a standard solution for exchanging layered images between graphics editors. It's still not widely used.
 
 [TIP]
-One additional tool to mention is InkScape, which like Affinity Designer, is a Vector Graphics program that contains a "make a bitmap copy" option.  Vector graphics are scalable without creating "jaggies" like you see with bitmaps. Unlike Affinity Designer, Inkscape is free.
+One additional tool to mention is InkScape, which like Affinity Studio, is a Vector Graphics program that contains a "make a bitmap copy" option.  Vector graphics are scalable without creating "jaggies" like you see with bitmaps. Like Affinity Studio, Inkscape is free.
 
 [TIP]
 DDS uses lossy compression. Treat DDS like a final delivery format (similar to PDF for documents), not a master format for repeated edits. Always keep a lossless layered master.
@@ -264,7 +265,7 @@ There are two PNG sub-types, *PNG-8*, and *PNG-24*. Both use the same compressio
 
 (((Vector Graphics)))
 
-Vector graphics are created by a computer program using mathematical formulas. The program draws lines and curves using mathematical formulas. The program then stores the formulas in a file. The file contains the information needed to recreate the image. Programs that create vector graphics are called vector graphics editors. Examples are Adobe Illustrator, Affinity Designer and Corel Draw and Inkscape.
+Vector graphics are created by a computer program using mathematical formulas. The program draws lines and curves using mathematical formulas. The program then stores the formulas in a file. The file contains the information needed to recreate the image. Programs that create vector graphics are called vector graphics editors. Examples are Adobe Illustrator, Affinity Studio and Corel Draw and Inkscape.
 
 Vector graphics are referred to as resolution-independent because they do not plot images on a pixel-by-pixel basis and so are not tied into a monitor's resolution. Vector images describe images in terms of shapes, lines, curves, points, colors, length, etc. These images rely only on the resolution of an output device (like a printer for example) to determine their final resolution.  Examples of images suitable for vector graphics are logos and type.  
 
@@ -318,6 +319,10 @@ The model or the texture?  It depends on your references and goals.
 
 * Model first: is best with drawings/specs; unwrap, UV → Export UV layout, paint against the guide, then replace the blank texture in Blender.
 
+image::images/uvlayout1.png[]
+
+Above you can see how the image was painted to match the UV layout that was exported from the 3D model. The texture in this case has already been created and updated in Blender with the painted image.
+
 
 === UV Mapping Basics
 
@@ -336,7 +341,7 @@ This is intended as a primer, not a tutorial, so we'll be addressing the concept
 
 .Author Tips
 ----
-Blender is an application that can utilize 3rd-party addons and there are thousands of them.  I'll only be discussing a few that I find essential for {OR} related work. These are free. I've tried many others as well and another modeler might prefer a different set of addons. Experimentation is key here. 
+Blender is an application that can utilize 3rd-party addons and there are thousands of them.  I'll only be discussing a few that I find essential for Open Rails related work. These are free. I've tried many others as well and another modeler might prefer a different set of addons. Experimentation is key here. 
 ----
 
 image::images/AO_Init.png[]
@@ -653,6 +658,18 @@ The tricky part is that every bitmap manipulation tool, GIMP, Paint.NET, PaintSh
 [NOTE]
 There are many formats of BMP bitmap file, including those with alpha channel support. The catch is that those such formats are not commonly encountered on Windows, and most bitmap editors won't edit or deal with them correctly. Therefore, its best to just consider that `.BMP` has no Alpha channel support... so just use `.TGA` or `.PNG`.
 
+=== Creating Alpha Channels with Affinity Studio
+
+Affinity Studio, formerly Affinity Photo and Designers Suite, is a popular photo editing software that has a built-in alpha channel editor. It allows users to create alpha channels for transparency in images. You can use formats like PNG or TIFF that support alpha channels when working with images in Affinity applications.
+
+To begin working with alpha channels in Affinity, select the PIXEL mode and choose the layer you want to work with in the Layers panel. You would then add a MASK layer by choosing the MASK tool at the bottom of the layers panel.  When you select the brush now, you will be able manipulate the ALPHA mask for the image using the brush options.  White foreground brush with remove alpha mask and the Black foreground brush will add alpha mask.
+
+When you are done creating the mask, using the brush or selection tools, you can refine it using the "Pixel" mode "Refine Mask" to visualize and refine the edges of the mask using the available 'sliders'.  Apply to complete the "Refine Selection" option.
+
+
+
+
+
 === Creating Alpha Channels with GIMP
 
 (((GIMP, "Alpha Channels")))
@@ -844,18 +861,62 @@ It's really just easier to use a tool like Paint.net for creating the `.DDS` fil
 
 <<<
 
+=== ACE2DDS 
+(((ACE2DDS, Tools)))
+
+ACE → PNG → DDS Conversion Tools - These utilities simplify working with Microsoft Train Simulator (MSTS) and Open Rails legacy ACE texture formats. https://github.com/pwillard/Ace2DDS/releases
+
+The download contains two tools:
+
+* `ace2png.exe` - This tool converts the ACE texture(s) file to a PNG file.
+* `tex2dds.exe` - This tool converts the PNG file(s) to a DDS texture file.
+
+Both tools are command-line tools, so you can run them from a command prompt or terminal window. _Items in brackets are optional arguments._
+
+To use the `ace2png.exe` tool, run it with the following command-line arguments:
+
+```
+usage: ace2png.exe [-h] [-o OUT] source
+```
+
+Replace `input.ace` with the path to the ACE texture file you want to convert, and replace `output.png` with the path where you want to save the PNG file.
+
+To use the `tex2dds.exe` tool, run it with the following command-line arguments:
+
+```
+usage: tex2dds.exe [-h] [-o OUT] [--texconv TEXCONV] [--srgb] source
+```
+
+Replace `input.png` with the path to the PNG file you want to convert, and replace `output.dds` with the path where you want to save the DDS file.
+
+[TIP]
+You can also process entire folders of ACE texture files at once with `ace2png` if you supply a folder name as the "source" and DDS file conversions with `tex2dds` if you supply a folder name as the "source".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 === Alpha materials in Blender
 
 (((Blender, Materials with Alpha Layer)))
 
 If you want to just keep your hair in your head, versus pulling it out... here is a recommendation.
 
-* Use Paint.Net or GIMP (if you have some extra cash, use Affinity Designer)
+* Use Paint.Net or GIMP or Affinity Studio
 * Use the NATIVE format of your selected Bitmap Editor as your master file. (They will support "layers")
 * Export your bitmaps in TGA or PNG format for use as Blender Texture files.
 
 [NOTE]
-Affinity products do not support exporting to DDS, but you can use Paint.NET or GIMP to export the file used by Blender to the DDS format usable with {or}.
+Affinity products do not support exporting to DDS, but you can use Paint.NET or GIMP to export the file used by Blender to the DDS format usable with {or}. You could also used command line tools to convert PNG files to DDS.
 
 When you finally export your model(s) to the `S` file format using the MSTS/{or} Exporter script, export the DDS format from Paint.net or GIMP as a follow-up step.
 

@@ -23,12 +23,12 @@ The *MAIN* object of your modeling collection should always be positioned at wor
 There are some general rules that all content creators should follow, regardless of the tools used. Take the next section to heart.
 
 [NOTE]
-While you _can_ have Blender work in Imperial units (feet and inches), It may be far simpler to always work in the Metric System since you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.
+While you _can_ have Blender work in Imperial units (feet and inches), It may be far simpler to always work in the Metric System since you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.  
 
 === Some Basic Things About Modeling
 (((Blender, "Modeling Tips")))
 
-Some additional recommendations From Erick Cantu of NAVS
+Some additional guidelines from Erick Cantu of NAVS
 
 1. In {OR}, it is important to try to keep the polygon count of your models low, even though it is not as critical as in some other applications. While modern PCs and simulator software have improved in their ability to handle complex models and textures, it is still important to use complexity wisely. In Blender, you can view the polygon count and other details of your model by going to Object EDIT MODE and looking at the lower right corner of the screen. When creating your models, try to avoid including faces and edges that will rarely or never be visible in the final model.
 
@@ -36,9 +36,33 @@ Some additional recommendations From Erick Cantu of NAVS
 
 3. The most important tip. Don't get hung up drawing things that nobody will see.  Avoid drawing details that will remain in shadows or small details like nuts and bolts if the camera will never see it.  Inversely, now that we have the ability to have more complex models with {or}, we *can* add more modeled details where we historically were forced to rely heavily on alpha-channels in our textures. 
 
-[TIP]
-Additionally, you can model the extra details on the main mesh if you are using the results to create the master texture.  This is a great way to add more detail to your model without increasing the polygon count.  This is known as hi-poly to low-poly baking.  This is a great way to add more detail to your model without increasing the polygon count.  The extra detailed model won't be your final model but it can be used to bake things into a texture like nuts, bolts, rivets and surface details like doors and such.
+[NOTE]
+----
+These comments from Erick should be considered guidelines rather than strict rules. 
+Many creators produce acceptable results while choosing not to follow them. 
+However, the recommendations are intended to help maintain good performance in 
+Open Rails, particularly when running long and complex trains on older hardware 
+or lower-end graphics cards.
 
+Items 1 and 2 should already be familiar concepts dating back to the early 
+Microsoft Train Simulator era. Item 3 is especially important, as the temptation 
+to create highly detailed objects should be balanced against what will actually 
+be visible during normal Open Rails operation.
+----
+
+(((Blender, "High to Low Poly Baking")))
+
+[TIP]
+----
+Additional details can be modeled directly onto the main mesh when the goal is
+to generate a master texture. This technique allows extra visual detail to be
+added without increasing the polygon count of the final model.
+
+This process is commonly known as *hi-poly to low-poly baking*. A highly detailed
+version of the model is created, but it is not used as the final in-game object.
+Instead, the additional geometry is baked into textures that can represent
+features such as nuts, bolts, rivets, doors, and other surface details.
+----
 
 === Polygon Count and Vertex Density
 (((Blender, "Polygon Coint and Drawcalls")))
@@ -48,7 +72,7 @@ If you read item #3 in the previous section, you might think you can go crazy wi
 For large panels, though, a minimal amount of modeling is necessary. A flat plate like a wall or door can be made with only a few polygons.  Like every rule, you can break it when you really want to show a particular detail, but also keep in mind that you should make good use of "Level of Detail" ranges (LOD) to reduce computational work when an object is farther away.
 
 
-
+(((Blender, "Setting up to create a model")))
 === Preparation Of Work
 
 * Of course, you need to figure out what you want to model
@@ -104,15 +128,26 @@ When using background images and modeling a freight car, for example, you would 
 
 
 [TIP]
-Speaking of working with images, Blender has an add on that you can install called "Insert Images as Planes". The ADD menu will now have this option available.  It will assign the material of the image to the plane and allow you to rely on things like ALPHA masking.  It is also affected by scene lighting, but like I mentioned above, this texture will only show up in a TEXTURE view mode, so this feature is not useful for a background reference drawing. 
+----
+When working with images in Blender, you can install the add-on
+*Insert Images as Planes*. After enabling it, a new option will appear
+in the *Add* menu.
 
+This tool creates a plane and automatically assigns the image as the
+material texture. It also supports features such as alpha masking and
+responds to scene lighting.
+
+However, the image will only appear when viewing the scene in *Texture*
+display mode. Because of this, it is not suitable for use as a background
+reference drawing.
+----
 
 
 
 === Some things I will miss about using 3D Canvas
 (((3D Canvas, "Nice Things")))
 
-We will digress for a moment to share one of the reasons why using 3D CANVAS was so helpful in the initial stages of making a model.
+We will digress for a moment to share one of the reasons why using 3D CANVAS was considered helpful in the initial stages of making a model.
 
 The 3D Canvas/Crafter platform includes a train content ENGINEER add-on — Trainworks -> Train Simulator Engineer — that functions as a quick-start utility for assembling train models. It automatically places fully modeled wheels, axles, truck assemblies, and a base body element, all of which can be customized. Unfortunately, Blender lacks anything comparable to this feature. In practice, though, the time savings are modest; if you already have a prepared truck set and couplers, positioning them correctly is straightforward. That said, a similar add-on for Blender is certainly under consideration.
 
@@ -237,7 +272,7 @@ The 3D cursor is where any new object will be placed. By default it is at world 
 *MENUS*
 
 To hide or reveal the Number Panel on the right side use  kbd:[N] key   (Not shown above) +
-To hide or reveal the tools Panel on the left side use kbd:[T] key +
+To hide or reveal the Tools Panel on the left side use kbd:[T] key +
 To see your "Quick Favorites" menu, use the kbd:[Q] key +
 Use kbd:[F3] for access to the search feature +
 Use kbd:[CTRL+TAB] combination for access to the `MODE` pie menu +
@@ -260,6 +295,10 @@ Use kbd:[SHIFT + H] to show all objects +
 Use kbd:[ALT + Z] to toggle X-Ray mode +
 
 The Number Pad Keys are also used to select various views.
+
+[NOTE]
+Use of Blender's Pie Menus is totally optional. Some people find them to be a time saving device, others disagree.
+
 
 ==== View Controls
 (((Blender, "View Control")))
@@ -492,6 +531,7 @@ You might be tempted to try to use the Mirror Modifier, however, that operation 
 * When you want to select a loop, you can use the kbd:[ALT] key to select all the edges that make up the loop. 
 * When you wan to select the shortest path of edges between to selected edges, use kbd:[CTRL] + kbd:[SHIFT]
 * You can change the viewport shading options from studio to matcap and then select a lighting setup option to get different shading effects on your work.  Some options really do make it easier to see what you are working on, such as "Clay" or "Metal Car Paint". 
+* When you create a new object from a primitive, it will retain that name, IE; CUBE, so it is a good practice to name the item as soon as you create it, otherwise you can end up with dozens of CUBE items in your collection, making it harder to find what you are searching for.
 
 
 
@@ -529,14 +569,17 @@ image:images/MyCollection.JPG[]
 
 .Exporter
 ****
-You will want to download and install the "MSTS Exporter". https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/download/4.8.2/io_export_mstsexporter_4-8-2.zip
+You will want to download and install the "MSTS Exporter". https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases
 
-The Documentation is included in the ZIP file.  The documentation is also available separately at this location: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/download/4.8.2/MstsExporterDocumentation.zip
-
-NOTE: Version numbers may change as updates are made. Use the latest version available at https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases/
+The Documentation is included in the ZIP file.  The documentation is also available separately at this location:https://github.com/pwillard/Blender_MSTS_ORTS_Exporter
 
 ****
 
+
+.Helper
+****
+There is also a "Work In Progress" helper script located at https://github.com/pwillard/Blender_trainsimstools   This add-on can generate the required Exporter Collection layout for you.
+****
 
 
 == Actually Modeling Something
@@ -614,6 +657,8 @@ It didn't perform a delete?   Oh my, yes it did, but not what we wanted!
 image:images/oops2.jpg[]
 
 We are in ViewPort "Shading Solid" Mode.
+
+(((Blender, "X-Ray Mode")))
 
 [WARNING]
 Do you understand what happened?  We only selected the FRONT facing vertices! We didn't touch the ones in the back. Press kbd:[CTRL,Z] to undo if you completed the above step. To select ALL of the vertices that we really want to select, we need to be in `XRAY/Wireframe` mode. To chose this mode, press kbd:[Z] and chose `WIREFRAME`, making sure that the viewport mode on the top right of the screen agrees. You can also toggle Wire-frame mode by using kbd:[ALT] kbd:[Z]. The Circle with LINES in it and the `X-RAY` icon next to it should also be highlighted.
@@ -710,6 +755,8 @@ image:images/TextureSet.png[]
 
 ==== Let's Begin Texturing
 
+(((Blender, "Texturing a model")))
+
 `Marking Seams`:: You would Mark Seams (Edges) where the flat edges stop and in the case of our Jersey Barrier model, we mark TOP, BOTTOM, FRONT, BACK and both SIDES by selecting all relevant edges and then use `EDGE->MARK SEAM` to define seams.  These will now highlight in the SEAM COLOR.
 
 image:images/markedseams.png[]
@@ -753,7 +800,9 @@ Materials are an important part of creating realistic and visually appealing 3D 
 * Under `BASE COLOR` you now see `+NEW` and `OPEN` icons.  Click `OPEN` and chose your existing texture file. The `UV SQUARE` background image in the UV Window should now display your image behind your `UV ISLANDS`.  If you choose `NEW`, you will have a blank image assigned to the material, which in this case is not helpful.
 
 [NOTE]
-The GITHUB page has a DEMO1.ZIP file that contains the concrete texture I used.
+The GITHUB page for this document has a DEMO1.ZIP file that contains the concrete texture I used.
+
+(((Blender, "Unwrapping a mesh for texturing")))
 
 image:images/UVWRAP1.JPG[]
 
@@ -833,7 +882,7 @@ When adding lighting/illumination effects to your model, you will need to separa
 
 
 [TIP]
-Version 4.4+ of the MSTS EXPORTER includes a button to define the textures used in the `.S` file as `.DDS` instead of `.ACE`. Though, if {or} does not find an `ACE` file, it will attempt to use a `DDS` file of the same name.
+Version 4.4 and newer of the MSTS EXPORTER includes a button to define the textures used in the `.S` file as `.DDS` instead of `.ACE`. Though, if {or} does not find an `ACE` file, it will attempt to use a `DDS` file of the same name.
 
 
 ----
@@ -975,8 +1024,35 @@ Initially, you will save the main model as the top Level of Detail version or LO
 On a 3rd LOD setting, you might want to just remake shapes from cube and cylinder primitives to keep the polycount low.
 
 
+<<<
 
+=== Workflow
 
+(((Blender, "Workflow")))
+
+Everyone has a way of working creative projects that suits their comfort level.  The sequence of steps that you become comfortable with that you add to your repertoire of knowledge, or in other words, your workflow.  This is based on the tools that you become comfortable with using or maybe even processes a scripts that you write or acquire for yourself to help with your projects.
+
+As a quick discussion of workflow, the author will share their workflow as a reference.
+
+Once you start a project, it will go through many revisions as you make progress on it.  Save a fresh numbered copy after milestones are reached or when decisions are made on how best to proceed.  You can fall back on older revisions of the chosen fork doesn't work out.
+
+Once the model is underway, the initial stages of texturing begin.  A way to start this process is to generate a blank PNG file of the size you need in the UV Editing tab, make sure to save it. Then in Materials tab, create a new BSDF material - Image texture and  use that newly created PNG file for the texture.  It will still be default black.  Now assign that material to the model, not caring about the current UV mapping fore the moment. Back in the UV Editing tab, you would map your UVs in the item using the method that makes the most sense for the object.  With the mapping now done on that object or objects, you would use the EXPORT UV MAP to get an outline layout `.png` file that you can import into a program like "Affinity Studio".  From here, you can map proper texture imagery to the UV Map outlines you exported.
+
+[NOTE]
+With AFFINITY, when importing the UVMAP layout `.png` file, use the PLACE option and paste anywhere on the screen, then in the "transform" panel, set the location to coordinate X=0, y=0 and placement will be perfect.
+
+Create an export folder where you assemble all of the required bits to migrate the project to {OR}. This is a folder where you export the `.S` file from Blender, but it is also where you push the `.DDS` files and `.wag` or `.eng` files and any other items needed by {OR} to make the content usable.
+
+Since within Blender you are likely using PNG files for textures, you will need to develop a conversion process for PNG to ACE or PNG to DDS.  DDS is recommended, since the conversion is a bit simpler and not based on a proprietary format.  A script was developed that handles this process on a folder or individual file basis, making this process rather easy. The script can be found in the `SCRIPTS` folder of the GITHUB page.
+
+In the final stages of the project, you will want to generate the Ambient Occlusion map.  Refer to the ambient occlusion section for details.  When the AO Bake image has been generated, `place` the AO layer into AFFINITY, at location 0,0, and set the layer at the top of the stack and change opacity to around 30% and  change layer mode from "normal" to "multiply".  
+
+With this bake layer added, export once again to PNG and convert to DDS and place in the EXPORT folder.  Test the content at this point using the TSRE "shapeviewer" option.
+
+Look for mistakes or mapping issues and repeat the process until pleased with the results.
+
+[TIP]
+The TSRE shapeviewer can read `WAG` files, so if your model relies on FreightAnims(), you will be able to see them by specifying the `WAG` file to the viewer.
 
 <<<
 

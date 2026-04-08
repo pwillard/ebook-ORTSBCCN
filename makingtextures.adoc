@@ -129,6 +129,15 @@ So maximum compression is the key to good performance. Just compare the size of 
 
 An alpha channel increases the file size so it should be left out unless it is needed. On color maps, the alpha channel is used for transparency, on normal maps for glossiness. If the texture has no transparency or the normal map has no glossiness saving them as DXT1 (no alpha) instead of DXT5 instantly saves on the file size for no loss. 
 
+==== Can Blender Import DDS Files Directly?
+
+(((Blender, "DDS")))
+
+Yes, Blender can now import DDS files directly. Blender has built-in support for reading and using DDS textures. However, the quality of the import and how you use the textures depends on the specific DDS file and your project's needs. You don't need any additional add-ons to import DDS files in Blender. Just like importing any other image format. Refer to the COMPRESSION TYPE table above.
+
+
+
+
 .Authors Note
 ----
 You know how sometimes people report that their icons or textures become a rainbow pixel mess? That is related to Gimp saving the "no mipmap" textures incorrectly, it writes in the header that the image has 1 mipmap, but it has none and the game gets confused. I never used Gimp and I can't find where I read about this right now, but if I'll do, I'll update this comment.
@@ -275,6 +284,37 @@ Vector graphics are not suitable as a replacement for bitmap images, but they ar
 [NOTE]
 Fonts used by windows programs are vector graphics.  This is why RailSimStuff creates their own fonts with railroad symbols and logo's for others to use.
 
+
+(((Vector Graphics, "Font Tricks")))
+
+==== Tweaking Fonts With Affinity
+
+Lets say you want to create the Union Pacific distinctive outline lettering.  You  may have noticed a font available all over the web called "City Of" by Ben Coifman of RailFonts.com.  Ben released this lettering back when he was still in college and the Internet never forgets.  You can probably get a much improved version direct from their web site but that I leave up to you conscience regarding "supporting the little guys".
+
+Anyway, you have the font and you have Affinity Studio or the older Affinity Designer installed.  So lets enter some text with the "CITYOF" font.  Make sure you are in VECTOR mode.
+
+image::images/Screenshot 2026-04-08 125803.png[]
+
+Change it to RED... 
+
+image::images/Screenshot 2026-04-08 125855.png[]
+
+So you get: 
+
+image::images/Screenshot 2026-04-08 125927.png[]
+
+The next step is choose the VECTOR _TAB_, with the TEXT selected, chose "convert to curves" in the pulldown menu.
+
+image::images/Screenshot 2026-04-08 130033.png[]
+
+
+And finally, chose the outline thickness, here I chose a value of 7.8.  And its done.
+
+image::images/Screenshot 2026-04-08 130104.png[]
+
+
+
+
 ==== Vector Graphics Summary
 
 * There are two main types of digital graphic files: bitmap and vector.
@@ -305,7 +345,6 @@ If your model is wide but not tall, as many vehicle models are, then you might c
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
 Keep in mind that some people who might consider repainting your model will want to make use of their own photographs of actual vehicles or buildings.  This means that it would be "unkind" to these "re-skinners" if you were to split up the sides of your model into multiple sections as they would have difficulty getting the sections to rejoin cleanly from their photographs.  Try to keep the side and top views as continuous shapes in your model and your textures.  However, if the model is unlikely to be re-skinned by 3rd parties, then you can conceivably create a separate texture for each section of the model.  This will allow you to rejoin the sections as needed.
-
 
 [TIP]
 For scenery like brick buildings, use a seamless base layer (e.g., brick) below windows/doors layers.
@@ -346,7 +385,7 @@ Blender is an application that can utilize 3rd-party addons and there are thousa
 
 image::images/AO_Init.png[]
 
-In this setup, Blender 4.3 is being used and since Blender 4.2 many of the external addons are now available in the *Get Extensions* option under *Preferences*. *Texel Density Checker* is available via *Get Extensions* in Blender 4.3. *UV Layout* is an official Blender addon available via *Add-ons* option. The last one,  *TexTools*,  is available from GitHub and needs to be installed from the downloaded zip file.
+In this setup, Blender 4.5 is being used and since Blender 4.2 many of the external addons are now available in the *Get Extensions* option under *Preferences*. *Texel Density Checker* is available via *Get Extensions* in Blender 4.3. *UV Layout* is an official Blender addon available via *Add-ons* option. The last one,  *TexTools*,  is available from GitHub and needs to be installed from the downloaded zip file.
 
 Texel Density Checker:: shows up the *N Side Menu* when in the *UV Mapping* window. It allows you to get or set the bitmap density of a UV island.  For the best-looking models, you want a relatively consistent texel density, and this add-on makes it extremely easy to set on each island as you map it.
 
@@ -390,7 +429,7 @@ Draw Calls:: - for our purposes - it's every time we need to load a texture shee
 Ambient Occlusion or AO:: - is a shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting. It simulates the soft shadows and subtle shading that occur in corners, creases, and near intersections of objects, where light is less likely to reach. This effect adds a sense of depth and realism to the scene by enhancing the perception of surface details and contact points between objects.
 
 [TIP]
-Unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another. Baking also has an option to adjust the margin size.
+Baking ambient occlusion layers require objects to occupy unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another. If you have used the "project from view" option while UV Mapping, AO Baking will be troublesome unless care is taken to deal with overlaps and hidden faces.  Baking also has an option to adjust the margin size and its probably best to keep the margin to a minimum.
 
 .Scott's Example
 

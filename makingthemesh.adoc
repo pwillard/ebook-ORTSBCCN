@@ -923,6 +923,9 @@ You can select a group of objects in the Outliner by using the kbd:[SHIFT-LMB] t
 
 Level of Detail of versions of a base model are determined by how much detail is visible based on the distance the camera is from the camera (or player view).  When your camera is very close to an object in {or}, then you want to see the maximum detail available.  As your view of an object becomes far away, there is no reason to display the full detail of the object as much of it will be hidden or to small to see. The reduced polygon models (LODS) will increase graphic performance by reducing the amount of drawing that needs to be performed by the graphics card.   For example, your main model might have 2000 polygons, but at 750 meters, you might only need to display 200 polygons and at 3000 meters, you might only need to display 50 or so polygons to get the same overall effect.
 
+[TIP]
+You probably won't need much more than 2 or 3 LOD options to get good results.
+
 You define your intentions for each level of detail in your outliner.  As explained earlier, you define your LODS using a naming convention under the MAIN collection where each lod distance setting is part of the sub-collection name, for example:
 
 |===
@@ -961,7 +964,6 @@ You can use the DECIMATE operation in Blender to quickly reduce the polycount of
 ACE files are no longer mandatory for {or} and if you do not plan to make your work compatible with {MSTS}, the DDS format is a good choice, provided you can get your PNG or TGA files converted to DDS format.
 
 [NOTE]
-
 Pete Willard has been working on Command Line tools that batch convert ACE files to PNG files.  You can then convert these to DDS format using the command line tools. (or you can use Microsoft "texconv.exe" to convert the files) You can find the tools at: https://github.com/pwillard/Ace2DDS
 
 ==== Next Steps

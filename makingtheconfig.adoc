@@ -1,4 +1,5 @@
 
+[[creating-rolling-stock-and-locomotives]]
 == Creating Rolling Stock and Locomotives
 
 (((ORTS, "Creating Rolling Stock and Locomotives")))
@@ -8,7 +9,7 @@ In order to ensure the precise functioning of locomotives and other rolling stoc
 You would need to gather enough prototypical data to accurately complete the physics descriptions in the `WAG` or `ENG` file. 
 
 [WARNING]
-Please note that there have been many improvements and additions to the simulator that go well beyond the capabilities and options of the original {MSTS}.  Many of the options listed in this section contain values and parameters that are unique to {or}. It is assumed that the reader is NOT trying to retain compatibility with legacy {MSTS} and doing so is beyond the scope of this section.  If you wish to retain {MSTS} compatibility, please refer to the technical documents that come with {MSTS}.
+Please note that there have been many improvements and additions to the simulator that go well beyond the capabilities and options of the original {MSTS}.  Many of the options listed in this section contain values and parameters that are unique to {OR}. It is assumed that the reader is NOT trying to retain compatibility with legacy {MSTS} and doing so is beyond the scope of this section.  If you wish to retain {MSTS} compatibility, please refer to the technical documents that come with {MSTS}.
 
 [NOTE]
 The process of creating content and config files is often described as a complicated mess, and that description is not entirely inaccurate. However, there is a side project underway to develop a set of replacement files for MSTS 3D models, config files, and textures that are free to use and do not violate anyone's copyrights. These replacement files will serve as examples of the standards for creating 3D models, textures, and config files for Open Rails, which can be shared with everyone.
@@ -73,7 +74,7 @@ Source: http://www.coalstonewcastle.com.au/physics/or-parameter-uom/
 The contents of an ENG or WAG file use an S-expression type of notation for grouping of related items. Token definitions are delimited by opening ( and closing ) parenthesis. All strings are quoted using the double quote character (") and are UTF-8 encoded. Tokens can have zero or more attributes. Human readability is a design goal.
 
 [TIP]
-With {or} it is very common that things like coupler and brake settings are consistent between many different pieces of rolling stock.  For this reason, it is common to see content releases that share these common settings in a specific folder on the hard drive and make call-outs to the common settings using the {OR} `INCLUDE` token in the `ENG` or `WAG` file.
+With {OR} it is very common that things like coupler and brake settings are consistent between many different pieces of rolling stock.  For this reason, it is common to see content releases that share these common settings in a specific folder on the hard drive and make call-outs to the common settings using the {OR} `INCLUDE` token in the `ENG` or `WAG` file.
 
 
 === Using _INCLUDE_
@@ -183,7 +184,7 @@ These settings are found in nearly every type of rolling stock or locomotive con
 
 |Type()									| x 	| x		| Steam Diesel Electric Freight Carriage Tender
 |Wagon()								| x		| x		| Section contains all related wagon() tokens
-|WagonShape() 							| x		| x		| Defines the file path to locate the the shape ".S" file
+|WagonShape() 							| x		| x		| Defines the file path to locate the shape ".S" file
 |Size()									| x     | x		| 3 Dimensions: X Y Z, in meters by default unless a Unit is supplied
 |WheelRadius()							| x 	| x		| Wheel Radius in meters unless a Unit is supplied. Example: "33in"	
 |ORTSLengthCouplerFace ()				|		| x		| DC - Length between coupler faces (Is this the same a 'length over strikers' + about 24"?)
@@ -200,14 +201,14 @@ These settings are found in nearly every type of rolling stock or locomotive con
 NOTE: DC indicated that the token is related to the new Derailment Coefficient
 
 
-See the <<Appendix A>> for a more complete list of tokens/parameters. Note: this list is still incomplete.
+See <<appendix-a,Appendix A>> for a more complete list of tokens/parameters. Note: this list is still incomplete.
 
 
 ==== Example WAG file with INCLUDE
 
 (((ORTS, "Example WAG File")))
 
-Probably some of the BEST examples of how to make use of the {or} ENG/WAG design goals is Erick Cantu with what he has done with the NAVS rolling stock and engines.  Erick heavily makes use of the `INCLUDE` token and new `Freight Anim` options.  I would recommend downloading and looking at one of Erick's SDK files for a good background on his techniques.
+Some of the best examples of how to use the {OR} ENG/WAG design goals come from Erick Cantu's NAVS rolling stock and engines.  Erick heavily makes use of the `INCLUDE` token and new `Freight Anim` options.  I would recommend downloading and looking at one of Erick's SDK files for a good background on his techniques.
 
 An `INCLUDE`  related Excerpt from Elvas Tower Forum is below, where it is pointed out that you can redefine existing sections of a WAG/ENG file with replacement entries that come after the original definitions.
 
@@ -362,7 +363,7 @@ Make a new brake system section and typed it in a STD_Wag_Brake.inc:
         BrakeCylinderPressureForMaxBrakeBrakeForce( 90 )
 ----
 
-Make an `Openrails` folder inside the WVOGrain folder, where I placed a text file with the following text called `WVOGrain.wag` (the well known include method, with comments)
+Make an `Open Rails` folder inside the WVOGrain folder, where I placed a text file with the following text called `WVOGrain.wag` (the well known include method, with comments)
 
 [source]
 ----
@@ -376,7 +377,7 @@ Wagon (                                                                    <----
 [NOTE]
 This trick is in the manual, where it explains how to add instructions to remove the trees on rails in a route without touching the original .trk definition file.
 
-The final result, to {or}, would be:
+The final result, to {OR}, would be:
 
 [source]
 ----
@@ -572,13 +573,13 @@ When creating new content, the amount of work involved can seem daunting at firs
 
 For Sounds:: It would be a good recommendation to consider employing the file:  `navsfr10.zip` aka "Open Rails NAVS Car Sounds v2.5" available at trainsim.com.   Current Link: https://www.trainsim.com/forums/downloadnew.php?fid=37487  If you are working on an ENG file, consider `navscf10.zip`, Current Link: https://www.trainsim.com/forums/downloadnew.php?fid=34168
 
-For WAG file:: It would be a good recommendation to use Erick's examples as guidance for how a model {or} WAG or ENG file could be formatted.
+For WAG file:: It would be a good recommendation to use Erick's examples as guidance for how a model {OR} WAG or ENG file could be formatted.
 
 [TIP]
 If you are not a legacy {MSTS} user, you may not have access to some of the track and weather sounds used by Microsoft's simulator.  If this is the case, you will also want `navs_env.zip` which is a public domain replacement for potentially missing environmental sounds.   
 
 [NOTE]
-If you do want to follow the *NAVS* guidelines, consider indicating this in the naming of your content by adding the `NAVS` prefix to your file names.  So what does using this approach mean? Well, it is a well thought out plan for implementing rolling stock that differs greatly from legacy {MSTS}. It is a framework that fully embraces {or} and it's feature set.
+If you do want to follow the *NAVS* guidelines, consider indicating this in the naming of your content by adding the `NAVS` prefix to your file names.  So what does using this approach mean? Well, it is a well thought out plan for implementing rolling stock that differs greatly from legacy {MSTS}. It is a framework that fully embraces {OR} and it's feature set.
 
 Erick Cantu is very particular about how to model a 3D Model freight car.  Using his work as reference material is probably the best place to start.  So let's take a deep dive into a model.
 
@@ -612,7 +613,7 @@ Wagon ( NAVS_Boxcar_NAVX_103100_LD
 )
 ----
 
-The rest is coming from INCLUDE references... so lets look at those as well.  In the folder reference `../NAVS_COMMON/INCLUDE/AAR_Type-E.inc` we find the Coupler Type details and these values can be shared among many many vehicles.
+The rest is coming from INCLUDE references... so let's look at those as well.  In the folder reference `../NAVS_COMMON/INCLUDE/AAR_Type-E.inc` we find the Coupler Type details and these values can be shared among many vehicles.
 
 ----
 Comment ( //////////AAR Type E Couplers\\\\\\\\\\ )
@@ -711,7 +712,7 @@ Comment ( //////////Brakes - general\\\\\\\\\\ )
 Notice how Erick has carefully laid out the design of the overall `WAG` file and the related INCLUDES to allow for sharing of common settings and to allow for a refinement of specific details.  Also note that the CAR BODY is actually a Freight Anim entry and the MAIN BODY of the vehicle is actually based on the type of BOGEY used.  A novel idea that is worth imitating in our own designs.  The TRUCK texture file (shared among all variants) is located in the same folder as  `../NAVS_COMMON/Boxcar_50_PS-Type/PS-Type_50_LD_A3_Plain.inc` while the car body texture and decal texture is located in the same location as the main WAG file.
 
 
-While you can still use a *default* MSTS-like WAG file with {or}, after seeing what Erick has done, you might be able to see why embracing the new way could be beneficial.  This NAVS method is very re-painter-friendly and the fact that Erick also supplies a layered BITMAP file is the ultimate in "being nice to re-painters".
+While you can still use a *default* MSTS-like WAG file with {OR}, after seeing what Erick has done, you might be able to see why embracing the new way could be beneficial.  This NAVS method is very re-painter-friendly and the fact that Erick also supplies a layered BITMAP file is the ultimate in "being nice to re-painters".
 
 [TIP]
 My recommendation is to use these settings as a guide for making new USA Based Rolling stock.  If you would like guidance on other types of vehicles, I would recommend using the resources at Peter Newell's Coals to Newcastle website: https://www.coalstonewcastle.com.au/physics/
@@ -725,11 +726,11 @@ It's up to you how you want to handle your ENG and WAG files.  You can even go w
 
 (((ORTS, "Another Example of Rolling Stock"))) 
 
-Here is an example of a traditional MSTS style WAG file for USA style rolling stock.  This is a BLLW release.  It contains NONE of the new tokens related to {or} specifically so should work reliably in MSTS as well.  It does utilize `FreightAnim` though the WAG for this car is to an EMPTY car, so the freight anim setting is commented out.  In {OR}, only one Coupling entry is used, so {OR} will only need to see one in the WAG file.
+Here is an example of a traditional MSTS style WAG file for USA style rolling stock.  This is a BLLW release.  It contains NONE of the new tokens related to {OR} specifically so should work reliably in MSTS as well.  It does utilize `FreightAnim` though the WAG for this car is to an EMPTY car, so the freight anim setting is commented out.  In {OR}, only one Coupling entry is used, so {OR} will only need to see one in the WAG file.
 
 
 [NOTE]
-The `SIMISA@@@@@@@@@@JINX0D0t______` entry is a header requirement of [msts] and is not required for {or}
+The `SIMISA@@@@@@@@@@JINX0D0t______` entry is a header requirement of {MSTS} and is not required for {OR}.
 
 ----
 SIMISA@@@@@@@@@@JINX0D0t______
@@ -808,7 +809,7 @@ Wagon ( BLLW-H21a-PRR01
 )
 ----
 
-If you keep up with changes in {or}, you will see that some items have changes to be a bit more logical, for instance, if you supply the new DERAIL COEFICIENT tokens then you no longer need to supply `NUMWHEELS` as `ORTSNumAxles` from the Derail values makes it redundant.  Additionally, you only need to supply one `COUPLING` token, not two.   Refer to Derail Coefficient section of the {or} manual for further details.
+If you keep up with changes in {OR}, you will see that some items have been made more logical. For instance, if you supply the newer DERAIL COEFFICIENT tokens then you no longer need to supply `NUMWHEELS` as `ORTSNumAxles` from the Derail values makes it redundant.  Additionally, you only need to supply one `COUPLING` token, not two.   Refer to the Derail Coefficient section of the {OR} manual for further details.
 
 
 == Specifying Lights on Locomotives and Wagons
@@ -817,9 +818,9 @@ If you keep up with changes in {or}, you will see that some items have changes t
 
 
 === Introduction
-In Microsoft Train Simulator, you can use the in-built lighting system to create a variety of lights for locomotives and wagons, including headlights, warning lights, and ditch lights. These lights can be used on both computer-controlled and player-driveable trains. The lights can be set to be steady or flashing, and can also be programmed to change based on certain parameters, such as a penalty brake application, or to turn on automatically based on the time of day or weather.
+In Microsoft Train Simulator, you can use the built-in lighting system to create a variety of lights for locomotives and wagons, including headlights, warning lights, and ditch lights. These lights can be used on both computer-controlled and player-drivable trains. The lights can be set to be steady or flashing, and can also be programmed to change based on certain parameters, such as a penalty brake application, or to turn on automatically based on the time of day or weather.
 
-Lights are specified as part of a locomotive/wagon’s .eng file (the same file that defines the physical characteristics of the unit, such as its height and weight, and its cab controls).  Essentially, a set of conditions is defined and then lights that should light in this case are listed).  Like all of the hand-editable files in Train Simulator, the .eng file can be edited in any Unicode text editor.
+Lights are specified as part of a locomotive/wagon’s .eng file (the same file that defines the physical characteristics of the unit, such as its height and weight, and its cab controls).  Essentially, a set of conditions is defined and then lights that should light in each case are listed.  Like all of the hand-editable files in Train Simulator, the .eng file can be edited in any Unicode text editor.
 
 ==== Available Tokens for Lights 
 
@@ -1146,18 +1147,18 @@ Available tokens for Effects
 * WhistleFX 
 * SafetyValvesFX 
 * Exhaust 
-* Cylinders2FX {or}
-* CompressorFX {or}
-* GeneratorFX {or}
-* Injectors1FX {or}
-* Injectors2FX {or}
-* HeatingSteamBoilerFX {or}
-* WagonGeneratorFX {or}
-* WagonSmokeFX {or}
-* HeatingHoseFX {or}
-* WaterScoopFX {or}
-* TenderWaterOverflowFX {or}
-* BearingHotboxFX {or}
+* Cylinders2FX {OR}
+* CompressorFX {OR}
+* GeneratorFX {OR}
+* Injectors1FX {OR}
+* Injectors2FX {OR}
+* HeatingSteamBoilerFX {OR}
+* WagonGeneratorFX {OR}
+* WagonSmokeFX {OR}
+* HeatingHoseFX {OR}
+* WaterScoopFX {OR}
+* TenderWaterOverflowFX {OR}
+* BearingHotboxFX {OR}
 
 ==== Freight Animations
 
@@ -1165,33 +1166,33 @@ Available tokens for Freight Animations
 
 * FreightAnim 
 * IntakePoint  FuelWater FuelCoal FuelWood FuelSand FuelDiesel FreightGeneral FreightLivestock FreightFuel FreightGrain FreightCoal FreightGrvel FreightSand
-* ORTSFreightAnims {or}
-* FreightAnimContinuous {or}
-* WagonEmptyWeight {or}
-* EmptyMaxBrakeForce {or}
-* EmptyMaxHandbrakeForce {or}
-* EmptyORTSDavis_A {or}
-* EmptyORTSDavis_B {or}
-* EmptyORTSDavis_C {or}
-* EmptyCentreOfGravity_Y {or}
-* EmptyORTSWagonFrontalArea {or}
-* EmptyORTSDavisDragConstant {or}
-* FreightWeightWhenFull {or}
-* FullMaxBrakeForce {or}
-* FullMaxHandbrakeForce {or}
-* FullORTSDavis_A {or}
-* FullORTSDavis_B {or}
-* FullORTSDavis_C {or}
-* FullCentreOfGravity_Y {or}
-* FullORTSWagonFrontalArea {or}
-* FullORTSDavisDragConstant {or}
-* MSTSFreightAnimEnabled {or}
-* IsGondola {or}
-* UnloadingStartDelay {or}
-* FullAtStart {or}
-* Shape {or}
-* MaxHeight {or}
-* MinHeight {or}
-* ORTSWaterScoopFillElevation {or}
-* ORTSWaterScoopDepth {or}
-* ORTSWaterScoopWidth {or}
+* ORTSFreightAnims {OR}
+* FreightAnimContinuous {OR}
+* WagonEmptyWeight {OR}
+* EmptyMaxBrakeForce {OR}
+* EmptyMaxHandbrakeForce {OR}
+* EmptyORTSDavis_A {OR}
+* EmptyORTSDavis_B {OR}
+* EmptyORTSDavis_C {OR}
+* EmptyCentreOfGravity_Y {OR}
+* EmptyORTSWagonFrontalArea {OR}
+* EmptyORTSDavisDragConstant {OR}
+* FreightWeightWhenFull {OR}
+* FullMaxBrakeForce {OR}
+* FullMaxHandbrakeForce {OR}
+* FullORTSDavis_A {OR}
+* FullORTSDavis_B {OR}
+* FullORTSDavis_C {OR}
+* FullCentreOfGravity_Y {OR}
+* FullORTSWagonFrontalArea {OR}
+* FullORTSDavisDragConstant {OR}
+* MSTSFreightAnimEnabled {OR}
+* IsGondola {OR}
+* UnloadingStartDelay {OR}
+* FullAtStart {OR}
+* Shape {OR}
+* MaxHeight {OR}
+* MinHeight {OR}
+* ORTSWaterScoopFillElevation {OR}
+* ORTSWaterScoopDepth {OR}
+* ORTSWaterScoopWidth {OR}

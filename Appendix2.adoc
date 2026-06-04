@@ -1,38 +1,38 @@
-== Appendix II 
+== Appendix II
 
 === Consider Transitioning away from {MSTS} to Open Rails
 
-By the year 2026, {MSTS} is roughly 25 years old clearly abandoned as a dead-end by its creators.  The fact that it has lived on this long is a testament to its community and not specifically how well the program actually worked as it had numerous flaws that never got corrected.  Many years after {MSTS} was introduced and the sequel to {MSTS} was ultimately cancelled a team of talented programmers decided to build an open source replacement. This is how we got OpenRails
+By 2026, {MSTS} is roughly 25 years old and has long since been abandoned by its creators. The fact that it has lived on this long is a testament to its community, not to the completeness of the original program. Many years after {MSTS} was introduced, and after its planned sequel was cancelled, a team of talented programmers began building an open-source replacement. This is how we got Open Rails.
 
-At some point most {MSTS} users will want to transition away from {MSTS} to {OR}. {OR}, by design has an advantage over all other current train simulators in that it can utilize a vast amount of the existing legacy {MSTS} content that has been created over the years. Most content will work without many issues, however, some items may need a bit of tweaking to be able to run correctly in {OR}.
+At some point, most {MSTS} users will want to transition from {MSTS} to {OR}. By design, {OR} has an important advantage: it can use a vast amount of legacy {MSTS} content created over the years. Most content will work without major issues, although some items may need small adjustments to run correctly in {OR}.
 
 
 === The {OR} Program
 
 The {OR} program installs in a location that will remain totally isolated from simulator content, which is a fundamental difference from the way {MSTS} works.  The benefits of this approach are numerous but the primary benefit is that you will never need to reinstall content when you perform an update or re-installation of {OR}.  You can completely delete and reinstall {OR} and then inform it about where your content is and you are ready to go.
 
-You are also able to isolate content as there are some cases where some content installations will affect others.  Since content locations can be switched within {OR}, you can eliminate there issues and just select the isolated route installations as needed. This eliminates the need for legacy solutions like _Trainstore_ with {MSTS}.
+You can also isolate content, which helps when one content installation affects another. Since content locations can be switched within {OR}, you can select isolated route installations as needed. This eliminates the need for legacy solutions like _Train Store_ with {MSTS}.
 
-Technically, you do not need any {MSTS} content to use {or} but if you have an old {MSTS} installation installed or saved then hhe beauty of the {OR} solution is that the following items are the only things that have to be copied over from the old {MSTS} installations:
+Technically, you do not need any {MSTS} content to use {OR}. However, if you have an old {MSTS} installation installed or saved, the beauty of the {OR} solution is that only the following folders need to be copied from the old {MSTS} installation:
 
 * GLOBAL folder
 * SOUND folder
 * ROUTES folder
-* TRAINS folder 
+* TRAINS folder
 
-All other {MSTS} files are not required and are redundant under {OR}. 
+All other {MSTS} files are not required and are redundant under {OR}.
 
 [NOTE]
 As a content developer, you will still need a set of utilities like Aceit, TGATOOLS2 and FFEDIT_SUB to actually access and manipulate content without the {MSTS} *UTILS* folder.
 
-A typical {or} solution that does not depend on a complete {MSTS} installation could be set up like this:
+A typical {OR} solution that does not depend on a complete {MSTS} installation could be set up like this:
 
 Installation
 
 |===
 | Program location              | Comment
 
-| C:\progam files (x86)\OpenRails    | Where the PROGRAM gets installed
+| C:\Program Files (x86)\Open Rails    | Where the PROGRAM gets installed
 |===
 
 Content

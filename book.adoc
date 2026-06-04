@@ -41,7 +41,7 @@
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
 :LTSversion: Blender 4.5 LTS
-:BV: 5.0.1 
+:BV: 5.1.1
 :AO: Ambient Occlusion
 :NV: 5.0
 :older: 3.6.x LTS
@@ -49,6 +49,7 @@
 <<<
 :numbered!:
 [colophon]
+== Colophon
 
 Open Rails, Blender Content Creator Notebook
 
@@ -106,13 +107,13 @@ Useful resources:
 
 
 [NOTE]
-Some sections of the original {MSTS} technical documents are also included here as reference material since some of these details exist no where else unless you have the original {MSTS} documentation and CDROMS.  These are now pretty outdated, and unobtainable to some people and are included here for reference only.
+Some sections of the original {MSTS} technical documents are included here as reference material because some of these details are difficult to find unless you still have the original {MSTS} documentation and CD-ROMs. These sections are outdated, but they remain useful as historical and technical references.
 
 === Some notes about some of the References
 
 NAVS:: North American V-Scale - Content created by or related to Erick Cantu.  Using a set of standards he developed.
-Coals to Newcastle:: Meaning,  "A silly venture", as Newcastle has plenty of coal.  Also, A website run by Peter Newell that has really good {orts} Physics documentation. 
-MSTS:: Microsoft Train Simulator - referring to the original {MSTS} CD-ROM distribution of the simulator. To many, its seems like the original {MSTS} CD-ROM distribution was slightly unfinished as the documentation was incomplete and many bugs needed to be "patched" after the fact by a solution named "MSTSBIN". There never was a version 2.0 {MSTS} release.
+Coals to Newcastle:: Meaning, "a silly venture", as Newcastle has plenty of coal. Also, a website run by Peter Newell that has very useful {OR} physics documentation.
+MSTS:: Microsoft Train Simulator - referring to the original {MSTS} CD-ROM distribution of the simulator. To many users, the original {MSTS} release felt unfinished: documentation was incomplete, and many bugs were later addressed by community tools such as MSTSBin. There was never an official {MSTS} 2.0 release.
 
 
 
@@ -154,25 +155,25 @@ Web Links should be active and will open in your web browser if your PDF reader 
 [preface]
 == Preface
 
-OpenRails is an open-source train simulator platform designed to replicate the experience of operating trains on various railway systems. It was developed as an alternative to Microsoft Train Simulator (MSTS) and is compatible with {MSTS} content, allowing users to enjoy a wide range of routes, locomotives, and rolling stock created for {MSTS}.
+Open Rails is an open-source train simulator platform designed to replicate the experience of operating trains on various railway systems. It was developed as an alternative to Microsoft Train Simulator (MSTS) and is compatible with {MSTS} content, allowing users to enjoy a wide range of routes, locomotives, and rolling stock created for {MSTS}.
 
-Here are some key points about OpenRails:
+Here are some key points about Open Rails:
 
-Compatibility:: OpenRails is built to run on modern operating systems such as Windows 7, 8, and 10. It offers improved stability and performance compared to {MSTS}, especially on newer hardware.
+Compatibility:: Open Rails is built to run on modern Windows systems and offers improved stability and performance compared to {MSTS}, especially on newer hardware.
 
-Enhanced Graphics:: OpenRails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
+Enhanced Graphics:: Open Rails supports a variety of graphical improvements, including higher screen resolutions, improved lighting and shading effects, enhanced textures, and anti-aliasing. These enhancements provide a more immersive visual experience.
 
-Physics and Realism:: OpenRails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
+Physics and Realism:: Open Rails aims to provide realistic train physics and behavior. It features improved simulation of train dynamics, braking, and traction control, making the virtual driving experience more authentic.
 
-Third-Party Content:: OpenRails is compatible with a wide range of third-party content created for {MSTS}. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the {MSTS} community. Users can install these addons in OpenRails and enjoy them with improved performance and visual quality.
+Third-Party Content:: Open Rails is compatible with a wide range of third-party content created for {MSTS}. This includes routes, locomotives, rolling stock, scenery objects, and other add-ons developed by the {MSTS} community. Users can install these add-ons in Open Rails and enjoy them with improved performance and visual quality.
 
-Community and Development:: OpenRails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
+Community and Development:: Open Rails benefits from an active and passionate community of developers and enthusiasts who contribute to its development. Regular updates and improvements are made to the simulator, ensuring its continued growth and refinement.
 
-Open-Source Nature:: OpenRails is an open-source project, which means its source code is freely available for modification and enhancement. This allows developers to contribute to the project and create new features or fix issues.
+Open-Source Nature:: Open Rails is an open-source project, which means its source code is freely available for modification and enhancement. This allows developers to contribute to the project and create new features or fix issues.
 
-It's worth noting that OpenRails is not a standalone game but rather a simulation platform. While it provides a framework for train simulation, it relies on third-party content and addons to provide the routes, trains, and other elements of the virtual railway environment.
+It's worth noting that Open Rails is not a standalone game but rather a simulation platform. While it provides a framework for train simulation, it relies on third-party content and addons to provide the routes, trains, and other elements of the virtual railway environment.
 
-Overall, OpenRails offers a robust and customizable train simulation experience for enthusiasts who enjoy operating trains on various virtual railway systems.
+Overall, Open Rails offers a robust and customizable train simulation experience for enthusiasts who enjoy operating trains on various virtual railway systems.
 
 
 === Here is the list of things that I assume about the reader.
@@ -180,17 +181,17 @@ Overall, OpenRails offers a robust and customizable train simulation experience 
 * You are new to Blender
 * You are reasonably new to content creation for Open Rails
 * You have Open Rails installed and working
-* You have installed TSRE5 for Consist management
+* You have installed TSRE5 if you plan to inspect routes, consists, or placed objects outside the simulator
 * You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[A good example is the Paint.net, KRITA or GIMP all of which are free] 
 * You have some idea about how {OR} and {MSTS} content is created
 * You have a project in mind, but you understand that you will not create your Magnum Opus on a first try.
 
-If you have prior experience with GMAX, Train Sim Modeler or 3D Canvas, it will be a plus, but it is not required.
+If you have prior experience with older tools such as GMAX, Train Sim Modeler, or 3D Canvas/Crafter, it will help, but it is not required.
 
 
 === Organization of This Document
 
-As the title implies, this document is based on a collection of notes I made while learning to make content for {OR}.  As a result, it may not be the most organized or useful document on the subjects discussed within it but it is primarily aimed at filling a void in the available documentation set for {OR}.  This document is FREE and Open Source.  It will ultimately live on in a GITHUB repository created for it.  This means that others are welcome to fork a copy, edit it to add sections or fix errors, if desired.  I,  the author,  do not claim unrealistic ownership of the ideas and concepts contained within.  In fact, I struggle to consider myself the sole author of this manual at this point. Of course, at the moment, I am entirely responsible for its content, but I have created, gathered, reorganized and rephrased the contents as needed since it comes from many different sources. 
+As the title implies, this document began as a collection of notes made while learning to create content for {OR}. It is now organized as a practical notebook for filling gaps in the available {OR} content-creation documentation. This document is free and open source, and it lives in a GitHub repository so others can fork it, correct errors, and add missing sections. I do not claim exclusive ownership of every idea or concept contained here; much of this material has been created, gathered, reorganized, and rephrased from many sources.
 
 Due to the way this document originated, it may seem to jump around and be repetitive at times. My apologies in advance if this bothers you but if you are so inspired, you are welcome to help fixing any errors, problems or omissions.
 
@@ -205,7 +206,7 @@ include::usingScripts.adoc[]
 include::makingtheconfig.adoc[]
 include::making3dcabs.adoc[]
 include::appendix.adoc[]
-include::appendix2.adoc[]
+include::Appendix2.adoc[]
 
 [index]
 == Index

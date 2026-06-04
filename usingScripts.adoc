@@ -15,9 +15,9 @@ Whether you're looking to automate repetitive tasks or wish to extend Blender's 
 
 === Actually Doing It
 
-So we now consider diving in to Python.  The Python that you find embedded in Blender is the same Python you find everywhere else, with one exception. That is, it includes the Python Blender Library (or API) for accessing the internal features of Blender.  The `Library` is called "BPY".  You will often see at the very top of Python code written for Blender the following line of code:  `import bpy`.  This is where you add all of the Blender functionality to your code. 
+So we now consider diving into Python.  The Python that you find embedded in Blender is the same Python you find everywhere else, with one exception. That is, it includes the Python Blender Library (or API) for accessing the internal features of Blender.  The `Library` is called "BPY".  You will often see at the very top of Python code written for Blender the following line of code:  `import bpy`.  This is where you add all of the Blender functionality to your code.
 
-To get started with Python though, you should probably set up a development environment for Python.  This way you can begin to learn how to code in Python and practice and develop ideas without actually having to do it it inside Blender. 
+To get started with Python, though, you should probably set up a development environment for Python.  This way you can begin to learn how to code in Python and practice and develop ideas without actually having to do it inside Blender.
 
 Getting started with Python is relatively easy and straightforward. Here's a step-by-step guide to help you begin your Python journey:
 
@@ -301,7 +301,7 @@ The initial crosstie shape is created using a cube primitive. The dimensions use
 
 image:images/step1.PNG[]
 
-So now that we have a crosstie built and textured (Not covered here, sorry), it needs to be replicated to fill the gondola load area.  This is made easier by using the *ARRAY MODIFIER* (Under Wrench Icon)
+So now that we have a crosstie built and textured, it needs to be replicated to fill the gondola load area. This is made easier by using the *ARRAY MODIFIER* under the Wrench icon.
 
 image:images/step2.PNG[]
 
@@ -370,7 +370,7 @@ image:images/step6.PNG[]
 
 Press the `RUN` icon to run the code. (You will see that it did something in the windows on the left).  You can switch back to LAYOUT from the Scripting tab for a better view.
 
-image:images/step7.PNG[]
+image:images/Step7.PNG[]
 
 Now all of the objects have their own origin based on their specific geometry. (See all the orange origin dots on each crosstie?)
 
@@ -396,13 +396,13 @@ for obj in selected_objects:
 
 ----
 
-image:images/step8.PNG[]
+image:images/Step8.PNG[]
 
 Press the `RUN` icon to run the code. 
 
 You will end up with the following...
 
-image:images/step9.PNG[]
+image:images/Step9.PNG[]
 
 and finally...
 

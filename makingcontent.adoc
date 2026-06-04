@@ -8,7 +8,7 @@ About ORTS:: The Open Rails Train Simulator is an open source project that exist
 OPEN RAILS::
 The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km.
 
-_from OpenRails.org website_
+_from Open Rails.org website_
 
 Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
 
@@ -26,10 +26,10 @@ ENG FILE	::	 A file that describes to the Simulator the details of an Asset to b
 FACE	::	  A surface created by 3 or more vertices.	
 FOOBIE	::    A model made specifically lacking in detail to allow many variants to be made using a single base model, relying on the TEXTURE to define the details and not the actual 3D objects. "Foobie" is a contraction of "fake boobies".   	
 HARD SURFACE MODELING	::	 A generalized term for modeling objects that represent things like vehicles, buildings, weapons, roads. These make use of the more standard mesh techniques and objects like cube, cylinder, plane, cone, torus etc.		
-HDRI	::	 HDRI is short for High Dynamic Range Image. Digital cameras only have a limited dynamic range â€” that's why some areas of a photo appear darker than they do in real life. HDRIs give photo editors a chance to brighten the corners and create an image that looks more natural.  Environment maps or HDRI maps are one of the most efficient and quickest way to light your 3D scene and achieve realistic results in Blender. HDRIs are essentially a snapshot of the the real world lighting which contain accurate lighting detail through high dynamic range imaging (HDRI)		
-HIERARCHY	::	 The assignment of parenting of objects within a shape so that an objects children will only move when they do but they can move independently too but are always affected by their parent.		
+HDRI	::	 HDRI is short for High Dynamic Range Image. Digital cameras only have a limited dynamic range â€” that's why some areas of a photo appear darker than they do in real life. HDRIs give photo editors a chance to brighten the corners and create an image that looks more natural.  Environment maps or HDRI maps are one of the most efficient and quickest ways to light your 3D scene and achieve realistic results in Blender. HDRIs are essentially a snapshot of the real-world lighting which contains accurate lighting detail through high dynamic range imaging (HDRI)
+HIERARCHY	::	 The assignment of parenting of objects within a shape so that an object's children will only move when they do but they can move independently too but are always affected by their parent.
 LEVEL OF DETAIL	::	 (LOD) Distance values at which the base model is replaced by reduced poly count shapes to account for the inability to see details at a distance.  Higher values should have less detailed models.  There are no hard rules about LOD ranges, but you should try to use them.		
-MANIFOLD SHAPE	::	   A manifold shape is a 3d object that considered to be water tight.  The vertices, faces and edges are aligned and connected in such a way that if you poured water into to the INSIDE of the object, none would leak out.  A default `cube` primitive is an example a manifold shape. 		
+MANIFOLD SHAPE	::	   A manifold shape is a 3D object that is considered to be watertight.  The vertices, faces and edges are aligned and connected in such a way that if you poured water into the INSIDE of the object, none would leak out.  A default `cube` primitive is an example of a manifold shape.
 MATERIAL	::	 A material is assigned a texture with additional components such as lighting palette and shading.		
 MESH	::	  A 3D Model "shape" made up of 1 or more "faces" without texture		
 NGON	::	  Is a face with 5 or more vertices. Many Blender tools and features rely on the underlying mesh to be made of NGONS and will not work with triangulated faces.		
@@ -53,11 +53,11 @@ Also, here are some design choices that you can make that you should clarify in 
 (((Content Design, "Choices")))
 
 Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {MSTS} might cause the vehicle to not perform optimally
-Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters 
-Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
-Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {or} but has been configured to also be compatible with {MSTS} (This is more work than just running in {or})
-Made for ORTS but requires {MSTS}::  Meaning it can run in {or} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {MSTS} on the system
-Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {or} configurations and parameters but also requires {MSTS} to be installed and relies on additional "default" products. 
+Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters
+Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
+Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} (This is more work than just running in {OR})
+Made for ORTS but requires {MSTS}::  Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {MSTS} on the system
+Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters but also requires {MSTS} to be installed and relies on additional "default" products.
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
 
@@ -103,12 +103,12 @@ NOTE: If you are also making models for Trainz Simulator, note that the latest v
 === What the author uses:
 
 * 3d Modeler: {bv}
-* Bitmap tool (any one of these, interchangeably): Canva Affinity Studio (free) or Paint.net
-* UV/Shader tool: Blender has this  built in, 3rd party options exist (like Substance Painter ), however I don't use them. 
+* Bitmap tool (any one of these, interchangeably): Canva, Affinity Studio (free), or Paint.net
+* UV/Shader tool: Blender has this built in; 3rd party options exist (like Substance Painter ), however I don't use them.
 * Text Editor: _Microsoft Visual Studio Code_ 
-* Metric Conversion Calculator (I have one built into hand held calculator, but you can use Google for this as well)
-* A Scale Calculator: Converting dimensions from a scale drawing. (there is on on my website at http://www.railsimstuff.com ) 
-* A texture snipping tool, a) Windows has a built in Snipping tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
+* Metric Conversion Calculator (I have one built into a hand-held calculator, but you can use Google for this as well)
+* A Scale Calculator: Converting dimensions from a scale drawing. (there is one on my website at http://www.railsimstuff.com )
+* A texture snipping tool, a) Windows has a built-in Snipping Tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
 Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their _U.S. customary units_   but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
@@ -139,23 +139,23 @@ Constant Development:: Blender's development is ongoing, with new features and i
 
 Ultimately, the choice of using Blender for making game/simulator assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective (free)  tool with a wide range of capabilities, Blender is definitely worth spending the time to learn and experiment with.
 
-To export your model for using with {MSTS} or {OR}, there is a very capable exporter add-on for {MSTS} format `.s` files.
+To export your model for use with {MSTS} or {OR}, use Wayne Campbell's Blender MSTS/Open Rails exporter add-on for {MSTS}-format `.s` files.
 
 
 === What I Can Recommend:
 
-* 3D Modeler: Bare Minimum Blender 2.93 LTS version or {version} or even {BV} should be fine. (If you are already well accustomed to Blender 2.79 it's OK, but you will be on your own here) Did I mention that Blender is free?
-* BitMap Tools: _Canva Affinity Studio_ (free), _Paint.net_ (free), _PaintShop Pro_ (even version 7 still works), or download the latest version of _GIMP_ or _Krita_ for free.
-* UV tool: While there are 3rd party options for this, you can just use UV and shader tools that come with Blender (You could look at Meshmixer or even Substance Painter)
+* 3D Modeler: Blender {LTSversion} or the current stable {BV} release is recommended. Blender 3.6 LTS can still be useful for older workflows, but Blender 2.79-era workflows are no longer covered here. Did I mention that Blender is free?
+* Bitmap tools: _Affinity Photo_, _Paint.NET_ (free), _GIMP_, _Krita_, or _PaintShop Pro_ if you already have it.
+* UV tool: Blender's built-in UV and shader tools are enough for the workflows in this notebook. Third-party tools can help, but they are optional.
 * Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
 
 .Author's Note:
 ****
-Much of this document was created with Blender version 3.6 LTS and but I have been using {BV} lately.
+Much of this document was created with Blender 3.6 LTS and updated while using Blender {BV}.
 ****
 
 [NOTE] 
-CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and WAG configuration files available at github where this document is maintained. There is an early version of a context highlighter in the works for ENG/WAG files in VScode, but it's not finished it yet.  https://github.com/pwillard/engwag
+CONTEXT is an abandoned editor, but it had a useful syntax highlighter for ENG and WAG configuration files. For current work, Visual Studio Code is the safer recommendation; an ENG/WAG syntax-highlighting project is available at https://github.com/pwillard/engwag
 
 (((Context, "An old but useful text editor")))
 
@@ -164,7 +164,7 @@ CONTEXT is an abandoned editor, but it has a nice syntax highlighter for ENG and
 (((Blender, "Installation")))
 
 [NOTE]
-According to the Blender.org website, a new version is released about once per quarter.  The assumption is that you are installing Blender on a Windows 64 BIT platform.  It is recommended that you download the `LTS` or Long Term Support version and if you are really brave, you can download the latest available stable version. {BV} is currently being used, a new release is available.
+According to Blender.org, new Blender versions are released regularly. This notebook assumes a 64-bit Windows installation. The safest choice is the current `LTS` release, while the latest stable version is also suitable if the exporter add-on supports it. This document is currently being checked against Blender {BV}.
 
 
 (((Blender, "Installation")))
@@ -173,7 +173,7 @@ According to the Blender.org website, a new version is released about once per q
 While Blender *can* run from a USB stick in a portable mode, it's best to just use the MSI installer.
 
 [WARNING]
-If you are still using Windows 7, you won't be able to install a Blender version 2.93 or newer.  You really should upgrade.  Much of the content in this document will still apply to version 2.93 except for new features.  You can probably still get Blender 2.8xx to work on Windows 7, but I'm no longer 100% sure.  
+If you are still using Windows 7, current Blender versions will not install. You should upgrade Windows before relying on this notebook. Some concepts still apply to older Blender versions, but the current workflow assumes a supported Blender release.
 (((Windows 7, No longer supported)))
 
 [WARNING]
@@ -285,7 +285,7 @@ image::images/NAVGIZMO.PNG[align=center]
 
 ==== System
 
-image::images/PREFS4.PNG[align=center]
+image::images/Prefs4.png[align=center]
 
 In the menu:SYSTEM[CYCLES RENDER TAB] section:
 
@@ -387,7 +387,7 @@ Community:: Add-ons that are written by people in the Blender community.
 Blender 4.x now includes a built-in Add-On Manager that allows you to install add-ons from the internet.  This is the preferred method of installing add-ons.  This is the method we will use to install the add-ons we need for {OR} when using the latest version of Blender.  There is also a new option called `Extensions` for add-ons that meet Blender's community standards. _You must have enabled the "Allow Online Access" from the network settings under "System" preferences for this feature to work._ 
 
 [TIP]
-With the latest versions of Blender, To install an add-on, click on the "Install" button on the right side of the add-on you want to install.  This will download the add-on and install it in the correct location for Blender to find it.  You can also search for add-ons by name or category using the search bar at the top of the Add-ons window.
+With the latest versions of Blender, to install an add-on, click the "Install" button on the right side of the add-on you want to install.  This will download the add-on and install it in the correct location for Blender to find it.  You can also search for add-ons by name or category using the search bar at the top of the Add-ons window.
 
 
 ===== Installing Add-Ons with Version 4.x
@@ -479,7 +479,7 @@ The official online platform for these is Blender Extensions Platform (via exten
 The key idea: make it easier to find, install, enable, update, and manage these modular enhancements all from within Blender. 
 
 
-[Note]
+[NOTE]
 While “Add-ons” is still a valid term, in newer versions the UI uses “Extensions” to highlight the full range of extension types, not just Python scripts. 
 
 Enabling the feature: (first time only) +
@@ -581,7 +581,7 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 1)  Blender28toMSTS
 * Available From: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip 
 * See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] 
-* Instructions say to un-zip the the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distibuted `.zip` file. 
+* Instructions say to unzip the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distributed `.zip` file.
 * DOCS: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf
 
 2) Edge to Curve
@@ -641,7 +641,7 @@ We will continue making changes to the header and properties panels near the top
 ==== TABS
 
 (((Blender, "TABS")))
-Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {or} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Though your could use it to maintain an alternate view of your work in progress.  To save a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly ever need it for _Hard Surface Modeling_.
+Along the top of the main Blender window, there are a series of tabbed menus.  We don't actually need all of these to be available to us while modeling {OR} content and you might notice that some of them seem redundant.  Let me explain... the *Modeling* tab is actually a holdover window from earlier versions of Blender and is nearly identical to the newer *Layout* tab.  Feel free to delete the *Modeling* tab as you really won't be needing it. Though your could use it to maintain an alternate view of your work in progress.  To save a bit of screen real estate, you can delete the Sculpting tab as well since you would hardly ever need it for _Hard Surface Modeling_.
 
 image::images/TABBAR.PNG[align=center]
 
@@ -733,9 +733,9 @@ Related to the `Shading` Tab on the Top Bar Menu, we will make some adjustments 
 
 This step requires that you have already downloaded an example HDRI file from one of the HDRI WEB SITE locations mentioned at the beginning of this document.  The downloaded HDRI files could be located in your menu:Documents[Blender > HDRI] folder that you create for this purpose.  See TIPS below for usage details.
 
-In the "World Properties" panel (globe icon on the right),  Add "Background" in the Surface pulldown menu.  In the Color section, select "Environment Texture". This will allow us to chose the HDRI we downloaded and made available for Blender to use.   Select the "Open" button and choose the HDRI file you want to use using the "File Browser".
+In the "World Properties" panel (globe icon on the right),  Add "Background" in the Surface pulldown menu.  In the Color section, select "Environment Texture". This will allow us to choose the HDRI we downloaded and made available for Blender to use.   Select the "Open" button and choose the HDRI file you want to use using the "File Browser".
 
-Now, when you chose Render, you will be using the lighting from the HDRI file. 
+Now, when you choose Render, you will be using the lighting from the HDRI file.
 
 If you now select the `Shading` tab and then choose the `Viewport Shading` view icon (The one to the right of Solid Shading Icon) you would then choose the pulldown on the right (viewport shading) and then adjust the default lighting setting to `Scene World`.   You will now see your work with the new HDRI background in place.
 
@@ -807,7 +807,7 @@ There is a need to properly orient your model if you are making rolling stock or
 When working on items that roll on the track, the FRONT of a model is aimed towards the Positive values of the Y axis and the REAR of the model faces the negative Y axis. 
 
 [WARNING]
-Blender's default point of view differs slightly in that it considers the FRONT to be facing the -Y direction.  This comes into play when using the view keys on the keypad, where pressing  kbd:[1] for front view will have you looking at the back end of your 3D model from a {MSTS} and {or} perspective.
+Blender's default point of view differs slightly in that it considers the FRONT to be facing the -Y direction.  This comes into play when using the view keys on the keypad, where pressing  kbd:[1] for front view will have you looking at the back end of your 3D model from a {MSTS} and {OR} perspective.
 
 
 
@@ -849,12 +849,12 @@ You would not have a 2 axle BOGIE with WHEELS13 or WHEELS23.
 
 The {MSTS} naming standard for isolated axles with non-bogie wheels, is  WHEEL1, WHEEL2, WHEEL3.
 
-NOTE: These are primarily used for STEAM locomotives. Animating these wheels is not automatic and must be done using the animation tools within Blender.  The Steam wheel and linkage animation uses a series of 16 frames.  In general, it's non-trivial to to create this animation and I won't be covering it in this document.  (unless someone provides us with good notes about how it is done)
+NOTE: These are primarily used for STEAM locomotives. Animating these wheels is not automatic and must be done using the animation tools within Blender. The steam wheel and linkage animation uses a series of 16 frames. In general, this is a non-trivial animation task and should be treated as an advanced topic.
 
-In {or}, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
+In {OR}, it appears that only the WHEEL and BOGIE prefix is required for proper animation.  The WHEEL prefix is required for the wheel animation and the BOGIE prefix is required for the bogie animation.  The WHEEL prefix is also required for the wheels to be properly parented to the bogie.  The BOGIE prefix is also required for the bogie to be properly parented to the engine.
 
 [WARNING]
-Some {MSTS} documentation leads you to believe that a third bogie is possible in {MSTS} - it isn't.  However, if you are modeling specifically for {or}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.
+Some {MSTS} documentation leads you to believe that a third bogie is possible in {MSTS} - it isn't.  However, if you are modeling specifically for {OR}, then you should know that the simulator will properly animate anything with the correct BOGIE and WHEEL prefixes as long as you follow the guidelines for parenting and local pivot origins.
 
 Microsoft recommended the following topology for the Acela model as an example:
 
@@ -887,19 +887,19 @@ The Open Rails (OR) manual provides a good understanding of the features only av
 
 While I'm not going to create a full guide to `sd`, `ref`,`eng` and `wag`  files here in this document, we will need to create a working file if we plan to add content to {OR}.  Peter Newell's website has an in-depth look into creating good `ENG` and `WAG` files for {OR}.footnote:[https://www.coalstonewcastle.com.au/physics/format/]
 
-Scenery objects, for example, would require an `sd` file if creating for {msts}, however, {or} uses a different method to define scenery and it makes the SD file obsolete under many conditions.
+Scenery objects, for example, would require an `sd` file if creating for {MSTS}, however, {OR} uses a different method to define scenery and it makes the SD file obsolete under many conditions.
 
-Also, see <<Creating Rolling Stock and Locomotives>>
+Also, see <<creating-rolling-stock-and-locomotives,Creating Rolling Stock and Locomotives>>
 
 === Include Files in Configurations
 (((Configuration, "Include")))
 
-The use of `Include()` statements in SIMIS files is becoming more common in {OR} configurations but use if the INCLUDE feature us entirely optional.
+The use of `Include()` statements in SIMIS files is becoming more common in {OR} configurations, but the INCLUDE feature is entirely optional.
 
 
 In both Microsoft Train Simulator (MSTS) and Open Rails Train Simulator (ORTS), `.wag` and `.eng` files are essential files that allow the simulators to identify an asset as either a locomotive or non motorized vehicle.  Historically, these files are large and complicated and they contain a large amount of replicated data among similar items.  Historically, MSTS files needed to be fully self-contained with limited ability to make callouts to other files.  In ORTS, the `.wag` and `.eng` files are much simpler and easier to manage since they now have the ability to `include` other ready-made `.inc` files into them, resulting in a smaller file size and easier management.
 
-This is particularly beneficial when you are create a group of similar cars that may only differ in a few details or maybe just the car reporting marks.
+This is particularly beneficial when you are creating a group of similar cars that may only differ in a few details or maybe just the car reporting marks.
 
 The `INC` file is an external file that doesn't even need to be in the same directory as the `.wag` or `.eng` file, although sometimes that option makes the most sense.  The `INC` file just needs to be defined in a way that {OR} is able to find it and include it into the `.wag` or `.eng` file.
 
@@ -926,8 +926,8 @@ INC files are still Standard {OR} configuration documents, so SIMIS format file 
 
 * The first line of the INC file must be left blank
 * There should be no SIMIS header in the file, so no "SIMISA@@@@@@@@@@JINX0D0t______" line
-* It is probably quite helpfule to liberally use "COMMENT()" sections in your INC file
-* INC files are only really useful for configration items that are shared among multiple locomotives or cars. 
+* It is probably quite helpful to liberally use "COMMENT()" sections in your INC file
+* INC files are only really useful for configuration items that are shared among multiple locomotives or cars.
 * INC files are for {OR} only, as MSTS cannot use them.
 * {OR} will read include files in a top down fashion.  Any duplicated content items would be overwritten by the last include file read.
 
@@ -941,12 +941,12 @@ INC files are still Standard {OR} configuration documents, so SIMIS format file 
 
 Just be sure to make sensible choices as it can get complicated pretty quickly.
 
-==== Specifiying relative references
+==== Specifying relative references
 
 
 (((Configuration, "relative reference")))
 
-Getting {OR} to locate your INC files is important.  You will use relative referenes to refer to include files by including in a way that references their location to the main file.  Here is an example of how to do this:
+Getting {OR} to locate your INC files is important.  You will use relative references to refer to include files by including in a way that references their location to the main file.  Here is an example of how to do this:
 
 * if the INC file is in the same folder as the main file, use a relative reference like this: `INCLUDE("filename.inc")`
 * if the INC file is in a subfolder, use a relative reference like this: `INCLUDE("subfolder/filename.inc")`
@@ -1070,9 +1070,9 @@ Wagon ( CP_218041_LD
 ) 
 ----
 
-Within this file you can see all of the key sections of the configuration file.  The first section is the Wagon definition, which contains information about the wagon itself, such as the type, shape, name, size, and mass.  The second section is the Coupling definition, which contains information about the coupling between the wagon and the train, such as the type of coupling, the stiffness, damping, break force, and velocity.  The third section is the Derail and  and Braking definition, which contains information about the brake system, such as the type of brake equipment, the type of brake system, and the brake cylinder pressure for the maximum brake force and Davis Coefficients.  The final section refers to the sound file used by the wagon.
+Within this file you can see all of the key sections of the configuration file.  The first section is the Wagon definition, which contains information about the wagon itself, such as the type, shape, name, size, and mass.  The second section is the Coupling definition, which contains information about the coupling between the wagon and the train, such as the type of coupling, the stiffness, damping, break force, and velocity.  The third section is the Derail and Braking definition, which contains information about the brake system, such as the type of brake equipment, the type of brake system, and the brake cylinder pressure for the maximum brake force and Davis Coefficients.  The final section refers to the sound file used by the wagon.
 
-You will notice that the S (shape definitione) and the SOUND entry are references to external files.  These are references that are compatible with legacy MSTS. 
+You will notice that the S (shape definition) and the SOUND entry are references to external files.  These are references that are compatible with legacy MSTS.
 
 [TIP]
 The coupler and braking sections could easily be shared among multiple models, so they could be placed in an INC file and included in the main configuration file.  This would make the configuration file smaller and easier to manage.
@@ -1196,7 +1196,7 @@ By the way, the Blender Brothers love making their own decals. They have even re
 
 === General Texture Mapping Guidelines
 
-* Microsoft had recommended using SQUARE texture shapes that corresponded to a specific evenly sized shapes with {MSTS}, like 512x512, 256x256, 128x128, etc.  This limitation no longer applies in {or} and you can reasonably use a 2048x1024 sized file if you desire.
+* Microsoft had recommended using SQUARE texture shapes that corresponded to a specific evenly sized shapes with {MSTS}, like 512x512, 256x256, 128x128, etc.  This limitation no longer applies in {OR} and you can reasonably use a 2048x1024 sized file if you desire.
 * You should be using a paint program that understands layers and is able to save an image document in a format that maintains these layers between sessions. (PSD is a layered format, for example)
 * PNG files understand ALPHA channels but they do not maintain layers
 * Consider working with PNG files while modeling and DDS files in your final model for {OR}

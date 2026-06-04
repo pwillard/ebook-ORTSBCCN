@@ -80,9 +80,9 @@ DDS uses lossy compression. Treat DDS like a final delivery format (similar to P
 Very simple editors (e.g., legacy MS Paint) are poor choices for layered texture work.
 
 [NOTE]
-----
+====
 While the list above does not attempt to catalogue every bitmap editor capable of using layers, it highlights the most common options in regular use.
-----
+====
 
 
 
@@ -133,7 +133,7 @@ An alpha channel increases the file size so it should be left out unless it is n
 
 (((Blender, "DDS")))
 
-Yes, Blender can now import DDS files directly. Blender has built-in support for reading and using DDS textures. However, the quality of the import and how you use the textures depends on the specific DDS file and your project's needs. You don't need any additional add-ons to import DDS files in Blender. Just like importing any other image format. Refer to the COMPRESSION TYPE table above.
+Yes, Blender can now import DDS files directly. Blender has built-in support for reading and using DDS textures. However, the quality of the import and how you use the textures depends on the specific DDS file and your project's needs. In modern releases, you don't need any additional add-ons to import DDS files in Blender. Just like importing any other image format. Refer to the COMPRESSION TYPE table above.
 
 
 
@@ -144,11 +144,13 @@ You know how sometimes people report that their icons or textures become a rainb
 ----
 
 [TIP]
-Ensure you are keeping uncompressed versions of the source files that you can load for editing so you don't accumulate compression artifacts.
+Ensure you are keeping uncompressed versions of the source files in the editing tool's native format that you can load for editing so you don't accumulate compression artifacts.
 
-With *GIMP*, you would use `export as` and then chose `select file type` and set the options for DDS such as Compression, mipmap, etc. Latest versions if GIMP seem to come with DDS support so no post-install plugin is needed.
+* With *GIMP*, you would use `export as` and then choose `select file type` and set the options for DDS such as Compression, mipmap, etc. Latest versions of GIMP seem to come with DDS support so no post-install plugin is needed.
 
-With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type:  DDS`. In the Save Settings window, you would select *DXT1* and under *Error Metric*, and check *Generate Mip Maps* and *Use Best Quality*.
+* With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the program. You would use the `save as` option and `save as type:  DDS`. In the Save Settings window, you would select *DXT1* and under *Error Metric*, and check *Generate Mip Maps* and *Use Best Quality*.
+
+* With Affinity tools, you just save your master file since saving to a "common format" like PNG is done using an EXPORT option.
 
 
 == Using ACE Textures
@@ -156,7 +158,7 @@ With *Paint.net* versions newer than 4.2.2, DDS support comes bundled with the p
 (((Texture, "ACE")))
 
 
-{msts} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
+{MSTS} uses a proprietary Kuju image file format known as ACE (extension `.ACE`).  ACE files are used for textures applied to shapes and the bitmaps used for the cab panels and controls aka. bitmap ACE's.
 
 [NOTE]
 A conversion utility called `MAKEACE.exe` was supplied with {MSTS}. Newer tools have been created that eliminate some of the limitations that come with the original and updated `MAKEACE` program.
@@ -303,12 +305,12 @@ So you get:
 
 image::images/Screenshot 2026-04-08 125927.png[]
 
-The next step is choose the VECTOR _TAB_, with the TEXT selected, chose "convert to curves" in the pulldown menu.
+The next step is to choose the VECTOR _TAB_; with the TEXT selected, choose "convert to curves" in the pulldown menu.
 
 image::images/Screenshot 2026-04-08 130033.png[]
 
 
-And finally, chose the outline thickness, here I chose a value of 7.8.  And its done.
+And finally, choose the outline thickness; here I chose a value of 7.8.  And it's done.
 
 image::images/Screenshot 2026-04-08 130104.png[]
 
@@ -340,7 +342,7 @@ You don't need to complete your texture before you apply it to your 3D Model.  E
 
 For texture size, consider working with 2048x2048 textures.  Try to avoid creating multiple smaller texture files versus one large file.  You can always shrink your texture to 1024x1024 when all your work is done as the coordinate mapping will remain relative as long as the proportions remain the same.  You could not, however, adjust 2048x2048 to 2048x1024 though, keep that in mind. 
 
-If your model is wide but not tall, as many vehicle models are, then you might consider starting with a 2048x1024 texture size, provided that you are only creating content for Open Rails.  Open Rails will not have issues with textures that are not square, unlike {msts}.  
+If your model is wide but not tall, as many vehicle models are, then you might consider starting with a 2048x1024 texture size, provided that you are only creating content for Open Rails.  Open Rails will not have issues with textures that are not square, unlike {MSTS}.
 
 Once you have created your base texture for your model, you should a) Save it in the native format of your editor or in one of the Layered formats like `PSD` or `ORA`. b) Save a copy in `PNG` format for use with Blender.  Copy the `PNG` file to your project folder for your current model so it is easily available during a Blender working session.
 
@@ -428,8 +430,12 @@ Draw Calls:: - for our purposes - it's every time we need to load a texture shee
 
 Ambient Occlusion or AO:: - is a shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting. It simulates the soft shadows and subtle shading that occur in corners, creases, and near intersections of objects, where light is less likely to reach. This effect adds a sense of depth and realism to the scene by enhancing the perception of surface details and contact points between objects.
 
+PBR Materials:: - Physically Based Rendering (PBR) uses multiple texture maps to describe how a surface reacts to light. For traditional `.S` models, you may still rely on baked lighting and a single main texture. For glTF models, PBR maps can provide more realistic reflections, depth, and surface response.
+
+glTF:: - A model source format supported by {OR} that can use PBR materials. The `.S` file format is still supported and is not going away.
+
 [TIP]
-Baking ambient occlusion layers require objects to occupy unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another. If you have used the "project from view" option while UV Mapping, AO Baking will be troublesome unless care is taken to deal with overlaps and hidden faces.  Baking also has an option to adjust the margin size and its probably best to keep the margin to a minimum.
+Baking ambient occlusion layers require objects to occupy unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another. If you have used the "project from view" option while UV Mapping, AO Baking will be troublesome unless care is taken to deal with overlaps and hidden faces.  Baking also has an option to adjust the margin size and it is probably best to keep the margin to a minimum.
 
 .Scott's Example
 
@@ -570,9 +576,9 @@ Lastly, the NODE system in Blender is a new-ish feature and is somewhat hard to 
 
 A newer _concept_, and one championed by the NAVS technique, is to use a separate bitmap or multiple bitmaps to generate various car numbers without having the numbers be part of the main bitmap.  This gives added flexibility to car rosters as custom car numbers are easily generated without resorting to difficult post-release editing of `.ACE` or `.DDS` files as many have done in the past. Changing numbers that are part of a final bitmap are particularly difficult.
 
-A DECAL using this method is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car from its assigned texture.   Using the {or}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
+A DECAL using this method is a small section of the main model that has a smaller `3d plane` object floated just above the surface of the model. This plane is assigned a set of UV coordinates that map to a specific number or numbers desired on a particular car from its assigned texture.   Using the {OR}  `INCLUDE` statement in a WAG or ENG file, you can specify decal mapping using the `FreightAnim` keyword to locate the related decal `S` file(s).
 
-I'll share a decal creation technique here using Python code for the so inclined in the programming section of this documentation.  The benefits of a code approach is you have a nearly exact idea of how the texture is laid out and can easily adjust the layout to your needs.  The disadvantage is that you have to have the Python programming language installed on your computer along with required graphic packages the code depends on.  If you are not comfortable with Python, then you can use the manual method to lay out your decals, its just a bit more time consuming.
+I'll share a decal creation technique here using Python code for the so inclined in the programming section of this documentation.  The benefit of a code-based approach is that you have a nearly exact idea of how the texture is laid out and can easily adjust the layout to your needs.  The disadvantage is that you have to have the Python programming language installed on your computer along with required graphic packages the code depends on.  If you are not comfortable with Python, then you can use the manual method to lay out your decals, it's just a bit more time consuming.
 
 image::images/decal1.png[]
 
@@ -643,7 +649,7 @@ As mentioned above, the opacity of the DECAL layer should also be adjusted so it
 (((Graphics, Texture, Layers, Tips)))
 
 .Erick Cantu on Weathering
-[Quote, Erick Cantu]
+[quote, Erick Cantu]
 When I'm walking around, I often find myself taking photographs of dirt, gravel, grass, concrete, and the like. You might think that I take these photos to use as textures. You're sort or right, but mostly wrong. I take these photos primarily to create layer masks used in weathering cars.
 
 (((Texture, "Layering Tips")))
@@ -748,14 +754,14 @@ image::images/Screenshot1.png[]
 Use the *Select → Grow* or *Select → Shrink* commands to fine-tune edges.  
 You can also use *Quick Mask* (`Shift+Q`) for precise painting.
 
-image::images/screenshot2.png[]
+image::images/Screenshot2.png[]
 
 === Step 6: Clear or fill the selection
 With the selection active:  
 * Press **Delete** → removes the selected pixels (they become transparent).  
 * Or go to `Edit → Fill with FG/BG Color` (set FG or BG to black/white for alpha control).  
 
-image::images/screenshot3.png[]
+image::images/Screenshot3.png[]
 
 NOTE: In GIMP's alpha channel,  
 * Black = fully transparent  
@@ -768,7 +774,7 @@ To preserve alpha transparency, export to a format that supports it:
 * `.tga` (if specifically required)  
 * `.xcf` (GIMP's native format, for keeping layers and masks editable)
 
-image::images/screenshot4.png[]
+image::images/Screenshot4.png[]
 
 Use `File → Export As …` and select your preferred format.  
 For PNG, ensure **Save color values from transparent pixels** is enabled.  
@@ -836,9 +842,9 @@ It is available at ElvasTower Downloads section.  For the technical types, the o
 
 (((AceIt, Tools)))
 
-AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the the {MSTS} supplied tools `MAKEACE` and `MAKEACEwin` tools.
+AceIt is a program designed to produce Kuju ACE format texture files from many common image formats. It is intended to be used as a replacement for the {MSTS}-supplied tools `MAKEACE` and `MAKEACEwin` tools.
 
-Aceit contains the newest and best methods for working with .ace files. 
+AceIt contains the newest and best methods for working with .ace files.
 
 * You start with a .bmp file which you can generate using MS Paint or other drawing program. (Unless your texture has an alpha channel (transparency) then you would generate a .tga file). 
 * Then run Aceit. 
@@ -933,17 +939,6 @@ You can also process entire folders of ACE texture files at once with `ace2png` 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 === Alpha materials in Blender
 
 (((Blender, Materials with Alpha Layer)))
@@ -955,17 +950,22 @@ If you want to just keep your hair in your head, versus pulling it out... here i
 * Export your bitmaps in TGA or PNG format for use as Blender Texture files.
 
 [NOTE]
-Affinity products do not support exporting to DDS, but you can use Paint.NET or GIMP to export the file used by Blender to the DDS format usable with {or}. You could also used command line tools to convert PNG files to DDS.
+Affinity products do not support exporting to DDS directly, but you can use Paint.NET, GIMP, or command-line tools to convert the file used by Blender into the DDS format usable with {OR}.
 
-When you finally export your model(s) to the `S` file format using the MSTS/{or} Exporter script, export the DDS format from Paint.net or GIMP as a follow-up step.
+When you export your model to the `S` file format using the MSTS/{OR} exporter script, export the DDS texture from Paint.NET, GIMP, or a command-line converter as a follow-up step.
+
+[TIP]
+Remember that having fewer texture files for your model reduces _draw calls_ at run time. A larger texture uses more video card memory, but modern cards are designed for this.
+
+The trick with Alpha channels in Blender is to remember that the hard work is done for you.   You don't need to put things like *window glass* in a separate object collection.
 
 ==== The Shader Editor
 
-If you were look at a typical setup in the shader editor for a texture that contains an alpha channel, you would see this.
+If you look at a typical setup in the Shader Editor for a texture that contains an alpha channel, you would see this.
 
 image::images/alpha1.PNG[]
 
-It looks pretty straight-forward, but heed this warning, this is just related to what you `SEE`, and not what you export.  
+It looks straightforward, but heed this warning: this is related to what you `SEE`, not necessarily what you export.
 
 ==== The MSTS Materials Settings
 
@@ -973,11 +973,64 @@ For exporting to {OR} and {MSTS}, you need to also have the MSTS Materials setti
 
 image::images/alpha2.PNG[]
 
-For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the gray scale Alpha Channel used for Glass, while `Transparancy ON/OFF` is the one bit mask where only BLACK RGB (0.0.0) is transparent in a mask.
+For most scenarios where an alpha channel is used, this `Alpha Blended` setting is good enough and it works OK in my experience, so try it first. It is the grayscale alpha channel used for glass, while `Transparency ON/OFF` is the one-bit mask where only black RGB (0,0,0) is transparent in a mask.
 
+
+== Making PBR Textures
+
+(((Texture, PBR Textures)))
+
+When using the new glTF model source format, it is possible to make use of PBR materials.  By using PBR materials, we get a more dynamic result in how lighting and shadows work on a completed 3D model.  The result is added realism, making objects look less flat and unrealistic in certain situations.  The glTF format is an open standard supported by a multitude of existing products, unlike the proprietary `.S` and `.ACE` file formats inherited from {MSTS}.
+
+You will now be able to modify the shine or dullness of a surface as well as roughness and smoothness on surfaces. You can even infer a certain level of depth by using a form of a height map.
+
+The terms used to describe these additional image maps are:
+
+1) Base Color - The primary texture, sometimes referred to as "Albedo" or "Diffuse"
+2) Normal - The Height Map, sometimes referred to as the Bump Map.
+3) Emissive - Light Emission
+4) Roughness  - Wood Dull, Metal Shiny
+5) Metallic - Metal or non metal amount
+6) Ambient Occlusion - Shadows
+
+[TIP]
+PBR Materials still support Alpha Channels, don't worry.
+
+=== PBR Workflow
+
+If you decide to use 3rd party tools to help with your PBR image workflow, remember the alternative terms mentioned, (Albedo and Diffuse) as they are often used to refer to the Base Color of your texture.  There are some free PBR image generation tools as well as some PBR related add-ons for Blender.  These will be discussed later.
+
+[NOTE]
+If you have used Blender for a while, you have probably already seen the image adjustments for PBR in the "Principled BSDF" shader node as Metallic, Roughness, and Normal inputs.
+
+Your first step is to generate the Base Color texture.  When using {MSTS} or traditional {OR} models, this is actually where you stop in texture generation.  With PBR textures, it's just the beginning.  Base Color is the name of the input used on the "Principled BSDF" shader node for this type of image.
+
+A metallic map is next in the list and is used to simulate a metal surface, which often reacts with light in a specific way.  The Metallic Map is often a binary color image that is made of just black and white pixels (0 and 255) color values. The metallic setting in the shader can be adjusted from 0 to 1. Color Space is non-color for this image.
+
+The Roughness Map shows how rough or smooth the surface is.  This affects the sharpness of reflected light, in essence, how much light is scattered by the surface to produce gloss or matte surfaces. The Roughness setting in the shader can be adjusted from 0 to 1. (0 = gloss 1 = matte) Color Space is non-color for this image
+
+The next step in PBR texture generation is generating the Normal Map.  You might recall from other sections in this document that a Normal is related to the Facing Direction of a 3D surface. Whenever light hits this specific surface, the normal setting would be able to allow for the light reflection of the "outside" surface.  The NORMAL is also a determination of the inside and outside facing direction of a surface.  An improperly facing normal will cause incorrect lighting of a surface to occur.
+
+So, how does the Normal PBR texture work?   The Normal Map is used to develop a sense of depth in a surface or in other words, the bumpiness. The RGB values in the image translate to XYZ coordinates without changing the underlying geometry. A normal map can be used where extra geometry in the underlying model would be costly. (Think: doors on the long hood of a diesel engine)   Normal Maps often look very purple, as a side effect of using the RGB color space for x,y,z displacement data.  Color Space is non-color for this image.
+
+[TIP]
+When using the Shader Editor in Blender with Normal Map images, you would feed the image node into a "Normal Map" node before feeding it to the "Principled BSDF" shader "Normal" input.
+
+
+
+The Emission Map can be used to simulate a source of light.  It uses RGB data to perform this task. At this time, this is untested.
+
+
+[TIP]
+There is a potentially useful *paid* Blender Add-on available from SuperHive called *PBR PAINTER 3* that will assist with the PBR image workflow. There are also a series of tutorial videos on how to use *PBR Painter 3* available on Youtube. https://youtu.be/ntdlvndv1tE?list=PLMN9uGgVtpSt9hTaiDAKYJ1wIS1nQvTf9
+
+[NOTE]
+Additionally, there are online tools such as PBR FORGE that will assign with PBR image generation.  For offline installable software, there is a program called *Materialize* from BoundingBox Software.
 
 
 == How to Make Night Textures
+
+The Microsoft way.
 
 (((Texture, Seasonal)))
 [NOTE]
@@ -992,10 +1045,10 @@ Once created, the night and day textures must have the same filename so that the
 Below are two textures taken from the Orient Express level. These were
 manipulated in a two dimensional drawing package:
 
-image::images/image1.jpeg[]
-image::images/image2.jpeg[]
-image::images/image3.jpeg[]
-image::images/image4.jpeg[]
+image::images/Image1.jpeg[]
+image::images/Image2.jpeg[]
+image::images/Image3.jpeg[]
+image::images/Image4.jpeg[]
 
 This means that the texture on the left will be replaced with the
 texture on the right once the correct night timing has been switched on.
@@ -1028,13 +1081,13 @@ the Drive a Train User Interface.
 
 Below are the snow versions of the textures above.
 
-image::images/image1.jpeg[]
+image::images/Image1.jpeg[]
 
-image::images/image5.jpeg[]
+image::images/Image5.jpeg[]
 
-image::images/image3.jpeg[]
+image::images/Image3.jpeg[]
 
-image::images/image6.jpeg[]
+image::images/Image6.jpeg[]
 
 === Highlights and Shadows
 
@@ -1102,9 +1155,6 @@ This technique for Baking {AO} is a good way to get the added shadow details on 
 It is important to be aware that any lights in the scene, including environment lighting, will impact the rendered {AO}. Lights are not used when baking an {AO}, so if the rendered {AO} image is too dark, the environment brightness can be increased or area lights can be added, typically the length of the locomotive, placed on either side to minimize shadow casting. If the lighting is changed later on, this will impact subsequent renders and will not match earlier renders. It is essential to be aware of this.
 
  
-
-
-
 image::images/ao7.jpg[]
 
 === Ambient Occlusion, workflow
@@ -1131,6 +1181,9 @@ Here are some examples of how AO can be used to improve the realism and depth of
 * Weathering and dirt effects: AO can be used to create a variety of weathering and dirt effects, such as dust on a car or moss on a tree trunk. This can help to make your renders look more realistic and worn-in.
 
 Overall, AO is a powerful rendering technique that can be used to add realism and depth to your renders. By understanding the basics of AO and experimenting with different settings, you can achieve a variety of effects to enhance your renders.
+
+[TIP]
+Success with {AO} is strongly related to how the underlying model is created and textured.  A surefire way to have issues is due to lazy texture mapping.  For example, if you relied on "Project From View" to generate the UV assignment on an object and did not MOVE the UV coords of the "back side" of the object, the generated AO shadow will be placed at the same location as the front side, ruining the effect. You can also correct this issue by removing the backside faces from the object if they will never actually be seen.
 
 === Ambient Occlusion Baking with GIMP
 
@@ -1171,7 +1224,7 @@ I then merge that imported AO layer into the existing AO layer so I have a singl
 
 image::images/AO_Bake_GIMP2.jpg[]
 
-I then export this from GIMP as the texture file that is applied to the model in Blender, in this model it is generic_SD40-2_4096.png and export it as generic_SD40-2_4096.dds for use directly in OpenRails.
+I then export this from GIMP as the texture file that is applied to the model in Blender, in this model it is generic_SD40-2_4096.png and export it as generic_SD40-2_4096.dds for use directly in Open Rails.
 
 The next object/s that need to have their AO baked, are unwrapped to another unique location on the texture file, selected and baked to the AO_BAKE_4096.png file as described above. This same file is used to transfer the AO bake from Blender to be combined with the AO layer in GIMP.
 
@@ -1213,6 +1266,6 @@ To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Prop
 * Check the "Normalized" box to normalize the{AO} values, which can help with artifacts and banding.
 * Click the "Bake" button to start the{AO} bake.
 
-[Note] 
+[NOTE]
 The{AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the{AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the{AO} effect to your object.
 

@@ -73,7 +73,8 @@ For large panels, though, a minimal amount of modeling is necessary. A flat plat
 
 
 (((Blender, "Setting up to create a model")))
-=== Preparation Of Work
+
+=== Preparation of Work
 
 * Of course, you need to figure out what you want to model
 * Find some design references (Blueprints, Scale Drawings). Referring to back issues of model railroading magazines can be helpful.  There are also some railroad cyclopedia books for sale that were published by Model Railroader Magazine as well as issues of Railroad Model Craftsman. 
@@ -89,19 +90,19 @@ It is important to note that many scanned images of drawings and plans that can 
 
 Original Plans:: There are web sites online that will sell you scans of original plans.  These are often related Railroad Historical Society websites.  Unfortunately, there are large images and often quite costly.  Example: https://www.nwhs.org/archivesdb/
 
-image:images/NW-C14301.12-29-1942.png[]
+image::images/NW-C14301.12-29-1942.png[]
 
 General Drawings:: These are often found in back issues of Model Railroader and Railroad Model Craftsman magazines as well as sites like https://www.trainiax.net.  These usually contain a good about of Steam Engine, Diesels and Rolling Stock but might lack all the details such as piping and such. These drawings are made based on originals by the staff of the magazines or staff that created the Cyclopedia collections.  These have the ability to be a few percentage points off-scale even when they include a scaler reference.  
 
-image:images/acfxacf4650cufthopper48073.png[]
+image::images/acfxacf4650cufthopper48073.png[]
 
 Classification and Painting and Lettering references :: These seem to be rather plentiful and contain lots of useful dimensional data.  They are often from discarded rail road documents and might have notes scribbled in them.  The drawings are often hand drawn and might be a bit messy.  They are not that useful for small details but can get you started on a model if you also have good pictures to refer to.
 
-image:images/ATSF1460.jpg[]
+image::images/ATSF1460.jpg[]
 
 Blueprint Websites::  Sites like http://www.the-blueprints.com offer a variety of drawings to choose from.  While this might seem like a good resource, I would use it with caution.  The content is all user generated so there are varied degrees of clarity and accuracy.
 
-image:images/alco_4_6_4_f7_1937-86137.jpg[]
+image::images/alco_4_6_4_f7_1937-86137.jpg[]
 
 [NOTE] 
 Using background images is optional, but many modelers use blueprint backgrounds as modeling aids.
@@ -117,13 +118,16 @@ The Outliner filter options are pretty handy as you can also SHOW or HIDE the ba
 
 A nice feature of the Image Background is the ability to adjust the ALPHA setting, controlling the with the "transparency" slider  to get a see-through effect.  First, click the Opacity check-box  to enable the feature and then adjust the opacity slider to your liking.
 
-image:images/Background1.PNG[align=center]
+image::images/Background1.PNG[align=center]
 
 [TIP]
 If you want to save the background images *INTO* your `.Blend` file, you can use the menu:File[External Data > Automatically Pack Resources], which is OFF by default.
 
 
-When using background images and modeling a freight car, for example, you would first figure out the distance between truck centers in meters and match the background drawing scale using the grid in the 3D view.  Adjust the background image scale using the kbd:[S] and position using kbd:[G]. 
+When using background images and modeling a freight car, for example, you would first figure out the distance between truck centers in meters and match the background drawing scale using the grid in the 3D view. Adjust the background image scale using kbd:[S] and position it using kbd:[G].
+
+[NOTE]
+When scaling with the mouse, the cursor position changes how sensitive the movement feels. If the cursor is close to the object when you press kbd:[S], small mouse movements can change the scale quickly. If the cursor is farther away, the same mouse movement changes the scale more slowly, making it easier to fine tune.
 
 
 
@@ -151,15 +155,15 @@ We will digress for a moment to share one of the reasons why using 3D CANVAS was
 
 The 3D Canvas/Crafter platform included a train-content ENGINEER add-on — Trainworks -> Train Simulator Engineer — that functioned as a quick-start utility for assembling train models. It automatically placed wheels, axles, truck assemblies, and a base body element, all of which could be customized. Blender does not include an equivalent tool by default. In practice, though, the time savings are modest if you already have prepared truck sets and couplers; positioning those parts correctly is straightforward.
 
-image:images/3dengineer.PNG[]
+image::images/3dengineer.PNG[]
 
 
-image:images/Result.PNG[library.png]
+image::images/Result.PNG[library.png]
 
 [NOTE]
 Since this is primarily a set of preset shapes with customizable values and locations, Blender's scripting language could be used to recreate a similar workflow in Python. A tool like this would be a useful companion to Wayne Campbell's existing `.S` file exporter.
 
-image:images/Result.PNG[]
+image::images/Result.PNG[]
 
 Using this plug-in with 3D Canvas gave you a number of starting parts before modeling really began. In Blender, however, you normally create or import these parts yourself.
 
@@ -212,7 +216,7 @@ It is important to watch and read tutorials to become familiar with Blender's fe
 For example, an excellent beginner project might be something straightforward, such as a 12-foot Jersey-style concrete barrier.  It is simple, structured, and easy to refine.
 ====
 
-image:images/barrier.PNG[]
+image::images/barrier.PNG[]
 
 
 [TIP]
@@ -261,7 +265,7 @@ Don't get too attached to the default layout.  It seems that the Blender develop
 [NOTE]
 For added clarity on printed copies of this document, I've switched to a high contrast theme in Blender Preferences.  (Preferences-->Themes-->Presets[Pulldown for options])
 
-image:images/mainscreen.png[]
+image::images/mainscreen.png[]
 
 The 3D cursor is where any new object will be placed. By default it is at world origin `0,0,0` but it can easily be moved to new locations.  The position of the 3D Cursor can also be manipulated using the cursor widget on the left side panel. It is available in both OBJECT and EDIT MODE.  You can also place the 3d cursor position using the kbd:[Shift,S] `SNAP` Pie Menu.
 
@@ -282,7 +286,7 @@ Use kbd:[,] for access to the `AXIS ORIENTATION` pie menu +
 Use kbd:[SHIFT + S] to access the `SNAPPING` pie menu +
 Use kbd:[Z] to access the `VIEWPORT SHADING OPTIONS` pie menu +
 
-image:images/NumberPanel.png[align="center"]
+image::images/NumberPanel.png[align="center"]
 
 The above image shows what it looks like when rolled out. It is also where some installed add-ons will show up.
 
@@ -335,13 +339,13 @@ Toggle Perspective and Orthographic view modes:: kbd:[Keypad 5]
 [TIP]
 Most of the time, you will be using the default `BOX SELECT` mode of the Arrow (Select) tool.  Use the kbd:[B] to switch back to `BOX SELECT` if you end up changing it from default. Other modes include `CIRCLE SELECT` kbd:[C] (Note, use `RMB` to exit `CIRCLE SELECT` mode), and `LASSO SELECT` kbd:[CTRL,RMB].  The kbd:[W] key will cycle between modes sequentially.  You can also *INVERT* selections by using  kbd:[CTRL,I] and add to an existing selection by holding kbd:[SHIFT] and selecting with kbd:[LMB].
 
-image:images/Arrow.JPG[align="center", caption="Box Select"]
-*BOX SELECT ICON*
+.Box Select icon
+image::images/Arrow.JPG[align="center"]
 
 You can move around using the mouse with the screen gizmos (X,Y,Z)in the upper right.  The multi-color Axis tool will allow you to drag to a new orientation, the Magnifier is for Zoom, the Hand is for panning , the Camera icon will toggle the Camera view and the Plane icon will toggle between Perspective and Orthographic.  These on screen items are helpful when using a laptop that does not have a keypad. 
 
-image:images/screenGismoJPG.JPG[]
-*ON SCREEN GIZMO*
+.On-screen navigation gizmo
+image::images/screenGismoJPG.JPG[]
 
 
 
@@ -358,7 +362,7 @@ OBJECT MODE:: With `OBJECT MODE`, which is the default mode in Blender, actions 
 
 (((Blender, "Object Mode")))
 
-image:images/objectmode.PNG[]
+image::images/objectmode.PNG[]
 
 In this mode, you can select individual objects that make up your design so they can be further manipulated in `EDIT MODE`.
 
@@ -382,7 +386,7 @@ EDIT MODE:: The *selected* item in `OBJECT MODE` becomes the focused object when
 [TIP]
 In `EDIT MODE`, the object selected will show Vertices, Edges and Faces.  Selected edges, vertices or faces will adopt a highlight color when selected. Also notice the larger tool set on the left compared to `OBJECT MODE`.
 
-image:images/editmode.PNG[]
+image::images/editmode.PNG[]
 
 In Edit mode, the following shortcut keys are useful:
 
@@ -407,7 +411,7 @@ There are now thousands of YouTube videos about modeling in Blender if any of th
 ==== EXTRUDE
 (((Blender, "Extrude")))
 
-image:images/extrusion.jpg[]
+image::images/extrusion.jpg[]
 
 kbd:[E] Key:: The official definition of the extrusion operation is: _The `extrusion` operation duplicates vertices, while keeping the new geometry connected with the original vertices. Vertices are turned into edges and edges will form faces._
 
@@ -432,11 +436,11 @@ kbd:[I] Key:: This tool takes the currently selected faces and creates an inset 
 
 *  Select the faces to inset:
 
-image:images/inseta.png[]
+image::images/inseta.png[]
 
 * Press I to inset:
 
-image:images/insetb.png[]
+image::images/insetb.png[]
 
 [TIP]
 When you use inset and the inset amount appears to be unevenly applied, you likely have not applied your scale transformations to the underlying object ahead of time.  In other words, your scale values in the object transformation numbers panel are not all set to 1.00.  You correct this in `OBJECT MODE` by selecting `OBJECT->APPLY->SCALE` from the top menu. 
@@ -453,7 +457,7 @@ kbd:[CTRL,B] Key Combination:: The Bevel Edges tool works only on selected edges
 
 The Bevel tool smooths the edges and/or “corners” (vertices) by replacing them with faces making smooth profiles with a specified number of segments.
 
-image:images/bevel.png[]
+image::images/bevel.png[]
 
 [NOTE]
 A Bevel on a FLAT PLANE will create an INSET.
@@ -497,7 +501,7 @@ You can use the mouse to SLIDE the selected edge loop(s) into position before co
 You can also use the options box that shows up in the bottom left of the screen to adjust parameters manually.
 ====
 
-image:images/loopcut.png[]
+image::images/loopcut.png[]
 
 <<<
 
@@ -551,7 +555,7 @@ The default workspace in modern Blender versions is something you will see in ma
 [WARNING]
 Before you do that just yet, go over to your `Outliner` window... and do the following:
 
-image:images/CustomSettings.PNG[]
+image::images/CustomSettings.PNG[]
 
 1. Create a new collection by clicking the `box icon` in the upper right `Collections` window with a plus sign on it. Create a new collection called `MAIN`. (All uppercase)
 2. Click the new collection `MAIN` and then create a new `Collection` again so it becomes a child collection under `MAIN` and call it `MAIN_0700` for LOD distance, or use any LOD distance value that makes good sense to you. 
@@ -564,7 +568,7 @@ image:images/CustomSettings.PNG[]
 [TIP]
 You would later create as many LOD based MAIN_xxxx collections as needed for your model.
 
-image:images/myCollection.JPG[]
+image::images/myCollection.JPG[]
 
 
 .Exporter
@@ -609,13 +613,13 @@ For added clarity on printed copies of this document, I've switched to a high co
 * Scale to 42"  (Z Height = 1.077m)   Manually enter 1.07 in the Z dimension field.
 * Shift it back to ground level.  kbd:[Keypad 3] on keypad for side view, kbd:[G] key kbd:[Z], drag down to about ground level (Roughly: Locaton 0.52m in Z axis if you manually enter the `Z` position)
 
-image:images/JB0.JPG[]
+image::images/JB0.JPG[]
 
 * Adjust your view so you can see the `Y` axis kbd:[MMB,DRAG] left to right (You can press "Y" in the axis gizmo on the upper right or use kbd:[KEYPAD 3]) 
 * Adjust cube length to 12', (3.6576m) by using kbd:[S] kbd:[Y] and dragging, or by manually entering 3.6576 in the `Y` Dimension field 
 * Switch to front view and adjust `X` width to 32" (0.8128m) kbd:[Keypad 1] then kbd:[S] kbd:[X] and kbd:[DRAG] or enter .8128 in the `X` Dimension field. 
 
-image:images/JB1.JPG[]
+image::images/JB1.JPG[]
 
 * Choose menu:Object[Apply Scale]
 
@@ -631,7 +635,7 @@ We are doing this without worrying about EXACT dimensions just to keep things si
 [TIP]
 Drag the mouse around to get it to snap to a vertical loop.
 
-image:images/Jb2.jpg[]
+image::images/Jb2.jpg[]
 
 * Go back to `SELECT` Mode by clicking the Arrow icon if its not already selected since we are done with `LOOP CUTS` for now.
 
@@ -643,18 +647,18 @@ In these next steps,  we will be using Vertex `EDIT MODE`. From the front view, 
 [NOTE] 
 You can also select the vertex mode with the screen menu.  Its the small square icon with a dot on one side next to the view tab. 
 
-image:images/VEF.png[]
+image::images/VEF.png[]
 
 
 * Now use `BOX` select on the vertices on the left side with your mouse. (They will change to the SELECTED color)
 
-image:images/oops1.JPG[]
+image::images/oops1.JPG[]
 
 * Press kbd:[X] for Delete and in the pop-up window, choose to `Delete - Vertices`.  Blender will delete the selected vertices. Wait... What just happened?
 
 It didn't perform a delete?   Oh my, yes it did, but not what we wanted!
 
-image:images/oops2.jpg[]
+image::images/oops2.jpg[]
 
 We are in ViewPort "Shading Solid" Mode.
 
@@ -667,40 +671,40 @@ Do you understand what happened?  We only selected the FRONT facing vertices! We
 
 * Now, `BOX` select the vertices on the left side, like before.  (They will change to the SELECTED color) and  press kbd:[X] and choose to Delete Vertices.  Blender will delete the selected vertices. Now, you will finally only see 1/2 of your object remaining.
 
-image:images/MIRROR1.JPG[]
+image::images/MIRROR1.JPG[]
 
 
 * kbd:[TAB] back to `OBJECT MODE` and with the current OBJECT selected, locate the `WRENCH` icon on the right panel on the screen. 
 
 * From the `Add Modifier` dropdown menu, select `MIRROR` Modifier. You should see the section we deleted above come back into view since the `MIRROR` is using the `X` axis to mirror of the original object by default.  (See the Check Box that is already checked)
 
-image:images/JB3.JPG[]
+image::images/JB3.JPG[]
 
 * `TAB` back to `EDIT MODE`.  Note that you should now only see Vertex dots on the right side of the object, but you will see the full shape with the mirrored side visible.  It's mirrored now, and whatever you do on the right side gets mirrored to the left side.
 
-image:images/JB35.JPG[]
+image::images/JB35.JPG[]
 
 * Select the top 2 right side vertices and press kbd:[G] kbd:[X] to shift them inward until you get about a 55 degree angle.
 
 * Repeat the same process with just the top right vertices until you get about an 85 degree angle.
 
-image:images/JB4.JPG[]
+image::images/JB4.JPG[]
 
 So now we have a basic shape of the concrete barrier.  The next steps will complete the shape.
 
 [NOTE]
 We can go back to `ViewPort SOLID` mode now.
 
-image:images/Barrier-300x225.jpg[]
+image::images/Barrier-300x225.jpg[]
 
 If we look at the barrier closely, we will see that the edges are not sharp.  They are beveled. So now we will use the Bevel tool. For this next operation, we no longer need the Mirror Modifier so we can Apply it.   
 
-image:images/SharpEdges.JPG[]
+image::images/SharpEdges.JPG[]
 
 [WARNING]
 The Apply button for modifiers was MOVED into the pulldown options in Blender version 2.9 and newer.
 
-image:images/apply2.png[]
+image::images/apply2.png[]
 
 
 * Go back to `OBJECT` mode, select the `WRENCH` Icon and with our object selected, click `APPLY`. The modifier will apply and go away.
@@ -721,7 +725,7 @@ This creates a selection group. If you left click an edge again without holding 
 [TIP]
 If you hold kbd:[ALT] + kbd:[SHIFT] you will select all connected `edges` at once.  It often will select more than you actually need, so you might need additional kbd:[LMB] to unselect unwanted edges.
 
-image:images/outside.JPG[]
+image::images/outside.JPG[]
 
 
 * Press kbd:[CTRL,B] to use the BEVEL TOOL. and adjust the offset to be about 0.02 and Left Click the mouse to accept.
@@ -729,11 +733,11 @@ image:images/outside.JPG[]
 [NOTE]
 I am aware that I could have left the modifier on during the BEVEL operation.  I did not this time because it is good practice to rotate around a model and select specific edges manually.
 
-image:images/ConcreteBevel.JPG[]
+image::images/ConcreteBevel.JPG[]
 
 Here is what we have now after the bevel operation.
 
-image:images/BevelResult.JPG[]
+image::images/BevelResult.JPG[]
 
 If we look at the object back in OBJECT MODE with the Solid Viewport Shader, we see this. 
 
@@ -750,7 +754,7 @@ While I say it is the easiest way here, that is a bit misleading.  Sometimes, us
 
 For the texturing  steps, we will use a 512x512 texture that looks like this:
 
-image:images/TextureSet.png[]
+image::images/TextureSet.png[]
 
 
 ==== Let's Begin Texturing
@@ -759,13 +763,13 @@ image:images/TextureSet.png[]
 
 `Marking Seams`:: You would Mark Seams (Edges) where the flat edges stop and in the case of our Jersey Barrier model, we mark TOP, BOTTOM, FRONT, BACK and both SIDES by selecting all relevant edges and then use `EDGE->MARK SEAM` to define seams.  These will now highlight in the SEAM COLOR.
 
-image:images/markedseams.png[]
+image::images/markedseams.png[]
 
 * Make sure you are in `EDIT MODE` and select ALL parts of the object by pressing kbd:[A] and then change your `WORKSPACE` tab to `UV EDITING`. (Top of the screen) 
 
 * You will now have your `EDIT` window and the `UV EDIT` window on your screen. Also, you might see the UV UNWRAP of the default cube... which is not what we want.
 
-image:images/uvedit1.png[]
+image::images/uvedit1.png[]
 
 * In the `EDIT MODE` window select  the `UV` tab , or press kbd:[U] and then choose `UNWRAP`.
 
@@ -780,7 +784,7 @@ If nothing happens in the left `UV EDIT` window, you probably didn't have everyt
 
 * Now, before you do anything else, locate the `UNWRAP`  tab that showed up at the bottom of the screen and adjust the `Margin` to be a value of 0.05 or 0.08.  The default value 0.001 is just too small for our needs. This will give a greater separation between te generated UV Islands.  we will want to move them around.
 
-image:images/unwrap0.png[]
+image::images/unwrap0.png[]
 
 * Give your model a new material. In the `PROPERTIES` window on the right side, locate the sphere with a grid inside it near the bottom of the Properties window.  That is the material panel. 
 
@@ -804,7 +808,7 @@ The GITHUB page for this document has a DEMO1.ZIP file that contains the concret
 
 (((Blender, "Unwrapping a mesh for texturing")))
 
-image:images/UVWRAP1.JPG[]
+image::images/UVWRAP1.JPG[]
 
 * The task now is to arrange the UV ISLANDS (Using the standard tools kbd:[G] kbd:[X],  kbd:[G] kbd:[Y] keys as well as resizing with kbd:[S] and rotate with kbd:[R] )  You can temporarily shift islands outside the 1x1 UV SQUARE, but by the end of this process, all of the islands will need to be back within the 1x1 texture space.  
 
@@ -820,16 +824,16 @@ When editing UV Coordinates, the `X` axis is left-right and the `Y` axis is up-d
 What I ended up with is shown below.  Yours will likely be different based on what you marked as seams and how you laid out the islands. Again, its not critical with this type of model.
 
 
-image:images/UVWRAP2.JPG[]
+image::images/UVWRAP2.JPG[]
 
 * Now we can return to the main modeling workspace and then change the viewport shader to Material Preview mode.  
 
 MATERIAL PREVIEW
-image:images/lookdev.jpg[]
+image::images/lookdev.jpg[]
 
 We now see the object with the material applied.
 
-image:images/UVWRAP3.JPG[]
+image::images/UVWRAP3.JPG[]
 
 This model is now ready for the MSTS exporter.
 
@@ -964,7 +968,7 @@ You can use the DECIMATE operation in Blender to quickly reduce the polycount of
 ACE files are no longer mandatory for {OR} and if you do not plan to make your work compatible with {MSTS}, the DDS format is a good choice, provided you can get your PNG or TGA files converted to DDS format.
 
 [NOTE]
-Pete Willard has been working on Command Line tools that batch convert ACE files to PNG files.  You can then convert these to DDS format using the command line tools. (or you can use Microsoft "texconv.exe" to convert the files) You can find the tools at: https://github.com/pwillard/Ace2DDS
+Pete Willard's ACE2DDS tools are still under development. The project can batch-convert ACE files to PNG files, but the older `tex2dds.exe` path is no longer being maintained because of problems with the DDS files it generated. A newer tool, `png2dds`, has been created instead. It relies on ImageMagick to generate the final DDS output files from PNG sources. You can find the tools at: https://github.com/pwillard/Ace2DDS
 
 ==== Next Steps
 
@@ -1063,7 +1067,7 @@ The TSRE shapeviewer can read `WAG` files, so if your model relies on FreightAni
 This section mainly applies to users who still use a version of Blender prior to version 3.0.
 
 [TIP]
-Blender 3.0+ has a new Asset Library feature where you can store pre-made objects and textures that are shared among your projects.  A perfect place to store various pre-made Bogies, Couplers and other common objects. In fact, this is one of the best reasons to consider upgrading to 3.0. 
+Blender 3.0 and newer include the Asset Library / Asset Browser workflow, which is a better way to store and reuse pre-made objects, textures, bogies, couplers, and other common parts across projects. If you are using a modern version of Blender, prefer the Asset Library workflow instead of the older manual library method described below.
 
 It is common to see regular parts used multiple times in a single design.  Handgrips, railings, wheels, trucks etc are often regularly available parts purchased by Rail Vehicle companies as commodity items. In the same way, we should not have to keep making the same parts over and over again.
 
@@ -1073,9 +1077,12 @@ One way to accomplish the re-use of the common parts is to `duplicate` one with 
 You should not use kbd:[CTRL,C] and kbd:[CTRL,V] to duplicate objects as an alternative to kbd:[SHIFT,D] because the standard copy/paste operation will make new copies of everything, including Materials.  So your MAIN texture would become MAIN001, MAIN002 etc on each copy/paste operation.
 
 
-=== A Brute-Force Library solution
+=== A Brute-Force Library Solution
 
-A simple and rather easy way of creating a collection of re-usable parts is to *COPY* and *PASTE* specific parts, adding them from your current file to a library specific `.blend` file. It does require that you have 2 copies of Blender running.
+[NOTE]
+This is an optional legacy workaround for older Blender versions that do not have Asset Library support. It is not the recommended workflow for modern Blender versions. If your version of Blender includes the Asset Browser, use that instead.
+
+A simple way to create a collection of reusable parts in older Blender versions is to *COPY* and *PASTE* specific parts from your current file into a separate library `.blend` file. This method requires two copies of Blender running at the same time.
 
 * Save your current project, just in case.  
 
@@ -1088,7 +1095,7 @@ A simple and rather easy way of creating a collection of re-usable parts is to *
 * The copied object(s) from your first Blender session  will be placed in your new blend file. Copy as many objects into this file as you need. It is best to avoid overlapping them. 
 
 
-image:images/lib1.JPG[]
+image::images/lib1.JPG[]
 
 * Save it now with a name that refers to the new object library you are making. Example: `Library_Freight.blend` (Don't skip this step) 
 
@@ -1105,17 +1112,19 @@ This will take a few moments and will eventually present you with a console scre
 
 * Choose the library file you saved
 
-image:images/lib3.jpg[]
+image::images/lib3.jpg[]
 
 * Choose OBJECT folder and you will see ICONS of the parts in the file. Select one and it will be appended to your current file.
 
-image:images/lib4.jpg[]
+image::images/lib4.jpg[]
 
 When using this technique for an object library or multiple object libraries, you should to consider your file structure because when you build up a repository of `.blend` files it can become confusing when searching for a specific item later on. Using a well planned and organized file structure is better than having files all over the place or all in a single bucket.  
 
 It might mean that there are some redundancies in your files in the long run, but consider populating the OBJECTS and TEXTURE folders of each project local to that project versus using a master folder for all projects.  This way you can make folder-relative reference to files and you have the ability to move folder as well as share with others without breaking Texture file references, for example. 
 
-Another somewhat flexible option is to export your selected parts as an FBX or Collada (DAE) files.  These can be imported later with a `File-Import` process but it also means that you have something that can be imported to other applications as well.  The main difference with this option is that these are no longer native `.blend` files and there could be some mangling of contents when being imported back into Blender.
+==== Saving in alternative export formats
+
+You can also export selected parts as FBX or Collada (`.dae`) files. These formats can be imported later with menu:File[Import], and they can also be opened in other applications. The main drawback is that they are no longer native `.blend` files, so some object, material, or texture data may be changed or lost when imported back into Blender.
 
 [TIP]
 For the curious, 
@@ -1171,7 +1180,7 @@ Blender 3.6 LTS and newer versions once again support importing 3DS files.
 This is the second tab from the right in the viewport selections, by the way. Everything will LOOK right in the `Material Preview`, but exports will fail with a "Missing UVMAP in:" error when you try to use the `S` file exporter.  _See the next section for how to deal with this problem._
 
 Material Preview 
-image:images/lookdev.jpg[]
+image::images/lookdev.jpg[]
 
 ==== Fixing UV MAP Assignment Issues on Imported Objects so they work with the MSTS exporter
 
@@ -1191,7 +1200,7 @@ There are some other cases where this could be an issue, for example:
 
 You could check or try modify the name of a `uv map` like this:
 
-image:images/layernames.jpg[]
+image::images/layernames.jpg[]
 
 1. kbd:[LMB] Click on your mesh object.
 2. Select the `MESH PROPERTIES` tab.
@@ -1241,13 +1250,15 @@ Key items to take away from exercise #2
 
 ==== Building the General Shape
 
-image:images/enginehouse.jpg[]
+image::images/enginehouse.jpg[]
 
 Let's say we are modeling a building.   I'm thinking... 2 stall engine house  40' x 80', and 20' tall with two 12'x18' garage doors and standard metal door with an office window.
 
 I will use this for a background image.
-image:images/40x80x20.jpg[]
-Apologies for the terrible image. These are somewhat hard to find.
+.Example 40 x 80 x 20 background reference
+image::images/40x80x20.jpg[]
+
+This reference is low-resolution, but it is adequate for blocking out the overall proportions.
 
 
 === Importing the Background Images
@@ -1296,7 +1307,7 @@ twostall\reference
 
 * Apply the scale with `OBJECT->APPLY->SCALE`
 
-image:images/ex2_1.JPG[]
+image::images/ex2_1.JPG[]
 
 * Save the `twostall.blend` file under `twostall\mesh` folder.
 
@@ -1311,29 +1322,32 @@ Now, it might seem intuitive to just use the basic outline we have now, insert a
 * `BOX` select the bottom vertices and shift kbd:[G] kbd:[Z] to be about the right height for the roof overhang. 
 
 
-image:images/ex2_2.JPG[]
+image::images/ex2_2.JPG[]
 
 * Use `BOX` select to choose the central vertices and shift them upward to match the roof angle, kbd:[G] kbd:[Z]
 * Switch to Face mode, kbd:[3]
 
-image:images/ex2_3.JPG[]
+image::images/ex2_3.JPG[]
 
 * Shift your view to be looking to the underside of the roof shape.
 
-image:images/ex2_4.JPG[]
+image::images/ex2_4.JPG[]
 
 * Select the underside faces and use kbd:[I] to inset the selected faces to the amount of overhang that looks right.
 
-image:images/ex2_6.JPG[]
+image::images/ex2_6.JPG[]
 
 * With these inset faces still selected switch to front view kbd:[KEYPAD 1] use the Extrude option kbd:[E] kbd:[Z] and drag the inset faces to ground level using the central vertices as a guide. Note: I used `solid view` mode for clarity. 
 
-image:images/Ex2_7.JPG[]
+image::images/Ex2_7.JPG[]
 
 [WARNING]
 ONLY the middle vertices will reach the ground, as the side vertices still have the roof angle and will temporarily dip below ground.
 
-image:images/ex2_8.JPG[] Some what hard to see, sorry
+.Extruded roof faces before flattening the bottom vertices
+image::images/ex2_8.JPG[]
+
+The temporary over-extension is subtle in the screenshot; focus on the lower edge before it is flattened in the next step.
 
 * kbd:[ALT] kbd:[Z] to toggle WIREFRAME mode on.  Using `Wireframe/X-Ray mode`, switch to *vertex edit* mode with kbd:[1] and select all of the bottom vertices. 
 * Type: kbd:[S] kbd:[Z] kbd:[0] to flatten out the vertices on the bottom. 
@@ -1341,17 +1355,17 @@ image:images/ex2_8.JPG[] Some what hard to see, sorry
 [TIP] 
 kbd:[S] `X`,`Y` or `Z` kbd:[0] is a nice magical incantation to remember to align vertices to a specified axis
 
-image:images/ex2_9.JPG[]
+image::images/ex2_9.JPG[]
 
 * While still in front view ( kbd:[KEYPAD 1] ), Shift all of the bottom vertices back to ground level with kbd:[G] kbd:[Z] as needed  
 
-image:images/ex2_10.JPG[]
+image::images/ex2_10.JPG[]
 
 * kbd:[TAB] back to `OBJECT MODE` and use Solid View, kbd:[Z] and select (SOLID), to view the result in greater detail.
 
 ===== Making the Interior
 
-image:images/interior.PNG[]
+image::images/interior.PNG[]
 
 Now we need to give the building an interior.
 
@@ -1369,13 +1383,13 @@ To make the roof match the top roofline and staying with the front view mode...
 * Press kbd:[1] for vertex selection mode and then box select the middle vertices on top of the inside being cut out.
 * Press kbd:[G] then kbd:[Z] and drag the vertices up to match the angle of the roofline. 
 
-image:images/interior1.PNG[]
+image::images/interior1.PNG[]
 
 ===== Making the Doors
 
 To make the main doors, we will use a boolean cutout method to remove the shape needed for door access.
 
-image:images/doors1.PNG[]
+image::images/doors1.PNG[]
 
 * Create a cube and resize it to: `X = 4m  Z = 6m` using the dimensions fields in the N-Panel (press kbd:[N])
 * Move the cube so it's X position is -3m.  kbd:[G]kbd:[X]`-3m`
@@ -1386,16 +1400,16 @@ image:images/doors1.PNG[]
 * Move the joined cubes along the Y axis until it intersects the front wall from both sides. kbd:[G] kbd:[Y] or set Y position to about `-12.3xx`
 * Select the Building object and use the modifier panel (wrench) on the right side of the screen.
 
-image:images/door2.PNG[]
+image::images/door2.PNG[]
 
 * Choose `ADD MODIFIER` and select Boolean
 * Make sure boolean option is set as `Difference` and click the EYEDROPPER icon
 
-image:images/door4.PNG[]
+image::images/door4.PNG[]
 
 * With the EYEDROPPER, select the cubes we just created to make the door shapes. Since we won't be adjusting the door frame further, you *could* apply the modifier and we will see the new cutouts for the doors.
 
-image:images/door3.PNG[]
+image::images/door3.PNG[]
 
 
 
@@ -1434,7 +1448,7 @@ Once you have collected a sufficient number of reference images, it's essential 
 
 Now that you have a well-organized collection of reference images, it's time to use them as background references in Blender.  If possible, you modify the images to contain an Alpha channel so there will be less "white" making the drawing reference less distracting.
 
-image:images/20037-mid-wm.jpg[]
+image::images/20037-mid-wm.jpg[]
 
 [NOTE]
 I often find that images are not 100% accurate, this one is no exception.
@@ -1443,7 +1457,7 @@ I often find that images are not 100% accurate, this one is no exception.
 
 * Adjust Opacity: Reduce the opacity of the background images so that they don't obstruct your 3D model. You want them to serve as a visual guide rather than a distraction.
 
-image:images/referenceOpacity.jpg[]
+image::images/referenceOpacity.jpg[]
 
 * Align and Scale: Ensure that the images are aligned correctly with your modeling workspace. You may need to adjust their scale and position to match the proportions of your model.
 
@@ -1485,9 +1499,9 @@ For example, on Elvas Tower, you will find that Erick Cantu has shared some of h
 
 After this, you can proceed with verifying the UV mapping and tweak the model as needed. (I prefer to use my own coupler, for example)
 
-image:images/unfixed.jpg[]
+image::images/unfixed.jpg[]
 
-image:images/fixed.jpg[]
+image::images/fixed.jpg[]
 
 
 [TIP]
@@ -1551,13 +1565,13 @@ Setup:
 * Press kbd:[SHIFT] kbd:[S] for the PIE menu and "Set Cursor to Active"
 * Select ALL of your objects you want to move together and use menu:Object[Origin>Set Origin to 3D Cursor]
 
-image:images/MoveSelected1.JPG[]
+image::images/MoveSelected1.JPG[]
 
 * Press kbd:[SHIFT] kbd:[S] for the PIE menu and "Set Cursor to World Origin"
 * Now, lets say you wanted to move all of the objects to 0 on the X axis.  Using the Transform > Location panel for X value input, HOLD  kbd:[ALT] and key on "0" in the field.
 * All of the objects should have moved to X = 0 location in the 3D View together.
 
-image:images/MoveSelected2.JPG[]
+image::images/MoveSelected2.JPG[]
 
 _Needs to be finished_
 

@@ -446,8 +446,13 @@ On the following texture images - a couple things to note:
 The first two images are of the same flat texture - one with *Ambient Occlusion* and one without. It clearly shows how much you gain by taking the time to *Bake* *AO* into your textures. It's practically required.
 On the first two images - you can see the *Swatches* I use on various parts of the model - the hinges are probably the most identifiable. Multiple parts overlay each other in these little squares so the {ao} makes a mess of this - if it's included in the *Bake*. In your paint program this is easily addressed by simply placing the *Swatch* layer above your {ao} layer.
 
+.Flat texture without baked ambient occlusion
 image::images/Prime-Flat-No-AO.jpg[]
+
+.Flat texture with baked ambient occlusion
 image::images/Prime-Flat.jpg[]
+
+.Finished texture with additional detail
 image::images/Prime.jpg[]
 
 
@@ -1045,9 +1050,16 @@ Once created, the night and day textures must have the same filename so that the
 Below are two textures taken from the Orient Express level. These were
 manipulated in a two dimensional drawing package:
 
+.Daytime source texture
 image::images/Image1.jpeg[]
+
+.Night texture counterpart
 image::images/Image2.jpeg[]
+
+.Second daytime source texture
 image::images/Image3.jpeg[]
+
+.Second night texture counterpart
 image::images/Image4.jpeg[]
 
 This means that the texture on the left will be replaced with the
@@ -1081,12 +1093,16 @@ the Drive a Train User Interface.
 
 Below are the snow versions of the textures above.
 
+.Daytime source texture
 image::images/Image1.jpeg[]
 
+.Snow texture counterpart
 image::images/Image5.jpeg[]
 
+.Second daytime source texture
 image::images/Image3.jpeg[]
 
+.Second snow texture counterpart
 image::images/Image6.jpeg[]
 
 === Highlights and Shadows
@@ -1157,7 +1173,7 @@ It is important to be aware that any lights in the scene, including environment 
  
 image::images/ao7.jpg[]
 
-=== Ambient Occlusion, workflow
+=== Ambient Occlusion Steps - Summary
 
 (((Texture, "Ambient Occlusion Baking")))
 

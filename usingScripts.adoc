@@ -292,29 +292,29 @@ When working on a Blender model, you often encounter tasks that require repetiti
 
 While working on the crosstie load for my Norfolk Southern Crosstie Gondola, it was realized that we only needed to create a single crosstie, apply a texture to it, and then use an ARRAY MODIFIER to duplicate it until the objects filled the gondola load area. Below is the final result.
 
-image:images/view.png[]
+image::images/view.png[]
 
 But how did I get there?
 
 The initial crosstie shape is created using a cube primitive. The dimensions used are  7" x 9"  x  9'  or in Blender ->   Metric (Z = 0.1778m  Y = .2286m  X = 2.7492m). The next steps are to Apply Rotation and Scale and then to texture it.
 
 
-image:images/step1.PNG[]
+image::images/step1.PNG[]
 
 So now that we have a crosstie built and textured, it needs to be replicated to fill the gondola load area. This is made easier by using the *ARRAY MODIFIER* under the Wrench icon.
 
-image:images/step2.PNG[]
+image::images/step2.PNG[]
 
 The settings used are:   *CONSTANT OFFSET* (Not default)  Y Axis OFFSET VALUE: 0.027 (or so). 
 
 [NOTE]
 Uncheck Relative Offset. Zero Out the `X` Field value.  But we need to FILL the area... so the initial `Count` field is "2" and it needs to be increased to fit the area (in this scene, it needed 56 arrayed items to make it fit)
 
-image:images/step3.PNG[]
+image::images/step3.PNG[]
 
 Great!  We have a FILLED gondola with an array of crossties and we still only needed to make one crosstie to start with.  BUT!  They are all way too uniform and look unnatural.  The problem is, these objects (as they are now) will all continue to imitate any changes we make to the original cube since the array modifier is still *active*.  So now we need to *APPLY* the *ARRAY* modifier while in OBJECT mode.
 
-image:images/step4.PNG[]
+image::images/step4.PNG[]
 
 Our next problem is that these arrayed objects are all still basically the same grouped object.  All of these objects will also share the SAME origin point as well.  So the next step to do we to break them apart.
 
@@ -329,7 +329,7 @@ All the crossties share the same origin location, making individual adjustments 
 
 Normally in this case, we would need to make 56 individual edits!  Oh the DRUDGE!  So, let's make use of Blender's scripting TAB.
 
-image:images/step5.PNG[]
+image::images/step5.PNG[]
 
 Make sure all of your objects (crossties) are currently selected.  (You might want to just select them all from the Collection list.)
 
@@ -366,11 +366,11 @@ Open the scripting tab in Blender, follow these steps:
 4. Choose "Create New" to create a new file.
 5. Enter or paste the provided code into the Blender Python Editor window.
 
-image:images/step6.PNG[]
+image::images/step6.PNG[]
 
 Press the `RUN` icon to run the code. (You will see that it did something in the windows on the left).  You can switch back to LAYOUT from the Scripting tab for a better view.
 
-image:images/Step7.PNG[]
+image::images/Step7.PNG[]
 
 Now all of the objects have their own origin based on their specific geometry. (See all the orange origin dots on each crosstie?)
 
@@ -396,17 +396,17 @@ for obj in selected_objects:
 
 ----
 
-image:images/Step8.PNG[]
+image::images/Step8.PNG[]
 
 Press the `RUN` icon to run the code. 
 
 You will end up with the following...
 
-image:images/Step9.PNG[]
+image::images/Step9.PNG[]
 
 and finally...
 
-image:images/view.png[]
+image::images/view.png[]
 
 To summarize:
 

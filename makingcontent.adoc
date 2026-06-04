@@ -188,7 +188,7 @@ Let's use the Blender installer from the *Blender.org* website. https://Blender.
 The LTS version will be a link on the page referred to on the "Looking for Long-Term Support? Get {version}".  It can be found here:  https://www.Blender.org/download/lts
 (((Blender, "Long Term release, LTS")))
 
-image:images/LTS.PNG[]
+image::images/LTS.PNG[]
 
 Hopefully, Blender.org will continue its practice of creating LTS releases.
 
@@ -261,7 +261,7 @@ Screen with options changed to what _Pete Willard_ prefers...
 
 ==== Themes-3D Viewport
 
-image::images/PREFS3.PNG[width=height,align=center]
+image::images/PREFS3.PNG[align=center]
 
 In the menu:THEMES[3D VIEWPORT] section,  a common practice is to adjust Face Orientation Alpha setting (currently BLUE)- By adjusting the alpha setting to the LEFT, the BLUE will no longer show for outside facing Normals, but will still show RED for inside facing Normals.   The BLUE is a bit jarring when the "FACE ORIENTATION" setting is enabled and really isn't necessary.  You can change the Alpha value for the Blue to 0.
 
@@ -817,14 +817,14 @@ Blender's default point of view differs slightly in that it considers the FRONT 
 
 For the Blender Exporter to properly process your model, you must have a "Collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other exported Collections will be children of this Collection but the `MAIN` collection is where you will place your model hierarchy. `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
 
-image:images/layout-h.png[]
+image::images/layout-h.png[]
 
 [WARNING]
 The Blender Exporter expects the model to be built with the collection names *capitalized*, such as `MAIN`, `MAIN_700`, `BOGIE`, `WHEEL`, etc.  If you have a collection named `main` or `main_700` the Blender Exporter will complain and will not export your model.
 
 For a model to work correctly in {OR}, there are some requirements that need to be met if you want to have the simulator properly automate animations for wheels and bogies.  For simplicity, I am implying that the A-END of the boxcar is on the right and the B-END (with Brakes) is on the left.  The Boxcar's default direction of travel in this case then would be this way, ->, or from Left to Right.  (Refer to `ORIENTATION` section above)
 
-image:images/heir.png[]
+image::images/heir.png[]
 
 [TIP]
 The way to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  

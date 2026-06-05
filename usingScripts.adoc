@@ -5,9 +5,9 @@ Some of Blender's true potential is unlocked through scripting. Blender scriptin
 
 Blender provides a Python API (Application Programming Interface) that enables users to interact with its internal functionalities and control almost every aspect of the software programmatically. Whether you're a beginner or an experienced programmer, Blender scripting offers a flexible and efficient way to work with 3D objects, materials, animations, and much more.
 
-With scripting, you can perform complex operations that would be tedious or time-consuming to achieve manually.  Mastering Blender scripting opens up a many possibilities for efficiency in your workflow.
+With scripting, you can perform complex operations that would be tedious or time-consuming to achieve manually.  Mastering Blender scripting opens up many possibilities for efficiency in your workflow.
 
-In this section, we will explore the fundamentals of Blender scripting, starting with some basics and gradually diving into more advanced concepts. We will cover essential topics such as accessing and manipulating objects, materials, as well as exploring scripting techniques for creating custom tools and add-ons. 
+In this section, we will explore the fundamentals of Blender scripting, starting with some basics and gradually diving into more advanced concepts. We will cover essential topics such as accessing and manipulating objects and materials, as well as exploring scripting techniques for creating custom tools and add-ons.
 
 Before diving into Blender scripting, it's recommended to have a basic understanding of the Python programming language. However, even if you're new to programming, this guide will try to provide you with the necessary foundations to get started.
 
@@ -21,7 +21,7 @@ To get started with Python, though, you should probably set up a development env
 
 Getting started with Python is relatively easy and straightforward. Here's a step-by-step guide to help you begin your Python journey:
 
-Install Python:: Visit the official Python website (https://www.python.org) and download the latest version of Python for your operating system. Follow the installation instructions provided by the Python installe
+Install Python:: Visit the official Python website (https://www.python.org) and download the latest version of Python for your operating system. Follow the installation instructions provided by the Python installer.
 
 Set up a development environment:: You'll need a code editor or an integrated development environment (IDE) to write and run your Python code. Some popular choices include Visual Studio Code, PyCharm, and Atom. Choose the one that suits your preferences and install it.
 
@@ -45,16 +45,16 @@ Remember, learning programming is an iterative process. Start small, be patient,
 [TIP]
 Embarcadero has a Python IDE that is quite handy and much better than the one that comes with Python by default.  You can get it here: https://www.embarcadero.com/free-tools/pyscripter/free-download
 
-As mentioned, Blender has a built-in Python API and Python interpreter that allows you to control its functionality programmatically. 
+As mentioned, Blender has a built-in Python API and Python interpreter that allows you to control its functionality programmatically.
 
 
 [NOTE]
-There is a Blender Add-On called *SERPENS* that will help you develop Blender GUI based add-ons from your code. Its a paid add-on, but its really neat.
+There is a Blender Add-On called *SERPENS* that will help you develop Blender GUI based add-ons from your code. It's a paid add-on, but it's really neat.
 
 === Blender and ChatGPT
 (((Scripting,"Chatgpt")))
 
-If you have not been living under a rock this lately, you have probably heard about ChatGPT.  ChatGPT is a very good artificial intelligence chatbot released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python. 
+If you have not been living under a rock lately, you have probably heard about ChatGPT.  ChatGPT is a very good artificial intelligence chatbot released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python.
 
 
 === Running a Blender Python Script Inside Blender
@@ -64,7 +64,7 @@ To run a Blender script, follow these steps:
 
 (((Python, "Running A Script")))
 
-* Open Blender: Launch the Blender application on your computer. It's probably best to  you have the latest version of Blender installed to have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support, (LTS VERSION) of Blender is probably the best choice.
+* Open Blender: Launch the Blender application on your computer. It's probably best to have the latest version of Blender installed so you have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support (LTS) version of Blender is probably the best choice.
 
 * Open the Text Editor: Once Blender is open, locate the Text Editor. You can find it by selecting the "Scripting" workspace from the top bar or by navigating to the "Editor Type" dropdown at the top left of any editor area and choosing "Text Editor".
 
@@ -73,7 +73,7 @@ To run a Blender script, follow these steps:
 * Write or Import your Script: You have a few options here:
 a. Write the script: If you're familiar with Python scripting, you can directly write your script in the Text Editor. Ensure that your script follows the correct syntax and indentation rules of the Python language.
 b. Import an existing script: If you have a pre-existing script saved as a file on your computer, you can open it in the Text Editor by clicking on the "Open" button and navigating to the script's location.
-c. COPY/PASTE the script code from somewhere. For example,  clicking `copy code` from a ChatGPT conversation and then pasting it into the code editor window of Blender.
+c. COPY/PASTE the script code from somewhere. For example, click `copy code` from a ChatGPT conversation and then paste it into the code editor window of Blender.
 
 * Run the Script: Once you have your script ready in the Text Editor, you can run it by clicking on the "Run Script" button or by using the keyboard shortcut kbd:[Alt] + kbd:[P]. Blender will execute the script, and its functionality will take effect within the Blender environment.
 
@@ -98,8 +98,7 @@ Well, one thing that happens when you `COPY/PASTE`, is that your parts get renam
 [TIP]
 Duplicate objects are created by using kbd:[SHIFT] + kbd:[D] and the process will not try to create a duplicated unique material reference.
 
- 
-The goal of the script then is to fix this issue so you don't end up with 20 materials that are all actually 100% identical, you can run the following script:
+The goal of the script then is to fix this issue so you don't end up with 20 materials that are all actually 100% identical. You can run the following script:
 
 [source,python]
 ----

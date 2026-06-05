@@ -1,10 +1,10 @@
 
-== Making A 3D Model
+== Making a 3D Model
 (((Blender, "Introduction")))
 
 This section will provide an overview of how to create a 3D model in {ORTS} using Blender.  We will cover some basic concepts and tips for creating a 3D model in Blender.
  
-=== Some Basic Things About 3D Models.
+=== Some Basic Things About 3D Models
 (((Blender, "Overview")))
 
 Scale:: {ORTS} as well as {MSTS} each use a scale of 1:1, that is, 1 unit in the 3D drawing area is 1 meter in the simulator and this means all things are in real-world measurements. 
@@ -15,7 +15,7 @@ Material:: In Blender, a material is a set of properties that defines how a surf
 
 
 [WARNING]
-When creating rolling stock items for ORTS, Pressing kbd:[Keypad 1] for front view will actually have you looking at the REAR end of the car or engine. You would press kbd:[CTRL, Keypad 1] to get a front view of your engine or wagon while drawing it.  You have the potential to create backwards rolling stock if you get this wrong.
+When creating rolling stock items for ORTS, pressing kbd:[Keypad 1] for front view will actually have you looking at the REAR end of the car or engine. You would press kbd:[CTRL, Keypad 1] to get a front view of your engine or wagon while drawing it.  You have the potential to create backwards rolling stock if you get this wrong.
  
 The *MAIN* object of your modeling collection should always be positioned at world origin, which is `X=0`,`Y=0`,`Z=0`, based on the orientation described above.
 
@@ -23,7 +23,7 @@ The *MAIN* object of your modeling collection should always be positioned at wor
 There are some general rules that all content creators should follow, regardless of the tools used. Take the next section to heart.
 
 [NOTE]
-While you _can_ have Blender work in Imperial units (feet and inches), It may be far simpler to always work in the Metric System since you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy and the easiest way is to just ask Google.  
+While you _can_ have Blender work in Imperial units (feet and inches), it may be far simpler to always work in the metric system since you won't need to change the "UNIT" settings in Blender.  You just might need to have a unit converter handy, and the easiest way is to just ask Google.
 
 === Some Basic Things About Modeling
 (((Blender, "Modeling Tips")))
@@ -65,7 +65,7 @@ features such as nuts, bolts, rivets, doors, and other surface details.
 ====
 
 === Polygon Count and Vertex Density
-(((Blender, "Polygon Coint and Drawcalls")))
+(((Blender, "Polygon Count and Drawcalls")))
 
 If you read item #3 in the previous section, you might think you can go crazy with details.  However, there is always a balance to be achieved not just between graphical quality and performance, but also in computational performance. Every vertex that has to be mapped to a texture takes computing power. Thus, it's good to save polygons whenever possible and use texture maps instead for details like cutouts, structural members, and bolts. If you really feel like you want to model small details, keep in mind that every detail added might prevent the more generic use of the model for re-skinning later on.  A flat sided boxcar is more flexible than one with specifically modeled door layout, latches and modeled roof details.
 

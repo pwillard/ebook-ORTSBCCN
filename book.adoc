@@ -97,7 +97,7 @@ Useful resources:
 
 * http://www.elvastower.com
 * http://trainsim.com
-* http://www.textures.com  You need to login to downloadfootnote:[The site offers Free Registration and free downloads once signed up]
+* http://www.textures.com  You need to log in to download.footnote:[The site offers Free Registration and free downloads once signed up]
 * https://www.blendersecrets.org/   Author of many tips and tricks videos as well as a book
 * https://curtisholt.online/    A really good Blender Trainer and add-on creator
 * https://blender.org   Where to download Blender from
@@ -143,7 +143,7 @@ kbd:[LMB]:: Left Mouse Button
 kbd:[MMB]:: Middle Mouse Button
 kbd:[RMB]:: Right Mouse Button
 _N-Panel_:: Number Panel, kbd:[N] Hotkey in Main 3D Window
-btn:[ENTER]:: Sometimes you will see KEYBOARD entry look like this
+btn:[ENTER]:: Sometimes you will see keyboard entry look like this
 
 
 Referenced footnotes appear at the *end* of Chapters
@@ -182,7 +182,7 @@ Overall, Open Rails offers a robust and customizable train simulation experience
 * You are reasonably new to content creation for Open Rails
 * You have Open Rails installed and working
 * You have installed TSRE5 if you plan to inspect routes, consists, or placed objects outside the simulator
-* You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[A good example is the Paint.net, KRITA or GIMP all of which are free] 
+* You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[Good examples include Paint.net, KRITA, and GIMP, all of which are free]
 * You have some idea about how {OR} and {MSTS} content is created
 * You have a project in mind, but you understand that you will not create your Magnum Opus on a first try.
 
@@ -193,7 +193,7 @@ If you have prior experience with older tools such as GMAX, Train Sim Modeler, o
 
 As the title implies, this document began as a collection of notes made while learning to create content for {OR}. It is now organized as a practical notebook for filling gaps in the available {OR} content-creation documentation. This document is free and open source, and it lives in a GitHub repository so others can fork it, correct errors, and add missing sections. I do not claim exclusive ownership of every idea or concept contained here; much of this material has been created, gathered, reorganized, and rephrased from many sources.
 
-Due to the way this document originated, it may seem to jump around and be repetitive at times. My apologies in advance if this bothers you but if you are so inspired, you are welcome to help fixing any errors, problems or omissions.
+Due to the way this document originated, it may seem to jump around and be repetitive at times. My apologies in advance if this bothers you, but if you are so inspired, you are welcome to help fix any errors, problems, or omissions.
 
 
 

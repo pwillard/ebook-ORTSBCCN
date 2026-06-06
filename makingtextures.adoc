@@ -834,6 +834,17 @@ You can then save the image to your drive as a texture file you can import into 
 
 image::images/radio.png[]
 
+=== Alternative to Shoebox - TextureRipper
+
+(((TextureRipper, Tools)))  
+
+TextureRipper is a tool that can be used to fix perspective distortion in photos for texture creation. It is a free and open-source software that allows you to easily adjust the perspective of your images, making it easier to create accurate textures for your 3D models. You can download TextureRipper from its GitHub repository: https://github.com/raycastly/texture-ripper
+
+Raycastly Texture Ripper is a tool that lets you extract textures from angled or perspective photos — making it easier for artists and game developers to turn real-world images into usable assets.
+
+This tool is based on the Shoebox Texture Ripper. The author didn't like the controls on that tool and the fact that it was relying on deprecated software. So they decided to build their own version.
+
+image::images/matches-demo.jpg[]
 
 === ACE2BMP
 

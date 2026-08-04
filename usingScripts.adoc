@@ -64,7 +64,7 @@ To run a Blender script, follow these steps:
 
 (((Python, "Running A Script")))
 
-* Open Blender: Launch the Blender application on your computer. It's probably best to have the latest version of Blender installed so you have access to the most up-to-date features and improvements.  As mentioned in other sections of this document, the Long Term Support (LTS) version of Blender is probably the best choice.
+* Open Blender: Launch Blender. The current stable release gives you the newest features, while the current Long Term Support (LTS) release is usually the safest choice for exporter and add-on compatibility.
 
 * Open the Text Editor: Once Blender is open, locate the Text Editor. You can find it by selecting the "Scripting" workspace from the top bar or by navigating to the "Editor Type" dropdown at the top left of any editor area and choosing "Text Editor".
 

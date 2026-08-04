@@ -36,14 +36,14 @@
 :sourcedir: code
 :source-highlighter: rouge
 :revnumber: 2.6.0.0
-:revdate: 2026-01-28
+:revdate: 2026-08-04
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
-:LTSversion: Blender 4.5 LTS
-:BV: 5.1.1
+:LTSversion: Blender 5.2 LTS
+:BV: 5.2
 :AO: Ambient Occlusion
-:NV: 5.0
+:NV: 5.2
 :older: 3.6.x LTS
 
 <<<
@@ -64,17 +64,17 @@ image::images/CC-BY-SA.svg[width=87,height=30,align=center]
 
 == About This Document
 
-This guide covers the use of Blender starting with version 2.8, including {LTSversion} or higher for creating content for Open Rails. It is recommended to use the latest Long Term Support (LTS) release of Blender for the best compatibility with the instructions provided in this document. Please note that older versions of Blender will not be covered or supported in this guide. At the time of this update, Blender Version {BV} is the most recent release and {LTSversion} is the most recent Long Term Support release. 
-
-[WARNING]
-I am aware that Blender version 5.0+ is now available and that some of the instructions in this document may need to be updated to work with the latest version. However, I have not tested the latest version of Blender and cannot guarantee that the instructions will work as expected.
+This guide covers Blender 2.8 and newer, with current notes checked against Blender {BV}. For the most stable workflow, use the latest Long Term Support (LTS) release, currently {LTSversion}. Versions older than 2.8 are not covered or supported here.
 
 [NOTE]
-The Long Term Release or LTS version of Blender is preferable because there are only bug fixes applied to these releases, not new features so things like the User Interface will not change.  3.6 LTS should be just fine, for example.
+Blender 5 uses a newer Python API than the 4.x LTS series. Core modeling workflows remain familiar, but add-ons, exporters, and screenshots may differ. If an exporter or add-on fails in Blender 5, try Blender 4.5 LTS until that tool is updated.
+
+[NOTE]
+The Long Term Support (LTS) version of Blender is often the safest choice because it receives bug fixes without major feature or interface changes. Blender {LTSversion} is the current LTS baseline for this notebook.
 
 === About The Author
 
-The individual who initially wrote this guide is not an expert in game or simulator content creation and has mostly used 3DCanvas/3D Crafter for creating content for Microsoft Train Simulator from 2002 to 2016. They have also experimented with Blender, but found earlier versions  of it difficult to use due to it having a cumbersome user interface. However, they found that Blender 2.8 and newer to be a vast improvement in terms of user interface friendliness and they do not plan to switch to a different 3D modeling tool at this time.
+The author is not an expert in game or simulator content creation, but has created Microsoft Train Simulator content since 2002, mostly with 3D Canvas/3D Crafter through 2016. Earlier Blender versions felt cumbersome, but Blender 2.8 and newer are much easier to use, and Blender is now the author's preferred 3D modeling tool.
 
 [NOTE]
 Writing in 3rd person is weird.
@@ -181,8 +181,8 @@ Overall, Open Rails offers a robust and customizable train simulation experience
 * You are new to Blender
 * You are reasonably new to content creation for Open Rails
 * You have Open Rails installed and working
-* You have installed TSRE5 if you plan to inspect routes, consists, or placed objects outside the simulator
-* You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[Good examples include Paint.net, KRITA, and GIMP, all of which are free]
+* You have installed TSRE5 if you plan to inspect routes, consists, or placed objects outside the simulator or need a shape file viewer
+* You have a texture file editor that supports PSD, PNG and DDS formats.footnote:[Good examples include Paint.net, KRITA, and GIMP and Affinity Studio, all of which are free]
 * You have some idea about how {OR} and {MSTS} content is created
 * You have a project in mind, but you understand that you will not create your Magnum Opus on a first try.
 

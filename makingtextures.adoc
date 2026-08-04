@@ -382,12 +382,12 @@ This is intended as a primer, not a tutorial, so we'll be addressing the concept
 
 .Author Tips
 ----
-Blender is an application that can utilize 3rd-party addons and there are thousands of them.  I'll only be discussing a few that I find essential for Open Rails related work. These are free. I've tried many others as well and another modeler might prefer a different set of addons. Experimentation is key here. 
+Blender supports many third-party add-ons. This section only covers a few free tools that are useful for Open Rails work. Other modelers may prefer different add-ons, so experimentation is encouraged.
 ----
 
 image::images/AO_Init.png[]
 
-In this setup, Blender 4.5 is being used and since Blender 4.2 many of the external addons are now available in the *Get Extensions* option under *Preferences*. *Texel Density Checker* is available via *Get Extensions* in Blender 4.3. *UV Layout* is an official Blender addon available via *Add-ons* option. The last one,  *TexTools*,  is available from GitHub and needs to be installed from the downloaded zip file.
+In Blender 4.2 and newer, many add-ons are managed through *Preferences > Get Extensions*. *Texel Density Checker* is available there, while *UV Layout* remains an official add-on under *Preferences > Add-ons*. *TexTools* is installed separately from its GitHub ZIP file.
 
 Texel Density Checker:: shows up the *N Side Menu* when in the *UV Mapping* window. It allows you to get or set the bitmap density of a UV island.  For the best-looking models, you want a relatively consistent texel density, and this add-on makes it extremely easy to set on each island as you map it.
 
@@ -444,7 +444,7 @@ I'll be using the RS3 as a reference model. I typically start out with two fairl
 On the following texture images - a couple things to note:
 
 The first two images are of the same flat texture - one with *Ambient Occlusion* and one without. It clearly shows how much you gain by taking the time to *Bake* *AO* into your textures. It's practically required.
-On the first two images - you can see the *Swatches* I use on various parts of the model - the hinges are probably the most identifiable. Multiple parts overlay each other in these little squares so the {ao} makes a mess of this - if it's included in the *Bake*. In your paint program this is easily addressed by simply placing the *Swatch* layer above your {ao} layer.
+On the first two images, you can see the *Swatches* I use on various parts of the model; the hinges are probably the most identifiable. Multiple parts overlap in these small squares, so baked {AO} can make a mess if it is included there. In your paint program, place the *Swatch* layer above your {AO} layer to avoid the problem.
 
 .Flat texture without baked ambient occlusion
 image::images/Prime-Flat-No-AO.jpg[]

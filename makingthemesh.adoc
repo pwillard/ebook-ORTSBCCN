@@ -141,9 +141,9 @@ This tool creates a plane and automatically assigns the image as the
 material texture. It also supports features such as alpha masking and
 responds to scene lighting.
 
-However, the image will only appear when viewing the scene in *Texture*
-display mode. Because of this, it is not suitable for use as a background
-reference drawing.
+However, the image plane is a real mesh object with a material. It is useful
+when you want an image in the scene, but a background image empty is usually
+better for blueprint-style modeling references.
 ====
 
 
@@ -170,26 +170,22 @@ Using this plug-in with 3D Canvas gave you a number of starting parts before mod
 
 [TIP]
 ====
-Something we could do with 3D Canvas was to enable "render 2-side faces" and it is not very clear how to do that with Blender. So, let me explain: 
+3D Canvas had a "render 2-side faces" option. Blender's current workflow is different: a plane may appear visible from both sides in Blender, but export formats and simulators may still treat it as a single-sided face depending on material and culling settings.
 
-To create a double-sided plane in Blender, you can use the following steps:
+For reliable Open Rails content, model visible thickness instead of relying on a two-sided display option:
 
-1) Start by creating a new plane in Blender. You can do this by going to the "Add" menu in the 3D View and selecting menu:Mesh[Plane].
+Create a new plane with menu:Add[Mesh > Plane], then add a Solidify modifier to give the plane real thickness:
 
-2) With the plane selected, go to the "Object" menu in the Properties panel and enable the "Double Sided" option. This will cause the plane to be visible from both sides.
+1) Go to the "Modifiers" tab in the Properties panel.
 
-Alternatively, you can use a Solidify modifier to add thickness to the plane and make it double-sided. To do this, select the plane: 
+2) Click the "Add Modifier" button and choose "Solidify".
 
-1) Go to the "Modifiers" tab in the Properties panel. 
+3) Adjust the thickness in the Solidify settings.
 
-2) Then, click the "Add Modifier" button and choose "Solidify". 
-
-3) In the Solidify settings, you can adjust the thickness of the plane.
-
-If you want to apply the Solidify modifier permanently to the plane, you can do so by clicking the "Apply" button. This will apply the Solidify modifier to the plane and make it double-sided.
+If you want to make the thickness permanent, click *Apply* on the Solidify modifier.
 
 [WARNING]
-Solidify will transform a plane into a cube and you will have all those sides to deal with.
+Solidify adds geometry. That is usually better for export than relying on viewport-only double-sided display, but it also adds faces you must UV-map and manage.
 
 ====
 
@@ -1167,7 +1163,7 @@ Importing shapes from other 3D Software can be a bit tricky and there are numero
 You can also run multiple versions of Blender side by side. If you need Blender 2.79 for a legacy conversion, import the `.3DS` file there, perform a `Select-All`, `COPY`, and then `PASTE` into your current Blender session.
 
 [NOTE]
-Blender 3.6 LTS and newer versions once again support importing 3DS files.
+Blender {older} and newer versions once again support importing 3DS files.
 
 *  UVMapping might survive an import operation... but material and texture selection probably didn't. You most likely need to manually assign materials and textures to your imported objects.
 

@@ -51,10 +51,10 @@ As mentioned, Blender has a built-in Python API and Python interpreter that allo
 [NOTE]
 There is a Blender Add-On called *SERPENS* that will help you develop Blender GUI based add-ons from your code. It's a paid add-on, but it's really neat.
 
-=== Blender and ChatGPT
-(((Scripting,"Chatgpt")))
+=== Blender and AI Coding Assistants
+(((Scripting,"AI Assistants")))
 
-If you have not been living under a rock lately, you have probably heard about ChatGPT.  ChatGPT is a very good artificial intelligence chatbot released to the general public. ChatGPT — which stands for “generative pre-trained transformer” — became an instant Internet hit. It now contains a coding AI specifically trained on Python.
+AI coding assistants such as ChatGPT, Claude, Gemini, and others can help explain Blender Python examples, draft small scripts, and diagnose error messages. They are useful learning aids, but they do not replace testing inside Blender because generated code may use the wrong Blender API version or make assumptions about your scene.
 
 
 === Running a Blender Python Script Inside Blender
@@ -73,7 +73,7 @@ To run a Blender script, follow these steps:
 * Write or Import your Script: You have a few options here:
 a. Write the script: If you're familiar with Python scripting, you can directly write your script in the Text Editor. Ensure that your script follows the correct syntax and indentation rules of the Python language.
 b. Import an existing script: If you have a pre-existing script saved as a file on your computer, you can open it in the Text Editor by clicking on the "Open" button and navigating to the script's location.
-c. COPY/PASTE the script code from somewhere. For example, click `copy code` from a ChatGPT conversation and then paste it into the code editor window of Blender.
+c. COPY/PASTE the script code from somewhere. For example, copy a script from an AI assistant or tutorial and paste it into Blender's text editor.
 
 * Run the Script: Once you have your script ready in the Text Editor, you can run it by clicking on the "Run Script" button or by using the keyboard shortcut kbd:[Alt] + kbd:[P]. Blender will execute the script, and its functionality will take effect within the Blender environment.
 

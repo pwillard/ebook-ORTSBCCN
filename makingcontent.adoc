@@ -1,76 +1,75 @@
-= Making Content for {OR} 
- 
-  
-About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} attempts to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
+= Making Content for {OR}
+
+About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} remains compatible with most existing {MSTS} content while adding new features and correcting long-standing Microsoft/Kuju limitations. In many places you will see MSTS and ORTS terms used interchangeably, but keep in mind that {OR} can handle more complex models, 32-bit textures, longer viewing distances, and simulator features that never existed in {MSTS}.
 
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
 OPEN RAILS::
-The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km.
+Open Rails can maintain good frame rates with a higher number of polygons than {MSTS}, so curves can be smoother and details can be modeled directly when it makes sense. Open Rails also displays 32-bit color, while {MSTS} is limited to 16-bit color, and it supports longer viewing distances that can be adjusted from about 2 km out to 10 km.
 
 _from Open Rails.org website_
 
-Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
+Since this document is primarily about using Blender, other 3D modeling tools are mentioned only where they provide useful contrast or conversion context.
 
 <<<
 
 == Common Terms and Definitions
-(((Making Contentm TERMS. DEFINITIONS)))
+(((Making Content, Terms and Definitions)))
 
 There is just no way to avoid using the jargon related to 3D modeling and content creation. Here are some common terms and definitions that you should become familiar with:
 
-ALPHA	::	 A bit map with a portion of the image that is masked-out, making the location appear see-though in the image.		
+ALPHA	::	 A bitmap with a portion of the image masked out, making that area appear transparent in the simulator.
 DISTANCE LEVELS	::	 See Level of Detail (LOD)
-EDGE	::	  A line created by the linking of 2 vertices ( known as a "2-dimensional object")		
-ENG FILE	::	 A file that describes to the Simulator the details of an Asset to be used as an ENGINE within {OR}. It contains physical details such as Motive and Braking values as well as Coupler type, etc.  		
-FACE	::	  A surface created by 3 or more vertices.	
+EDGE	::	 A line segment connecting two vertices.
+ENG FILE	::	 A file that describes the simulator details for a locomotive or powered unit. It contains values for traction, braking, couplers, lights, sounds, and other behavior.
+FACE	::	 A surface created by three or more vertices.
 FOOBIE	::    A model made specifically lacking in detail to allow many variants to be made using a single base model, relying on the TEXTURE to define the details and not the actual 3D objects. "Foobie" is a contraction of "fake boobies".   	
-HARD SURFACE MODELING	::	 A generalized term for modeling objects that represent things like vehicles, buildings, weapons, roads. These make use of the more standard mesh techniques and objects like cube, cylinder, plane, cone, torus etc.		
-HDRI	::	 HDRI is short for High Dynamic Range Image. Digital cameras only have a limited dynamic range â€” that's why some areas of a photo appear darker than they do in real life. HDRIs give photo editors a chance to brighten the corners and create an image that looks more natural.  Environment maps or HDRI maps are one of the most efficient and quickest ways to light your 3D scene and achieve realistic results in Blender. HDRIs are essentially a snapshot of the real-world lighting which contains accurate lighting detail through high dynamic range imaging (HDRI)
-HIERARCHY	::	 The assignment of parenting of objects within a shape so that an object's children will only move when they do but they can move independently too but are always affected by their parent.
-LEVEL OF DETAIL	::	 (LOD) Distance values at which the base model is replaced by reduced poly count shapes to account for the inability to see details at a distance.  Higher values should have less detailed models.  There are no hard rules about LOD ranges, but you should try to use them.		
-MANIFOLD SHAPE	::	   A manifold shape is a 3D object that is considered to be watertight.  The vertices, faces and edges are aligned and connected in such a way that if you poured water into the INSIDE of the object, none would leak out.  A default `cube` primitive is an example of a manifold shape.
+HARD SURFACE MODELING	::	 A generalized term for modeling objects such as vehicles, buildings, roads, tools, and machinery. Hard-surface work usually relies on standard mesh techniques and primitives such as cubes, cylinders, planes, cones, and torus objects.
+HDRI	::	 HDRI is short for High Dynamic Range Image. Environment maps or HDRI maps are one of the quickest ways to light a 3D scene and achieve natural-looking results in Blender because they capture real-world lighting across a wide brightness range.
+HIERARCHY	::	 The parenting relationship between objects in a shape. Child objects inherit movement from their parent but can still have their own local transforms.
+LEVEL OF DETAIL	::	 (LOD) Distance values at which the base model is replaced by reduced-poly versions because fine detail cannot be seen at long range. Higher-distance LOD models should usually contain less detail. There are no universal LOD ranges, but you should consider using them for complex models.
+MANIFOLD SHAPE	::	 A manifold shape is a 3D object that is considered watertight. Its vertices, faces, and edges are connected so that if the object were filled with water, none would leak out. A default `cube` primitive is an example of a manifold shape.
 MATERIAL	::	 A material is assigned a texture with additional components such as lighting palette and shading.		
-MESH	::	  A 3D Model "shape" made up of 1 or more "faces" without texture		
-NGON	::	  Is a face with 5 or more vertices. Many Blender tools and features rely on the underlying mesh to be made of NGONS and will not work with triangulated faces.		
-NORMAL	::	 A Normal is a vector in 3D-space that is perpendicular to two other vectors (determined by two edges of a face)footnote	[See Wiki https	//en.wikipedia.org/wiki/Normal_(geometry) ] A Normal controls the facing direction of applied textures.
+MESH	::	 A 3D model made from vertices, edges, and faces. Textures and materials are applied to the mesh after the geometry exists.
+NGON	::	 A face with five or more vertices. Many Blender tools can work with n-gons during modeling, but exported real-time content often behaves best when final faces are kept simple and predictable.
+NORMAL	::	 A normal is a direction vector perpendicular to a face. Normals control which way a face points and affect lighting, culling, and texture display.footnote:[See https://en.wikipedia.org/wiki/Normal_(geometry)]
 OBJECT	::	  A 2-dimensional object has length and height, but no depth. Examples of 2D objects are planes, polygons and lines. A 3-dimensional object has length, height, and depth. Examples of 3D objects are cubes and spheres.		
 ORGANIC MODELING	::	 Modeling techniques that use a more sculpted approach for things like animals, people, plants, trees, and even automobiles. There are specialized modeling tools and techniques for this including _SURFACE NURBS_ (Non-uniform rational basis spline, Google it ) and the Sculpting tab in Blender. Blender's Sculpting modes are used for organic modeling and will not be discussed in this document.		
 ORIGIN	::	 See Pivot Point		
 PIVOT POINT	::	 A position used to align the shape to its environment, also known as its origin.		
-POLY COUNT	::	  The "poly count" is a total of the number of "polygons" used to create a 3d mesh. A polygon is made up of vertices. It is used as an indicator of how complex a model is.		
-POLYGON	::	    Refers to the planar face of this closed shape, edges are the straight edges that define it, and points/vertices are where those various edges connect with one another. Blender calls these "tris", short for faces made of triangles and "quads", short for 4 vertex faces. 		
-QUAD	::	  Faces made up of 4 vertices		
-SHAPE	::	 A three dimensional object that is finished in all aspects and ready to be placed within the game environment.		
-SMOOTHING	::	 A smoothing group is a shade value that allows individual polygons to be lit by the game environment in different ways.		
-TRI	::	   Faces made up of 3 vertices, also referred to as triangles		
-UV	::	    UV is the 3D modeling process of projecting a 2D image to a 3D model's surface for texture mapping. The letters "U" and "V" denote the axes of the 2D texture because "X", "Y", and "Z" are already used to denote the axes of the 3D object in model space, while "W" (in addition to XYZ) is used in calculating quaternion rotations, a common operation in computer graphics.		
-VERTEX	::	    (Plural = vertices ) a point in 3d space with x,y,z coordinates, often used as part of a location where edges and faces meet.  		
-WAG FILE	::	 A file that describes to the Simulator the details of an Asset to be used as an WAGON within {OR}. It contains physical details such as Braking values as well as Coupler type, etc.  		
+POLY COUNT	::	 The total number of polygons used to create a 3D mesh. It is one rough indicator of how complex a model is.
+POLYGON	::	 A planar face in a mesh. Its edges define its boundary, and its vertices are the points where those edges meet. Blender commonly refers to triangular faces as `tris` and four-sided faces as `quads`.
+QUAD	::	 A face made from four vertices.
+SHAPE	::	 A finished three-dimensional object ready to be placed within the simulator environment.
+SMOOTHING	::	 A shading method that controls how light appears across individual polygons or groups of polygons.
+TRI	::	 A face made from three vertices, also called a triangle.
+UV	::	 The process of projecting a 2D image onto a 3D model's surface for texture mapping. The letters `U` and `V` are used for the 2D texture axes because `X`, `Y`, and `Z` are already used for 3D object space.
+VERTEX	::	 A point in 3D space with X, Y, and Z coordinates. The plural is vertices. Edges and faces are built from vertices.
+WAG FILE	::	 A file that describes the simulator details for a wagon or unpowered item of rolling stock. It contains values for braking, couplers, lights, sounds, and other behavior.
 
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
 (((Content Design, "Choices")))
 
-Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {MSTS} might cause the vehicle to not perform optimally
-Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters
-Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
-Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} (This is more work than just running in {OR})
-Made for ORTS but requires {MSTS}::  Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {MSTS} on the system
-Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters but also requires {MSTS} to be installed and relies on additional "default" products.
+Made for {MSTS}::	Meaning it can run in {MSTS} and usually in {OR}, but it may need WAG or ENG edits because some legacy physics values do not perform as well in Open Rails.
+Made for {OR} - no other files required::	Meaning it is configured specifically for {OR} and does not depend on outside route, stock, or texture packages.
+Made for {OR} - requires other add-ons:: Meaning it is configured for {OR}, but it requires additional downloads to work correctly. NAVS-based items are a common example.
+Made for {OR} but compatible with {MSTS}:: Meaning it runs in {OR} but has also been configured to remain compatible with {MSTS}. This usually takes more work than targeting {OR} only.
+Made for {OR} but requires {MSTS}:: Meaning it runs in {OR}, remains compatible with {MSTS}, and also requires files that only come from a {MSTS} installation.
+Made for {OR} but requires {MSTS} and other add-ons:: Meaning it is configured for {OR}, but it also requires {MSTS} files and additional third-party content.
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
 
-* How comfortable are you with the Open Rails and all of its content options?
+* How comfortable are you with Open Rails and its content options?
 * How much effort do you want to put into this project?
 * What is your experience with 3D modeling in general (Train Sim Modeler, GMAX, 3D Canvas, etc.)?
 * What is your experience with 3D modeling in Blender?
-* What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
+* What is your experience with 3D modeling for Open Rails compared to {MSTS}?
 * How much flexibility do you want to have with your content?
 
 .Author's Advice
 ----
-Start with the option that is easiest for you to understand and then adjust as you go. Some content developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
+Start with the option that is easiest for you to understand, then adjust as you go. Some content developers are well-versed in Blender and can help with modeling questions, but keeping the first project simple will help you finish it. A `Made for Open Rails` project with no outside dependencies is a good starting point.
 ----
 
 [TIP]
@@ -83,18 +82,18 @@ To go over some of the steps involved in creating content for Open Rails, we wil
 
 (((Blender, "Getting Started")))
  
-* A mesh - also known as your 3D model
-* Online resources and references (This is an area that is somewhat lacking with regards to 3D modeling for ORTS, but these include https://www.trainsim.com/vbts/forum.php and http://www.elvastower.com/forums/index.php )
-* A texture - A 2-dimensional bitmap image (material) that you will apply to your model, also referred to as a 'skin'
-* A UVmap of the mesh - The instructions on how to map your 2-dimensional texture to your 3d model.  This is best done from within Blender, but you can also use a UV mapping program like UVLayout or Substance Painter.
-* A configuration file or set of files that describes your content to the simulator (This is also known as a WAG or ENG file)
-* A thumbnail jpg (optional but helpful)
-* Instructions - Let's not leave the work half done
+* A mesh, also known as your 3D model.
+* Online resources and references. This area is still somewhat limited for {OR}-specific Blender work, but useful community references include https://www.trainsim.com and http://www.elvastower.com/forums/index.php.
+* A texture: a two-dimensional bitmap image that you apply to your model, also referred to as a skin.
+* A UV map for the mesh: the instructions for mapping your 2D texture to your 3D model. This is usually best done inside Blender, although dedicated UV tools can also be used.
+* A configuration file or set of files that describes your content to the simulator. For rolling stock this usually means a WAG or ENG file.
+* A thumbnail image, usually JPG or PNG. This is optional but helpful.
+* Instructions. Do not leave the work half done.
 
 === Recommended Software and Tools
 
 Required::
-* Blender {LTSversion} is the most current release. Blender 4.5 LTS can also be used for maximum add-on compatibility because Blender 5 is relatively new.
+* {LTSversion} is the most current release. Blender 4.5 LTS can also be used for maximum add-on compatibility because Blender 5 is relatively new.
 * The {MSTS}/{OR} exporter add-on maintained by PWILLARD on GitHub.footnote:[Download from https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter]
 * A bitmap editor with layers and PNG export, such as Affinity Studio, Paint.NET, GIMP, or Krita.
 * A text editor that handles Unicode files. _Microsoft Visual Studio Code_ is recommended.
@@ -111,7 +110,7 @@ Optional::
 * If you are also making models for Trainz Simulator, note that the latest versions of Trainz will accept Blender's native FBX exporter output.
 
 [NOTE]
-Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their _U.S. customary units_   but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
+Use metric measurements. Metric is Blender's natural working assumption for this notebook and is the safest choice for {OR} content. Even if your prototype dimensions come from U.S. customary drawings, convert them to meters early and keep the Blender scene in metric units.
 
 === Why the Author Uses Blender 
 
@@ -119,7 +118,7 @@ Using METRIC for measurements. It's the default measurement in Blender and {OR}.
 
 From Pete Willard:: I started creating game content in 2002, primarily for {MSTS}. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax, SketchUp, and Blender. 3D Canvas was my favorite for many years, but I now use it mainly as a file-conversion tool. Blender {BV} has the tools I need for 3D modeling, plus active development and support.
 
-== Why Many Other People Use Blender to Make Content?
+== Why Do Many People Use Blender to Make Content?
 
 Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
 
@@ -133,7 +132,7 @@ Asset Optimization:: Blender provides tools to help optimize your assets for rea
 
 Community and Resources:: Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
 
-Non-Destructive Workflow:: Blender supports a non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
+Non-Destructive Workflow:: Blender supports non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
 
 Constant Development:: Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.  In fact, Blender might get updates faster than you can keep up.
 
@@ -755,7 +754,7 @@ We will now have all of our basic user preferences and startup file options the 
 
 <<<
 (((Project, "Folders")))
-== Folder structure
+== Project Folder Structure
 
 The layout of your project development folder is completely personal depending on how you organize your work.  I'll share what I currently use as an example.
 
@@ -812,7 +811,7 @@ image::images/heir.png[]
 The way to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  
 
 [NOTE]
-The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002 so it has become a standard _thing_ to do but it's not a requirement for {OR}. The Blender `S` file exporter by Wayne Campbell only requires that you use `MAIN` as the name of the _COLLECTION_ that refers to where your model objects reside.
+The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002, so it has become a standard _thing_ to do, but it is not a requirement for {OR}. The Blender MSTS/Open Rails exporter requires `MAIN` as the name of the _COLLECTION_ that contains your model objects.
 
 [WARNING]
 Be careful with selecting all objects in object mode and then applying "all transformations", as it will reset all objects to have their origin (pivot point) to be `world origin`. This would change the pivot points of the bogies and wheels, etc.

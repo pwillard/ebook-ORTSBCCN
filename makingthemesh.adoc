@@ -161,7 +161,7 @@ image::images/3dengineer.PNG[]
 image::images/Result.PNG[library.png]
 
 [NOTE]
-Since this is primarily a set of preset shapes with customizable values and locations, Blender's scripting language could be used to recreate a similar workflow in Python. A tool like this would be a useful companion to Wayne Campbell's existing `.S` file exporter.
+Since this is primarily a set of preset shapes with customizable values and locations, Blender's scripting language could be used to recreate a similar workflow in Python. A tool like this would be a useful companion to the maintained Blender MSTS/Open Rails `.S` file exporter.
 
 image::images/Result.PNG[]
 
@@ -571,7 +571,7 @@ image::images/myCollection.JPG[]
 ****
 You will want to download and install the "MSTS Exporter". https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases
 
-The Documentation is included in the ZIP file.  The documentation is also available separately at this location:https://github.com/pwillard/Blender_MSTS_ORTS_Exporter
+The exporter documentation is maintained with the project on GitHub: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter
 
 ****
 
@@ -964,7 +964,7 @@ You can use the DECIMATE operation in Blender to quickly reduce the polycount of
 ACE files are no longer mandatory for {OR} and if you do not plan to make your work compatible with {MSTS}, the DDS format is a good choice, provided you can get your PNG or TGA files converted to DDS format.
 
 [NOTE]
-Pete Willard's ACE2DDS tools are still under development. The project can batch-convert ACE files to PNG files, but the older `tex2dds.exe` path is no longer being maintained because of problems with the DDS files it generated. A newer tool, `png2dds`, has been created instead. It relies on ImageMagick to generate the final DDS output files from PNG sources. You can find the tools at: https://github.com/pwillard/Ace2DDS
+Pete Willard's ACE2DDS tools are still under development. The project can batch-convert ACE files to PNG files, and the version 1.2 start-over release changed the PNG to DDS workflow. The older Microsoft DirectX `tex2dds.exe` / `texconv` path is no longer used because of problems with the DDS files it generated. The current `png2dds.ps1` PowerShell script relies on ImageMagick to generate DDS output from PNG sources. You can find the tools at: https://github.com/pwillard/Ace2DDS
 
 ==== Next Steps
 
@@ -1032,24 +1032,24 @@ On a 3rd LOD setting, you might want to just remake shapes from cube and cylinde
 
 (((Blender, "Workflow")))
 
-Everyone has a way of working creative projects that suits their comfort level.  The sequence of steps that you become comfortable with that you add to your repertoire of knowledge, or in other words, your workflow.  This is based on the tools that you become comfortable with using or maybe even processes a scripts that you write or acquire for yourself to help with your projects.
+Everyone has a way of working creative projects that suits their comfort level. The sequence of steps you become comfortable with becomes your workflow. This is based on the tools you use, the processes you trust, and any scripts you write or acquire to help with your projects.
 
 As a quick discussion of workflow, the author will share their workflow as a reference.
 
-Once you start a project, it will go through many revisions as you make progress on it.  Save a fresh numbered copy after milestones are reached or when decisions are made on how best to proceed.  You can fall back on older revisions of the chosen fork doesn't work out.
+Once you start a project, it will go through many revisions as you make progress on it. Save a fresh numbered copy after milestones are reached or when decisions are made about how best to proceed. You can fall back to older revisions if the chosen fork does not work out.
 
-Once the model is underway, the initial stages of texturing begin.  A way to start this process is to generate a blank PNG file of the size you need in the UV Editing tab, make sure to save it. Then in Materials tab, create a new BSDF material - Image texture and  use that newly created PNG file for the texture.  It will still be default black.  Now assign that material to the model, not caring about the current UV mapping fore the moment. Back in the UV Editing tab, you would map your UVs in the item using the method that makes the most sense for the object.  With the mapping now done on that object or objects, you would use the EXPORT UV MAP to get an outline layout `.png` file that you can import into a program like "Affinity Studio".  From here, you can map proper texture imagery to the UV Map outlines you exported.
+Once the model is underway, the initial stages of texturing begin. One way to start is to generate a blank PNG file at the size you need in the UV Editing tab, then save it. In the Materials tab, create a new BSDF material with an Image Texture node and use that newly created PNG file for the texture. It will still be default black. Assign that material to the model without worrying about the current UV mapping yet. Back in the UV Editing tab, map your UVs using the method that makes the most sense for the object. With the mapping done, use Export UV Layout to create an outline `.png` file that you can import into a program like Affinity. From there, you can map proper texture imagery to the UV map outlines you exported.
 
 [NOTE]
-With AFFINITY, when importing the UVMAP layout `.png` file, use the PLACE option and paste anywhere on the screen, then in the "transform" panel, set the location to coordinate X=0, y=0 and placement will be perfect.
+With Affinity, when importing the UV map layout `.png` file, use the Place option and paste anywhere on the screen. Then, in the Transform panel, set the location to X=0 and Y=0. The placement will be aligned correctly.
 
-Create an export folder where you assemble all of the required bits to migrate the project to {OR}. This is a folder where you export the `.S` file from Blender, but it is also where you push the `.DDS` files and `.wag` or `.eng` files and any other items needed by {OR} to make the content usable.
+Create an export folder where you assemble all of the required files for {OR}. This is where you export the `.S` file from Blender, and it is also where you place the `.DDS` files, `.wag` or `.eng` files, and any other items needed by {OR} to make the content usable.
 
-Since within Blender you are likely using PNG files for textures, you will need to develop a conversion process for PNG to ACE or PNG to DDS.  DDS is recommended, since the conversion is a bit simpler and not based on a proprietary format.  A script was developed that handles this process on a folder or individual file basis, making this process rather easy. The script can be found in the `SCRIPTS` folder of the GITHUB page.
+Since you are likely using PNG files for textures inside Blender, you need a conversion process from PNG to ACE or PNG to DDS. DDS is recommended because the conversion is simpler and is not based on a proprietary format. A script was developed to handle this process for a folder or an individual file. The script can be found in the `SCRIPTS` folder of the GitHub project.
 
-In the final stages of the project, you will want to generate the Ambient Occlusion map.  Refer to the ambient occlusion section for details.  When the AO Bake image has been generated, `place` the AO layer into AFFINITY, at location 0,0, and set the layer at the top of the stack and change opacity to around 30% and  change layer mode from "normal" to "multiply".  
+In the final stages of the project, generate the Ambient Occlusion map. Refer to the ambient occlusion section for details. When the AO bake image has been generated, place the AO layer into Affinity at location 0,0. Put the layer at the top of the stack, set opacity to around 30%, and change the layer mode from "Normal" to "Multiply".
 
-With this bake layer added, export once again to PNG and convert to DDS and place in the EXPORT folder.  Test the content at this point using the TSRE "shapeviewer" option.
+With this bake layer added, export to PNG again, convert to DDS, and place the result in the export folder. Test the content at this point using the TSRE shape viewer option.
 
 Look for mistakes or mapping issues and repeat the process until pleased with the results.
 
@@ -1476,7 +1476,7 @@ Modeling a complex object like a Ford van from the 1980s may require several ite
 Example Session
 
 
-==== Importing Model Objects
+==== Rolling Stock: Importing Model Objects
 
 There are going to be times when you have the ability to save time by importing previous work or importing model objects that people have shared.  
 

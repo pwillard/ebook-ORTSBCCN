@@ -35,8 +35,8 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: 2.6.0.0
-:revdate: 2026-08-04
+:revnumber: 2.6.0.1
+:revdate: 2026-08-10
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
@@ -70,7 +70,7 @@ This guide covers Blender 2.8 and newer, with current notes checked against Blen
 Blender 5 uses a newer Python API than the 4.x LTS series. Core modeling workflows remain familiar, but add-ons, exporters, and screenshots may differ. If an exporter or add-on fails in Blender 5, try Blender 4.5 LTS until that tool is updated.
 
 [NOTE]
-The Long Term Support (LTS) version of Blender is often the safest choice because it receives bug fixes without major feature or interface changes. Blender {LTSversion} is the current LTS baseline for this notebook.
+The Long Term Support (LTS) version of Blender is often the safest choice because it receives bug fixes without major feature or interface changes. {LTSversion} is the current LTS baseline for this notebook.
 
 === About The Author
 
@@ -83,7 +83,7 @@ Writing in 3rd person is weird.
 
 This document is made possible with the contributions and feedback from people like: 
 
-* Wayne Campbell    - Author of the Open Rails Train Simulator Exporter for Blender
+* Wayne Campbell    - Original author of the Open Rails Train Simulator Exporter for Blender
 * Erick Cantu       - Creator of NAVS - North American V-Scale products for Open Rails, available at TigerTrains.com
 * Michelle McKell   - A well known content re-skinner for Open Rails
 * Dave Nelson       - Known as Genma Saotome on the Elvas Tower forums that has contributed a LOT to the community

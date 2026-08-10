@@ -400,7 +400,7 @@ Textools Download: https://github.com/franMarz/TexTools-Blender
 Textools Addon Video: https://www.youtube.com/watch?v=rEcJQ6Jdue4
 
 
-Lets do a quick review of terms again...
+Let's do a quick review of terms again...
 
 (((Texturing, "Common Terms")))
 
@@ -420,7 +420,7 @@ Tiling Texture:: - is a small, seamless image or pattern that is repeated, or "t
 
 Swatches:: - I don't think this is an official name - just what I call it. It's using small little swatches of material - that won't have any detail or baking applied - used on small parts, edges, or parts that aren't seen often.
 
-Baking:: - refers to the process of capturing detailed lighting, shading, and other surface information, such as ambient occlusion and reflections, and storing it in a texture map. These affects are created with Ray Tracing and add a great deal of "pop" to any model.
+Baking:: - refers to the process of capturing detailed lighting, shading, and other surface information, such as ambient occlusion and reflections, and storing it in a texture map. These effects are created with ray tracing and add a great deal of "pop" to any model.
 
 Ray Tracing:: - is a rendering technique used in computer graphics to simulate the way light interacts with objects in a scene to produce highly realistic images.
 
@@ -435,7 +435,7 @@ PBR Materials:: - Physically Based Rendering (PBR) uses multiple texture maps to
 glTF:: - A model source format supported by {OR} that can use PBR materials. The `.S` file format is still supported and is not going away.
 
 [TIP]
-Baking ambient occlusion layers require objects to occupy unique texture real estate - if you want to apply details or baked textures - you need to ensure no UV Island overlaps another. If you have used the "project from view" option while UV Mapping, AO Baking will be troublesome unless care is taken to deal with overlaps and hidden faces.  Baking also has an option to adjust the margin size and it is probably best to keep the margin to a minimum.
+Baking ambient occlusion layers requires objects to occupy unique texture real estate. If you want to apply details or baked textures, make sure no UV island overlaps another. If you have used the "Project From View" option while UV mapping, AO baking will be troublesome unless care is taken to deal with overlaps and hidden faces. Baking also has an option to adjust the margin size; keep the margin as small as practical while still preventing texture bleeding.
 
 .Scott's Example
 
@@ -818,15 +818,17 @@ image::images/_measure00.png[]
 
 (((Perspective Distortion)))
 
-For texture pre-processing, particularly for photo-based texturing, I use the following tool: https://renderhjs.net/shoebox/ to perform a fix for perspective warping when the photo is not taken directly square on the object.  It requires ADOBE AIR to run, which is available from Harman International since Adobe stopped supporting it. https://airsdk.harman.com/download
+For texture pre-processing, particularly for photo-based texturing, use a perspective-correction tool when the photo was not taken square-on to the object. The older tool many content creators used for this was Shoebox: https://renderhjs.net/shoebox/. Shoebox still works for some users, but it requires the Adobe AIR runtime, which is now maintained by Harman rather than Adobe: https://airsdk.harman.com/download
+
+For current work, try TextureRipper first. It provides a modern replacement for the texture-ripping workflow without depending on the abandoned Adobe AIR runtime.
 
 image::images/shoebox1.jpg[]
 
-The "texture ripping" option in the program allows you to clip pieces from a master image and you are able to adjust the alignment while you are doing it.  This is a great way to get a good start on your photo based textures.  
+The "texture ripping" option in Shoebox allows you to clip pieces from a master image and adjust the alignment while you do it. This is a useful way to get a good start on photo-based textures if you already have Shoebox installed.
 
 image::images/radio1.png[]
 
-The image to be manipulated should be in your copy/paste buffer before starting the texture tipping process.  You then click 4 adjustment points on the image and the program will automatically adjust the image to fit the 4 points. 
+The image to be manipulated should be in your copy/paste buffer before starting the texture-ripping process. You then click four adjustment points on the image, and the program adjusts the image to fit those four points.
 
 image::images/ripper.jpg[]
 
@@ -834,15 +836,13 @@ You can then save the image to your drive as a texture file you can import into 
 
 image::images/radio.png[]
 
-=== Alternative to Shoebox - TextureRipper
+=== TextureRipper
 
 (((TextureRipper, Tools)))  
 
-TextureRipper is a tool that can be used to fix perspective distortion in photos for texture creation. It is a free and open-source software that allows you to easily adjust the perspective of your images, making it easier to create accurate textures for your 3D models. You can download TextureRipper from its GitHub repository: https://github.com/raycastly/texture-ripper
+Raycastly TextureRipper is a free, open-source tool for fixing perspective distortion in photos used for texture creation. It lets you extract usable textures from angled source photos so they become easier to turn into accurate textures for 3D models. Download it from its GitHub repository: https://github.com/raycastly/texture-ripper
 
-Raycastly Texture Ripper is a tool that lets you extract textures from angled or perspective photos — making it easier for artists and game developers to turn real-world images into usable assets.
-
-This tool is based on the Shoebox Texture Ripper. The author didn't like the controls on that tool and the fact that it was relying on deprecated software. So they decided to build their own version.
+TextureRipper was inspired by the Shoebox Texture Ripper, but it uses a newer interface and avoids the deprecated runtime dependency. If you are starting fresh, this is the better first choice.
 
 image::images/matches-demo.jpg[]
 
@@ -927,10 +927,12 @@ It's really just easier to use a tool like Paint.net for creating the `.DDS` fil
 
 ACE → PNG → DDS Conversion Tools - These utilities simplify working with Microsoft Train Simulator (MSTS) and Open Rails legacy ACE texture formats. https://github.com/pwillard/Ace2DDS/releases
 
-The download contains two tools:
+ACE2DDS went through a start-over release in version 1.2. The older Microsoft DirectX `tex2dds.exe` / `texconv` path has been replaced because it did not generate reliable DDS output for this workflow. Current PNG to DDS conversion is handled by the PowerShell `png2dds.ps1` script, which uses ImageMagick.
+
+The download contains these main tools:
 
 * `ace2png.exe` - This tool converts the ACE texture(s) file to a PNG file.
-* `tex2dds.exe` - This tool converts the PNG file(s) to a DDS texture file.
+* `png2dds.ps1` - This PowerShell script converts PNG file(s) to DDS texture files using ImageMagick.
 
 Both tools are command-line tools, so you can run them from a command prompt or terminal window. _Items in brackets are optional arguments._
 
@@ -942,16 +944,16 @@ usage: ace2png.exe [-h] [-o OUT] source
 
 Replace `input.ace` with the path to the ACE texture file you want to convert, and replace `output.png` with the path where you want to save the PNG file.
 
-To use the `tex2dds.exe` tool, run it with the following command-line arguments:
+To use the `png2dds.ps1` tool, run it from PowerShell 7 or newer with the following command-line arguments:
 
 ```
-usage: tex2dds.exe [-h] [-o OUT] [--texconv TEXCONV] [--srgb] source
+png2dds.ps1 [[-Source] <path>] [[-Destination] <path>] [-Recursive]
 ```
 
-Replace `input.png` with the path to the PNG file you want to convert, and replace `output.dds` with the path where you want to save the DDS file.
+`Source` can be a folder of PNG files, `Destination` defaults to a `dds` folder, and `-Recursive` processes PNG files in subfolders. The script checks the image channels with ImageMagick and selects DXT1 for images without alpha and DXT5 for images with alpha.
 
 [TIP]
-You can also process entire folders of ACE texture files at once with `ace2png` if you supply a folder name as the "source" and DDS file conversions with `tex2dds` if you supply a folder name as the "source".
+You can process entire folders of ACE texture files at once with `ace2png` if you supply a folder name as the source. For PNG to DDS conversion, run `png2dds.ps1` on a folder and let it write the converted files to the destination folder.
 
 
 
@@ -1229,7 +1231,7 @@ This model uses a single 4K texture for the external model called generic_sd40-2
 
 When ready to bake, I create a new 4K image texture node called AO_BAKE_4096.png. You can see this node below the principled BSDF but it is not connected to anything. I leave it below and to the right of the Principled BSDF so that it is easy to find and to remind me not to connect it to anything.
 
-In the Render Properties tab I have set the samples to 2048 which is high but gives a fine high resolution AO. Denosie is ticked as it improves the quality of the bake. I use the OptiX Denoiser as this is faster on my graphics card. Bake type is set to Ambient Occlusion. Device is set to GPU compute because Nvidia 2070 is considerably faster at baking than CPU. Version 4 of Blender can use the Vulkan engine which is supposed to be faster than OpenGL which is limited to being single threaded as I understand it. Test both to see which is faster for you using Edit > Preferences > System > Display Graphics > Backend > Vulkan or OpenGL
+In the Render Properties tab I have set the samples to 2048, which is high but gives a fine high-resolution AO bake. Denoise is enabled because it improves the quality of the bake. I use the OptiX Denoiser because it is faster on my graphics card. Bake type is set to Ambient Occlusion. Device is set to GPU Compute because my Nvidia 2070 is considerably faster at baking than the CPU. Current Blender versions can use the Vulkan display backend, which may be faster than OpenGL on some systems. Test both to see which is faster for you using Edit > Preferences > System > Display Graphics > Backend > Vulkan or OpenGL.
 
 I always bake at least 2 objects at the same time. If I bake a single object I get a black background for some reason. If I have 2 or more objects selected when baking, I get a transparent background which is what I want when importing into my 2D graphics program.
 
@@ -1266,14 +1268,14 @@ If you get unexpected black areas in your bake then that can be caused by differ
 
 {AO} Baking is potentially a confusing task in Blender. Here is an alternate method for baking ambient occlusion if you want a bit more control over the process.
 
-When Baking occlusion, Here are some general tips (From Wayne Campbell):
+When baking occlusion, here are some general tips adapted from Wayne Campbell's notes:
 
-1. Gather parts that will receive{AO} into a collection to make them easy to select.
+1. Gather parts that will receive {AO} into a collection to make them easy to select.
 2. Ensure the UV Maps for those parts do not wrap off the edge of the texture sheet.
-3. Coplanar surfaces are a problem, including two sided, they bake black.
+3. Coplanar surfaces are a problem, including two-sided surfaces; they may bake black.
 4. Set 'Render Engine' to Cycles.
-5. Set Render Max Samples low eg 8, for testing, high for better quality , eg 128, 256 etc
-6. If your model has secondary LOD's ensure they don't cast a shadow on your primary model, use 'Disable In Render' in the outliner
+5. Set Render Max Samples low, such as 8, for testing. Use higher values such as 128 or 256 for better final quality.
+6. If your model has secondary LODs, ensure they do not cast a shadow on your primary model. Use 'Disable In Render' in the outliner.
 
 [WARNING]
 When baking {AO}, you should select at least 2 objects at the same time. If you select only one object, the bake will be black. If you select more than 2 objects, the bake will be properly transparent.
@@ -1283,16 +1285,16 @@ When baking {AO}, you should select at least 2 objects at the same time. If you 
 
 To bake {AO} in Blender, you can use the Bake tool in the Render tab of the Properties panel. Here's a step-by-step guide:
 
-* Select the object or objects that you want to bake the{AO} for.
+* Select the object or objects that you want to bake the {AO} for.
 * In the Properties panel, go to the Render tab and then click on the Bake tab.
-* In the Bake tab, set the Bake Mode to clusion.
-* Set the Samples value to the number of samples you want to use for the{AO} bake. The higher the value, the more accurate the{AO} will be, but the longer the bake will take.
+* In the Bake tab, set the Bake Mode to Ambient Occlusion.
+* Set the Samples value to the number of samples you want to use for the {AO} bake. The higher the value, the more accurate the {AO} will be, but the longer the bake will take.
 * Set the Margin value to add a margin around the baked texture to prevent texture bleeding.
-* Set the Space to either "Object" or "World" depending on whether you want the{AO} to be baked in object space or world space.
+* Set the Space to either "Object" or "World" depending on whether you want the {AO} to be baked in object space or world space.
 * Check the "Clear" box to clear the image before baking.
-* Check the "Normalized" box to normalize the{AO} values, which can help with artifacts and banding.
-* Click the "Bake" button to start the{AO} bake.
+* Check the "Normalized" box to normalize the {AO} values, which can help with artifacts and banding.
+* Click the "Bake" button to start the {AO} bake.
 
 [NOTE]
-The{AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the{AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the{AO} effect to your object.
+The {AO} bake can take some time, depending on the complexity of the objects and the number of samples you are using. Once the bake is complete, the {AO} map will be saved as an image in the UV/Image Editor. You can then use this image as a texture to apply the {AO} effect to your object.
 

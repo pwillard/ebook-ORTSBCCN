@@ -107,6 +107,7 @@ Recommended::
 
 Optional::
 * If you already use _Context.exe_ or _Sublime_ for text editing, they can still be useful. CONTEXT is abandoned, but it had a useful syntax highlighter for ENG and WAG configuration files. For current work, Visual Studio Code is the safer recommendation; an ENG/WAG syntax-highlighting project is available at https://github.com/pwillard/engwag.
+* If you are using _Visual Studio Code_, I recommend the _ORTSFileSupportForVSC_ syntax highlighter from `matejpacha` on GitHub: https://github.com/matejpacha/ORTSFileSupportForVSC/releases.
 * If you are also making models for Trainz Simulator, note that the latest versions of Trainz will accept Blender's native FBX exporter output.
 
 [NOTE]

@@ -1,75 +1,76 @@
-= Making Content for {OR}
-
-About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} remains compatible with most existing {MSTS} content while adding new features and correcting long-standing Microsoft/Kuju limitations. In many places you will see MSTS and ORTS terms used interchangeably, but keep in mind that {OR} can handle more complex models, 32-bit textures, longer viewing distances, and simulator features that never existed in {MSTS}.
+= Making Content for {OR} 
+ 
+  
+About ORTS:: The Open Rails Train Simulator is an open source project that exists primarily because the promised Microsoft Train Simulator 2.0 never happened. {OR} attempts to be backwardly compatible with nearly all existing {MSTS} content while adding many new features and corrects old issues that existed in the Microsoft/Kuju releases.  Very often, you can use MSTS and ORTS terms interchangeably, but keep in mind that ORTS can handle higher poly count (more complex) models than {MSTS} can as well as having many other changes added that are unique to {OR}. 
 
 (((Open Rails, "The Open Rails Train Simulator, free and open source project" )))
 
 OPEN RAILS::
-Open Rails can maintain good frame rates with a higher number of polygons than {MSTS}, so curves can be smoother and details can be modeled directly when it makes sense. Open Rails also displays 32-bit color, while {MSTS} is limited to 16-bit color, and it supports longer viewing distances that can be adjusted from about 2 km out to 10 km.
+The key advantage that Open Rails currently offers over Microsoft Train Simulator is that good frame rates can be maintained with a much higher number of polygons, so curves can be smoother and more detail can be modelled. Open Rails also displays 32-bit color (whereas Microsoft Train Simulator is limited to 16-bit). Another advantage is the longer viewing distances, adjustable from 2km out to 10km.
 
 _from Open Rails.org website_
 
-Since this document is primarily about using Blender, other 3D modeling tools are mentioned only where they provide useful contrast or conversion context.
+Since this document will primarily be about using Blender, other 3d modeling tools will not be mentioned much unless it's for a point of contrast.
 
 <<<
 
 == Common Terms and Definitions
-(((Making Content, Terms and Definitions)))
+(((Making Contentm TERMS. DEFINITIONS)))
 
 There is just no way to avoid using the jargon related to 3D modeling and content creation. Here are some common terms and definitions that you should become familiar with:
 
-ALPHA	::	 A bitmap with a portion of the image masked out, making that area appear transparent in the simulator.
+ALPHA	::	 A bit map with a portion of the image that is masked-out, making the location appear see-though in the image.		
 DISTANCE LEVELS	::	 See Level of Detail (LOD)
-EDGE	::	 A line segment connecting two vertices.
-ENG FILE	::	 A file that describes the simulator details for a locomotive or powered unit. It contains values for traction, braking, couplers, lights, sounds, and other behavior.
-FACE	::	 A surface created by three or more vertices.
+EDGE	::	  A line created by the linking of 2 vertices ( known as a "2-dimensional object")		
+ENG FILE	::	 A file that describes to the Simulator the details of an Asset to be used as an ENGINE within {OR}. It contains physical details such as Motive and Braking values as well as Coupler type, etc.  		
+FACE	::	  A surface created by 3 or more vertices.	
 FOOBIE	::    A model made specifically lacking in detail to allow many variants to be made using a single base model, relying on the TEXTURE to define the details and not the actual 3D objects. "Foobie" is a contraction of "fake boobies".   	
-HARD SURFACE MODELING	::	 A generalized term for modeling objects such as vehicles, buildings, roads, tools, and machinery. Hard-surface work usually relies on standard mesh techniques and primitives such as cubes, cylinders, planes, cones, and torus objects.
-HDRI	::	 HDRI is short for High Dynamic Range Image. Environment maps or HDRI maps are one of the quickest ways to light a 3D scene and achieve natural-looking results in Blender because they capture real-world lighting across a wide brightness range.
-HIERARCHY	::	 The parenting relationship between objects in a shape. Child objects inherit movement from their parent but can still have their own local transforms.
-LEVEL OF DETAIL	::	 (LOD) Distance values at which the base model is replaced by reduced-poly versions because fine detail cannot be seen at long range. Higher-distance LOD models should usually contain less detail. There are no universal LOD ranges, but you should consider using them for complex models.
-MANIFOLD SHAPE	::	 A manifold shape is a 3D object that is considered watertight. Its vertices, faces, and edges are connected so that if the object were filled with water, none would leak out. A default `cube` primitive is an example of a manifold shape.
+HARD SURFACE MODELING	::	 A generalized term for modeling objects that represent things like vehicles, buildings, weapons, roads. These make use of the more standard mesh techniques and objects like cube, cylinder, plane, cone, torus etc.		
+HDRI	::	 HDRI is short for High Dynamic Range Image. Digital cameras only have a limited dynamic range â€” that's why some areas of a photo appear darker than they do in real life. HDRIs give photo editors a chance to brighten the corners and create an image that looks more natural.  Environment maps or HDRI maps are one of the most efficient and quickest ways to light your 3D scene and achieve realistic results in Blender. HDRIs are essentially a snapshot of the real-world lighting which contains accurate lighting detail through high dynamic range imaging (HDRI)
+HIERARCHY	::	 The assignment of parenting of objects within a shape so that an object's children will only move when they do but they can move independently too but are always affected by their parent.
+LEVEL OF DETAIL	::	 (LOD) Distance values at which the base model is replaced by reduced poly count shapes to account for the inability to see details at a distance.  Higher values should have less detailed models.  There are no hard rules about LOD ranges, but you should try to use them.		
+MANIFOLD SHAPE	::	   A manifold shape is a 3D object that is considered to be watertight.  The vertices, faces and edges are aligned and connected in such a way that if you poured water into the INSIDE of the object, none would leak out.  A default `cube` primitive is an example of a manifold shape.
 MATERIAL	::	 A material is assigned a texture with additional components such as lighting palette and shading.		
-MESH	::	 A 3D model made from vertices, edges, and faces. Textures and materials are applied to the mesh after the geometry exists.
-NGON	::	 A face with five or more vertices. Many Blender tools can work with n-gons during modeling, but exported real-time content often behaves best when final faces are kept simple and predictable.
-NORMAL	::	 A normal is a direction vector perpendicular to a face. Normals control which way a face points and affect lighting, culling, and texture display.footnote:[See https://en.wikipedia.org/wiki/Normal_(geometry)]
+MESH	::	  A 3D Model "shape" made up of 1 or more "faces" without texture		
+NGON	::	  Is a face with 5 or more vertices. Many Blender tools and features rely on the underlying mesh to be made of NGONS and will not work with triangulated faces.		
+NORMAL	::	 A Normal is a vector in 3D-space that is perpendicular to two other vectors (determined by two edges of a face)footnote	[See Wiki https	//en.wikipedia.org/wiki/Normal_(geometry) ] A Normal controls the facing direction of applied textures.
 OBJECT	::	  A 2-dimensional object has length and height, but no depth. Examples of 2D objects are planes, polygons and lines. A 3-dimensional object has length, height, and depth. Examples of 3D objects are cubes and spheres.		
 ORGANIC MODELING	::	 Modeling techniques that use a more sculpted approach for things like animals, people, plants, trees, and even automobiles. There are specialized modeling tools and techniques for this including _SURFACE NURBS_ (Non-uniform rational basis spline, Google it ) and the Sculpting tab in Blender. Blender's Sculpting modes are used for organic modeling and will not be discussed in this document.		
 ORIGIN	::	 See Pivot Point		
 PIVOT POINT	::	 A position used to align the shape to its environment, also known as its origin.		
-POLY COUNT	::	 The total number of polygons used to create a 3D mesh. It is one rough indicator of how complex a model is.
-POLYGON	::	 A planar face in a mesh. Its edges define its boundary, and its vertices are the points where those edges meet. Blender commonly refers to triangular faces as `tris` and four-sided faces as `quads`.
-QUAD	::	 A face made from four vertices.
-SHAPE	::	 A finished three-dimensional object ready to be placed within the simulator environment.
-SMOOTHING	::	 A shading method that controls how light appears across individual polygons or groups of polygons.
-TRI	::	 A face made from three vertices, also called a triangle.
-UV	::	 The process of projecting a 2D image onto a 3D model's surface for texture mapping. The letters `U` and `V` are used for the 2D texture axes because `X`, `Y`, and `Z` are already used for 3D object space.
-VERTEX	::	 A point in 3D space with X, Y, and Z coordinates. The plural is vertices. Edges and faces are built from vertices.
-WAG FILE	::	 A file that describes the simulator details for a wagon or unpowered item of rolling stock. It contains values for braking, couplers, lights, sounds, and other behavior.
+POLY COUNT	::	  The "poly count" is a total of the number of "polygons" used to create a 3d mesh. A polygon is made up of vertices. It is used as an indicator of how complex a model is.		
+POLYGON	::	    Refers to the planar face of this closed shape, edges are the straight edges that define it, and points/vertices are where those various edges connect with one another. Blender calls these "tris", short for faces made of triangles and "quads", short for 4 vertex faces. 		
+QUAD	::	  Faces made up of 4 vertices		
+SHAPE	::	 A three dimensional object that is finished in all aspects and ready to be placed within the game environment.		
+SMOOTHING	::	 A smoothing group is a shade value that allows individual polygons to be lit by the game environment in different ways.		
+TRI	::	   Faces made up of 3 vertices, also referred to as triangles		
+UV	::	    UV is the 3D modeling process of projecting a 2D image to a 3D model's surface for texture mapping. The letters "U" and "V" denote the axes of the 2D texture because "X", "Y", and "Z" are already used to denote the axes of the 3D object in model space, while "W" (in addition to XYZ) is used in calculating quaternion rotations, a common operation in computer graphics.		
+VERTEX	::	    (Plural = vertices ) a point in 3d space with x,y,z coordinates, often used as part of a location where edges and faces meet.  		
+WAG FILE	::	 A file that describes to the Simulator the details of an Asset to be used as an WAGON within {OR}. It contains physical details such as Braking values as well as Coupler type, etc.  		
 
 
 Also, here are some design choices that you can make that you should clarify in the README section of your completed content.
 (((Content Design, "Choices")))
 
-Made for {MSTS}::	Meaning it can run in {MSTS} and usually in {OR}, but it may need WAG or ENG edits because some legacy physics values do not perform as well in Open Rails.
-Made for {OR} - no other files required::	Meaning it is configured specifically for {OR} and does not depend on outside route, stock, or texture packages.
-Made for {OR} - requires other add-ons:: Meaning it is configured for {OR}, but it requires additional downloads to work correctly. NAVS-based items are a common example.
-Made for {OR} but compatible with {MSTS}:: Meaning it runs in {OR} but has also been configured to remain compatible with {MSTS}. This usually takes more work than targeting {OR} only.
-Made for {OR} but requires {MSTS}:: Meaning it runs in {OR}, remains compatible with {MSTS}, and also requires files that only come from a {MSTS} installation.
-Made for {OR} but requires {MSTS} and other add-ons:: Meaning it is configured for {OR}, but it also requires {MSTS} files and additional third-party content.
+Made for {MSTS}::	Meaning it *can* run in ORTS, but it might need some editing to the WAG or ENG file since some Physics values from legacy {MSTS} might cause the vehicle to not perform optimally
+Made For ORTS - No other files required::	Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters
+Made for ORTS - but requires other add-ons::  Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters in mind but it will need additional files downloaded to work (often the case with NAVS-based items, for example)
+Made for ORTS but Compatible with {MSTS}:: Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} (This is more work than just running in {OR})
+Made for ORTS but requires {MSTS}::  Meaning it can run in {OR} but has been configured to also be compatible with {MSTS} and also requires files that only come with an installation of {MSTS} on the system
+Made for ORTS but requires {MSTS} and other add-ons:: Meaning it *can* only run in ORTS as it is configured specifically with {OR} configurations and parameters but also requires {MSTS} to be installed and relies on additional "default" products.
 
 Deciding on which option to use might be difficult, but you should try to make a decision based on the following criteria:
 
-* How comfortable are you with Open Rails and its content options?
+* How comfortable are you with the Open Rails and all of its content options?
 * How much effort do you want to put into this project?
 * What is your experience with 3D modeling in general (Train Sim Modeler, GMAX, 3D Canvas, etc.)?
 * What is your experience with 3D modeling in Blender?
-* What is your experience with 3D modeling for Open Rails compared to {MSTS}?
+* What is your experience with 3D modeling for Open Rails as compared to {MSTS}?
 * How much flexibility do you want to have with your content?
 
 .Author's Advice
 ----
-Start with the option that is easiest for you to understand, then adjust as you go. Some content developers are well-versed in Blender and can help with modeling questions, but keeping the first project simple will help you finish it. A `Made for Open Rails` project with no outside dependencies is a good starting point.
+Start with the option that is easiest for you to understand and then adjust as you go. Some content developers are well-versed in Blender and can help you with the modeling, but keeping it simple will help you get started faster.  Maybe just start with a `Made for Open Rails` only project, for example.
 ----
 
 [TIP]
@@ -82,43 +83,43 @@ To go over some of the steps involved in creating content for Open Rails, we wil
 
 (((Blender, "Getting Started")))
  
-* A mesh, also known as your 3D model.
-* Online resources and references. This area is still somewhat limited for {OR}-specific Blender work, but useful community references include https://www.trainsim.com and http://www.elvastower.com/forums/index.php.
-* A texture: a two-dimensional bitmap image that you apply to your model, also referred to as a skin.
-* A UV map for the mesh: the instructions for mapping your 2D texture to your 3D model. This is usually best done inside Blender, although dedicated UV tools can also be used.
-* A configuration file or set of files that describes your content to the simulator. For rolling stock this usually means a WAG or ENG file.
-* A thumbnail image, usually JPG or PNG. This is optional but helpful.
-* Instructions. Do not leave the work half done.
+* A mesh - also known as your 3D model
+* Online resources and references (This is an area that is somewhat lacking with regards to 3D modeling for ORTS, but these include https://www.trainsim.com/vbts/forum.php and http://www.elvastower.com/forums/index.php )
+* A texture - A 2-dimensional bitmap image (material) that you will apply to your model, also referred to as a 'skin'
+* A UVmap of the mesh - The instructions on how to map your 2-dimensional texture to your 3d model.  This is best done from within Blender, but you can also use a UV mapping program like UVLayout or Substance Painter.
+* A configuration file or set of files that describes your content to the simulator (This is also known as a WAG or ENG file)
+* A thumbnail jpg (optional but helpful)
+* Instructions - Let's not leave the work half done
 
-=== Recommended Software and Tools
+=== Programs you should have:
 
-Required::
-* {LTSversion} is the most current release. Blender 4.5 LTS can also be used for maximum add-on compatibility because Blender 5 is relatively new.
-* The {MSTS}/{OR} exporter add-on maintained by PWILLARD on GitHub.footnote:[Download from https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter]
-* A bitmap editor with layers and PNG export, such as Affinity Studio, Paint.NET, GIMP, or Krita.
-* A text editor that handles Unicode files. _Microsoft Visual Studio Code_ is recommended.
+* A 3D program, {version} is recommended, but even the LATEST release - currently {BV} - should also be fine unless the *Blender's PYTHON API* has dramatically changed. (In the case of Blender 5.0, this is the case and the Exporter add-on will need to be updated.) 
+* An Exporter add-on for the {MSTS}/ORTS format, we will use Wayne Campbell's _S File Exporter_ from Elvas Tower web sitefootnote:[Download from https://github.com/pwillard/Blender_{MSTS}_ORTS_Exporter]
+* A paint program that has channels and layers (There are multiple options here)
+* A text editor that handles UNICODE files
 
-Recommended::
-* Blender's built-in UV and shader tools are enough for the workflows in this notebook. Third-party tools can help, but they are optional.
-* A metric conversion calculator. Google or a hand-held calculator is sufficient.
-* A scale calculator for converting dimensions from a scale drawing. There is one at http://www.railsimstuff.com.
-* A texture snipping or correction tool. Windows has a built-in Snipping Tool, and TextureRipper is a modern option for perspective-correcting texture photos: https://github.com/raycastly/texture-ripper/releases. SHOEBOX can still be useful, but it depends on the abandoned Adobe AIR runtime.
+NOTE: If you are also making models for Trainz Simulator, note that the latest versions of Trainz will accept the native Blender FBX exporter file format as output. 
 
-Optional::
-* If you already use _Context.exe_ or _Sublime_ for text editing, they can still be useful. CONTEXT is abandoned, but it had a useful syntax highlighter for ENG and WAG configuration files. For current work, Visual Studio Code is the safer recommendation; an ENG/WAG syntax-highlighting project is available at https://github.com/pwillard/engwag.
-* If you are using _Visual Studio Code_, I recommend the _ORTSFileSupportForVSC_ syntax highlighter from `matejpacha` on GitHub: https://github.com/matejpacha/ORTSFileSupportForVSC/releases.
-* If you are also making models for Trainz Simulator, note that the latest versions of Trainz will accept Blender's native FBX exporter output.
+=== What the author uses:
+
+* 3d Modeler: {bv}
+* Bitmap tool (any one of these, interchangeably): Canva, Affinity Studio (free), or Paint.net
+* UV/Shader tool: Blender has this built in; 3rd party options exist (like Substance Painter ), however I don't use them.
+* Text Editor: _Microsoft Visual Studio Code_ 
+* Metric Conversion Calculator (I have one built into a hand-held calculator, but you can use Google for this as well)
+* A Scale Calculator: Converting dimensions from a scale drawing. (there is one on my website at http://www.railsimstuff.com )
+* A texture snipping tool, a) Windows has a built-in Snipping Tool, b) SHOEBOX, an Adobe Air Application, designed for use with game creation.
 
 [NOTE]
-Use metric measurements. Metric is Blender's natural working assumption for this notebook and is the safest choice for {OR} content. Even if your prototype dimensions come from U.S. customary drawings, convert them to meters early and keep the Blender scene in metric units.
+Using METRIC for measurements. It's the default measurement in Blender and {OR}.  It is realized that some people have become very attached to their _U.S. customary units_   but Metric does make for worldwide compatibility and in the end it just ends up being easier if you stick with it. 
 
-=== Why the Author Uses Blender 
+====  Why the Author Uses Blender 
 
 (((Blender, "Why Blender?")))
 
-From Pete Willard:: I started creating game content in 2002, primarily for {MSTS}. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax, SketchUp, and Blender. 3D Canvas was my favorite for many years, but I now use it mainly as a file-conversion tool. Blender {BV} has the tools I need for 3D modeling, plus active development and support.
+From Pete Willard:: In 2002, I started using 3D Software to create content for games, primarily for {MSTS}, and I have worked with different tools on different projects and in the end I found Blender to now be my personal favorite. I have used Abacus Train Sim Modeler, 3D Canvas, Gmax and Sketchup and while 3D Canvas was my favorite for many years, my use of it now is only as a file format conversion tool. {BV} has everything I need to be making 3D models and includes many things that 3D Canvas doesn't have, including active technical support.  
 
-== Why Do Many People Use Blender to Make Content?
+== Why Many Other People Use Blender to Make Content?
 
 Blender is a powerful and versatile 3D modeling and animation software that has gained popularity for creating game assets, among other things. Here are some reasons why you might consider using Blender for making game assets:
 
@@ -132,25 +133,38 @@ Asset Optimization:: Blender provides tools to help optimize your assets for rea
 
 Community and Resources:: Blender has a large and active community of users, artists, and developers. This means there are plenty of tutorials, forums, and resources available to help you learn and improve your skills.
 
-Non-Destructive Workflow:: Blender supports non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
+Non-Destructive Workflow:: Blender supports a non-destructive modeling techniques through modifiers and procedural workflows, allowing you to make changes to your models without losing the original data.
 
 Constant Development:: Blender's development is ongoing, with new features and improvements being added regularly. This ensures that the software stays up-to-date with industry trends and user needs.  In fact, Blender might get updates faster than you can keep up.
 
 Ultimately, the choice of using Blender for making game/simulator assets depends on your specific needs, preferences, and familiarity with the software. If you're looking for a robust and cost-effective (free)  tool with a wide range of capabilities, Blender is definitely worth spending the time to learn and experiment with.
 
-To export your model for use with {MSTS} or {OR}, use the PWILLARD-maintained Blender MSTS/Open Rails exporter add-on for {MSTS}-format `.s` files.
+To export your model for use with {MSTS} or {OR}, use Wayne Campbell's Blender MSTS/Open Rails exporter add-on for {MSTS}-format `.s` files.
+
+
+=== What I Can Recommend:
+
+* 3D Modeler: Blender {LTSversion} or the current stable {BV} release is recommended. Blender 3.6 LTS can still be useful for older workflows, but Blender 2.79-era workflows are no longer covered here. Did I mention that Blender is free?
+* Bitmap tools: _Affinity Photo_, _Paint.NET_ (free), _GIMP_, _Krita_, or _PaintShop Pro_ if you already have it.
+* UV tool: Blender's built-in UV and shader tools are enough for the workflows in this notebook. Third-party tools can help, but they are optional.
+* Text Editor: _Microsoft Visual Studio Code_ , _Context.exe_ or _Sublime_ 
 
 .Author's Note:
 ****
-Much of this document was created with Blender {older} and updated while using Blender {BV}.
+Much of this document was created with Blender 3.6 LTS and updated while using Blender {BV}.
 ****
+
+[NOTE] 
+CONTEXT is an abandoned editor, but it had a useful syntax highlighter for ENG and WAG configuration files. For current work, Visual Studio Code is the safer recommendation; an ENG/WAG syntax-highlighting project is available at https://github.com/pwillard/engwag
+
+(((Context, "An old but useful text editor")))
 
 === How to Install Blender
 
 (((Blender, "Installation")))
 
 [NOTE]
-Blender versions are released regularly. This notebook assumes a 64-bit Windows installation. The safest choice is the current `LTS` release, while the latest stable version is also suitable if the exporter add-on supports it. This document is currently being checked against Blender {BV}.
+According to Blender.org, new Blender versions are released regularly. This notebook assumes a 64-bit Windows installation. The safest choice is the current `LTS` release, while the latest stable version is also suitable if the exporter add-on supports it. This document is currently being checked against Blender {BV}.
 
 
 (((Blender, "Installation")))
@@ -167,11 +181,11 @@ If you install Blender for FREE from STEAM, the STEAM Library interface will aut
 (((Blender, "Installed via Steam")))
 
 [NOTE]
-Between version updates, Blender developers may move some interface features. You may not see the exact same screens shown in this document.
+Between each version update, the Blender developers might move some user interface features around a bit.  You therefor might not see the exact same screens shown in the examples included in this document.
 
 Let's use the Blender installer from the *Blender.org* website. https://Blender.org/download/
 
-The LTS version is linked from Blender's download page under "Looking for Long-Term Support?" It can also be found here: https://www.blender.org/download/lts
+The LTS version will be a link on the page referred to on the "Looking for Long-Term Support? Get {version}".  It can be found here:  https://www.Blender.org/download/lts
 (((Blender, "Long Term release, LTS")))
 
 image::images/LTS.PNG[]
@@ -198,13 +212,13 @@ PS C:\Users\willard> $env:APPDATA
 C:\Users\willard\AppData\Roaming
 ----
 
-This means that Blender *USER DATA* such as `User Preferences`, default `Startup` blend files, and third-party add-ons will be stored in the `Blender Foundation` folder under
+This means that Blender *USER DATA* such as `User Preferences`, Default `Startup` Blend Files and 3rd Party Add-Ons will be stored in the `Blender Foundation` folder under 
 
 `C:\Users\willard\AppData\Roaming\` + 
 
 in other words, my config files and addons are located at + 
 
-`C:\Users\willard\AppData\Roaming\Blender Foundation\Blender\5.1\config`
+`C:\Users\willard\AppData\Roaming\Blender Foundation\Blender\4.5\config`   
 
 Below is an old video link, but you will get the general idea of how to install and initially configure Blender...  These steps are also contained below.
 (((Blender, "Installation Video")))
@@ -225,7 +239,7 @@ image::images/START1.PNG[align=center]
 
 [NOTE]
 You will only see this screen when your "User Preferences" file doesn't exist yet, so you won't see it again unless you do a fresh installation or you choose to delete the USER PREFERENCES file. +  
-`%appdata%\Blender Foundation\Blender\5.2\config\userpref.blend`
+`%appdata%\Blender Foundation\Blender\3.3\config\userpref.blend`
 
 Next, we will go through the steps of customizing our PREFERENCES settings.  These are located under the menu:EDIT[PREFERENCES] menu pull-down on the top bar. (Look for the Gear Icon)
 
@@ -322,9 +336,9 @@ In the menu:FILE PATHS[DATA] section:
 
 === Version Compatibility Notice
 
-The following section applies to Blender 3.0 and later. Changes introduced in Blender 4.2 and Blender 5 may affect some procedures, especially add-on installation.
+The following section applies to Blender version 3.0 and later. Be aware that certain changes introduced in Blender 4.0 or Blender 5.0 may affect the procedures described here, particularly those related to add-on installation.
 
-Beginning with Blender 4.2, many add-ons are managed as extensions and may be downloaded after installation instead of being bundled directly with Blender. This changes how some add-ons are found, installed, and enabled in newer versions.
+Beginning with Blender 4.0, many built-in add-ons are no longer bundled directly with the installer. Instead, they are downloaded and installed over the network after the initial setup. This change may alter the steps required for managing or enabling add-ons in newer versions.
 
 
 In the menu:FILE PATHS[Asset Libraries] section:
@@ -370,13 +384,13 @@ Official:: Add-ons that are written by Blender developers and/or are included wi
 Community:: Add-ons that are written by people in the Blender community.
 
 [NOTE]
-Blender 4.2 and newer include the Extensions system for finding and installing add-ons, themes, and other packages from Blender's online repository. This is the preferred method when an add-on is available there. _You must enable "Allow Online Access" in the Network settings under *System* preferences for this feature to work._
+Blender 4.x now includes a built-in Add-On Manager that allows you to install add-ons from the internet.  This is the preferred method of installing add-ons.  This is the method we will use to install the add-ons we need for {OR} when using the latest version of Blender.  There is also a new option called `Extensions` for add-ons that meet Blender's community standards. _You must have enabled the "Allow Online Access" from the network settings under "System" preferences for this feature to work._ 
 
 [TIP]
-In current Blender versions, search for extensions by name or category, then click *Install* beside the item you want. Blender downloads and installs it in the correct user location.
+With the latest versions of Blender, to install an add-on, click the "Install" button on the right side of the add-on you want to install.  This will download the add-on and install it in the correct location for Blender to find it.  You can also search for add-ons by name or category using the search bar at the top of the Add-ons window.
 
 
-===== Installing Add-Ons in Blender 4.2 and Newer
+===== Installing Add-Ons with Version 4.x
 
 Blender add-ons expand Blender’s functionality with new tools,
 import/export features, UI panels, and automation utilities. Add-ons
@@ -438,7 +452,7 @@ To reveal the installed location:
 |Ensure you selected a ZIP containing an `__init__.py` (not a folder inside another folder)
 
 |Add-on throws errors
-|Verify it supports your Blender version, especially if you are using Blender 5
+|Verify it supports Blender 4.3
 
 |Panel or tool not visible
 |Check the Sidebar (`N`) or menus under *File → Import/Export*
@@ -449,11 +463,11 @@ To reveal the installed location:
 
 TIP: Download add-ons from trusted sources (GitHub, Blender Market, etc.).
 
-==== Extensions in Blender 4.2 and Newer
+==== Also in Blender 4.x - Extensions
 
 image::images/editors_preferences_section_extensions.png[align=center]
 
-The Extensions system, introduced in Blender 4.2, provides an in-Blender way to find, install, update, enable, and remove approved packages.
+Here’s a detailed breakdown of the Extensions system introduced in Blender (starting around version 4.x), how it differs from the traditional Add-ons system, and how you can use it in your workflow.
 
 *What are “Extensions”?*
 
@@ -466,7 +480,7 @@ The key idea: make it easier to find, install, enable, update, and manage these 
 
 
 [NOTE]
-While “add-on” is still valid, newer Blender versions use “Extensions” for the broader package system, not just Python scripts.
+While “Add-ons” is still a valid term, in newer versions the UI uses “Extensions” to highlight the full range of extension types, not just Python scripts. 
 
 Enabling the feature: (first time only) +
 
@@ -516,7 +530,7 @@ Extensions are modular enhancements to the core software that can be enabled and
 ==== Enabling and Disabling Add-Ons
 
 [NOTE]
-Some add-ons that used to be bundled with Blender are now installed through Extensions. They are still available, but you may need to download them from inside Blender.
+Blender has discontinued including all of the built in add-on that it previously included in the installation distribution. You can still get them, you just need to install them from the internet now.
 
 Enable and disable an add-on by checking or unchecking the check-box of the add-on you have selected. Add-ons are immediately available when checked, or disabled when unchecked.
 
@@ -526,7 +540,7 @@ image::images/ADDON-SEARCH.PNG[align=center]
 
 Add-ons are grouped by their TYPE, such as MESH, IMPORT_EXPORT, CURVE, etc. 
 
-To get us started, here are a few Add-ons I recommend installing:
+To get us started, here are a few built in Add-ons I recommend installing:
 
 * MESH: `LoopTools`
 * MESH: `F2` 
@@ -564,18 +578,23 @@ We will initially start with some freely available 3rd Party add-ons from the Bl
 (((Blender, "Community Add-ons")))
 
 
-1) Blender MSTS/Open Rails Exporter
-* Available from the GitHub releases page: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/releases
-* Download the installable add-on ZIP from the latest release and install it from Blender's add-on installer.
-* See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA]
+1)  Blender28toMSTS
+* Available From: https://github.com/pwillard/Blender_MSTS_ORTS_Exporter/blob/main/Blender_MSTS_ORTS_Exporter.zip 
+* See the video:footnote:[Youtube https://youtu.be/j3AVw7s9qoA] 
+* Instructions say to unzip the file before using the Blender `install` option, as it won't install correctly due to the additional support files included with the distributed `.zip` file.
 * DOCS: https://github.com/pwillard/Ebook-MSTSORTSExporter/blob/main/MSTSORTSExporter.pdf
 
 2) Edge to Curve
 * Available From: https://github.com/Stromberg90/Scripts
-* A Python script to create curve shapes from edges that can be converted back to a mesh. It can be used to create handrails and pipes.
-* This is still valid, but its capabilities have largely been superseded by the Blender Extension named *ND* from HugeMenace.
+* A python script to create "Curves shapes from Edges" that can be converted back to a mesh.  It can be used to create handrails and pipes. 
 
-3) TrainSimTools
+3) Export To Blend
+* Available from: https://blendermarket.com/products/export-to-blend 
+* Price: $5.00
+* This add-on allows you to export your selected model object to a new `.blend` file.
+* It allows you to export the model to a `.blend` file with all the materials, textures, and textures coordinates and is useful when you want to create a library of *parts* for your 3D modeling.
+
+4) TrainSimTools
 * Available from: https://github.com/pwillard/TrainSimTools/releases/tag/v1.0.0
 * This is an optional add-on that is available to assist with setup and manipulation of the modeling process specific to MSTS/ORTS modeling.
 * For example, it will create the required "collections" setup on-the-fly so you don't have to hard-code the collection structure into your startup configuration.  This is helpful when you are working with multiple models where some of them are not Train Sime related. 
@@ -754,7 +773,7 @@ We will now have all of our basic user preferences and startup file options the 
 
 <<<
 (((Project, "Folders")))
-== Project Folder Structure
+== Folder structure
 
 The layout of your project development folder is completely personal depending on how you organize your work.  I'll share what I currently use as an example.
 
@@ -796,7 +815,7 @@ Blender's default point of view differs slightly in that it considers the FRONT 
 
 (((Content Creation, "Engine/Wagon Model Hierarchy")))
 
-For the Blender Exporter to properly process your model, you must have a "Collection" named `MAIN` in your scene. This is the root of your model hierarchy. Other exported collections will be children of this collection, but `MAIN` will not contain your model directly. Models are placed in sub-collections for each LOD, such as `MAIN_700` and `MAIN_2000`. These LOD collections contain the actual parts of your model.
+For the Blender Exporter to properly process your model, you must have a "Collection" named `MAIN` in your scene.  This is the root of your model hierarchy.  Other exported Collections will be children of this Collection but the `MAIN` collection is where you will place your model hierarchy. `MAIN` will not contain your model directly, as models will be placed in SUB COLLECTIONS for each {LOD}, for example MAIN_700, MAIN_2000 etc.  These LOD collections will contain the actual "parts" of your model.
 
 image::images/layout-h.png[]
 
@@ -811,7 +830,7 @@ image::images/heir.png[]
 The way to get the correct layout of a dual 2 axle `BOGIE` `WHEEL` arrangement is to have all *wheels* use the center of their axle as the pivot point and the bogie use its default center of mass as its pivot point. In general, all other parts in a model will all use world origin as the pivot point.  
 
 [NOTE]
-The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002, so it has become a standard _thing_ to do, but it is not a requirement for {OR}. The Blender MSTS/Open Rails exporter requires `MAIN` as the name of the _COLLECTION_ that contains your model objects.
+The primary body part mesh itself does not need to be called MAIN. Modelers have been using that as a convention since 2002 so it has become a standard _thing_ to do but it's not a requirement for {OR}. The Blender `S` file exporter by Wayne Campbell only requires that you use `MAIN` as the name of the _COLLECTION_ that refers to where your model objects reside.
 
 [WARNING]
 Be careful with selecting all objects in object mode and then applying "all transformations", as it will reset all objects to have their origin (pivot point) to be `world origin`. This would change the pivot points of the bogies and wheels, etc.
@@ -858,6 +877,90 @@ PANTOGRAPHTOP1
 	WIPERARMRIGHT1
 		WIPERBLADERIGHT1
 ----
+`
+
+=== OpenRails Animation
+
+The following list here is related to objects that need animations with keyframes.  The allowed prefixes for animated engine/wagon matrix names are listed and you can add anything after the listed text to have multiple matrices using the same animation trigger, 
+so "MIRROR" and "MIRROR_LEFT_1" would both be controlled by the mirror animation. 
+
+*Animated object list*: 
+
+[cols="2,3", options="header"]
+|===
+| Item / Pattern | Description
+
+| WIPER
+| Wiper animation
+
+| DOOR_A / DOOR_B / DOOR_C
+| Right door animation
+
+| DOOR_D / DOOR_E / DOOR_F
+| Left door animation
+
+| PANTOGRAPHBOTTOM1 / PANTOGRAPHMIDDLE1 / PANTOGRAPHTOP1 / PANTO with 1 elsewhere in the name
+| First pantograph animation
+
+| PANTOGRAPHBOTTOM2 / PANTOGRAPHMIDDLE2 / PANTOGRAPHTOP2 / PANTO with 2 elsewhere in the name
+| Second pantograph animation
+
+| PANTO with 3 elsewhere in the name
+| Third pantograph animation
+
+| PANTO with 4 elsewhere in the name
+| Fourth pantograph animation. This is hardcoded to allow only four pantographs.
+
+| MIRROR
+| Mirror animation
+
+| LEFTWINDOWFRONT
+| Front left window animation
+
+| RIGHTWINDOWFRONT
+| Front right window animation
+
+| LEFTWINDOWREAR
+| Rear left window animation
+
+| RIGHTWINDOWREAR
+| Rear right window animation
+
+| UNLOADINGPARTS
+| Rotary unload animation
+
+| ORTSBELL
+| Bell animation
+
+| ORTSITEM1CONTINUOUS
+| Generic control 1 looping animation
+
+| ORTSITEM1TWOSTATE
+| Generic control 1 toggle animation
+
+| ORTSITEM2CONTINUOUS
+| Generic control 2 looping animation
+
+| ORTSITEM2TWOSTATE
+| Generic control 2 toggle animation. This is hardcoded to allow only two generic controls.
+
+| ORTSBRAKECYLINDER
+| Brake cylinder animation
+
+| ORTSHANDBRAKE
+| Handbrake animation
+
+| ORTSBRAKERIGGING
+| Brake rigging animation
+
+|===
+
+
+[NOTE]
+Any animation linked to a wheel without a particular name is assumed to be a running gear animation.
+
+[TIP]
+Any engine/wagon can have any of these animation names in the shape. How well they apply to actual functioning animations can be more specific, for example; wipers cannot be enabled on a freight car.
 
 
 

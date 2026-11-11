@@ -828,6 +828,7 @@ image::images/UVWRAP2.JPG[]
 * Now we can return to the main modeling workspace and then change the viewport shader to Material Preview mode.  
 
 MATERIAL PREVIEW
+
 image::images/lookdev.jpg[]
 
 We now see the object with the material applied.
@@ -835,6 +836,12 @@ We now see the object with the material applied.
 image::images/UVWRAP3.JPG[]
 
 This model is now ready for the MSTS exporter.
+
+[TIP]
+You should always make sure that the texture is applied in the MSTS MATERIALS section of the Properties panel.  The MSTS exporter will use the texture file path specified there to create the `.S` file.  If you forget to do this, the exporter will fail to save the file.
+
+image::images/basecolor.png[]
+
 
 (((Texture, "Shader Properties")))
 

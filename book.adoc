@@ -35,11 +35,12 @@
 :BR: }
 :sourcedir: code
 :source-highlighter: rouge
-:revnumber: 2.6.0.1
-:revdate: 2026-08-10
+:revnumber: 2.6.0.2
+:revdate: 2026-10-09
 :OR: Open Rails
 :ORTS: Open Rails Train Simulator
 :MSTS: Microsoft Train Simulator
+:version: Blender 5.2 LTS
 :LTSversion: Blender 5.2 LTS
 :BV: 5.2
 :AO: Ambient Occlusion

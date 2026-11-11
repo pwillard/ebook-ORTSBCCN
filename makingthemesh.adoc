@@ -462,6 +462,9 @@ A Bevel on a FLAT PLANE will create an INSET.
 There are multiple bevel options in Blender version 5.  Worth looking into if thats the version you are using.
 
 
+[TIP]
+
+When using BEVEL with a individual vertices instead of objects, try using kbd:[CTRL,SHIFT,B] to get the proper bevel operations. You will notice this when working with selected vertices and the standard bevel operation and seeing nothing happen.
 <<<
 
 ==== LOOP CUT & SLIDE
